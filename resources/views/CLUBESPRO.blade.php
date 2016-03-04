@@ -21,7 +21,7 @@ and open the template in the editor.
               <li><a href="Inicio">HOME</a></li>
               <li><a>ADMINISTRADOR</a>
                   <ul>
-                      <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
+                      <li><a href="/ProCrearLiga">Hola funciona cosa CREAR LIGA</a></li>
                       <li><a href="/ProCrearCopa">CREAR COPA</a></li>
                       <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
                       <li><a href="/AgregarClubProCopa">MODIFICAR COPA</a></li>
