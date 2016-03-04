@@ -1,0 +1,320 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/12/2015, 09:43:02 PM
+    Author     : INIFAP
+*/
+
+
+/* SUB MENU     LOGIN     */
+ul.subnavegador{
+
+    text-align: center;
+    padding: 10px 35px;
+    list-style-type: none;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+ul#SubMenu{
+    width:140px;
+    background-color: darkgray;
+    list-style: none;
+    height: auto;
+    float: left;
+    padding: 0px 4px;
+    display: none;
+    margin:0px;
+
+
+}
+
+#LoginMenu:hover #SubMenu {
+    display: block;
+}
+
+
+
+
+ul.subnavegador a{
+    color: black;
+    text-decoration:none;
+    padding: 20px 0;
+    display: block;
+    height: 20%;
+
+}
+
+#LogoEquipo{
+    background:url(images/Clausura/5.png);
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-color: yellow;
+    background-size: cover;
+
+}
+
+ul.subnavegador li{
+
+    height:2.5em;
+    line-height:2.5em;
+}
+
+/* SUB MENU     LOGIN     */
+
+#menuLateral 
+{     
+    z-index: 8;
+    background-color: green;
+    position:fixed; 
+    float: left;
+    height: 92%;
+    width: 18%;
+    left:0px; 
+    top:10%;
+    list-style-type: none;
+
+}
+
+
+
+
+ ul#ListaMenuLateral {
+     margin-top: 50%;
+     text-align: center;
+     padding: 0;
+     
+     font-family: sans-serif;
+     font-size: 16px;
+     font-weight: bold;
+    }
+    
+     ul#ListaLateral li {
+	
+	float: left;
+        
+       
+	height:2.5em;
+	line-height:2.5em;
+
+	
+  }
+
+  ul#ListaMenuLateral a {
+        
+	color: black;
+	text-decoration:none; 
+	padding: 20px 0; 
+	display: block;
+	height: 100%;
+}
+
+
+
+
+#ListaMenuLateral li:hover {
+   
+       background-color: whitesmoke;
+     }
+     
+     
+   #ListaMenuLateral li:hover a {
+       
+       color: black;
+     }
+     
+     
+     
+     #ListaMenuLateral li a.active{
+         background: #999; 
+     }
+     
+ #ListaMenuLateral li a:hover  {
+    background: #999; 
+   
+    color: #fff;
+}
+#ListaMenuLateral li ul {
+    padding: 0px;
+    list-style-type: none;
+    display: none; // used to hide sub-menus
+}
+#ListaMenuLateral li ul li a {
+  
+    padding: 10px 35px;
+    background: whitesmoke;
+    border-bottom: 1px dotted #ccc;
+}    
+
+/* Todo lo respectivo a la barra superior*/
+
+#menuSuperior{
+    z-index: 8;
+    background:url(Imagenes/topMenu.jpeg);
+    background-color:yellow; 
+    background-size: cover;
+    position:fixed; 
+    height: 10%; 
+    width: 100%;
+    top:0px;
+    left:0px;
+    
+} 
+
+ ul#ListaMenuSuperior {
+     margin-left: 30%;
+     padding: 0;
+     list-style-type: none;
+     font-family: sans-serif;
+     font-size: 16px;
+     font-weight: bold;
+    }
+    
+     ul#ListaMenuSuperior li {
+	
+	float: left;
+        
+       
+	height:2.5em;
+	line-height:2.5em;
+
+	
+  }
+
+  ul#ListaMenuSuperior a {
+	color: white;
+	text-decoration:none; 
+	padding: 0 30px; 
+	display: block;
+	height: 100%;
+}
+
+
+#ListaMenuSuperior li:hover {
+       background-color: whitesmoke;
+     }
+   #ListaMenuSuperior li:hover a {
+       color: black;
+     }
+     
+     /* Todo lo respectivo a la barra superior*/
+     
+#menuCentral{
+
+    background-color: blue; 
+    height: 150%;
+    width: 80%;
+    position: absolute;
+ 
+    left: 18%;
+    top: 8%;
+    
+}
+
+.td{
+       background-color:#3bb3e0;
+	font-family: 'Open Sans', sans-serif;
+	font-size:10px;
+        font-weight: bolder;
+        text-align: center;
+	text-decoration:none;
+	color:#fff;
+	position:relative;
+	padding:10px 20px;
+	border-left:solid 1px #2ab7ec;
+	margin-left:35px;
+	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(44,160,202)),
+	color-stop(1, rgb(62,184,229))
+	);
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+	-moz-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+	-o-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+	box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+}
+
+.td:hover {
+ background: darkgrey;
+ color: #fff;
+ box-shadow: inset 0 0 0 3px #3a7999;
+}
+.tdfloat{
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    
+}
+.td2
+{
+    background: darkmagenta;
+    width:70px;
+    height:100px;           
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow:0px 0px 10px white;
+    -webkit-box-shadow:0px 0px 10px white;  
+    -webkit-border-radius:0px 10px 0px 10px;    
+    margin:100px auto;  
+    animation: parpadeo 5s;
+    -webkit-animation: parpadeo 5s;
+  -moz-animation: parpadeo 5s;
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+  -moz-animation-iteration-count:infinite;    
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+    
+
+}
+.td3
+{
+    color: #fff;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+
+  @keyframes parpadeo { 
+    0%  {box-shadow: 0px 0px 10px white}
+    50% {box-shadow: 0px 0px 50px white}
+    100%{box-shadow: 0px 0px 10px white}    
+    }
+        
+    @-webkit-keyframes parpadeo {   
+    0%  {-webkit-box-shadow: 0px 0px 10px white}
+    50% {-webkit-box-shadow: 0px 0px 50px white}
+    100%{-webkit-box-shadow: 0px 0px 10px white}
+    
+    }
+    
+    .back{
+background: -webkit-linear-gradient(left, green, Beige); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(right, green, Beige ); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(right, Beige , white); /* For Firefox 3.6 to 15 */
+background: linear-gradient(to right, white, black); /* Standard syntax */
+}
+
+

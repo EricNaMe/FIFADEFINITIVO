@@ -1,0 +1,390 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/12/2015, 09:43:02 PM
+    Author     : INIFAP
+*/
+
+#menuLateral 
+{     
+    z-index: 8;
+    background-color: green;
+    position:fixed; 
+    float: left;
+    height: 92%;
+    width: 18%;
+    left:0px; 
+    top:10%;
+    list-style-type: none;
+
+}
+
+
+/* SUB MENU     LOGIN     */
+ul.subnavegador{
+
+    text-align: center;
+    padding: 10px 35px;
+    list-style-type: none;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+ul#SubMenu{
+    width:140px;
+    background-color: darkgray;
+    list-style: none;
+    height: auto;
+    float: left;
+    padding: 0px 5px;
+    display: none;
+
+
+}
+
+#LoginMenu:hover #SubMenu {
+    display: block;
+}
+
+
+
+
+ul.subnavegador a{
+    color: black;
+    text-decoration:none;
+    padding: 20px 0;
+    display: block;
+    height: 20%;
+
+}
+
+ul.subnavegador li{
+
+    height:2.5em;
+    line-height:2.5em;
+}
+
+/* SUB MENU     LOGIN     */
+
+ ul#ListaMenuLateral {
+     margin-top: 50%;
+     text-align: center;
+     padding: 0;
+     
+     font-family: sans-serif;
+     font-size: 16px;
+     font-weight: bold;
+    }
+    
+     ul#ListaLateral li {
+	
+	float: left;
+        
+       
+	height:2.5em;
+	line-height:2.5em;
+
+	
+  }
+
+  ul#ListaMenuLateral a {
+        
+	color: black;
+	text-decoration:none; 
+	padding: 20px 0; 
+	display: block;
+	height: 100%;
+}
+
+
+
+
+#ListaMenuLateral li:hover {
+   
+       background-color: whitesmoke;
+     }
+     
+     
+   #ListaMenuLateral li:hover a {
+       
+       color: black;
+     }
+     
+     
+     
+     #ListaMenuLateral li a.active{
+         background: #999; 
+     }
+     
+ #ListaMenuLateral li a:hover  {
+    background: #999; 
+   
+    color: #fff;
+}
+#ListaMenuLateral li ul {
+    padding: 0px;
+    list-style-type: none;
+    display: none; // used to hide sub-menus
+}
+#ListaMenuLateral li ul li a {
+  
+    padding: 10px 35px;
+    background: whitesmoke;
+    border-bottom: 1px dotted #ccc;
+}    
+
+/* Todo lo respectivo a la barra superior*/
+
+#menuSuperior{
+    z-index: 8;
+    background:url(Imagenes/topMenu.jpeg);
+    background-color:yellow; 
+    background-size: cover;
+    position:fixed; 
+    height: 10%; 
+    width: 100%;
+    top:0px;
+    left:0px;
+    
+} 
+
+ ul#ListaMenuSuperior {
+     margin-left: 30%;
+     padding: 0;
+     list-style-type: none;
+     font-family: sans-serif;
+     font-size: 16px;
+     font-weight: bold;
+    }
+    
+     ul#ListaMenuSuperior li {
+	
+	float: left;
+        
+       
+	height:2.5em;
+	line-height:2.5em;
+
+	
+  }
+
+  ul#ListaMenuSuperior a {
+	color: white;
+	text-decoration:none; 
+	padding: 0 30px; 
+	display: block;
+	height: 100%;
+}
+
+
+#ListaMenuSuperior li:hover {
+       background-color: whitesmoke;
+     }
+   #ListaMenuSuperior li:hover a {
+       color: black;
+     }
+     
+     /* Todo lo respectivo a la barra superior*/
+     
+#menuCentral{
+
+    background-color: blue; 
+    height: 122%;
+    width: 100%;
+    position: absolute;
+ 
+    left: 18%;
+    top: 8%;
+    
+}
+.back{
+background: -webkit-linear-gradient(left, green, Beige); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(right, green, Beige ); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(right, Beige , white); /* For Firefox 3.6 to 15 */
+background: linear-gradient(to right, white, black); /* Standard syntax */
+}
+ #MenuPerfil {
+            list-style-type: none;
+            margin-top: 40px;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            width: 720px;
+            margin-left: 250px;
+        }
+
+        #ListaPerfil{
+            float: left;
+        }
+
+        #ListaPerfil a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 20px 25px;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        #ListaPerfil a:hover {
+            background-color: #111;
+        }
+
+        #ListaDatosPerfil{
+            list-style: none;
+            padding-left: 0px;
+        }
+
+        #ListaDatosPerfil li{
+            border-bottom:groove;
+            padding: 11px 13px;
+            font-size: 16px;
+            font-family: sans-serif;
+        }
+        #ListaPerfil{
+
+        }
+        
+.cuadro {
+   margin: 10px;
+   width: 120px;
+   height: 160px;
+   background-color: transparent;
+   
+   transition-property: width, height, background-color;
+   transition-duration: 0.5s, 1s, 1s;
+   transition-timing-function: ease, ease-out;
+   transition-delay: 0s ,0.5s, 1.5s;
+   -webkit-border-radius: 20px 20px;
+   -webkit-border-radius: 20px 20px;
+  }
+   .cuadro:hover {
+      width: 550px;
+      height: 250px;
+      background-color: #fff;
+      transition-property: width, height, background-color;
+      transition-duration: 0.5s, 0.5s, 0.5s;
+      transition-timing-function: linear, linear;
+      transition-delay: 0s ,0.5s, 0.5s;
+      -webkit-border-radius: 20px 20px;
+      -webkit-border-radius: 20px 20px;
+   }
+   
+   .Info
+{
+    font-family: fantasy;
+    font-size: 20px;
+    font-family: Arial;
+    text-align: left;
+    color: #333;
+    font-weight: bolder;
+}
+   .Info2
+{
+    font-family: fantasy;
+    font-size: 20px;
+    font-family: Arial;
+    text-align: left;
+    color: #333;
+    font-weight: bolder;
+}
+.star
+{
+   transition-property: width, height, background-color;
+   transition-duration: 0.3s, 1s, 1s;
+   transition-timing-function: ease, ease-out;
+   transition-delay: 0s ,0.3s, 1.5s;
+}
+
+        
+.cuadro2 {
+   margin: 10px;
+   width: 120px;
+   height: 215px;
+   background-color: transparent;
+   
+   transition-property: width, height, background-color;
+   transition-duration: 0.3s, 1s, 1s;
+   transition-timing-function: ease, ease-out;
+   transition-delay: 0s ,0.3s, 1.3s;
+   -webkit-border-radius: 20px 20px;
+   -webkit-border-radius: 20px 20px;
+  }
+   .cuadro2:hover {
+      width: 550px;
+      height: 240px;
+      background-color: #fff;
+      transition-property: width, height, background-color;
+      transition-duration: 0.5s, 0.5s, 0.5s;
+      transition-timing-function: linear, linear;
+      transition-delay: 0s ,0.8s, 0.8s;
+      -webkit-border-radius: 20px 20px;
+      -webkit-border-radius: 20px 20px;
+   }
+   .title{
+  font-weight: bold;
+  font-size: 60px;
+  font-family: Impact;
+  font-style: italic;
+  text-shadow: 0 1px 0 #ccc, 
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+  -webkit-text-stroke: 2px white;
+  color: maroon;
+height: 40px;
+
+}
+
+h1.spacing {
+  font-family: Tahoma;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  word-spacing: 0.1em;
+  color: #ccc;
+  text-align: center;
+  width: 450px;
+}
+
+.myBox {
+border: none;
+padding: 5px;
+overflow: scroll;
+background-color: #EBF4FB;
+
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 10px olivedrab;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+border-radius: 10px;
+background: #C0C0C0; 
+box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #7bac10;
+}
