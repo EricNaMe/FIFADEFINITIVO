@@ -1,0 +1,817 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/12/2015, 09:43:02 PM
+    Author     : INIFAP
+*/
+
+#menuLateral 
+{     
+    z-index: 8;
+    background-color: green;
+    position:fixed; 
+    float: left;
+    height: 92%;
+    width: 18%;
+    left:0px; 
+    top:10%;
+    list-style-type: none;
+
+}
+
+
+
+
+ ul#ListaMenuLateral {
+     margin-top: 50%;
+     text-align: center;
+     padding: 0;
+     
+     font-family: sans-serif;
+     font-size: 16px;
+     font-weight: bold;
+    }
+    
+     ul#ListaLateral li {
+	
+	float: left;
+        
+       
+	height:2.5em;
+	line-height:2.5em;
+
+	
+  }
+
+  ul#ListaMenuLateral a {
+        
+	color: black;
+	text-decoration:none; 
+	padding: 20px 0; 
+	display: block;
+	height: 100%;
+}
+
+
+
+
+#ListaMenuLateral li:hover {
+   
+       background-color: whitesmoke;
+     }
+     
+     
+   #ListaMenuLateral li:hover a {
+       
+       color: black;
+     }
+     
+     
+     
+     #ListaMenuLateral li a.active{
+         background: #999; 
+     }
+     
+ #ListaMenuLateral li a:hover  {
+    background: #999; 
+   
+    color: #fff;
+}
+#ListaMenuLateral li ul {
+    padding: 0px;
+    list-style-type: none;
+    display: none; // used to hide sub-menus
+}
+#ListaMenuLateral li ul li a {
+  
+    padding: 10px 35px;
+    background: whitesmoke;
+    border-bottom: 1px dotted #ccc;
+}
+
+/* Todo lo respectivo a la barra superior*/
+
+#menuSuperior{
+    z-index: 8;
+    background:url(images/topMenu.jpeg);
+    background-color:yellow;
+    background-size: cover;
+    position:fixed;
+    height: 10%;
+    width: 100%;
+    top:0px;
+    left:0px;
+
+}
+
+ul#ListaMenuSuperior {
+    margin-left: 25%;
+    padding: 0;
+    list-style-type: none;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+ul#ListaMenuSuperior li {
+
+    float: left;
+
+
+    height:2.5em;
+    line-height:2.5em;
+
+
+}
+
+ul#ListaMenuSuperior a {
+    color: white;
+    text-decoration:none;
+    padding: 0 30px;
+    display: block;
+    height: 100%;
+}
+
+
+#ListaMenuSuperior li:hover {
+    background-color: whitesmoke;
+}
+#ListaMenuSuperior li:hover a {
+    color: black;
+}
+
+/* Todo lo respectivo a la barra superior*/
+
+
+#menuCentral{
+
+    background-color: blue; 
+    height: 122%;
+    width: 100%;
+    position: absolute;
+ 
+    left: 18%;
+    top: 8%;
+    
+}
+
+.title{
+  font-weight: bold;
+  font-size: 68px;
+  font-family: Impact;
+  font-style: italic;
+  text-shadow: 0 1px 0 #ccc, 
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+  -webkit-text-stroke: 2px white;
+  color: maroon;
+height: 40px;
+
+}
+
+.title2{
+    font-size: 35px;
+   color: blue;
+   text-shadow: black 0.1em 0.1em 0.2em;
+   text-align: center;
+}
+.title3{
+font-family: "Palatino", sans-serif;
+ font-size: 20px;
+ text-align: center;
+ font-style: italic;
+ text-align: justify;
+  vertical-align: text-top;
+}
+
+.banner{
+ margin:0 auto;
+  background-color: crimson;
+  background-color: crimson;
+  background-image:-webkit-gradient(linear,0% 0%,0% 90%,from(rgba(28,91,155,.8)),to(rgba(108,191,255,.9)));
+  background-image:-moz-linear-gradient(rgba(28,91,155,.8) 0%,rgba(108,191,255,.9) 90%);  
+  -webkit-border-radius:16px;
+  -moz-border-radius:16px;
+  border-radius:16px;
+  border:2px solid #CCC;
+  border-color:#8BA2C1 #5890BF #4F93CA #768FA5; 
+  -webkit-box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+  -moz-box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+  box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+}
+
+.back{
+background: -webkit-linear-gradient(left, green, Beige); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(right, green, Beige ); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(right, Beige , white); /* For Firefox 3.6 to 15 */
+background: linear-gradient(to right, white, black); /* Standard syntax */
+}
+.imagenTrans
+{
+  alignment-adjust: text-before-edge;
+ -webkit-filter: opacity(0.5); /* 50% transparente */
+ -moz-animation-fill-mode: forwards; 
+ background-repeat: no-repeat; 
+ background-size: contain;
+
+}
+
+.welcome
+{ 
+    text-align: left;
+    float:left; 
+}
+
+.Articulo2
+{  
+    background-color: transparent;     
+    padding: 0% 2% 2% 2%; /*change padding*/    
+    text-align: justify; 
+    width: 40%;      
+    border-radius: 10px;
+    font-style: Arial;    
+    margin-top: 5%;
+}
+
+#wrapper {
+    margin-left: -5%;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    width:450px;
+    border:1px solid #ACD8F0;
+}
+
+#menu { 
+    padding:12.5px 25px 12.5px 25px; 
+
+}
+
+#boxUser {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:auto;
+    width:400px;
+    border:1px solid #ACD8F0;
+    overflow:auto; 
+}
+
+.Articulo3{
+    text-align: left;
+    font-size: medium;  
+    font-stretch: extra-expanded;
+    font-style: oblique;
+    font-weight: bold;
+    
+}
+
+#wrapper2 {
+    margin-left: -5%;
+    padding-bottom:25px;
+    background: #8BA2C1;
+    width:450px;
+    border:1px solid #00557F;
+}
+
+#submitmsg {
+  border:transparent;
+  background:#D3D3D3;
+  color:black;
+  width: 60px;
+  margin-left:2%;
+  }
+  
+  #postback{  
+   border:transparent;
+  background:#D3D3D3;
+  color:black;
+  height:30px;
+  width:30px;
+  background-position:center;
+  margin-left:3%;
+  
+}
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 16/12/2015, 09:43:02 PM
+    Author     : INIFAP
+*/
+
+#menuLateral
+{
+    z-index: 8;
+    background-color: green;
+    position:fixed;
+    float: left;
+    height: 92%;
+    width: 18%;
+    left:0px;
+    top:10%;
+    list-style-type: none;
+
+}
+
+
+
+
+ul#ListaMenuLateral {
+    margin-top: 50%;
+    text-align: center;
+    padding: 0;
+
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+ul#ListaLateral li {
+
+    float: left;
+
+
+    height:2.5em;
+    line-height:2.5em;
+
+
+}
+
+ul#ListaMenuLateral a {
+
+    color: black;
+    text-decoration:none;
+    padding: 20px 0;
+    display: block;
+
+}
+
+
+
+
+#ListaMenuLateral li:hover {
+
+    background-color: whitesmoke;
+}
+
+
+#ListaMenuLateral li:hover a {
+
+    color: black;
+}
+
+
+
+#ListaMenuLateral li a.active{
+    background: #999;
+}
+
+#ListaMenuLateral li a:hover  {
+    background: #999;
+
+    color: #fff;
+}
+#ListaMenuLateral li ul {
+    padding: 0px;
+    list-style-type: none;
+    display: none; // used to hide sub-menus
+}
+#ListaMenuLateral li ul li a {
+
+    padding: 10px 35px;
+    background: whitesmoke;
+    border-bottom: 1px dotted #ccc;
+}
+
+/* Todo lo respectivo a la barra superior*/
+
+#menuSuperior{
+    z-index: 8;
+    background:url(images/topMenu.jpeg);
+    background-color:yellow;
+    background-size: cover;
+    position:fixed;
+    height: 10%;
+    width: 100%;
+    top:0px;
+    left:0px;
+
+}
+
+ul#ListaMenuSuperior {
+    margin-left: 25%;
+    padding: 0;
+    list-style-type: none;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+ul#ListaMenuSuperior li {
+
+    float: left;
+
+
+    height:2.5em;
+    line-height:2.5em;
+
+
+}
+
+ul#ListaMenuSuperior a {
+    color: white;
+    text-decoration:none;
+    padding: 0 30px;
+    display: block;
+    height: 100%;
+}
+
+
+#ListaMenuSuperior li:hover {
+    background-color: whitesmoke;
+}
+#ListaMenuSuperior li:hover a {
+    color: black;
+}
+
+/* Todo lo respectivo a la barra superior*/
+
+#menuCentral{
+
+    background-color: blue;
+    height: 122%;
+    width: 100%;
+    position: absolute;
+
+    left: 18%;
+    top: 8%;
+
+}
+
+
+
+/*Todo lo respectivo a la tabla */
+
+#TablaPrimera{
+    overflow-x:auto;
+    background-color: white;
+    width:800px;
+    height:auto;
+    position:relative;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table{
+
+}
+
+thead{
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+th, td {
+    font-family: arial;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#PosicionTabla{
+    background-color: gray;
+    font-weight:bold;
+    color:white;
+    border-radius: 4px;
+    position: relative;
+    left:30px;
+    text-align: center;
+    alignment-adjust: middle;
+    width:25px;
+    height: 20px;
+}
+
+#standings__emblem{
+    position:relative;
+
+    width:21px;
+    min-height:21px;
+    margin-right:8px;
+    vertical-align:top;
+    background-repeat:no-repeat;
+    overflow:hidden
+}
+
+#LogoEquipo{
+    background:url(images/Clausura/5.png);
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-color: yellow;
+    background-size: cover;
+
+}
+
+
+/* SUB MENU     LOGIN     */
+ul.subnavegador{
+
+    text-align: center;
+    padding: 10px 35px;
+    list-style-type: none;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+ul#SubMenu{
+    width:140px;
+    background-color: darkgray;
+    list-style: none;
+    height: auto;
+    float: left;
+    padding: 0px 5px;
+    display: none;
+
+
+}
+
+#LoginMenu:hover #SubMenu {
+    display: block;
+}
+
+
+
+
+ul.subnavegador a{
+    color: black;
+    text-decoration:none;
+    padding: 20px 0;
+    display: block;
+    height: 20%;
+
+}
+
+ul.subnavegador li{
+
+    height:2.5em;
+    line-height:2.5em;
+}
+
+/* SUB MENU     LOGIN     */
+
+
+.myButton {
+    -moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
+    -webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
+    box-shadow:inset 0px -3px 7px 0px #29bbff;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2dabf9), color-stop(1, #0688fa));
+    background:-moz-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+    background:-webkit-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+    background:-o-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+    background:-ms-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+    background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2dabf9', endColorstr='#0688fa',GradientType=0);
+    background-color:#2dabf9;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    border:1px solid #0b0e07;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    padding:6px 10px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #263666;
+}
+.myButton:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));
+    background:-moz-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+    background:-webkit-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+    background:-o-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+    background:-ms-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+    background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9',GradientType=0);
+    background-color:#0688fa;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+
+
+.tip {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    background: transparent;
+    border: 10px solid #ccc;
+}
+
+.tip-up {
+    top: -25px; /* Same as body margin top + border */
+    left: 10px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+}
+
+.tip-down {
+    bottom: -25px;
+    left: 10px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.tip-left {
+    top: 10px;
+    left: -25px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.tip-right {
+    top: 10px;
+    right: -25px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.dialogbox .body {
+    position: relative;
+    max-width: 200px;
+    height: auto;
+    margin: 20px 10px;
+    padding: 5px;
+    background-color: #DADADA;
+    border-radius: 3px;
+    border: 5px solid #ccc;
+}
+
+
+#MenuPerfil {
+    list-style-type: none;
+    margin-top: 40px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width: 500px;
+    margin-left: 300px;
+}
+
+#ListaPerfil{
+    float: left;
+}
+
+#ListaPerfil a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 20px 25px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+#ListaPerfil a:hover {
+    background-color: #111;
+}
+
+#ListaDatosPerfil{
+    list-style: none;
+    padding-left: 0px;
+}
+
+#ListaDatosPerfil li{
+    border-bottom:groove;
+    padding: 11px 13px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+#ListaPerfil{
+
+}
+
+
+
+
+<!--fin menu club-->
+
+
+    .body .message {
+        min-height: 20px;
+        border-radius: 3px;
+        width:120px;
+        font-family: Arial;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #797979;
+    }
+
+
+#MenuPerfil {
+    list-style-type: none;
+    margin-top: 40px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width: 500px;
+    margin-left: 300px;
+}
+
+#ListaPerfil {
+    float: left;
+}
+
+#ListaPerfil a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 20px 25px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+#ListaPerfil a:hover {
+    background-color: #111;
+}
+
+#ListaDatosPerfil {
+    list-style: none;
+    padding-left: 0px;
+}
+
+#ListaDatosPerfil li {
+    border-bottom: groove;
+    padding: 11px 13px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+#ListaDatosPerfil li:last-child {
+    border-bottom: none;
+    padding: 11px 13px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+#ListaPerfil {
+
+}
+
+#ListaDatosPerfil2 {
+    list-style: none;
+    padding-left: 0px;
+}
+
+#ListaDatosPerfil2 li {
+    border-bottom: groove;
+    padding: 20px 25px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+#ListaDatosPerfil2 li:last-child {
+    border-bottom: none;
+    padding: 20px 25px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+
+
+

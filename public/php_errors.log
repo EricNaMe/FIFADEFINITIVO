@@ -1,0 +1,26 @@
+[18-Jan-2016 00:21:46 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Team' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\FrontController.php on line 72
+[07-Feb-2016 05:44:28 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\FrontController.php on line 63
+[07-Feb-2016 05:45:05 UTC] PHP Fatal error:  Class 'App\Http\Controllers\comment' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\FrontController.php on line 63
+[07-Feb-2016 21:06:39 UTC] PHP Fatal error:  Class 'Form' not found in C:\xampp\htdocs\FIFALAR\storage\framework\views\f33f56afad867966cff0d6f6728ea73e on line 93
+[08-Feb-2016 00:22:01 UTC] PHP Fatal error:  Cannot redeclare App\comment::$fillable in C:\xampp\htdocs\FIFALAR\app\comment.php on line 11
+[08-Feb-2016 04:19:24 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Auth' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\User.php on line 102
+[08-Feb-2016 04:20:04 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Auth' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\User.php on line 102
+[08-Feb-2016 04:22:06 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Auth' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\User.php on line 102
+[08-Feb-2016 04:24:07 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Input' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\User.php on line 108
+[08-Feb-2016 04:26:09 UTC] PHP Fatal error:  Cannot declare class App\Http\Controllers\User because the name is already in use in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\User.php on line 13
+[11-Feb-2016 04:40:08 UTC] PHP Fatal error:  Class 'App\Http\Controllers\IsEqual' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\ClubesProController.php on line 97
+[11-Feb-2016 04:40:57 UTC] PHP Fatal error:  Class 'App\Http\Controllers\IsEqual' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\ClubesProController.php on line 97
+[11-Feb-2016 04:41:11 UTC] PHP Fatal error:  Class 'App\Http\Controllers\IsEqual' not found in C:\xampp\htdocs\FIFALAR\app\Http\Controllers\ClubesProController.php on line 97
+[14-Feb-2016 17:52:58 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Auth' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\ComentarioController.php on line 80
+[14-Feb-2016 17:53:50 UTC] PHP Fatal error:  Undefined class constant 'check' in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\ComentarioController.php on line 81
+[14-Feb-2016 18:40:16 UTC] PHP Parse error:  syntax error, unexpected ')' in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\FrontController.php on line 167
+[14-Feb-2016 19:39:15 UTC] PHP Parse error:  syntax error, unexpected ',' in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\ClubesProController.php on line 87
+[22-Feb-2016 01:18:08 UTC] PHP Fatal error:  Class 'App\Http\Controllers\ProCopa' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\FrontController.php on line 154
+[22-Feb-2016 01:18:35 UTC] PHP Fatal error:  Class 'App\ProCopa' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\FrontController.php on line 155
+[22-Feb-2016 01:18:45 UTC] PHP Fatal error:  Class 'App\Http\Controllers\ProCopa' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\FrontController.php on line 155
+[22-Feb-2016 01:18:52 UTC] PHP Fatal error:  Class 'App\Http\Controllers\ProCopa' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\FrontController.php on line 155
+[27-Feb-2016 05:56:02 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Cup' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\PlayerController.php on line 118
+[27-Feb-2016 06:38:07 UTC] PHP Parse error:  syntax error, unexpected end of file in C:\xampp\htdocs\FIFALAR2\storage\framework\views\c8622d490da2f0e172263b033fc30c42 on line 489
+[27-Feb-2016 06:38:57 UTC] PHP Parse error:  syntax error, unexpected end of file in C:\xampp\htdocs\FIFALAR2\storage\framework\views\c8622d490da2f0e172263b033fc30c42 on line 164
+[27-Feb-2016 07:05:23 UTC] PHP Fatal error:  Class 'App\Http\Controllers\League' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\PlayerController.php on line 142
+[27-Feb-2016 07:05:56 UTC] PHP Fatal error:  Class 'App\Http\Controllers\League' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\PlayerController.php on line 142
