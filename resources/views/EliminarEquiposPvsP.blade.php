@@ -162,7 +162,13 @@ and open the template in the editor.
                     <div class="col-sm-4">
                         <select class="form-control" onchange="seleccionaEquipo();" id="clubSelect" name="clubSelect"  type="text" value="">
                             @foreach($clubes as $club)
+                                @if($club->status==="Activo")
                                 <option value="{{$club->id}}">{{$club->name}} - @foreach($club->users as $user) {{$user->user_name}} @endforeach</option>
+                                @else
+
+
+                                @endif
+
                             @endforeach
                         </select>
                     </div>

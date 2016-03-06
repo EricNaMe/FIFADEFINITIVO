@@ -24,3 +24,7 @@
 [27-Feb-2016 06:38:57 UTC] PHP Parse error:  syntax error, unexpected end of file in C:\xampp\htdocs\FIFALAR2\storage\framework\views\c8622d490da2f0e172263b033fc30c42 on line 164
 [27-Feb-2016 07:05:23 UTC] PHP Fatal error:  Class 'App\Http\Controllers\League' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\PlayerController.php on line 142
 [27-Feb-2016 07:05:56 UTC] PHP Fatal error:  Class 'App\Http\Controllers\League' not found in C:\xampp\htdocs\FIFALAR2\app\Http\Controllers\PlayerController.php on line 142
+[06-Mar-2016 04:11:20 UTC] PHP Fatal error:  Call to a member function proTeams() on a non-object in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\TorneoController.php on line 148
+[06-Mar-2016 04:14:03 UTC] PHP Fatal error:  Call to a member function proTeams() on a non-object in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\TorneoController.php on line 148
+[06-Mar-2016 04:17:09 UTC] PHP Fatal error:  Call to a member function save() on a non-object in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\TorneoController.php on line 171
+[06-Mar-2016 04:22:39 UTC] PHP Fatal error:  Call to a member function save() on a non-object in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\TorneoController.php on line 171

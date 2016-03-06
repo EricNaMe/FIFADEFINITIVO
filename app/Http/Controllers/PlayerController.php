@@ -98,7 +98,7 @@ class PlayerController extends Controller
 
             $club->name =  Input::get('nombreequipo');
             $user=Input::get('userSelect');
-
+            $club->status="Activo";
             $club->save();
             $club->users()->attach($user,['status'=>'Accepted']);
 
@@ -171,7 +171,73 @@ class PlayerController extends Controller
 
         }
     }
-    
+
+    public function ModificarCopa(){
+        if(Auth::check()){
+
+
+            $idLiga=Input::get('leagueSelect');
+            $clubes=Team::All();
+            $copa=Cup::find($idLiga);
+
+
+            return view('/AgregarTeamCopa', ['copa' => $copa,'clubes'=>$clubes]);
+
+
+        }
+    }
+
+    public function ModificarLiga(){
+        if(Auth::check()){
+
+
+            $idLiga=Input::get('leagueSelect');
+            $clubes=Team::All();
+            $league=League::find($idLiga);
+
+
+            return view('/AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes]);
+
+
+        }
+    }
+
+
+    public function BorrarClubLiga() {
+
+
+        $clubSelect = Input::get('InputIdClub');
+
+        $LeagueInput = Input::get('InputIdLeague');
+        $Team=Team::find($clubSelect);
+        $league=League::find($LeagueInput);
+        $clubes=Team::All();
+        $league->Teams()->detach($clubSelect,[]);
+
+
+
+            return view('AgregarTeamLiga', ['Team' => $Team,'league'=>$league,'clubes'=>$clubes]);
+
+
+    }
+
+    public function BorrarClubCopa() {
+
+
+        $clubSelect = Input::get('InputIdClub');
+
+        $LeagueInput = Input::get('InputIdLeague');
+        $Team=Team::find($clubSelect);
+        $copa=Cup::find($LeagueInput);
+        $clubes=Team::All();
+        $copa->Teams()->detach($clubSelect,[]);
+
+
+
+            return view('AgregarTeamCopa', ['Team' => $Team,'copa'=>$copa,'clubes'=>$clubes]);
+
+
+    }
     
     
       public function BorrarTeamLiga() {
@@ -193,13 +259,12 @@ class PlayerController extends Controller
           $Team->users()->detach($userId,[]);
 
 
-        
-          if($Team->forceDelete()){
+        $Team->status="Inactivo";
+          $Team->save();
+
               $clubes=Team::All();
                  return view('EliminarEquiposPvsP', ['clubes'=>$clubes]);
-            } else {
-                return redirect()->back()->withErrors("Algo falló!!!");
-            }
+
         
     }
 

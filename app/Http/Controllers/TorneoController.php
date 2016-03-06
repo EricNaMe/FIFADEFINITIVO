@@ -97,6 +97,21 @@ class TorneoController extends Controller
 
         }
     }
+
+    public function ModificarCopaPro(){
+        if(Auth::check()){
+
+
+            $idLiga=Input::get('leagueSelect');
+            $clubes=ProTeam::All();
+            $copa=ProCup::find($idLiga);
+
+
+            return view('/AgregarClubProCopa', ['copa' => $copa,'clubes'=>$clubes]);
+
+
+        }
+    }
     
     
     
@@ -130,7 +145,7 @@ class TorneoController extends Controller
           $proTeam=ProTeam::find($clubSelect);
           $league=ProLeague::find($LeagueInput);
           $clubes=ProTeam::All();
-          $proTeam->proLeague()->detach($clubSelect);
+          $league->proTeams()->detach($clubSelect,[]);
         
           if($proTeam->save()){
                  return view('AgregarClubProLiga', ['proTeam' => $proTeam,'league'=>$league,'clubes'=>$clubes]);
@@ -138,6 +153,27 @@ class TorneoController extends Controller
                 return redirect()->back()->withErrors("Algo falló!!!");
             }
         
+    }
+
+
+    public function BorrarProClubCopa() {
+
+
+        $clubSelect = Input::get('InputIdClub');
+
+        $CopaInput = Input::get('InputIdLeague');
+
+        $proTeam=ProTeam::find($clubSelect);
+        $copa=ProCup::find($CopaInput);
+        $clubes=ProTeam::All();
+        $copa->proTeams()->detach($clubSelect,[]);
+
+        if($proTeam->save()){
+            return view('AgregarClubProCopa', ['proTeam' => $proTeam,'copa'=>$copa,'clubes'=>$clubes]);
+        } else {
+            return redirect()->back()->withErrors("Algo falló!!!");
+        }
+
     }
     
     

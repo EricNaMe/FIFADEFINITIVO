@@ -25,6 +25,8 @@ and open the template in the editor.
                       <li><a href="CrearCopa">CREAR COPA</a></li>
                       <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
                       <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
+                      <li><a href="ModificarLiga">MODIFICAR LIGA</a></li>
+                      <li><a href="ModificarCopa">MODIFICAR COPA</a></li>
 
 
                   </ul>
@@ -131,6 +133,7 @@ and open the template in the editor.
                     ?>
                     @foreach($teams as $team)
                     <tr>
+                        @if($team->status==="Activo")
                         <td><div id="PosicionTabla">{{$i}}</div></td>
                         <td style="text-align:left;">{{$team->name}}</td>
                         @foreach($team->users as $user)
@@ -138,6 +141,7 @@ and open the template in the editor.
                         @endforeach
 
                        <?php $i++;?>
+                       @endif
                     </tr>
                         @endforeach
 

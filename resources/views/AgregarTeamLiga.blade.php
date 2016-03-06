@@ -15,6 +15,21 @@ and open the template in the editor.
 <body>
 
 
+<script>
+
+
+    function seleccionaEquipo()
+    {
+
+
+        var seleccion= document.getElementById('clubSelect');
+        document.getElementById('InputIdClub').value=seleccion.options[seleccion.selectedIndex].value;
+
+
+    }
+
+</script>
+
 <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
     <ul id="ListaMenuLateral">
@@ -131,7 +146,7 @@ and open the template in the editor.
             <br></br>
 
             <div style="position:relative; top:500px; left:500px;" class="container">
-                <form action="/CLUBESPRO">
+                <form action="/PVSP">
                     <button class="btn btn-primary">Enviar</button>
                 </form>
             </div>
@@ -147,13 +162,15 @@ and open the template in the editor.
                 <div style="position:relative; left:-40px;" class="form-group">
                     <label class="col-sm-2 control-label">Equipos:</label>
                     <div class="col-sm-4">
-                        <select class="form-control" name="clubSelect"  type="text" value="">
+                        <select class="form-control" onchange="seleccionaEquipo()" name="clubSelect" id="clubSelect"  type="text" value="">
+
+
                             @foreach($clubes as $club)
                            
-                      
+                                @if($club->status==="Activo")
                         
                                 <option value="{{$club->id}}">{{$club->name}} -    @foreach($club->users as $user) {{$user->user_name}} @endforeach</option>
-                                   
+                                   @endif
                               
                             @endforeach
                         </select>
@@ -161,6 +178,18 @@ and open the template in the editor.
                 </div>
                 <div style="position:relative; top:-50px; left:550px;" class="container">
                     <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+            </form>
+
+            <form action="EliminarClubLiga" name="FormaAgregarClubaLiga2" method="post" class="form-horizontal" role="form">
+
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="InputIdLeague" value="{{$league->id}}"/>
+                <input type="text" id="InputIdClub" name="InputIdClub" value=""/>
+
+
+                <div style="position:relative; top:-50px; left:550px;" class="container">
+                    <button type="submit" class="btn btn-primary">Borrar</button>
                 </div>
             </form>
 

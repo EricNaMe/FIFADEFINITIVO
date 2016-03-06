@@ -70,8 +70,8 @@
                 <li><a>DIVISIONES LIGA</a>
                 <ul>
                 <li><a href="#">PRIMERA DIVISIÓN</a></li>
-                    @foreach($ligas as $liga)
-                        <li><a href="EncontrarLigaPlay/{{$liga->id}}">{{$liga->name}}</a></li>
+                    @foreach($ligas as $ligass)
+                        <li><a href="EncontrarLigaPlay/{{$ligass->id}}">{{$ligass->name}}</a></li>
 
                     @endforeach
 
@@ -148,7 +148,7 @@
                         <select id="Liga" onchange="seleccionaLiga()" class="select">
                             <option selected value="">Selecciona Liga</option>
                                 <?php
-                                $path="C:/xampp/htdocs/FIFALAR2/public/Imagenes";;
+                                $path="C:/Users/INIFAP/PhpstormProjects/FIFADEFINITIVO/public/Imagenes";;
                                 $directorio=dir($path);
                                 //echo "Directorio ".$path.":<br><br>";
                                 //$a=0;
@@ -202,7 +202,7 @@
                         <option selected value="">Selecciona Equipo</option>
                             <?php
 
-                              $path="C:/xampp/htdocs/FIFALAR2/public/Imagenes/".$liga;
+                              $path="C:/Users/INIFAP/PhpstormProjects/FIFADEFINITIVO/public/Imagenes/".$liga;
 
                               $directorio=dir($path);
                               $a=0;
@@ -247,7 +247,7 @@
                                 $equipo .="-LOGO.png";
                                 /////////////////
                                 
-                                $path="C:/xampp/htdocs/FIFALAR2/public/Imagenes/";;
+                                $path="C:/Users/INIFAP/PhpstormProjects/FIFADEFINITIVO/public/Imagenes/";;
                                 $directorio2=dir($path);                               
                                while ($archivo = $directorio2->read())
                                 {
