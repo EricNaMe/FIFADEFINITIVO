@@ -140,7 +140,7 @@ and open the template in the editor.
 
 
 
-FUNCIONA COSA
+
             <br></br>
 
             <div style="position:relative; top:500px; left:500px;" class="container">

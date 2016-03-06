@@ -24,7 +24,7 @@ and open the template in the editor.
                       <li><a href="CrearLiga">CREAR LIGA</a></li>
                       <li><a href="CrearCopa">CREAR COPA</a></li>
                       <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
-                      <li><a href="EliminarEquipos">ELIMINAR EQUIPOS</a></li>
+                      <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
 
 
                   </ul>

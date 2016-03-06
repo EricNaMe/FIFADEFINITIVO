@@ -181,11 +181,21 @@ class PlayerController extends Controller
         
         
           $Team=Team::find($clubSelect);
-         
-          $clubes=Team::All();
-          $Team->users()->detach(1,[]);
+
+         foreach($Team->users as $userTeam){
+
+             $userId=$userTeam->id;
+
+         }
+
+
+
+          $Team->users()->detach($userId,[]);
+
+
         
-          if($Team->save()){
+          if($Team->forceDelete()){
+              $clubes=Team::All();
                  return view('EliminarEquiposPvsP', ['clubes'=>$clubes]);
             } else {
                 return redirect()->back()->withErrors("Algo falló!!!");

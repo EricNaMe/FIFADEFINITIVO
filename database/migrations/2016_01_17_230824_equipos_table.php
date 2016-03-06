@@ -26,6 +26,9 @@ class EquiposTable extends Migration
             $table->integer('GF');
             $table->integer('GC');
 
+            $table->softDeletes();
+
+
             
         });
     }
