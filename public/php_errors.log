@@ -28,3 +28,15 @@
 [06-Mar-2016 04:14:03 UTC] PHP Fatal error:  Call to a member function proTeams() on a non-object in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\TorneoController.php on line 148
 [06-Mar-2016 04:17:09 UTC] PHP Fatal error:  Call to a member function save() on a non-object in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\TorneoController.php on line 171
 [06-Mar-2016 04:22:39 UTC] PHP Fatal error:  Call to a member function save() on a non-object in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\TorneoController.php on line 171
+[07-Mar-2016 01:11:31 UTC] PHP Parse error:  syntax error, unexpected ')' in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\storage\framework\views\bbb05e28d1f7ccf40ee78ca007caa175 on line 123
+[07-Mar-2016 01:19:48 UTC] PHP Parse error:  syntax error, unexpected '::' (T_PAAMAYIM_NEKUDOTAYIM) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\FrontController.php on line 212
+[07-Mar-2016 01:20:03 UTC] PHP Parse error:  syntax error, unexpected '::' (T_PAAMAYIM_NEKUDOTAYIM) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\FrontController.php on line 212
+[07-Mar-2016 01:20:08 UTC] PHP Parse error:  syntax error, unexpected '::' (T_PAAMAYIM_NEKUDOTAYIM) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\FrontController.php on line 212
+[07-Mar-2016 01:23:38 UTC] PHP Parse error:  syntax error, unexpected '::' (T_PAAMAYIM_NEKUDOTAYIM) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\FrontController.php on line 212
+[07-Mar-2016 01:30:05 UTC] PHP Parse error:  syntax error, unexpected '{' in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\storage\framework\views\bbb05e28d1f7ccf40ee78ca007caa175 on line 129
+[07-Mar-2016 01:40:25 UTC] PHP Fatal error:  Class 'App\Http\Controllers\get' not found in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\ClubesProController.php on line 143
+[07-Mar-2016 02:09:28 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\storage\framework\views\aa6162cef09e24ed4caff2ecf43d9da9 on line 163
+[07-Mar-2016 02:09:38 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\storage\framework\views\aa6162cef09e24ed4caff2ecf43d9da9 on line 163
+[07-Mar-2016 02:09:51 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\storage\framework\views\aa6162cef09e24ed4caff2ecf43d9da9 on line 157
+[07-Mar-2016 02:10:01 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\storage\framework\views\aa6162cef09e24ed4caff2ecf43d9da9 on line 157
+[07-Mar-2016 02:10:59 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\storage\framework\views\aa6162cef09e24ed4caff2ecf43d9da9 on line 165

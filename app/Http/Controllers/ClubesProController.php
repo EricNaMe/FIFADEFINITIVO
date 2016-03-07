@@ -138,6 +138,22 @@ class ClubesProController extends Controller
 
     }
 
+    public function ReportarAlineacion()
+    {
+        $usuario=input::get("checkbox");
+
+        if(is_array($usuario))
+        {
+
+            $usuarios=User::find($usuario);
+
+        }
+
+        return view('ReportarResultadosPro',['usuarios'=>$usuarios]);
+
+    }
+
+
 
     public function encontrarClubAlta($id){
 

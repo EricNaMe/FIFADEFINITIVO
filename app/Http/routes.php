@@ -86,6 +86,9 @@ Route::get('ModificarCopa','FrontController@ModificarCopa');
 Route::get('EliminarEquiposPvsP','FrontController@EliminarEquiposPvsP');
 Route::get('TransferenciasBuscarE','FrontController@TransferenciasBuscarE');
 Route::get('TransferenciasBuscarJ','FrontController@TransferenciasBuscarJ');
+Route::get('ReportarPartidoPro','FrontController@ReportarPartidoPro');
+Route::get('ReportarResultadosPro','FrontController@ReportarResultadosPro');
+
 
 
 
@@ -106,6 +109,7 @@ Route::get('UnirteClubEquipo/{id}','ClubesProController@encontrarClubAlta');
 Route::post('BuscarClub','ClubesProController@BuscarClub');
 Route::post('UnirteClubEquipo/{id}','ClubesProController@AltaEnClub');
 Route::post('CrearClub','ClubesProController@InsertarClub');
+Route::post('ReportarAlineacion','ClubesProController@ReportarAlineacion');
 
 
 Route::get('EncontrarLiga/{id}','TorneoController@EncontrarLiga');

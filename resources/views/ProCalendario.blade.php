@@ -130,6 +130,7 @@
                 <th>Marcador</th>
                 <th>Visitante</th>
                 <th>Detalles</th>
+                <th>Reportar</th>
 
             </tr>
             </thead>
@@ -138,7 +139,7 @@
             <tr>
 
 
-                <th colspan="4" style="background-color: darkslategrey;">JORNADA 1, 18 DE FEBRERO DE 2016, 18:00</th>
+                <th colspan="5" style="background-color: darkslategrey;">JORNADA 1, 18 DE FEBRERO DE 2016, 18:00</th>
 
             </tr>
             </thead>
@@ -149,6 +150,7 @@
                 <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">3</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">2</div></td>
                 <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>Cruz Azul</td>
                 <td><a href="DetallesPartido">Detalles</a></td>
+                <td><a href="ReportarPartidoPro">Reportar</a></td>
 
 
             </tr>

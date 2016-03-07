@@ -206,7 +206,20 @@ class FrontController extends Controller
 
         return view('EditarPerfil');
     }
-    
+
+    public function ReportarPartidoPro(){
+
+        $Team=ProTeam::find(1);
+        return view('ReportarPartidoPro',['Team'=>$Team]);
+    }
+
+    public function ReportarResultadosPro(){
+
+
+        return view('ReportarResultadosPro');
+    }
+
+
     public function PerfilDetalles(){
 
         
