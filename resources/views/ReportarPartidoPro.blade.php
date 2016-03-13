@@ -107,26 +107,28 @@ and open the template in the editor.
 
 
 
-    <div style="width: 700px; height: 250px;border-radius: 10px; position:relative;top:100px;left:200px; background-color: whitesmoke;">
+    <div style="width: 700px; border-radius: 10px; display: block;  background-color: whitesmoke;">
 
         <div class="container">
-            <h2>Alineación</h2>
+            <h2>{{$Team->name}}</h2>
             <form action="ReportarAlineacion" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="InputIdEditar" value="{{Auth::User()->id}}"/>
 
 
-                <h4>ESCOGE LA LIGA QUE QUIERAS MODIFICAR</h4>
+                <h4>ESCOGE LA ALINEACIÓN</h4>
                 <div style="position:relative; left:-40px;" class="form-group">
-                    <label class="col-sm-2 control-label">Ligas:</label>
+                    <label class="col-sm-2 control-label"></label>
                     <div class="col-sm-4">
 
                         @foreach($Team->users as $user)
-                            <li><a style="font-weight: bold;">
-                                    <div id="LogoEquipo"
-                                         style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->playerGamertag()}}/avatarpic-l.png); background-size:cover;"></div>
+                           <ul style="list-style:none;>
+                            <li><a style="list-style:none; font-weight: bold;">
+                                    <div id="LogoEquipo"style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->playerGamertag()}}/avatarpic-l.png); background-size:cover;"></div>
 
-                            <input type="checkbox" name="checkbox[]" value="{{$user->id}}"> {{$user->playerName()}}<br>
+                            <input type="checkbox" name="checkbox[]" value="{{$user->id}}"> <a>{{$user->playerName()}}</a> </br>
+                            </li>
+                            </ul>
                         @endforeach
                     </div>
                 </div>
@@ -151,16 +153,53 @@ and open the template in the editor.
 
     </div>
 
-    <!--     <div style=" background:url(/images/CPSemana.jpg);background-color: yellow; width: 225px; height:356px; top:100px; left:600px; position:relative;">
+    <br>
+
+    <div style="width: 700px; border-radius: 10px; display: block; background-color: whitesmoke;">
+
+        <div class="container">
+            <h2>{{$Team->name}}</h2>
+            <form action="ReportarAlineacion" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="InputIdEditar" value="{{Auth::User()->id}}"/>
+
+
+                <h4>ESCOGE LA ALINEACIÓN</h4>
+                <div style="position:relative; left:-40px;" class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-4">
+
+                        @foreach($Team->users as $user)
+                            <ul style="list-style:none;>
+                            <li><a style="list-style:none; font-weight: bold;">
+                            <div id="LogoEquipo"style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->playerGamertag()}}/avatarpic-l.png); background-size:cover;"></div>
+
+                            <input type="checkbox" name="checkbox[]" value="{{$user->id}}"> <a>{{$user->playerName()}}</a> </br>
+                            </li>
+                            </ul>
+                        @endforeach
+                    </div>
+                </div>
 
 
 
-             <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/werux/avatar-body.png); background-size:cover;  display:inline-block; margin-top: 20px;margin-left: 20px; width: 100px; height: 200px;">
-             <div style="background:url(/images/Clausura/3.png); background-size: cover; width: 70px; height:70px; position:relative; top:40px; margin-left: 40px;"></div>
+                <br></br>
+
+                <div style="position:relative; left:500px;" class="container">
+                    <button  type="button" class="btn btn-primary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
 
 
 
-       </div> -->
+
+
+
+            </form>
+        </div>
+
+
+    </div>
 
 
 </div>

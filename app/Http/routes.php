@@ -110,6 +110,7 @@ Route::post('BuscarClub','ClubesProController@BuscarClub');
 Route::post('UnirteClubEquipo/{id}','ClubesProController@AltaEnClub');
 Route::post('CrearClub','ClubesProController@InsertarClub');
 Route::post('ReportarAlineacion','ClubesProController@ReportarAlineacion');
+Route::post('ReportarResultados','ClubesProController@ReportarResultadosMetodo');
 
 
 Route::get('EncontrarLiga/{id}','TorneoController@EncontrarLiga');

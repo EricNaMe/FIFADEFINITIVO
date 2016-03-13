@@ -61,7 +61,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
     public function playerName(){
-        return $this->name.' ';
+        return $this->user_name.' ';
     }
     
     public function playerGamertag(){

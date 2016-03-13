@@ -165,6 +165,34 @@ class ClubesProController extends Controller
 
     }
 
+    public function ReportarResultadosMetodo(){
+
+        $VectorUsuarios=Input::get('VectorUsuario');
+        $Usuarios=User::find($VectorUsuarios);
+        $Goles=Input::get('GolesSelect');
+        $Posicion=Input::get('PosicionSelect');
+        $Amarillas=Input::get('AmarillasSelect');
+        $Rojas=Input::get('RojasSelect');
+        $Asistencias=Input::get('AsistenciasSelect');
+        $radio=Input::get('optradio');
+
+
+
+       for($i=0;$i<sizeof($Goles);$i++){
+
+           $Usuarios[$i]->goals=$Goles[$i];
+           $Usuarios[$i]->yellow_card=$Amarillas[$i];
+           $Usuarios[$i]->red_card=$Rojas[$i];
+           $Usuarios[$i]->assistance=$Asistencias[$i];
+           $Usuarios[$i]->pro_JJ=+1;
+
+
+           $Usuarios[$i]->update();
+        }
+
+
+    }
+
     public function buscarClub(){
         
         $Busqueda =  Input::get('BuscarInput');

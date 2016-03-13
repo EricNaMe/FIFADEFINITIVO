@@ -105,10 +105,19 @@ and open the template in the editor.
 <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
 
+<style>
+    #TablaPrimeraClubesPro2{
+
+        background-color: white;
+        width:500px;
+        height:auto;
+        position:relative;
+
+    }
+</style>
 
 
-
-    <div id="TablaPrimeraClubesPro" style="position: absolute; top:20%; left:22%;">
+    <div id="TablaPrimeraClubesPro2" style="position: absolute; width:900px; top:20%; left:10%;">
         <table>
             <thead>
             <tr>
@@ -132,6 +141,8 @@ and open the template in the editor.
 
             @foreach($usuarios as $user)
                 <tr>
+                    <form action="ReportarResultados" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <td><div id="PosicionTabla">   {{$i}}</div></td>
 
@@ -141,8 +152,8 @@ and open the template in the editor.
 
                     <td>       <div class="form-group">
 
-                            <div class="col-sm-5">
-                                <select name="PosicionSelect" id="PosicionSelect"  class="form-control">
+                            <div class="col-sm-2">
+                                <select style="width: 100px;"name="PosicionSelect[]" id="PosicionSelect"  class="form-control">
                                     <option value="PO">PO</option>
                                     <option value="DFC">DFC</option>
                                     <option value="LTI">LTI</option>
@@ -161,12 +172,118 @@ and open the template in the editor.
                             </div>
                         </div></td>
 
+                    <td>       <div class="form-group">
 
-                    <?php $i++; ?>
+                            <div class="col-sm-3">
+                                <select style="width: 80px;"name="GolesSelect[]" id="GolesSelect"  class="form-control">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+
+                                </select>
+                            </div>
+                        </div></td>
+
+                    <td>       <div class="form-group">
+
+                            <div class="col-sm-3">
+                                <select style="width: 80px;"name="AsistenciasSelect[]" id="AsistenciasSelect"  class="form-control">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+
+                                </select>
+                            </div>
+                        </div></td>
+
+                    <td>       <div class="form-group">
+
+                            <div class="col-sm-3">
+                                <select style="width: 80px;"name="AmarillasSelect[]" id="AmarillasSelect"  class="form-control">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+
+                                </select>
+                            </div>
+                        </div></td>
+
+                    <td>       <div class="form-group">
+
+                            <div class="col-sm-3">
+                                <select style="width: 80px;"name="RojasSelect[]" id="RojasSelect"  class="form-control">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+
+                                </select>
+                            </div>
+                        </div></td>
+
+                    <td>
+                        <div class="radio">
+                           <input type="radio" value="{{$user->id}}" name="optradio">
+                        </div>
+                    </td>
+
+
+
+
+
+
+
+
+                <?php
+
+                    $VectorId[]=$user->id;
+                    $i++;
+                    ?>
 
                 </tr>
 
+
+
             @endforeach
+
+            @foreach($VectorId as $vector)
+                <input type="hidden" name="VectorUsuario[]" value="{{$vector}}">
+            @endforeach
+
+
+            <div style="position:relative; left:500px;" class="container">
+
+                <button type="submit" class="btn btn-primary">Enviar</button>
+
+                </form>
+            </div>
         </table>
     </div>
 
