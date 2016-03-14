@@ -138,7 +138,7 @@ class ClubesProController extends Controller
 
     }
 
-    public function ReportarAlineacion()
+    public function ReportarResultadosPro()
     {
         $usuario=input::get("checkbox");
 
@@ -149,7 +149,7 @@ class ClubesProController extends Controller
 
         }
 
-        return view('ReportarResultadosPro',['usuarios'=>$usuarios]);
+        return view('/ReportarResultadosPro',['usuarios'=>$usuarios]);
 
     }
 
@@ -191,6 +191,14 @@ class ClubesProController extends Controller
         }
 
 
+    }
+
+    public function ReportarPartidoMetodo($id,$id2)
+    {
+      $Equipo1=ProTeam::find($id);
+      $Equipo2=ProTeam::find($id2);
+
+        return view('ReportarPartidoPro',['Equipo1'=>$Equipo1,'Equipo2'=>$Equipo2]);
     }
 
     public function buscarClub(){

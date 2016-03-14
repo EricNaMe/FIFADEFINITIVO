@@ -110,8 +110,8 @@ and open the template in the editor.
     <div style="width: 700px; border-radius: 10px; display: block;  background-color: whitesmoke;">
 
         <div class="container">
-            <h2>{{$Team->name}}</h2>
-            <form action="ReportarAlineacion" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
+            <h2>{{$Equipo1->name}}</h2>
+            <form action="/ReportarResultadosPro" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="InputIdEditar" value="{{Auth::User()->id}}"/>
 
@@ -121,7 +121,7 @@ and open the template in the editor.
                     <label class="col-sm-2 control-label"></label>
                     <div class="col-sm-4">
 
-                        @foreach($Team->users as $user)
+                        @foreach($Equipo1->users as $user)
                            <ul style="list-style:none;>
                             <li><a style="list-style:none; font-weight: bold;">
                                     <div id="LogoEquipo"style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->playerGamertag()}}/avatarpic-l.png); background-size:cover;"></div>
@@ -158,8 +158,8 @@ and open the template in the editor.
     <div style="width: 700px; border-radius: 10px; display: block; background-color: whitesmoke;">
 
         <div class="container">
-            <h2>{{$Team->name}}</h2>
-            <form action="ReportarAlineacion" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
+            <h2>{{$Equipo2->name}}</h2>
+            <form action="/ReportarResultadosPro" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="InputIdEditar" value="{{Auth::User()->id}}"/>
 
@@ -169,7 +169,7 @@ and open the template in the editor.
                     <label class="col-sm-2 control-label"></label>
                     <div class="col-sm-4">
 
-                        @foreach($Team->users as $user)
+                        @foreach($Equipo2->users as $user)
                             <ul style="list-style:none;>
                             <li><a style="list-style:none; font-weight: bold;">
                             <div id="LogoEquipo"style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->playerGamertag()}}/avatarpic-l.png); background-size:cover;"></div>

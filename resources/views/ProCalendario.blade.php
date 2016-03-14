@@ -114,12 +114,12 @@
 
     </div>
 
-<select style="position:relative; left:850px;top:30px; ">
+<select style="position:relative; left:950px;top:30px; ">
     <option>Jornada 1</option>
 </select>
 
 
-    <div id="TablaPrimera" style=" width:500px;position: absolute; top:18%; left:22%;">
+    <div id="TablaPrimera" style=" width:700px;position: absolute; top:18%; left:15%;">
 
 
         <table>
@@ -146,11 +146,13 @@
 
 
             <tr>
-                <td style=""><a>América</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
+                <td style=""><a>{{$Equipo1->name}}</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
                 <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">3</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">2</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>Cruz Azul</td>
+                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipo2->name}}</td>
                 <td><a href="DetallesPartido">Detalles</a></td>
-                <td><a href="ReportarPartidoPro">Reportar</a></td>
+                <td><a href="ReportarPartidoProMetodo/{{$Equipo1->id}}/{{$Equipo2->id}}">Reportar</a></td>
+
+
 
 
             </tr>
