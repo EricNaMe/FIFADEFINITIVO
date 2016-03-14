@@ -121,6 +121,7 @@ Route::post('ProModificarCopa','TorneoController@ModificarCopaPro');
 Route::post('ProEliminarClubLiga','TorneoController@BorrarProClubLiga');
 Route::post('ProEliminarClubCopa','TorneoController@BorrarProClubCopa');
 Route::post('ProCrearCopa','TorneoController@CrearCopaPro');
+Route::post('roundRobin','TorneoController@RoundRobin');
 Route::post('AgregarProTeamLiga','TorneoController@AgregarProClubLiga');
 Route::get('DetallesPartidoMetodo/{id}/{id2}','ClubesProController@DetallesPartidoMetodo');
 Route::get('ReportarPartidoProMetodo/{id}/{id2}','ClubesProController@ReportarPartidoMetodo');

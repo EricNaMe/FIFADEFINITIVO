@@ -123,7 +123,8 @@ and open the template in the editor.
                     @endforeach
                 </div>
 
-
+         
+                
                 <form action="" method="POST" role="form">
                     <div style="top:20px;position: relative;" class="form-group">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -146,6 +147,20 @@ and open the template in the editor.
 
             </div>
 
+            
+                   <form action="roundRobin" method="POST" role="form">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <? php
+                    
+                    $Array[]="Pedro1";
+                    $Array[]="Pedro2";
+                    $Array[]="Pedro3";
+                    $Array[]="Pedro4";
+                    
+                    
+                    ?>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
 
 
             
