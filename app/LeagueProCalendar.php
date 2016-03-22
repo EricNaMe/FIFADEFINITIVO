@@ -10,7 +10,7 @@ class LeagueProCalendar extends Model
     protected $fillable = [
         'local_id',
         'visitor_id',
-        'league_id',
+        'pro_league_id',
         'jornada',
     ];
 }

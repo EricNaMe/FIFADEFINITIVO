@@ -86,10 +86,27 @@ class ProLeague extends Model
                 LeagueProCalendar::create([
                     'local_id' => $match['home']['id'],
                     'visitor_id' => $match['away'] ? $match['away']['id'] : null,
-                    'league_id' => $this->id,
+                    'pro_league_id' => $this->id,
                     'jornada' => $jornada,
                 ]);
             }
         }
+    }
+
+    public function generateAndSaveCalendar()
+    {
+        if($this->proCalendar()->count() == 0)
+        {
+            \DB::transaction(function(){
+                $calendar = $this->generateCalendar();
+                $this->saveCalendar($calendar);
+            });
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 }
