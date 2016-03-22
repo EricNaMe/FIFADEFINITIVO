@@ -148,7 +148,7 @@
                         <select id="Liga" onchange="seleccionaLiga()" class="select">
                             <option selected value="">Selecciona Liga</option>
                                 <?php
-                                $path="C:/Users/INIFAP/PhpstormProjects/FIFADEFINITIVO/public/Imagenes";;
+                                $path="Imagenes";;
                                 $directorio=dir($path);
                                 //echo "Directorio ".$path.":<br><br>";
                                 //$a=0;
@@ -202,7 +202,7 @@
                         <option selected value="">Selecciona Equipo</option>
                             <?php
 
-                              $path="C:/Users/INIFAP/PhpstormProjects/FIFADEFINITIVO/public/Imagenes/".$liga;
+                              $path="Imagenes/".$liga;
 
                               $directorio=dir($path);
                               $a=0;
@@ -247,7 +247,7 @@
                                 $equipo .="-LOGO.png";
                                 /////////////////
                                 
-                                $path="C:/Users/INIFAP/PhpstormProjects/FIFADEFINITIVO/public/Imagenes/";;
+                                $path="Imagenes/";;
                                 $directorio2=dir($path);                               
                                while ($archivo = $directorio2->read())
                                 {

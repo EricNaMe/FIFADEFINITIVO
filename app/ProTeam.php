@@ -31,10 +31,10 @@ class ProTeam extends Model
     }
     
     
-      public function proLeague2(){
+  /*    public function proLeague2(){
         return $this->belongsTo('App\ProLeague')
             ->withPivot('status');
-    }
+    }*/
     
        public function IdUsers(){
        
