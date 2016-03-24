@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/css/Transferencias.css" type="text/css" media="screen">
-        <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-        <title></title>
-    </head>
-    <body>
+@extends('template')
+
+@section('content')
+
+    <link rel="stylesheet" href="/css/Transferencias.css" type="text/css" media="screen">
 
 
 
@@ -145,10 +136,7 @@ and open the template in the editor.
  
                 
                 
-            </div> 
-        
-    </body>
-    
+            </div>
     <script>
     
     $(document).ready(function () {
@@ -162,6 +150,5 @@ and open the template in the editor.
   });
 });
     </script>
-</html>
-
+@endsection
 

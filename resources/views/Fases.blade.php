@@ -12,8 +12,8 @@ and open the template in the editor.
         <title></title>
     </head>
     <body class="back" >
-       
-        
+
+
         <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
             
           <ul id="ListaMenuLateral">
@@ -176,10 +176,10 @@ and open the template in the editor.
             
             
         </div>
-        
-        
+
+
     </body>
-    
+
     <script>
     
     $(document).ready(function () {

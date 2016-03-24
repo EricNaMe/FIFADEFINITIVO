@@ -1,35 +1,20 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-<head>
-    <meta charset="UTF-8">
+@extends('template')
+
+@section('content')
+
+
     <link rel="stylesheet" href="/css/Noticias.css" type="text/css" media="screen">
 
-    <link rel="stylesheet" href="/css/MenuPrincipalCSS3.css" type="text/css" media="screen">
-    <title>FIFA 2016</title>
-</head>
-
-<body>
-
-
 <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
-
     <ul id="ListaMenuLateral">
         <li><a>NOTICIAS</a></li>
         <li><a href="/Inicio">HOME</a></li>
 
     </ul>
-
-
 </div>
 
 
 <div id="menuSuperior" style="background:url(/images/topMenu.jpeg); background-size: cover; ">
-
     <ul id="ListaMenuSuperior" style="margin-left: 400px;">
         <li><a href="CLUBESPRO">CLUBES PRO</a></li>
         <li><a href="PVSP">1 VS 1</a></li>
@@ -127,9 +112,4 @@ and open the template in the editor.
             </td></tr>
     </table>
 </div>
-
-
-
-
-</body>
-</html>
+@endsection

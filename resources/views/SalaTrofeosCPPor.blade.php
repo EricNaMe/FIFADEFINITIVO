@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/SalaTrofeosCP.css" type="text/css" media="screen">
-        <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
-        <title></title>
-    </head>
-    <body>
-<script>
+@extends('template')
+
+@section('content')
+
+    <link rel="stylesheet" href="/css/SalaTrofeosCP.css" type="text/css" media="screen">
+
+    <script>
     function muestra(star){
  
     obj = document.getElementById(star);
@@ -242,10 +234,7 @@ function selTrofeo(trofeo, idTrofeo)
            </div>
             <br ></br> <br ></br>
             
-        </div> 
-        
-    </body>
-    
+        </div>
     <script>
     
     $(document).ready(function () {
@@ -259,6 +248,6 @@ function selTrofeo(trofeo, idTrofeo)
   });
 });
     </script>
-</html>
+@endsection
 
 

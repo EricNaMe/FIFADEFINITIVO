@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/MenuPrincipalCSS3.css" type="text/css" media="screen">
-    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <title></title>
-</head>
-<body>
+@extends('template')
+
+@section('content')
 
 
 <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
@@ -79,7 +67,7 @@ and open the template in the editor.
 
                     <li style="font-size: 12px; "><a href="/Perfil" >Ver Perfil</a></li>
                     <li style="font-size: 12px; "><a href="/EditarPerfil" >Editar Perfil</a></li>
-                    <li style="font-size: 12px; "><a href="/auth/logout" >Cerrar sesión</a></li>
+                    <li style="font-size: 12px; "><a href="/auth/logout" >Cerrar sesiï¿½n</a></li>
 
 
                 </ul>
@@ -89,7 +77,7 @@ and open the template in the editor.
 
 
                 <ul id="SubMenu">
-                    <li style="font-size: 12px; "><a href="/auth/login" >Iniciar Sesión</a></li>
+                    <li style="font-size: 12px; "><a href="/auth/login" >Iniciar Sesiï¿½n</a></li>
                     <li style="font-size: 12px; margin-left: 5px; "><a href="/auth/register" >Registrarse</a></li>
 
                 </ul>
@@ -161,9 +149,6 @@ and open the template in the editor.
 
 
 </div>
-
-</body>
-
 <script>
 
     $(document).ready(function () {
@@ -177,7 +162,6 @@ and open the template in the editor.
         });
     });
 </script>
-</html>
-
+@endsection
 
 

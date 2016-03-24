@@ -1,19 +1,9 @@
-    <!DOCTYPE html>
-    <!--
-    To change this license header, choose License Headers in Project Properties.
-    To change this template file, choose Tools | Templates
-    and open the template in the editor.
-    -->
-    <html>
-        <head>
-             <meta charset="utf-8">
-            <link rel="stylesheet" href="/css/PVSP_1.css" type="text/css" media="screen">
-            <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-            <title></title>
-        </head>
-        <body>
-            <script type="text/javascript"> 
+@extends('template')
+
+@section('content')
+        <link rel="stylesheet" href="/css/PVSP_1.css" type="text/css" media="screen">
+
+        <script type="text/javascript">
     function seleccionaLiga()
     {
       var seleccion=document.getElementById('Liga');
@@ -337,7 +327,6 @@
             <button style="position:relative;top:-300px; left:-200px;" type="submit" name="btnEquipo" onclick="carga();">Elegir</button>
                 </form>
             </div>  
-        </body>
 
         <script>
 
@@ -352,6 +341,5 @@
       });
     });
         </script>
-    </htm
-
+@endsection
 

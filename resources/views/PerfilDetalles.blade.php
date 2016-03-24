@@ -1,18 +1,6 @@
+@extends('template')
 
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/MenuPrincipalCSS3.css" type="text/css" media="screen">
-    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <title></title>
-</head>
-<body>
+@section('content')
 
 
 <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
@@ -181,8 +169,6 @@ and open the template in the editor.
 </div>
 
 
-</body>
-
 <script>
 
     $(document).ready(function () {
@@ -211,6 +197,4 @@ and open the template in the editor.
 
 </script>
 
-</script>
-</html>
-
+@endsection

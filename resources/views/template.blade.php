@@ -10,6 +10,7 @@ and open the template in the editor.
     <link rel="stylesheet" href="/css/MenuPrincipalCSS3.css" type="text/css" media="screen">
     <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="/js/notify.min.js" type="text/javascript"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <title></title>
 

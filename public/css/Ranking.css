@@ -265,7 +265,7 @@ height: 40px;
   box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
 }
 
-.back{
+body{
 background: -webkit-linear-gradient(left, green, Beige); /* For Safari 5.1 to 6.0 */
 background: -o-linear-gradient(right, green, Beige ); /* For Opera 11.1 to 12.0 */
 background: -moz-linear-gradient(right, Beige , white); /* For Firefox 3.6 to 15 */

@@ -23,7 +23,9 @@ and open the template in the editor.
 }
 
 
-
+body{
+    min-height: 200px;
+}
 
  ul#ListaMenuLateral {
      margin-top: 50%;
@@ -147,7 +149,6 @@ and open the template in the editor.
      
 #menuCentral{
 
-    background-color: blue; 
     height: 122%;
     width: 100%;
     position: absolute;

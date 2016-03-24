@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/css/Ranking.css" type="text/css" media="screen">
-        <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-        <title></title>
-    </head>
-    <body class="back">
-       
-        
+@extends('template')
+
+@section('content')
+
+    <link rel="stylesheet" href="/css/Ranking.css" type="text/css" media="screen">
+
+
         <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
             
           <ul id="ListaMenuLateral">
@@ -96,7 +87,7 @@ and open the template in the editor.
 
         </div>
 
-        <div id="menuCentral"  >
+        <div id="menuCentral" >
                  
          <div>
                
@@ -119,12 +110,8 @@ and open the template in the editor.
             <tr><td>10mo</td><td style="text-align: center;"><img style="width:50px; height:50px;" src="https://avatar-ssl.xboxlive.com/avatar/Rotciv26/avatarpic-l.png;"/></td><td style="text-align: center;">Rotciv26</td><td style="text-align: center;"    >Pts. 89</td></tr>            
             </tbody>
             </table></div>
-           
-        </div>    
-        
-        
-    </body>
-    
+
+        </div>
     <script>
     
     $(document).ready(function () {
@@ -138,6 +125,5 @@ and open the template in the editor.
   });
 });
     </script>
-</html>
 
-
+@endsection

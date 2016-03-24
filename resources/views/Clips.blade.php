@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/Clips.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/css/MenuPrincipalCSS3.css" type="text/css" media="screen">
-    <title>FIFA 2016</title>
-</head>
+@extends('template')
 
-<body>
+@section('content')
+
+
+    <link rel="stylesheet" href="/css/Clips.css" type="text/css" media="screen">
+
 <script>
     function changeText(idTxt,idHeader) {
         var a=document.getElementById(idTxt).value;
@@ -99,7 +91,7 @@ and open the template in the editor.
 
 
 
-<div class="divisionPrincipal">
+<div id="menuCentral">
 
     <article class="Articulo1">
         <header ><h2 class="title">CLIPS</h2></header>
@@ -180,5 +172,4 @@ and open the template in the editor.
     </article>
 
 </div>
-</body>
-</html>
+@endsection

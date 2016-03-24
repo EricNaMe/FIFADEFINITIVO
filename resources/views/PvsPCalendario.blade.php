@@ -1,11 +1,6 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/MenuPrincipalCSS3.css" type="text/css" media="screen">
-    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <title></title>
-</head>
-<body>
+@extends('template')
+
+@section('content')
 
 
 <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
@@ -246,9 +241,6 @@
 
 </div>
 
-
-</body>
-
 <script>
 
     $(document).ready(function () {
@@ -262,6 +254,4 @@
         });
     });
 </script>
-</html>
-
-
+@endsection
