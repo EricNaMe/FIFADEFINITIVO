@@ -92,59 +92,6 @@ and open the template in the editor.
     border-bottom: 1px dotted #ccc;
 }    
 
-/* Todo lo respectivo a la barra superior*/
-
-#menuSuperior{
-    z-index: 8;
-    background:url(Imagenes/topMenu.jpeg);
-    background-color:yellow; 
-    background-size: cover;
-    position:fixed; 
-    height: 10%; 
-    width: 100%;
-    top:0px;
-    left:0px;
-    
-} 
-
- ul#ListaMenuSuperior {
-     margin-left: 30%;
-     padding: 0;
-     list-style-type: none;
-     font-family: sans-serif;
-     font-size: 16px;
-     font-weight: bold;
-    }
-    
-     ul#ListaMenuSuperior li {
-	
-	float: left;
-        
-       
-	height:2.5em;
-	line-height:2.5em;
-
-	
-  }
-
-  ul#ListaMenuSuperior a {
-	color: white;
-	text-decoration:none; 
-	padding: 0 30px; 
-	display: block;
-	height: 100%;
-}
-
-
-#ListaMenuSuperior li:hover {
-       background-color: whitesmoke;
-     }
-   #ListaMenuSuperior li:hover a {
-       color: black;
-     }
-     
-     /* Todo lo respectivo a la barra superior*/
-     
 #menuCentral{
 
     background-color: blue; 
