@@ -100,14 +100,17 @@ Route::get('PerfilDetalles/{id}','PerfilController@EncontrarJugador');
 Route::get('PerfilNoAutenticadoClubes/{id}','PerfilController@EncontrarJugadorClubes');
 Route::post('EditarPerfil','PerfilController@EditarPerfilUsuario');
 
-Route::get('clubes-pro','ClubesProController@index');
-Route::get('encontrarClub/{id}','ClubesProController@encontrarClub');
-Route::get('ClubDetalles/{id}','ClubesProController@encontrarClub');
+Route::group(['prefix' => 'clubes-pro'], function () {
+    Route::get('','ClubesProController@index');
+    Route::group(['prefix' => '{proTeam}'], function () {
+        Route::get('','ClubesProController@getDetalle');
+        Route::get('unirte','ClubesProController@getUnirte');
+        Route::post('unirte','ClubesProController@postUnirte');
+    });
+});
+
 Route::get('PlantillaPro/{id}','ClubesProController@PlantillaClub');
-Route::get('UnirteClubMetodo/{id}','ClubesProController@encontrarClub');
-Route::get('UnirteClubEquipo/{id}','ClubesProController@encontrarClubAlta');
 Route::post('BuscarClub','ClubesProController@BuscarClub');
-Route::post('UnirteClubEquipo/{id}','ClubesProController@AltaEnClub');
 Route::post('CrearClub','ClubesProController@InsertarClub');
 Route::post('/ReportarResultadosPro','ClubesProController@ReportarResultadosPro');
 Route::post('/ReportarResultados','ClubesProController@ReportarResultadosMetodo');

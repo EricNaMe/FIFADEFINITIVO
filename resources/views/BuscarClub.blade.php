@@ -54,7 +54,7 @@
 
                 <tr>
                     <td><div id="PosicionTabla">   1</div></td>
-                    <td style="text-align:left;"><div id="LogoEquipo" style=" background:url(/images/Clausura/1.png); background-size:cover;"></div><a href="ClubDetalles">Nombre equipo</a></td>
+                    <td style="text-align:left;"><div id="LogoEquipo" style=" background:url(/images/Clausura/1.png); background-size:cover;"></div><a href="clubes-pro">Nombre equipo</a></td>
                     <td>Manager</td>
                     <td>Puntos</td>
                     <td>ss</td>

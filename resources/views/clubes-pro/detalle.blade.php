@@ -74,7 +74,7 @@
                 <ul id="ListaDatosPerfil2">
                     <li style="background-color: #080808;">
                         <a style="font-weight: bold; color: white; font-size: 30px;text-align: center;">{{$proTeam->name}}
-                            <a style="position:relative;left:100px;" href="/UnirteClubEquipo/{{$proTeam->id}}" class="btn btn-primary">Solicitar entrada</a>
+                            <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte" class="btn btn-primary">Solicitar entrada</a>
                         </a>
                     </li>
                     <li><a style="font-weight: bold;">Lema:</a><a style="float:right;">{{$proTeam->quote}}</a></li>

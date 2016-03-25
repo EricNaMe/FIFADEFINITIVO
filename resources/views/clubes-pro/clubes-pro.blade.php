@@ -68,7 +68,7 @@
                         </td>
                         <td style=""><div id="LogoEquipo" style=" background:url(images/Clausura/{{$club->id}}.png); background-size:cover;">
                             </div>
-                            <a href="/ClubDetalles/{{$club->id}}">
+                            <a href="/clubes-pro/{{$club->id}}">
                                 {{$club->name}}
                             </a>
                         </td>
