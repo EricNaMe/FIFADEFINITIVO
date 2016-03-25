@@ -103,9 +103,13 @@ Route::post('EditarPerfil','PerfilController@EditarPerfilUsuario');
 Route::group(['prefix' => 'clubes-pro'], function () {
     Route::get('','ClubesProController@index');
     Route::group(['prefix' => '{proTeam}'], function () {
+
         Route::get('','ClubesProController@getDetalle');
-        Route::get('unirte','ClubesProController@getUnirte');
-        Route::post('unirte','ClubesProController@postUnirte');
+
+        Route::group(['middleware' => 'auth'], function () {
+            Route::get('unirte','ClubesProController@getUnirte');
+            Route::post('unirte','ClubesProController@postUnirte');
+        });
     });
 });
 

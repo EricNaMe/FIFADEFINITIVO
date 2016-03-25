@@ -70,23 +70,25 @@ class ClubesProController extends Controller
         }
     }
 
+    public function getUnirte(ProTeam $proTeam){
+        $proTeam->canAddUser(Auth::user());
+
+        return view('clubes-pro.unirte', ['club' => $proTeam]);
+    }
 
     public function postUnirte(ProTeam $proTeam){
-        if(Auth::check()){
-            $posicion=  Input::get('PosicionSelect');
-            $proTeam->users()->attach(Auth::user()->id,
-                [
-                    'status'=>'Accepted',
-                    'position' => $posicion
-                ]
-            );
-
-            if($proTeam->save()){
-                 return redirect()->to('clubes-pro/'.$proTeam->id);
-            } else {
-                return redirect()->back()->withErrors("Algo falló!!!");
-            }
-        }
+        $posicion=  Input::get('PosicionSelect');
+        /*try
+        {*/
+            $proTeam->addPendingUser(Auth::user(),$posicion);
+            return redirect()
+                ->to('clubes-pro/'.$proTeam->id)
+                ->with('message', 'Éxito!');
+       /* }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->withErrors("Algo falló!!!");
+        }*/
     }
 
     /**
@@ -124,9 +126,7 @@ class ClubesProController extends Controller
 
 
 
-    public function getUnirte(ProTeam $proTeam){
-        return view('clubes-pro.unirte', ['club' => $proTeam]);
-    }
+
 
     public function ReportarResultadosMetodo(){
 

@@ -21,6 +21,13 @@ and open the template in the editor.
                 $.notify(value);
             });
         });
+
+        $(function(){
+            var success = <?php echo  json_encode(Session::get('message')); ?>;
+            if(success){
+                $.notify(success, 'success');
+            }
+        });
     </script>
 </head>
 <body>

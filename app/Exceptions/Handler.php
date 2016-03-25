@@ -46,6 +46,11 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
+        if ($e instanceof PermissionException) {
+            return redirect()->back()
+                ->withErrors('Permisos: '.$e->getMessage());
+        }
+
         return parent::render($request, $e);
     }
 }
