@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/css/Equipo_CP.css" type="text/css" media="screen">
-        <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-        <title></title>
-    </head>
-    <body>
-<script>
+@extends('template')
+
+@section('content')
+    <link rel="stylesheet" href="/css/Equipo_CP.css" type="text/css" media="screen">
+
+    <script>
     function visible(id1){
  
     obj = document.getElementById("carta");   
@@ -25,9 +16,7 @@ and open the template in the editor.
     //var logoStringCP=''; //cambia el logo segun el jugador 
     document.getElementById('avatarB').style.backgroundImage= urlStringAv;
    // document.getElementById('logoCP').style.backgroundImage= urlString; se le setea el nuevo logo del club
-    
-    
- 
+
 }
  
 function ocultar(){
@@ -373,7 +362,4 @@ function ocultar(){
         </div>
             
 
-
-
-</body>
-</html>
+@endsection
