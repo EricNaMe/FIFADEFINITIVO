@@ -1,23 +1,8 @@
+@extends('template')
 
+@section('content')
 
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/MenuPrincipalCSS3.css" type="text/css" media="screen">
-    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
-     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <title></title>
-</head>
-<body>
-
-
-<div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
+    <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
     <ul id="ListaMenuLateral">
         <li><a>HOME</a>
@@ -26,10 +11,6 @@ and open the template in the editor.
 
 
 </div>
-
-
-
-
 
 <div id="menuSuperior" style="background:url(/images/topMenu.jpeg); background-size: cover; ">
 
@@ -140,64 +121,14 @@ and open the template in the editor.
         </form>
     </div>
 
-
-        @if ($errors->has())
-            <div style="    width: 500px;
-    display: inline-block;
-    left: 500px;
-    top: 200px;
-    position: relative;"class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                    {{ $error }}<br>
-                @endforeach
-            </div>
-        @endif
         </div> 
-  
-
 
     </div>
 
 </div>
 
 
-</body>
-
-<script>
-
-    $(document).ready(function () {
-        $('#ListaMenuLateral > li > a').click(function(){
-            if ($(this).attr('class') != 'active'){
-                $('#ListaMenuLateral li ul').slideUp();
-                $(this).next().slideToggle();
-                $('#ListaMenuLateral li a').removeClass('active');
-                $(this).addClass('active');
-            }
-        });
-    });
-
-    $(document).ready(function () {
-        $('#ListaMenuSuperior > li > a').click(function(){
-            if ($(this).attr('class') != 'active'){
-                $('#ListaMenuSuperior li ul').slideUp();
-                $(this).next().slideToggle();
-                $('#ListaMenuSuperior li a').removeClass('active');
-                $(this).addClass('active');
-            }
-        });
-    });
-
-
-
-</script>
-
-
-</html>
-
-
-
-
-
+@endsection
 
 
 
