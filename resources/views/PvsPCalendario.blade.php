@@ -208,50 +208,15 @@
 
 
             </tr>
-
             <tr>
                 <td style=""><a >Veracruz</a><div id="LogoEquipo" style="float:right; float:right;background:url(images/Clausura/17.png); background-size:cover;"></div></td>
                 <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
                 <td style=""><div id="LogoEquipo" style=" float:left; background:url(images/Clausura/18.png); background-size:cover;"></div>Morelia</td>
 
-
-
             </tr>
-
-
-
-
-
-
-
-
-
 
         </table>
 
-
-
-
     </div>
-
-
-
-
-
-
 </div>
-
-<script>
-
-    $(document).ready(function () {
-        $('#ListaMenuLateral > li > a').click(function(){
-            if ($(this).attr('class') != 'active'){
-                $('#ListaMenuLateral li ul').slideUp();
-                $(this).next().slideToggle();
-                $('#ListaMenuLateral li a').removeClass('active');
-                $(this).addClass('active');
-            }
-        });
-    });
-</script>
 @endsection

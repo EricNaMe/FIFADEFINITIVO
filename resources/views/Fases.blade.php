@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/css/PVSP.css" type="text/css" media="screen">
-        <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-        <title></title>
-    </head>
-    <body class="back" >
+@extends('template')
 
+@section('content')
+
+    <link rel="stylesheet" href="/css/PVSP.css" type="text/css" media="screen">
 
         <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
             
@@ -110,7 +100,7 @@ and open the template in the editor.
                 
             </div>
             
-            <table BORDER=10 style="margin-left: 60px" style="background-color: #ffffff">
+            <table class="table-encuentros" BORDER=10 style="margin-left: 60px" style="background-color: #ffffff">
                 <tr>
                     <td>
                     <TABLE BORDER=0 align="center" style="background-color: #ffffff">                        
@@ -177,22 +167,4 @@ and open the template in the editor.
             
         </div>
 
-
-    </body>
-
-    <script>
-    
-    $(document).ready(function () {
-  $('#ListaMenuLateral > li > a').click(function(){
-    if ($(this).attr('class') != 'active'){
-      $('#ListaMenuLateral li ul').slideUp();
-      $(this).next().slideToggle();
-      $('#ListaMenuLateral li a').removeClass('active');
-      $(this).addClass('active');
-    }
-  });
-});
-    </script>
-</html>
-
-
+@endsection

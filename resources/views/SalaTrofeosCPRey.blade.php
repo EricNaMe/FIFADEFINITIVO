@@ -254,19 +254,6 @@ function selTrofeo(trofeo, idTrofeo)
            </div>
            
         </div>
-    <script>
-    
-    $(document).ready(function () {
-  $('#ListaMenuLateral > li > a').click(function(){
-    if ($(this).attr('class') != 'active'){
-      $('#ListaMenuLateral li ul').slideUp();
-      $(this).next().slideToggle();
-      $('#ListaMenuLateral li a').removeClass('active');
-      $(this).addClass('active');
-    }
-  });
-});
-    </script>
 @endsection
 
 
