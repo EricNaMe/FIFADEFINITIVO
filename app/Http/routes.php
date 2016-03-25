@@ -59,7 +59,6 @@ Route::get('Noticias','FrontController@Noticias');
 Route::get('LigaPro','FrontController@LigaPro');
 Route::get('CopaPro','FrontController@CopaPro');
 Route::get('PerfilClubes','FrontController@PerfilClubes');
-Route::get('CLUBESPRO','FrontController@CLUBESPRO');
 Route::get('Primera','FrontController@Primera');
 Route::get('PlantillaPro','FrontController@PlantillaPro');
 Route::get('PVSP','FrontController@PVSP');
@@ -101,6 +100,7 @@ Route::get('PerfilDetalles/{id}','PerfilController@EncontrarJugador');
 Route::get('PerfilNoAutenticadoClubes/{id}','PerfilController@EncontrarJugadorClubes');
 Route::post('EditarPerfil','PerfilController@EditarPerfilUsuario');
 
+Route::get('clubes-pro','ClubesProController@index');
 Route::get('encontrarClub/{id}','ClubesProController@encontrarClub');
 Route::get('ClubDetalles/{id}','ClubesProController@encontrarClub');
 Route::get('PlantillaPro/{id}','ClubesProController@PlantillaClub');

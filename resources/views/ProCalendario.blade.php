@@ -47,11 +47,6 @@
 
 </div>
 
-
-
-@include('partial.navbar')
-
-
 <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover;" >
 
 
@@ -65,7 +60,7 @@
 
     <div>
         <ul id="MenuPerfil" style="width: 580px;">
-            <li id="ListaPerfil"><a href="CLUBESPRO">Tabla general</a></li>
+            <li id="ListaPerfil"><a href="/clubes-pro">Tabla general</a></li>
             <li id="ListaPerfil"><a class="active" href="#">Calendario</a></li>
             <li id="ListaPerfil"><a class="active" href="#">Estadísticas</a></li>
             <li id="ListaPerfil"><a href="#">Campeones</a></li>

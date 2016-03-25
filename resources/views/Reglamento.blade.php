@@ -14,7 +14,6 @@
             
             
         </div>
-    @include('partial.navbar')
 
         <div id="menuCentral" style="background:url(/images/Reglamento.jpg); background-size: cover; background-repeat: no-repeat;" >
             

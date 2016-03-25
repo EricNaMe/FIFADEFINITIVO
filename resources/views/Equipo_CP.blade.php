@@ -46,7 +46,7 @@ function ocultar(){
                 </li>
                 
                 
-                <li><a href="CLUBESPRO">CLUBES</a>
+                <li><a href="/clubes-pro">CLUBES</a>
 
                 </li>
                 
@@ -68,8 +68,6 @@ function ocultar(){
             
             
         </div>
-
-    @include('partial.navbar')
 
         <div id="menuCentral" style="background:url(/images/EquipoCP.jpg); background-size: cover; background-repeat: no-repeat;" >
             <div><h1 class="title">EQUIPO DE LA SEMANA</h1></div>

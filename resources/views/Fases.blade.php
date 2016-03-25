@@ -49,11 +49,6 @@
             
         </div>
 
-
-
-    @include('partial.navbar')
-
-
         <div id="menuCentral" style="background:url(../../../../../Users/INIFAP/Desktop/fifacoche/TorneoFIFA-MenuDesplegable/Imagenes/balon.png); background: no-repeat;" >
                  
            

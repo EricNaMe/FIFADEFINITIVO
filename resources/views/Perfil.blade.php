@@ -13,12 +13,6 @@
 
 </div>
 
-
-
-
-@include('partial.navbar')
-
-
 <div id="menuCentral" style="background-color:darkslategray; background-size: cover;" >
     <style>
         #MenuPerfil {

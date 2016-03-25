@@ -3,17 +3,11 @@
 @section('content')
 
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
-
     <ul id="ListaMenuLateral">
         <li><a>HOME</a>
 
     </ul>
-
-
 </div>
-
-@include('partial.navbar')
-
 <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
     <div style=" font-size:16px;background-color: whitesmoke; border-radius:10px;position: relative; top:200px; width: 700px; height: 400px; left: 200px; ">

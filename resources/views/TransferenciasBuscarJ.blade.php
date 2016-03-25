@@ -22,7 +22,7 @@
             </li>
 
 
-            <li><a href="CLUBESPRO">CLUBES</a>
+            <li><a href="/clubes-pro">CLUBES</a>
 
             </li>
 
@@ -47,8 +47,6 @@
 
 
     </div>
-    @include('partial.navbar')
-
 
     <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover; margin-left: -80px;" >
             

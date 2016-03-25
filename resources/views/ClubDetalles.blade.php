@@ -47,11 +47,6 @@
 
 </div>
 
-
-@include('partial.navbar')
-
-
-
 <!-- inicio menu club -->
 
 

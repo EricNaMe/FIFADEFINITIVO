@@ -47,11 +47,6 @@
             
         </div>
 
-
-
-    @include('partial.navbar')
-
-
         <div id="menuCentral" >
                  
          <div>

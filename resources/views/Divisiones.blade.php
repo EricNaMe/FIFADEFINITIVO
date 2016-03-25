@@ -88,12 +88,6 @@
             
         </div>
 
-
-
-
-        @include('partial.navbar')
-
-
             <div id="menuCentral" style="background:url(/images/Registro.jpg); background-size: cover; " >                
                 <div class="myBox">
                     <h2 class="title3">Registro de Equipos</h2>

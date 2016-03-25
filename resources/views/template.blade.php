@@ -24,6 +24,7 @@ and open the template in the editor.
     </script>
 </head>
 <body>
+    @include('partial.navbar')
     @yield('content')
 </body>
 

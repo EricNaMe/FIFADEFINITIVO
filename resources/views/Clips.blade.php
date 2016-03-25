@@ -52,12 +52,6 @@
 
 </div>
 
-
-@include('partial.navbar')
-
-
-
-
 <div id="menuCentral">
 
     <article class="Articulo1">

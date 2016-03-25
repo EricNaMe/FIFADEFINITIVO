@@ -8,8 +8,6 @@
     </ul>
 </div>
 
-@include('partial.navbar')
-
 <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
     <div style="background-color:whitesmoke;border-radius:10px;position: relative; top:200px; width: 600px; height: 250px; left:200px; ">
         <!--==============================header=================================-->

@@ -1,7 +1,7 @@
 <div id="menuSuperior" >
     <div class="void"></div>
     <ul id="ListaMenuSuperior" >
-        <li><a href="/CLUBESPRO">CLUBES PRO</a></li>
+        <li><a href="/clubes-pro">CLUBES PRO</a></li>
         <li><a href="/PVSP">1 VS 1</a></li>
         <li><a href="/Reglamento">REGLAMENTO</a></li>
         <li><a href="/Clips">CLIPS</a></li>

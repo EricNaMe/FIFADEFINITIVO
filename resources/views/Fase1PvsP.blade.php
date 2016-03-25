@@ -43,12 +43,6 @@
             
         </div>
 
-
-
-
-    @include('partial.navbar')
-
-
         <div id="menuCentral" style="background:url(/images/fut.jpg); width:1200px; height: 1400px; background-size:cover;" >
                           
             <table border="0" style="margin: 50px;" > 

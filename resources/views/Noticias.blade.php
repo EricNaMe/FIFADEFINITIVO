@@ -13,9 +13,6 @@
     </ul>
 </div>
 
-    @include('partial.navbar')
-
-
 <div id="menuCentral" style="background:url(/images/middleenu.jpeg); background-size: cover;" >
     <table width="950px"border="0" style="margin-left: 0px; position:relative;left:-300px;margin-top: 25px;">
         <tr style="width: 400px; height: 150px">

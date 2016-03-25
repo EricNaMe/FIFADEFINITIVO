@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('content')
-        
+
         <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
             
           <ul id="ListaMenuLateral">
@@ -39,14 +39,8 @@
                  <li><a>RANKING POR CLUBES</a>
              
                 </li>
-                
-                
-                
             </ul>
-            
-            
         </div>
-        @include('partial.navbar')
 
         <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
                  
@@ -96,30 +90,13 @@
                 </div>
             </div>
 
-           
-
-           
-
-
-
-          
-
-         
-
             <div class="container">
                 <button  type="button" class="btn btn-primary">Reset</button>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
 
-
-
-
-
-
         </form>
     </div>
-
-
 
 </div>  
             

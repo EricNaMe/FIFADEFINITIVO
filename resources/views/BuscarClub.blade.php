@@ -13,14 +13,6 @@
             
         </div>
 
-
-
-
-
-
-        @include('partial.navbar')
-
-
         <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
 

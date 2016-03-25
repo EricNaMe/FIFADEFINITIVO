@@ -22,7 +22,7 @@
                 </li>
                 
                 
-                <li><a href="CLUBESPRO">CLUBES</a>
+                <li><a href="/clubes-pro">CLUBES</a>
             
                 </li>
                 
@@ -42,11 +42,6 @@
             
             
         </div>
-
-
-    @include('partial.navbar')
-
-
 
         <div id="menuCentral" >
                  

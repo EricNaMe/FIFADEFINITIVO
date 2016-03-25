@@ -14,10 +14,6 @@
 
 </div>
 
-
-
-@include('partial.navbar')
-
 <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover;" >
 
 <div style="width: 700px; height: 400px;border-radius: 10px; position:relative;top:100px;left:200px; background-color: whitesmoke;">

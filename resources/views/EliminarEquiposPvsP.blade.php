@@ -68,7 +68,6 @@
 
 
 </div>
-@include('partial.navbar')
 
 <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
@@ -95,7 +94,7 @@
             <br></br>
 
             <div style="position:relative; top:500px; left:500px;" class="container">
-                <form action="/CLUBESPRO">
+                <form action="//clubes-pro">
                     <button class="btn btn-primary">Enviar</button>
                 </form>
             </div>
