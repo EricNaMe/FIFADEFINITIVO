@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification;
+use App\ProCup;
+use App\ProLeague;
 use App\ProTeam;
 use App\ProMatch;
 
@@ -18,38 +21,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ClubesProController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+    public function index(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('clubes-pro.clubes-pro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
 
     public function InsertarClub(){
         if(Auth::check()){ // este si lo he probado
@@ -86,7 +65,7 @@ class ClubesProController extends Controller
             */
 
             if($club->save()){
-                return redirect('CLUBESPRO');
+                return redirect('clubes-pro');
             } else {
                 return redirect()->back()->withErrors("Algo falló!!!");
             }
@@ -94,28 +73,20 @@ class ClubesProController extends Controller
         }
     }
 
+    public function getUnirte(ProTeam $proTeam){
+        $proTeam->canAddUser(Auth::user());
 
-    public function AltaEnClub(){
-        if(Auth::check()){ // este si lo he probado
-            //$user=User::find($id); // error! si haces esto de que te sirve que el usuario esté logueado, nunca compruebas que sea el usuario logueado alque estas modificando, si tu usuario ya esta loggeado ya tienes su instancia
+        return view('clubes-pro.unirte', ['club' => $proTeam]);
+    }
 
-            $posicion=  Input::get('PosicionSelect');
-            $idclub=Input::get('IdClub');
-            $proTeam=ProTeam::find($idclub);
-            
-            
- $proTeam->users()->attach(Auth::user()->id,['status'=>'Accepted','position' => $posicion]);
+    public function postUnirte(ProTeam $proTeam){
+        $posicion =  Input::get('PosicionSelect');
 
-
-
-            if($proTeam->save()){
-                 return view('ClubDetalles', ['proTeam' => $proTeam]);
-            } else {
-                return redirect()->back()->withErrors("Algo falló!!!");
-            }
-
-
-        }
+        $proTeam->addPendingUser(Auth::user(),$posicion);
+        $proTeam->addPendingUserNotification();
+        return redirect()
+            ->to('clubes-pro/'.$proTeam->id)
+            ->with('message', 'Éxito!');
     }
 
     /**
@@ -124,12 +95,8 @@ class ClubesProController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function encontrarClub($id){
-
-        $proTeam=ProTeam::find($id);
-
-         return view('ClubDetalles', ['proTeam' => $proTeam]);
-
+    public function getDetalle(ProTeam $proTeam){
+        return view('clubes-pro.detalle', ['proTeam' => $proTeam]);
     }
 
     public function PlantillaClub($id){
@@ -167,15 +134,7 @@ class ClubesProController extends Controller
 
 
 
-    public function encontrarClubAlta($id){
 
-
-        $club=  ProTeam::find($id);
-
-        return view('UnirteClub', ['club' => $club]);
-
-
-    }
 
     public function ReportarResultadosMetodo(){
 
@@ -273,46 +232,5 @@ class ClubesProController extends Controller
         
         
     }
-    
-    
-    
-    
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

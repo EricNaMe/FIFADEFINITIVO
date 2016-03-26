@@ -67,5 +67,9 @@ class User extends Model implements AuthenticatableContract,
     public function playerGamertag(){
         return $this->gamertag;
     }
-    
+
+    public function notifications()
+    {
+        return $this->hasMany('App\Notification');
+    }
 }

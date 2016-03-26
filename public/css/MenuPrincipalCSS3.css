@@ -8,193 +8,224 @@ and open the template in the editor.
     Author     : INIFAP
 */
 
-#menuLateral 
-{     
+#menuLateral {
     z-index: 8;
     background-color: green;
-    position:fixed; 
+    position: fixed;
     float: left;
     height: 92%;
     width: 18%;
-    left:0px; 
-    top:10%;
+    left: 0px;
+    top: 10%;
     list-style-type: none;
 
 }
 
-
-body{
+body {
     min-height: 200px;
 }
 
- ul#ListaMenuLateral {
-     margin-top: 50%;
-     text-align: center;
-     padding: 0;
-     
-     font-family: sans-serif;
-     font-size: 16px;
-     font-weight: bold;
-    }
-    
-     ul#ListaLateral li {
-	
-	float: left;
-        
-       
-	height:2.5em;
-	line-height:2.5em;
+ul#ListaMenuLateral {
+    margin-top: 50%;
+    text-align: center;
+    padding: 0;
 
-	
-  }
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-  ul#ListaMenuLateral a {
-        
-	color: black;
-	text-decoration:none; 
-	padding: 20px 0; 
-	display: block;
+ul#ListaLateral li {
+
+    float: left;
+
+    height: 2.5em;
+    line-height: 2.5em;
 
 }
 
+ul#ListaMenuLateral a {
 
+    color: black;
+    text-decoration: none;
+    padding: 20px 0;
+    display: block;
 
+}
 
 #ListaMenuLateral li:hover {
-   
-       background-color: whitesmoke;
-     }
-     
-     
-   #ListaMenuLateral li:hover a {
-       
-       color: black;
-     }
-     
-     
-     
-     #ListaMenuLateral li a.active{
-         background: #999; 
-     }
-     
- #ListaMenuLateral li a:hover  {
-    background: #999; 
-   
+
+    background-color: whitesmoke;
+}
+
+#ListaMenuLateral li:hover a {
+
+    color: black;
+}
+
+#ListaMenuLateral li a.active {
+    background: #999;
+}
+
+#ListaMenuLateral li a:hover {
+    background: #999;
+
     color: #fff;
 }
+
 #ListaMenuLateral li ul {
     padding: 0px;
     list-style-type: none;
-    display: none; // used to hide sub-menus
+    display: none;
+/ / used to hide sub-menus
 }
+
 #ListaMenuLateral li ul li a {
-  
+
     padding: 10px 35px;
     background: whitesmoke;
     border-bottom: 1px dotted #ccc;
-}    
+}
+
+/* Todo lo respectivo a la barra superior*/
+#menuSuperior {
+    z-index: 8;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background: url(/images/topMenu.jpeg);
+    background-color: #555555;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    position: fixed;
+    min-height: 50px;
+    height: 10%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#menuSuperior .void {
+    display: inline-block;
+    max-width: 270px;
+    width: 30%;
+    height: 100%;
+}
+
+#ListaMenuSuperior {
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    list-style-type: none;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: top;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 2%;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#ListaMenuSuperior li {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 100%;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#ListaMenuSuperior a {
+    width: 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#ListaMenuSuperior li:hover {
+    background-color: whitesmoke;
+}
+
+#ListaMenuSuperior li:hover a {
+    color: black;
+}
 
 /* Todo lo respectivo a la barra superior*/
 
-#menuSuperior{
-    z-index: 8;
-    background:url(images/topMenu.jpeg);
-    background-color:yellow; 
-    background-size: cover;
-    position:fixed; 
-    height: 10%; 
-    width: 100%;
-    top:0px;
-    left:0px;
-    
-} 
-
- ul#ListaMenuSuperior {
-     margin-left: 25%;
-     padding: 0;
-     list-style-type: none;
-     font-family: sans-serif;
-     font-size: 16px;
-     font-weight: bold;
-    }
-
-     ul#ListaMenuSuperior li {
-	
-	float: left;
-        
-       
-	height:2.5em;
-	line-height:2.5em;
-
-	
-  }
-
-  ul#ListaMenuSuperior a {
-	color: white;
-	text-decoration:none;
-	padding: 0 30px;
-	display: block;
-	height: 100%;
-}
-
-
-#ListaMenuSuperior li:hover {
-       background-color: whitesmoke;
-     }
-   #ListaMenuSuperior li:hover a {
-       color: black;
-     }
-     
-     /* Todo lo respectivo a la barra superior*/
-     
-#menuCentral{
+#menuCentral {
 
     height: 122%;
     width: 100%;
     position: absolute;
- 
+
     left: 18%;
     top: 8%;
-    
+
 }
-
-
 
 /*Todo lo respectivo a la tabla */
 
-#TablaPrimera{
-    overflow-x:auto;
-background-color: white;
-   width:800px;
-   height:auto;
-   position:relative;
-    
-}
-
-
-#TablaPrimeraClubesPro{
-    overflow-x:auto;
+#TablaPrimera {
+    overflow-x: auto;
     background-color: white;
-    width:500px;
-    height:auto;
-    position:relative;
+    width: 800px;
+    height: auto;
+    position: relative;
 
 }
+
+#TablaPrimeraClubesPro {
+    overflow-x: auto;
+    background-color: white;
+    width: 500px;
+    height: auto;
+    position: relative;
+
+}
+
 table {
     border-collapse: collapse;
-     width: 100%;
+    width: 100%;
 }
 
- table{
-    
+table {
+
 }
 
-thead{
+thead {
     background-color: #4CAF50;
     color: white;
 }
-
-
 
 th, td {
     font-family: arial;
@@ -203,135 +234,164 @@ th, td {
     font-weight: bold;
 }
 
-#PosicionTabla{
-    background-color: gray; 
-    font-weight:bold; 
-    color:white;
+#PosicionTabla {
+    background-color: gray;
+    font-weight: bold;
+    color: white;
     border-radius: 4px;
-    position: relative; 
-    left:38px;
-    text-align: center; 
-    alignment-adjust: middle;  
-    width:25px; 
+    position: relative;
+    left: 38px;
+    text-align: center;
+    alignment-adjust: middle;
+    width: 25px;
     height: 20px;
-               }
-               
-#standings__emblem{
-    position:relative;
-    
-    width:21px;
-    min-height:21px;
-    margin-right:8px;
-    vertical-align:top;
-    background-repeat:no-repeat;
-    overflow:hidden
 }
 
-#LogoEquipo{
-    background:url(images/Clausura/5.png);
+#standings__emblem {
+    position: relative;
+
+    width: 21px;
+    min-height: 21px;
+    margin-right: 8px;
+    vertical-align: top;
+    background-repeat: no-repeat;
+    overflow: hidden
+}
+
+#LogoEquipo {
+    background: url(images/Clausura/5.png);
     display: inline-block;
     height: 20px;
     width: 20px;
     background-color: yellow;
     background-size: cover;
-   
+
 }
 
-
 /* SUB MENU     LOGIN     */
-ul.subnavegador{
-
+ul.subnavegador {
     text-align: center;
     padding: 10px 35px;
     list-style-type: none;
     font-family: sans-serif;
     font-size: 16px;
     font-weight: bold;
-
 }
-ul#SubMenu{
-    width:140px;
+
+.sub-menu  {
+    flex: none;
+    -webkit-flex: none;
+    -ms-flex: none;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    box-sizing: border-box;
     background-color: darkgray;
     list-style: none;
     height: auto;
-    float: left;
-    padding: 0px 4px;
     display: none;
-    margin:0px;
+    padding: 0;
+}
 
+.sub-menu  li{
 
 }
 
-#LoginMenu:hover #SubMenu {
+.sub-menu  li a{
+    padding: 10px;
+}
+
+#LoginMenu{
+    position:relative;
+}
+
+#notifications{
+    text-align: center;
+    position:relative;
+}
+
+#notifications .sub-menu li{
+    font-size: 10px;
+    position: relative;
+    padding-right: 12px;
+}
+
+#notifications .btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    float: right;
+    color: white;
+}
+
+#LoginMenu:hover .sub-menu, #notifications:hover .sub-menu {
     display: block;
 }
 
-
-
-
-ul.subnavegador a{
+ul.subnavegador a {
     color: black;
-    text-decoration:none;
+    text-decoration: none;
     padding: 20px 0;
     display: block;
     height: 20%;
 
 }
 
-ul.subnavegador li{
+ul.subnavegador li {
 
-    height:2.5em;
-    line-height:2.5em;
+    height: 2.5em;
+    line-height: 2.5em;
 }
 
 /* SUB MENU     LOGIN     */
 
-
 .myButton {
-	-moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
-	-webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
-	box-shadow:inset 0px -3px 7px 0px #29bbff;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2dabf9), color-stop(1, #0688fa));
-	background:-moz-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
-	background:-webkit-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
-	background:-o-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
-	background:-ms-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
-	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2dabf9', endColorstr='#0688fa',GradientType=0);
-	background-color:#2dabf9;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-	border:1px solid #0b0e07;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	padding:6px 10px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #263666;
+    -moz-box-shadow: inset 0px -3px 7px 0px #29bbff;
+    -webkit-box-shadow: inset 0px -3px 7px 0px #29bbff;
+    box-shadow: inset 0px -3px 7px 0px #29bbff;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2dabf9), color-stop(1, #0688fa));
+    background: -moz-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+    background: -webkit-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+    background: -o-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+    background: -ms-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+    background: linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2dabf9', endColorstr='#0688fa', GradientType=0);
+    background-color: #2dabf9;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #0b0e07;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 6px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #263666;
 }
+
 .myButton:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));
-	background:-moz-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
-	background:-webkit-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
-	background:-o-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
-	background:-ms-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
-	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9',GradientType=0);
-	background-color:#0688fa;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));
+    background: -moz-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+    background: -webkit-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+    background: -o-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+    background: -ms-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+    background: linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9', GradientType=0);
+    background-color: #0688fa;
 }
+
 .myButton:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 
-            
-               
-tr:nth-child(even){background-color: #f2f2f2}
-
-
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
 
 .tip {
     width: 0px;
@@ -384,18 +444,17 @@ tr:nth-child(even){background-color: #f2f2f2}
     border: 5px solid #ccc;
 }
 
+#MenuPerfil {
+    list-style-type: none;
+    margin-top: 40px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width: 500px;
+    margin-left: 300px;
+}
 
- #MenuPerfil {
-     list-style-type: none;
-     margin-top: 40px;
-     padding: 0;
-     overflow: hidden;
-     background-color: #333;
-     width: 500px;
-     margin-left: 300px;
- }
-
-#ListaPerfil{
+#ListaPerfil {
     float: left;
 }
 
@@ -413,37 +472,33 @@ tr:nth-child(even){background-color: #f2f2f2}
     background-color: #111;
 }
 
-#ListaDatosPerfil{
+#ListaDatosPerfil {
     list-style: none;
     padding-left: 0px;
 }
 
-#ListaDatosPerfil li{
-    border-bottom:groove;
+#ListaDatosPerfil li {
+    border-bottom: groove;
     padding: 11px 13px;
     font-size: 16px;
     font-family: sans-serif;
 }
-#ListaPerfil{
+
+#ListaPerfil {
 
 }
 
-
-
-
-<!--fin menu club-->
-
-
+<!--
+fin menu club-- >
 .body .message {
     min-height: 20px;
     border-radius: 3px;
-    width:120px;
+    width: 120px;
     font-family: Arial;
     font-size: 14px;
     line-height: 1.5;
     color: #797979;
 }
-
 
 #MenuPerfil {
     list-style-type: none;

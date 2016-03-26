@@ -12,48 +12,7 @@
             
             
         </div>
-     
-     
-        
-        
-        
-            
-        <div id="menuSuperior" style="background:url(/images/topMenu.jpeg); background-size: cover; ">
-        
-            <ul id="ListaMenuSuperior">
-                <li><a href="CLUBESPRO">CLUBES PRO</a></li>
-                <li><a href="PVSP">1 VS 1</a></li>
-                <li><a>REGLAMENTO</a></li>
-                <li><a>SALA DE TROFEOS</a></li>
-                <li><a>NOTICIAS</a></li>
-                @if (Auth::check())
-               <li id="LoginMenu"><a href="#" ><div id="LogoEquipo" style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatarpic-l.png); background-size:cover;"></div>{{Auth::User()->usuario}}</a>
-                    <ul id="SubMenu">
 
-                        <li style="font-size: 12px; "><a href="Perfil" >Ver Perfil</a></li>
-                        <li style="font-size: 12px; "><a href="EditarPerfil" >Editar Perfil</a></li>
-                        <li style="font-size: 12px; "><a href="/auth/logout" >Cerrar sesión</a></li>
-
-
-                    </ul>
-                </li>
-                @else
-                <li id="LoginMenu"><a href="/auth/login" >LOGIN11</a>
-
-
-                    <ul id="SubMenu">
-                        <li style="font-size: 12px; "><a href="/auth/login" >Iniciar Sesión2</a></li>
-                        <li style="font-size: 12px; margin-left: 5px; "><a href="/auth/register" >Registrarse</a></li>
-
-                    </ul>
-                </li>
-                @endif
-                 
-            </ul>
-        
-        
-        </div>
-        
         <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
 
@@ -95,7 +54,7 @@
 
                 <tr>
                     <td><div id="PosicionTabla">   1</div></td>
-                    <td style="text-align:left;"><div id="LogoEquipo" style=" background:url(/images/Clausura/1.png); background-size:cover;"></div><a href="ClubDetalles">Nombre equipo</a></td>
+                    <td style="text-align:left;"><div id="LogoEquipo" style=" background:url(/images/Clausura/1.png); background-size:cover;"></div><a href="clubes-pro">Nombre equipo</a></td>
                     <td>Manager</td>
                     <td>Puntos</td>
                     <td>ss</td>
@@ -115,32 +74,6 @@
         
 
     <script>
-    
-    $(document).ready(function () {
-  $('#ListaMenuLateral > li > a').click(function(){
-    if ($(this).attr('class') != 'active'){
-      $('#ListaMenuLateral li ul').slideUp();
-      $(this).next().slideToggle();
-      $('#ListaMenuLateral li a').removeClass('active');
-      $(this).addClass('active');
-    }
-  });
-});
-
-    $(document).ready(function () {
-        $('#ListaMenuSuperior > li > a').click(function(){
-            if ($(this).attr('class') != 'active'){
-                $('#ListaMenuSuperior li ul').slideUp();
-                $(this).next().slideToggle();
-                $('#ListaMenuSuperior li a').removeClass('active');
-                $(this).addClass('active');
-            }
-        });
-    });
-
-
-
-    </script>
 @endsection
 
 

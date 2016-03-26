@@ -13,10 +13,8 @@ class Team extends Model
     protected $fillable = [
         'name',
         'points',
-
     ];
-
-
+    
     public function user()
     {
         return $this->belongsTo('App\User');

@@ -45,46 +45,6 @@
 
 </div>
 
-
-
-
-
-<div id="menuSuperior" style="background:url(/images/topMenu.jpeg); background-size: cover; ">
-
-    <ul id="ListaMenuSuperior" style="margin-left: 400px;">
-        <li><a href="CLUBESPRO">CLUBES PRO</a></li>
-        <li><a href="PVSP">1 VS 1</a></li>
-        <li><a href="Reglamento">REGLAMENTO</a></li>
-        <li><a href="Clips">CLIPS</a></li>
-        <li><a href="Noticias">NOTICIAS</a></li>
-        @if (Auth::check())
-            <li id="LoginMenu"><a href="#" ><div id="LogoEquipo" style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatarpic-l.png); background-size:cover;"></div>{{Auth::User()->user_name}}</a>
-                <ul id="SubMenu">
-
-                    <li style="font-size: 12px; "><a href="Perfil" >Ver Perfil</a></li>
-                    <li style="font-size: 12px; "><a href="EditarPerfil" >Editar Perfil</a></li>
-                    <li style="font-size: 12px; "><a href="/auth/logout" >Cerrar sesión</a></li>
-
-
-                </ul>
-            </li>
-        @else
-            <li id="LoginMenu"><a href="/auth/login" >LOGIN</a>
-
-
-                <ul id="SubMenu">
-                    <li style="font-size: 12px; "><a href="/auth/login" >Iniciar Sesión</a></li>
-                    <li style="font-size: 12px; margin-left: 5px; "><a href="/auth/register" >Registrarse</a></li>
-
-                </ul>
-            </li>
-        @endif
-
-    </ul>
-
-
-</div>
-
 <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover;" >
 
 
@@ -208,50 +168,15 @@
 
 
             </tr>
-
             <tr>
                 <td style=""><a >Veracruz</a><div id="LogoEquipo" style="float:right; float:right;background:url(images/Clausura/17.png); background-size:cover;"></div></td>
                 <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
                 <td style=""><div id="LogoEquipo" style=" float:left; background:url(images/Clausura/18.png); background-size:cover;"></div>Morelia</td>
 
-
-
             </tr>
-
-
-
-
-
-
-
-
-
 
         </table>
 
-
-
-
     </div>
-
-
-
-
-
-
 </div>
-
-<script>
-
-    $(document).ready(function () {
-        $('#ListaMenuLateral > li > a').click(function(){
-            if ($(this).attr('class') != 'active'){
-                $('#ListaMenuLateral li ul').slideUp();
-                $(this).next().slideToggle();
-                $('#ListaMenuLateral li a').removeClass('active');
-                $(this).addClass('active');
-            }
-        });
-    });
-</script>
 @endsection

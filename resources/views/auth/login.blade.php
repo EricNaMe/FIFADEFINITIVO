@@ -7,7 +7,6 @@
         <li><a>HOME</a>
     </ul>
 </div>
-@include('partial.navbar')
 
 <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
     <div style="background-color:whitesmoke;border-radius:10px;position: relative; top:200px; width: 600px; height: 250px; left:200px; ">
@@ -38,35 +37,4 @@
         </div>
     </div>
 </div>
-    <script>
-        $(document).ready(function () {
-            $('#ListaMenuLateral > li > a').click(function(){
-                if ($(this).attr('class') != 'active'){
-                    $('#ListaMenuLateral li ul').slideUp();
-                    $(this).next().slideToggle();
-                    $('#ListaMenuLateral li a').removeClass('active');
-                    $(this).addClass('active');
-                }
-            });
-        });
-
-        $(document).ready(function () {
-            $('#ListaMenuSuperior > li > a').click(function(){
-                if ($(this).attr('class') != 'active'){
-                    $('#ListaMenuSuperior li ul').slideUp();
-                    $(this).next().slideToggle();
-                    $('#ListaMenuSuperior li a').removeClass('active');
-                    $(this).addClass('active');
-                }
-            });
-        });
-    </script>
 @endsection
-
-
-
-
-
-
-
-

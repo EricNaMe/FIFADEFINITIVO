@@ -21,11 +21,33 @@ and open the template in the editor.
                 $.notify(value);
             });
         });
+
+        $(function(){
+            var success = <?php echo  json_encode(Session::get('message')); ?>;
+            if(success){
+                $.notify(success, 'success');
+            }
+        });
     </script>
 </head>
 <body>
+    @include('partial.navbar')
     @yield('content')
 </body>
+
+<script>
+    $(document).ready(function () {
+        $('#ListaMenuLateral > li > a').click(function(){
+            if ($(this).attr('class') != 'active'){
+                $('#ListaMenuLateral li ul').slideUp();
+                $(this).next().slideToggle();
+                $('#ListaMenuLateral li a').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+    });
+</script>
+
 </html>
 
 
