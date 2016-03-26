@@ -278,7 +278,7 @@ ul.subnavegador {
     font-weight: bold;
 }
 
-#SubMenu {
+.sub-menu  {
     flex: none;
     -webkit-flex: none;
     -ms-flex: none;
@@ -293,11 +293,11 @@ ul.subnavegador {
     padding: 0;
 }
 
-#SubMenu li{
+.sub-menu  li{
 
 }
 
-#SubMenu li a{
+.sub-menu  li a{
     padding: 10px;
 }
 
@@ -305,9 +305,28 @@ ul.subnavegador {
     position:relative;
 }
 
+#notifications{
+    text-align: center;
+    position:relative;
+}
 
+#notifications .sub-menu li{
+    font-size: 10px;
+    position: relative;
+    padding-right: 12px;
+}
 
-#LoginMenu:hover #SubMenu {
+#notifications .btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    float: right;
+    color: white;
+}
+
+#LoginMenu:hover .sub-menu, #notifications:hover .sub-menu {
     display: block;
 }
 

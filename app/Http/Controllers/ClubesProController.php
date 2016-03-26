@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification;
 use App\ProCup;
 use App\ProLeague;
 use App\ProTeam;
@@ -62,7 +63,7 @@ class ClubesProController extends Controller
             */
 
             if($club->save()){
-                return redirect('CLUBESPRO');
+                return redirect('clubes-pro');
             } else {
                 return redirect()->back()->withErrors("Algo falló!!!");
             }
@@ -77,18 +78,13 @@ class ClubesProController extends Controller
     }
 
     public function postUnirte(ProTeam $proTeam){
-        $posicion=  Input::get('PosicionSelect');
-        /*try
-        {*/
-            $proTeam->addPendingUser(Auth::user(),$posicion);
-            return redirect()
-                ->to('clubes-pro/'.$proTeam->id)
-                ->with('message', 'Éxito!');
-       /* }
-        catch(\Exception $e)
-        {
-            return redirect()->back()->withErrors("Algo falló!!!");
-        }*/
+        $posicion =  Input::get('PosicionSelect');
+
+        $proTeam->addPendingUser(Auth::user(),$posicion);
+        $proTeam->addPendingUserNotification();
+        return redirect()
+            ->to('clubes-pro/'.$proTeam->id)
+            ->with('message', 'Éxito!');
     }
 
     /**

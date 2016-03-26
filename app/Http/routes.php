@@ -113,6 +113,14 @@ Route::group(['prefix' => 'clubes-pro'], function () {
     });
 });
 
+Route::group([
+    'middleware' => 'auth',
+    'prefix' => 'notification'
+    ], function () {
+    Route::get('delete/{notification}','NotificationController@deleteIndex');
+});
+
+
 Route::get('PlantillaPro/{id}','ClubesProController@PlantillaClub');
 Route::post('BuscarClub','ClubesProController@BuscarClub');
 Route::post('CrearClub','ClubesProController@InsertarClub');

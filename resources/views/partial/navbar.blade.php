@@ -14,10 +14,25 @@
                             background-size:cover;"></div>
                     {{Auth::User()->user_name}}
                 </a>
-                <ul id="SubMenu">
+                <ul class="sub-menu">
                     <li style="font-size: 12px; "><a href="/Perfil" >Ver Perfil</a></li>
                     <li style="font-size: 12px; "><a href="/EditarPerfil" >Editar Perfil</a></li>
                     <li style="font-size: 12px; "><a href="/auth/logout" >Cerrar sesión</a></li>
+                </ul>
+            </li>
+
+            <li id="notifications">
+                <a href="#" >
+                    Notificaciones ({{Auth::user()->notifications->count()}})
+                </a>
+                <ul class="sub-menu">
+                    @foreach(Auth::user()->notifications as $notification)
+                        <li>
+                            <a href="{{$notification->getLink()}}" >{{$notification->getMessage()}}</a>
+                            <a class="btn btn-danger" href="{{$notification->getDeleteLink()}}">X</a>
+                        </li>
+                    @endforeach
+
                 </ul>
             </li>
         @else
@@ -25,7 +40,7 @@
                 <a>
                     LOGIN
                 </a>
-                <ul id="SubMenu">
+                <ul class="sub-menu">
                     <li style="font-size: 12px; ">
                         <a href="/auth/login" >Iniciar Sesión</a>
                     </li>

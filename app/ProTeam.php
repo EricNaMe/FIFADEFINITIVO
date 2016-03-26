@@ -4,6 +4,7 @@ namespace App;
 
 use App\Exceptions\PermissionException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class ProTeam extends Model
 {
@@ -21,6 +22,10 @@ class ProTeam extends Model
             ->withPivot('status', 'position');
     }
 
+    public function notifications()
+    {
+        return $this->morphMany('App\Notification', 'notifiable');
+    }
 
     public function proLeague()
     {
@@ -44,14 +49,28 @@ class ProTeam extends Model
             ]);
     }
 
+    public function addPendingUserNotification()
+    {
+        $notification = new Notification();
+        $notification->type = "request";
+        $notification->user()->associate(Auth::user());
+        $this->notifications()->save($notification);
+    }
+
+
+
     public function canAddUser(User $user)
     {
         if($this->users()
             ->whereUserId($user->id)
             ->first())
         {
-            throw new PermissionException('No se puede agregar al club');
+            throw new PermissionException(
+                'No se puede agregar al club, ya se encuentra incluido'
+            );
         }
     }
+
+
 
 }
