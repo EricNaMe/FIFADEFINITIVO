@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ProTeam;
+use App\ProMatch;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -140,16 +142,26 @@ class ClubesProController extends Controller
 
     public function ReportarResultadosPro()
     {
-        $usuario=input::get("checkbox");
+        $usuarioLocal=input::get("checkbox");
+        $usuarioVisitante=input::get("checkboxVisitante");
+        $EquipoLoc=input::get("EquipoLocalInput");
+        $EquipoVis=input::get("EquipoVisitanteInput");
 
-        if(is_array($usuario))
-        {
 
-            $usuarios=User::find($usuario);
 
-        }
 
-        return view('/ReportarResultadosPro',['usuarios'=>$usuarios]);
+            $usuariosLocal=User::find($usuarioLocal);
+            $usuariosVisitante=User::find($usuarioVisitante);
+
+            $EquipoLocal=ProTeam::find($EquipoLoc);
+            $EquipoVisitante=ProTeam::find($EquipoVis);
+
+
+
+
+
+
+        return view('/ReportarResultadosPro',['usuariosLocal'=>$usuariosLocal,'usuariosVisitante'=>$usuariosVisitante,'EquipoLocal'=>$EquipoLocal,'EquipoVisitante'=>$EquipoVisitante]);
 
     }
 
@@ -167,10 +179,15 @@ class ClubesProController extends Controller
 
     public function ReportarResultadosMetodo(){
 
-        $VectorUsuarios=Input::get('VectorUsuario');
-        $Usuarios=User::find($VectorUsuarios);
+        $VectorUsuariosLocal=Input::get('VectorUsuarioLocal');
+
+
+        $Partido=new ProMatch;
+        $UsuariosLocal=User::find($VectorUsuariosLocal);
+
         $Goles=Input::get('GolesSelect');
         $Posicion=Input::get('PosicionSelect');
+
         $Amarillas=Input::get('AmarillasSelect');
         $Rojas=Input::get('RojasSelect');
         $Asistencias=Input::get('AsistenciasSelect');
@@ -178,17 +195,65 @@ class ClubesProController extends Controller
 
 
 
+
+
+
        for($i=0;$i<sizeof($Goles);$i++){
 
-           $Usuarios[$i]->goals=$Goles[$i];
-           $Usuarios[$i]->yellow_card=$Amarillas[$i];
-           $Usuarios[$i]->red_card=$Rojas[$i];
-           $Usuarios[$i]->assistance=$Asistencias[$i];
-           $Usuarios[$i]->pro_JJ=+1;
+           $UsuariosLocal[$i]->goals+=$Goles[$i];
+
+           if($Posicion[$i]=="PO"){
+               $Partido->PO_local_id=$UsuariosLocal[$i]->id;
+           }
+           if($Posicion[$i]=="MCO"){
+               $Partido->MCO_local_id=$UsuariosLocal[$i]->id;
+           }
+           $UsuariosLocal[$i]->yellow_card+=$Amarillas[$i];
+           $UsuariosLocal[$i]->red_card+=$Rojas[$i];
+           $UsuariosLocal[$i]->assistance+=$Asistencias[$i];
+           $UsuariosLocal[$i]->pro_JJ++;
+           $LocalUser[]=$UsuariosLocal[$i]->id;
 
 
-           $Usuarios[$i]->update();
+           $UsuariosLocal[$i]->update();
+
         }
+        $Partido->team_local_id=1;
+        $Partido->team_visitor_id=2;
+        $Partido->save();
+
+
+
+
+        $VectorUsuariosVisitante=Input::get('VectorUsuarioVisitante');
+
+        $UsuariosVisitante=User::find($VectorUsuariosVisitante);
+
+        $GolesVisitante=Input::get('GolesSelectVisitante');
+
+        $PosicionVisitante=Input::get('PosicionSelectVisitante');
+        $AmarillasVisitante=Input::get('AmarillasSelectVisitante');
+        $RojasVisitante=Input::get('RojasSelectVisitante');
+        $AsistenciasVisitante=Input::get('AsistenciasSelectVisitante');
+        $radio=Input::get('optradio');
+
+
+
+        for($i=0;$i<sizeof($GolesVisitante);$i++){
+
+            $UsuariosVisitante[$i]->goals+=$GolesVisitante[$i];
+            $UsuariosVisitante[$i]->yellow_card+=$AmarillasVisitante[$i];
+            $UsuariosVisitante[$i]->red_card+=$RojasVisitante[$i];
+            $UsuariosVisitante[$i]->assistance+=$AsistenciasVisitante[$i];
+            $UsuariosVisitante[$i]->pro_JJ++;
+
+
+            $UsuariosVisitante[$i]->update();
+        }
+
+
+
+
 
 
     }

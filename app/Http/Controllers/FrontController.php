@@ -86,8 +86,8 @@ class FrontController extends Controller
 
     public function ProCalendario(){
 
-        $Equipo1=ProTeam::find(2);
-        $Equipo2=ProTeam::find(3);
+        $Equipo1=ProTeam::find(1);
+        $Equipo2=ProTeam::find(2);
         return view('ProCalendario',['Equipo1'=>$Equipo1,'Equipo2'=>$Equipo2]);
     }
     
