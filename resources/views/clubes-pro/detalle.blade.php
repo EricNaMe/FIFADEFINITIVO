@@ -56,7 +56,7 @@
     <div>
         <ul id="MenuPerfil" style="width: 494px;">
             <li id="ListaPerfil"><a href="#">Equipo</a></li>
-            <li id="ListaPerfil"><a class="active" href="/PlantillaPro/{{$proTeam->id}}">Plantilla</a></li>
+            <li id="ListaPerfil"><a class="active" href="/clubes-pro/{{$proTeam->id}}/plantilla">Plantilla</a></li>
             <li id="ListaPerfil"><a href="#">Estadísticas</a></li>
             <li id="ListaPerfil"><a href="#about">Sala de trofeos</a></li>
         </ul>

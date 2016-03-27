@@ -33,10 +33,6 @@ class FrontController extends Controller
           return view('storage');
     }
 
-    public function PlantillaPro(){
-        return view('PlantillaPro');
-    }
-
     public function ProCalendario(){
 
         $Equipo1=ProTeam::find(1);

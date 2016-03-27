@@ -39,6 +39,13 @@ class ProTeam extends Model
             ->withPivot('status');
     }
 
+    public function getDT()
+    {
+        return $this->users()
+            ->wherePivot('position','DT')
+            ->first();
+    }
+
     public function addPendingUser(User $user, $position)
     {
         $this->canAddUser($user);
@@ -49,11 +56,27 @@ class ProTeam extends Model
             ]);
     }
 
-    public function addPendingUserNotification()
+    public function sendPendingUserNotification()
     {
         $notification = new Notification();
         $notification->type = "request";
-        $notification->user()->associate(Auth::user());
+        $notification->user()->associate($this->getDT());
+        $this->notifications()->save($notification);
+    }
+
+    public function sendAcceptedUserNotification(User $user)
+    {
+        $notification = new Notification();
+        $notification->type = "request_confirmed";
+        $notification->user()->associate($user);
+        $this->notifications()->save($notification);
+    }
+
+    public function sendRejectedUserNotification(User $user)
+    {
+        $notification = new Notification();
+        $notification->type = "request_rejected";
+        $notification->user()->associate($user);
         $this->notifications()->save($notification);
     }
 
@@ -71,6 +94,58 @@ class ProTeam extends Model
         }
     }
 
+    public function canAuthorizeUserRequest(User $user)
+    {
+        $dt = $this->getDT();
+        if(!$dt ||
+            $dt->id != $user->id)
+        {
+            throw new PermissionException(
+                'Solo el DT del equipo puede authorizar la entrada al mismo'
+            );
+        }
+    }
 
+    public function authorizeUserRequest(User $user)
+    {
+        $this->canAuthorizeUserRequest(Auth::user());
+        $userRequested = $this->users()->whereUserId($user->id)->first();
+        if($userRequested
+            && $userRequested->pivot->status == 'pending')
+        {
+            $this->users()->updateExistingPivot($user->id,
+                [
+                    'status' => 'accepted'
+                ]);
+            $this->sendAcceptedUserNotification($user);
+        }
+        else
+        {
+            throw new PermissionException(
+                'Hubo un error al tratar de autorizar el usuario'
+            );
+        }
+    }
+
+    public function rejectUserRequest(User $user)
+    {
+        $this->canAuthorizeUserRequest(Auth::user());
+        $userRequested = $this->users()->whereUserId($user->id)->first();
+        if($userRequested
+            && $userRequested->pivot->status == 'pending')
+        {
+            $this->users()->updateExistingPivot($user->id,
+                [
+                    'status' => 'rejected'
+                ]);
+            $this->sendRejectedUserNotification($user);
+        }
+        else
+        {
+            throw new PermissionException(
+                'Hubo un error al tratar de denegar el usuario'
+            );
+        }
+    }
 
 }
