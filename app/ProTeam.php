@@ -5,6 +5,7 @@ namespace App;
 use App\Exceptions\PermissionException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ProTeam extends Model
 {
@@ -44,6 +45,20 @@ class ProTeam extends Model
         return $this->users()
             ->wherePivot('position','DT')
             ->first();
+    }
+
+    public function saveImage(UploadedFile $file)
+    {
+        $image = \Image::make($file);
+        $image->fit(200,200);
+        $image->save('images/clubes-pro/'.$this->id.'_sm');
+        $image->fit(50,50);
+        $image->save('images/clubes-pro/'.$this->id.'_md');
+    }
+
+    public function getImageUrl($size = 'sm')
+    {
+        return url('images/clubes-pro/',[$this->id.'_'.$size]);
     }
 
     public function addPendingUser(User $user, $position)
@@ -147,5 +162,7 @@ class ProTeam extends Model
             );
         }
     }
+
+
 
 }

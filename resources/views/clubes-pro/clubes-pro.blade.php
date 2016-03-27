@@ -31,7 +31,7 @@
       </li>
         <li><a>CLUBES</a>
     <ul>
-        <li><a href="/CrearClub">CREAR CLUB</a></li>
+        <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
         </ul>
         </li>
          <li><a href="Transferencias">TRANSFERENCIAS</a>
@@ -66,7 +66,7 @@
                             <div id="PosicionTabla">
                                 {{$i}}</div>
                         </td>
-                        <td style=""><div id="LogoEquipo" style=" background:url(images/Clausura/{{$club->id}}.png); background-size:cover;">
+                        <td style=""><div id="LogoEquipo" style=" background:url({{$club->getImageUrl()}}); background-size:cover;">
                             </div>
                             <a href="/clubes-pro/{{$club->id}}">
                                 {{$club->name}}

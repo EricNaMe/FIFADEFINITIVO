@@ -67,10 +67,6 @@ class FrontController extends Controller
         return view('PerfilNoAutenticadoClub');
     }
 
-     public function CrearClub(){
-       
-        return view('CrearClub');
-    }
 
     public function CrearCopa(){
 

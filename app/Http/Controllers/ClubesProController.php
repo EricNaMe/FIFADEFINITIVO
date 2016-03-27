@@ -30,47 +30,49 @@ class ClubesProController extends Controller
         return view('clubes-pro.clubes-pro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
-    public function InsertarClub(){
-        if(Auth::check()){ // este si lo he probado
-            //$user=User::find($id); // error! si haces esto de que te sirve que el usuario esté logueado, nunca compruebas que sea el usuario logueado alque estas modificando, si tu usuario ya esta loggeado ya tienes su instancia
-            $club = new proTeam;
-             
+    public function getCrear(){
+        return view('clubes-pro.crear');
+    }
 
-            $club->name =  Input::get('nombreequipo');
-            $club->quote = Input::get('lema');
-            $club->state  = Input::get('EstadoSelect');
+    /*
+     * Create a Club-pro
+     */
+    public function postIndex(Request $request){
+        $club = new ProTeam;
+        $club->name =  Input::get('nombreequipo');
+        $club->quote = Input::get('lema');
+        $club->state  = Input::get('EstadoSelect');
+
+        DB::beginTransaction();
+        try {
             $club->save();
-        $club->users()->attach(Auth::user()->id,['status'=>'Accepted','position' => 'DT']);
-              
-            
-
-       //          $file = $request->file('file');
-       
-       //obtenemos el nombre del archivo
-     
- 
-       //indicamos que queremos guardar un nuevo archivo en el disco local
-   //    \Storage::disk('local')->put('Hola',  \File::get($file));
-
-
-            /*tus nombre sde variables de los input me parecen redudantes, si manejaras el mismo nombre de los inputs que de los campos de la base de datos sería así de sencillo actualizar los datos de un usuario
-
-            Auth::user()->update(Input::all()); // Listo! nada mas necesitarías, pero necesitas el mismo nombre en tus formularios que en tus columnas de la tabla
-*/
-
-            /*
-                        if ($user->update()) {
-                            return redirect()->back();
-                        }// y que pasaría si falla? mejor haz esto
-            */
+            $club->users()->attach(Auth::user()->id,
+                [
+                    'status'=>'Accepted',
+                    'position' => 'DT'
+                ]);
 
             if($club->save()){
-                return redirect('clubes-pro');
+                $picture = $request->file('picture');
+                if($picture)
+                {
+                   $club->saveImage($picture);
+                }
+                DB::commit();
+                return redirect('clubes-pro')
+                    ->with('message','Creación de club exitosa');
             } else {
-                return redirect()->back()->withErrors("Algo falló!!!");
+                return redirect()->back()
+                    ->withErrors("Algo falló!!!");
             }
-
         }
+        catch(\Exception $e)
+        {
+            DB::rollBack();
+            \Log::error($e);
+            return redirect()->back()->withErrors("Algo falló!!!");
+        }
+
     }
 
     public function getUnirte(ProTeam $proTeam){

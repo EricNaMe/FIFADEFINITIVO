@@ -40,7 +40,6 @@ Route::get('ProCrearLiga','FrontController@ProCrearLiga');
 Route::get('PerfilNoAutenticado','FrontController@PerfilNoAutenticado');
 Route::get('BuscarClub','FrontController@BuscarClub');
 Route::get('Perfil','FrontController@Perfil');
-Route::get('CrearClub','FrontController@CrearClub');
 Route::get('ProCalendario','FrontController@ProCalendario');
 Route::get('DetallesPartido','FrontController@DetallesPartido');
 Route::get('ProCrearCopa','FrontController@ProCrearCopa');
@@ -101,6 +100,12 @@ Route::post('EditarPerfil','PerfilController@EditarPerfilUsuario');
 
 Route::group(['prefix' => 'clubes-pro'], function () {
     Route::get('','ClubesProController@index');
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('crear','ClubesProController@getCrear');
+        Route::post('','ClubesProController@postIndex');
+    });
+
     Route::group(['prefix' => '{proTeam}'], function () {
         Route::get('','ClubesProController@getDetalle');
         Route::get('plantilla','ClubesProController@getPlantilla');
@@ -124,7 +129,6 @@ Route::group([
 
 Route::get('PlantillaPro/{id}','ClubesProController@PlantillaClub');
 Route::post('BuscarClub','ClubesProController@BuscarClub');
-Route::post('CrearClub','ClubesProController@InsertarClub');
 Route::post('/ReportarResultadosPro','ClubesProController@ReportarResultadosPro');
 Route::post('/ReportarResultados','ClubesProController@ReportarResultadosMetodo');
 
