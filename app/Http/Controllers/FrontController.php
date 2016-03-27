@@ -333,6 +333,10 @@ $clubes=  ProTeam::all();
         return view('PvsPCalendario');
     }
 
+    public function clubespro()
+    {
+        return view('clubes-pro');
+    }
 
     public function Ranking1VS1()
     {

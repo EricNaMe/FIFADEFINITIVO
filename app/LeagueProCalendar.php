@@ -13,4 +13,19 @@ class LeagueProCalendar extends Model
         'pro_league_id',
         'jornada',
     ];
+
+    public function localProTeam()
+    {
+        return $this->belongsTo('App\ProTeam','local_id');
+    }
+
+    public function visitorProTeam()
+    {
+        return $this->belongsTo('App\ProTeam','visitor_id');
+    }
+
+    public function proLeague()
+    {
+        return $this->belongsTo('App\ProLeague');
+    }
 }

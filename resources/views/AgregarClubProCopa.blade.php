@@ -89,7 +89,7 @@
             <br></br>
 
             <div style="position:relative; top:500px; left:500px;" class="container">
-                <form action="/CLUBESPRO">
+                <form action="/clubes-pro">
                 <button class="btn btn-primary">Enviar</button>
                 </form>
             </div>

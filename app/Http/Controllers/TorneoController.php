@@ -221,12 +221,32 @@ class TorneoController extends Controller {
         return view('/LigaPro', ['league' => $league, 'ligas' => $ligas, 'copas' => $copas]);
     }
 
+    public function EncontrarCalendario(ProLeague $proLeague)
+    {
+
+        $proCalendar = $proLeague->proCalendar;
+        return view('ProCalendario',['proCalendar'=>$proCalendar]);
+    }
+
     public function EncontrarCopa($id) {
         $copas = ProCup::All();
         $ligas = ProLeague::All();
         $copa = ProCup::find($id);
         return view('/CopaPro', ['copa' => $copa, 'copas' => $copas, 'ligas' => $ligas]);
     }
+
+    public function CrearCalendarioPro() {
+        $liga=Input::get('InputIdLeague');
+        $league=ProLeague::find($liga);
+
+        if($league->generateAndSaveCalendar()){
+            return view('clubes-pro');
+        }
+        else {
+            return "Error al crear calendario";
+        }
+    }
+
 
     public function CrearCopaPro() {
         if (Auth::check()) { // este si lo he probado

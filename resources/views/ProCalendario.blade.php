@@ -1,8 +1,11 @@
+
+
 @extends('template')
 
 @section('content')
 
-<div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
+<div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
+
 
     <ul id="ListaMenuLateral">
         <li><a>CLUBES PRO</a>
@@ -47,7 +50,7 @@
 
 </div>
 
-<div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover;" >
+<div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
 
    <!-- <div id="Menu1vs1" style="background-color:gray; position:relative; height: 100px; width:900px; left:100px; top:100px;">
@@ -69,9 +72,13 @@
 
     </div>
 
+
 <select style="position:relative; left:950px;top:30px; ">
-    <option>Jornada 1</option>
+    @foreach($proCalendar as $jornada)
+    <option>Jornada {{$jornada->jornada}}</option>
+    @endforeach
 </select>
+
 
 
     <div id="TablaPrimera" style=" width:700px;position: absolute; top:18%; left:15%;">
@@ -90,105 +97,40 @@
             </tr>
             </thead>
 
-            <thead>
+           <?php
+            $j=0;
+            ?>
+
+
+
+                <thead>
+                <tr>
+
+
+                    <th colspan="5" style="background-color: darkslategrey;">JORNADA 1, 18 DE FEBRERO DE 2016, 18:00</th>
+
+                </tr>
+                </thead>
+
+
+            @foreach($proCalendar as $Equipos)
+
             <tr>
-
-
-                <th colspan="5" style="background-color: darkslategrey;">JORNADA 1, 18 DE FEBRERO DE 2016, 18:00</th>
-
-            </tr>
-            </thead>
-
-
-            <tr>
-                <td style=""><a>{{$Equipo1->name}}</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
+                <td style=""><a>{{$Equipos->localProTeam->name}}</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
                 <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">3</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">2</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipo2->name}}</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
-                <td><a href="ReportarPartidoProMetodo/{{$Equipo1->id}}/{{$Equipo2->id}}">Reportar</a></td>
-
-
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Toluca</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/3.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">2</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/4.png); background-size:cover;"></div>Querétaro</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Santos Laguna</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/5.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">1</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">3</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/6.png); background-size:cover;"></div>Dorados</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Pachuca</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/7.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/8.png); background-size:cover;"></div>Puebla</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Pumas</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/9.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">2</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">2</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/10.png); background-size:cover;"></div>Tigres UANL</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Chiapas</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/11.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">3</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">3</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/12.png); background-size:cover;"></div>Atlas</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Chivas</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/13.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">3</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/14.png); background-size:cover;"></div>Tijuana</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>León</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/15.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">2</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
-                <td style=""><div id="LogoEquipo" style="  float:left; background:url(images/Clausura/16.png); background-size:cover;"></div>Monterrey</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a >Veracruz</a><div id="LogoEquipo" style="float:right; float:right;background:url(images/Clausura/17.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
-                <td style=""><div id="LogoEquipo" style=" float:left; background:url(images/Clausura/18.png); background-size:cover;"></div>Morelia</td>
-                <td><a href="DetallesPartido">Detalles</a></td>
+                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}</td>
+                <td><a href="/DetallesPartido">Detalles</a></td>
+                <td><a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}">Reportar</a></td>
 
 
             </tr>
 
 
+                <?php
+                $j++;
+                ?>
 
-
-
-
+            @endforeach
 
 
 
