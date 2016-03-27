@@ -53,6 +53,7 @@ class ProLeague extends Model
 
     public function generateCalendar()
     {
+
         $teams = $this->proTeams->toArray();
 
         if (count($teams)%2 != 0){
@@ -87,7 +88,7 @@ class ProLeague extends Model
                     'local_id' => $match['home']['id'],
                     'visitor_id' => $match['away'] ? $match['away']['id'] : null,
                     'pro_league_id' => $this->id,
-                    'jornada' => $jornada,
+                    'jornada' => $jornada+1,
                 ]);
             }
         }

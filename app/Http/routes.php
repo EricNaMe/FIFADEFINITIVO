@@ -124,22 +124,24 @@ Route::group([
 Route::get('PlantillaPro/{id}','ClubesProController@PlantillaClub');
 Route::post('BuscarClub','ClubesProController@BuscarClub');
 Route::post('CrearClub','ClubesProController@InsertarClub');
-Route::post('/ReportarResultadosPro','ClubesProController@ReportarResultadosPro');
+Route::post('ReportarResultadosPro','ClubesProController@ReportarResultadosPro');
 Route::post('/ReportarResultados','ClubesProController@ReportarResultadosMetodo');
 
 
 Route::get('EncontrarLiga/{id}','TorneoController@EncontrarLiga');
 Route::get('EncontrarCopa/{id}','TorneoController@EncontrarCopa');
+Route::get('ProCalendarioEnc/{proLeague}','TorneoController@EncontrarCalendario');
 Route::post('ProCrearLiga','TorneoController@CrearLigaPro');
 Route::post('ProModificarLiga','TorneoController@ModificarLigaPro');
 Route::post('ProModificarCopa','TorneoController@ModificarCopaPro');
 Route::post('ProEliminarClubLiga','TorneoController@BorrarProClubLiga');
 Route::post('ProEliminarClubCopa','TorneoController@BorrarProClubCopa');
+Route::post('ProCrearCalendario','TorneoController@CrearCalendarioPro');
 Route::post('ProCrearCopa','TorneoController@CrearCopaPro');
 Route::post('roundRobin','TorneoController@RoundRobin');
 Route::post('AgregarProTeamLiga','TorneoController@AgregarProClubLiga');
 Route::get('DetallesPartidoMetodo/{id}/{id2}','ClubesProController@DetallesPartidoMetodo');
-Route::get('ReportarPartidoProMetodo/{id}/{id2}','ClubesProController@ReportarPartidoMetodo');
+Route::get('ReportarPartidoProMetodo/{id}/{id2}/{id3}','ClubesProController@ReportarPartidoMetodo');
 
 Route::post('AgregarProClub','TorneoController@AgregarProClubLiga');
 Route::post('AgregarProClubCopa','TorneoController@AgregarProClubCopa');

@@ -44,3 +44,4 @@
 [13-Mar-2016 04:31:07 UTC] PHP Parse error:  syntax error, unexpected '{', expecting '(' in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\ClubesProController.php on line 168
 [26-Mar-2016 04:38:33 UTC] PHP Parse error:  syntax error, unexpected '(' in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\ClubesProController.php on line 212
 [26-Mar-2016 05:25:54 UTC] PHP Fatal error:  Call to a member function update() on a non-object in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\app\Http\Controllers\ClubesProController.php on line 219
+[27-Mar-2016 01:15:52 UTC] PHP Parse error:  syntax error, unexpected end of file in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\storage\framework\views\0746d64f4f8b11afd3a6a0d391bb5e7c9d08b973.php on line 134
