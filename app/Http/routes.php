@@ -60,7 +60,6 @@ Route::get('LigaPro','FrontController@LigaPro');
 Route::get('CopaPro','FrontController@CopaPro');
 Route::get('PerfilClubes','FrontController@PerfilClubes');
 Route::get('Primera','FrontController@Primera');
-Route::get('PlantillaPro','FrontController@PlantillaPro');
 Route::get('PVSP','FrontController@PVSP');
 Route::get('EditarPerfil','FrontController@EditarPerfil');
 Route::get('UnirteClub','FrontController@UnirteClub');
@@ -103,12 +102,13 @@ Route::post('EditarPerfil','PerfilController@EditarPerfilUsuario');
 Route::group(['prefix' => 'clubes-pro'], function () {
     Route::get('','ClubesProController@index');
     Route::group(['prefix' => '{proTeam}'], function () {
-
         Route::get('','ClubesProController@getDetalle');
+        Route::get('plantilla','ClubesProController@getPlantilla');
 
         Route::group(['middleware' => 'auth'], function () {
             Route::get('unirte','ClubesProController@getUnirte');
             Route::post('unirte','ClubesProController@postUnirte');
+            Route::put('autorizar/{user}','ClubesProController@putAutorizar');
         });
     });
 });

@@ -33,7 +33,7 @@ class Notification extends Model
         {
             case "request":
             case "request_confirmed":
-                return url('clubes-pro', [$this->notifiable->id]);
+                return url('clubes-pro', [$this->notifiable->id,'plantilla']);
         }
     }
 

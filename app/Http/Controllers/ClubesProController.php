@@ -83,7 +83,7 @@ class ClubesProController extends Controller
         $posicion =  Input::get('PosicionSelect');
 
         $proTeam->addPendingUser(Auth::user(),$posicion);
-        $proTeam->addPendingUserNotification();
+        $proTeam->sendPendingUserNotification();
         return redirect()
             ->to('clubes-pro/'.$proTeam->id)
             ->with('message', 'Éxito!');
@@ -99,12 +99,15 @@ class ClubesProController extends Controller
         return view('clubes-pro.detalle', ['proTeam' => $proTeam]);
     }
 
-    public function PlantillaClub($id){
+    public function getPlantilla(ProTeam $proTeam){
+        return view('clubes-pro.plantilla',
+            ['proTeam' => $proTeam]);
+    }
 
-        $proTeam=ProTeam::find($id);
-
-        return view('PlantillaPro', ['proTeam' => $proTeam]);
-
+    public function putAutorizar(ProTeam $proTeam, User $user)
+    {
+        $proTeam->authorizeUserRequest($user);
+        return redirect()->back();
     }
 
     public function ReportarResultadosPro()
@@ -113,9 +116,6 @@ class ClubesProController extends Controller
         $usuarioVisitante=input::get("checkboxVisitante");
         $EquipoLoc=input::get("EquipoLocalInput");
         $EquipoVis=input::get("EquipoVisitanteInput");
-
-
-
 
             $usuariosLocal=User::find($usuarioLocal);
             $usuariosVisitante=User::find($usuarioVisitante);
