@@ -107,8 +107,16 @@ class ClubesProController extends Controller
     public function putAutorizar(ProTeam $proTeam, User $user)
     {
         $proTeam->authorizeUserRequest($user);
-        return redirect()->back();
+        return redirect()->back()
+            ->with('message',"Éxito");
     }
+    public function putDenegar(ProTeam $proTeam, User $user)
+    {
+        $proTeam->rejectUserRequest($user);
+        return redirect()->back()
+            ->with('message',"Éxito");
+    }
+
 
     public function ReportarResultadosPro()
     {

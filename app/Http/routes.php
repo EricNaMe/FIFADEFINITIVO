@@ -109,6 +109,7 @@ Route::group(['prefix' => 'clubes-pro'], function () {
             Route::get('unirte','ClubesProController@getUnirte');
             Route::post('unirte','ClubesProController@postUnirte');
             Route::put('autorizar/{user}','ClubesProController@putAutorizar');
+            Route::put('denegar/{user}','ClubesProController@putDenegar');
         });
     });
 });

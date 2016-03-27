@@ -161,9 +161,18 @@
                                         'method' => 'put'
                                         ])}}
                                         <button type="submit"
-                                                class="btn btn-warn">
+                                                class="btn btn-success">
                                             Autorizar
                                         </button>
+                                    {{Form::close()}}
+                                    {{Form::open([
+                                        'url' => "/clubes-pro/$proTeam->id/denegar/$user->id" ,
+                                        'method' => 'put'
+                                    ])}}
+                                    <button type="submit"
+                                            class="btn btn-danger">
+                                        Denegar
+                                    </button>
                                     {{Form::close()}}
                                 @endif
                             </td>

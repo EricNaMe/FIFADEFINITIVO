@@ -21,8 +21,13 @@ class Notification extends Model
             case "request":
                 return "Alguien ha solicitado que lo unas a tu equipo ".$this->notifiable->name.",".
                 "por favor revisa el estado de su autorización";
+                break;
             case "request_confirmed":
                 return "Han confirmado tu ingreso al equipo ".$this->notifiable->name;
+                break;
+            case "request_rejected":
+                return "Han denegado tu ingreso al equipo ".$this->notifiable->name;
+                break;
         }
 
     }
@@ -33,6 +38,7 @@ class Notification extends Model
         {
             case "request":
             case "request_confirmed":
+            case "request_rejected":
                 return url('clubes-pro', [$this->notifiable->id,'plantilla']);
         }
     }

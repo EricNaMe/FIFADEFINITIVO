@@ -72,6 +72,14 @@ class ProTeam extends Model
         $this->notifications()->save($notification);
     }
 
+    public function sendRejectedUserNotification(User $user)
+    {
+        $notification = new Notification();
+        $notification->type = "request_rejected";
+        $notification->user()->associate($user);
+        $this->notifications()->save($notification);
+    }
+
 
 
     public function canAddUser(User $user)
@@ -119,6 +127,25 @@ class ProTeam extends Model
         }
     }
 
-
+    public function rejectUserRequest(User $user)
+    {
+        $this->canAuthorizeUserRequest(Auth::user());
+        $userRequested = $this->users()->whereUserId($user->id)->first();
+        if($userRequested
+            && $userRequested->pivot->status == 'pending')
+        {
+            $this->users()->updateExistingPivot($user->id,
+                [
+                    'status' => 'rejected'
+                ]);
+            $this->sendRejectedUserNotification($user);
+        }
+        else
+        {
+            throw new PermissionException(
+                'Hubo un error al tratar de denegar el usuario'
+            );
+        }
+    }
 
 }
