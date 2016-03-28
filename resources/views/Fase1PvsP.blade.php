@@ -1,8 +1,22 @@
-@extends('template')
-
-@section('content')
-    <link rel="stylesheet" href="/css/1VS1Fase1.css" type="text/css" media="screen">
-    <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/1VS1Fase1.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="" type="text/css" media="screen">
+        <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
+        <title></title>
+    </head>
+    <body>
+       
+        
+        <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
+            
           <ul id="ListaMenuLateral">
               <li><a>1 VS 1</a>
                
@@ -43,11 +57,51 @@
             
         </div>
 
+
+
+
+
+        <div id="menuSuperior" style="background:url(/images/topMenu.jpeg); background-size: cover; ">
+
+            <ul id="ListaMenuSuperior" style="margin-left: 400px;">
+                <li><a href="CLUBESPRO">CLUBES PRO</a></li>
+                <li><a href="PVSP">1 VS 1</a></li>
+                <li><a href="Reglamento">REGLAMENTO</a></li>
+                <li><a href="Clips">CLIPS</a></li>
+                <li><a href="Noticias">NOTICIAS</a></li>
+                @if (Auth::check())
+                    <li id="LoginMenu"><a href="#" ><div id="LogoEquipo" style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatarpic-l.png); background-size:cover;"></div>{{Auth::User()->user_name}}</a>
+                        <ul id="SubMenu">
+
+                            <li style="font-size: 12px; "><a href="Perfil" >Ver Perfil</a></li>
+                            <li style="font-size: 12px; "><a href="EditarPerfil" >Editar Perfil</a></li>
+                            <li style="font-size: 12px; "><a href="/auth/logout" >Cerrar sesión</a></li>
+
+
+                        </ul>
+                    </li>
+                @else
+                    <li id="LoginMenu"><a href="/auth/login" >LOGIN</a>
+
+
+                        <ul id="SubMenu">
+                            <li style="font-size: 12px; "><a href="/auth/login" >Iniciar Sesión</a></li>
+                            <li style="font-size: 12px; margin-left: 5px; "><a href="/auth/register" >Registrarse</a></li>
+
+                        </ul>
+                    </li>
+                @endif
+
+            </ul>
+
+
+        </div>
+
         <div id="menuCentral" style="background:url(/images/fut.jpg); width:1200px; height: 1400px; background-size:cover;" >
-                          
-            <table border="0" style="margin: 50px;" > 
-                <caption class="td3">TORNEO FIFA 16 ELIMINATORIA</caption>
-                
+            
+             <div style=" background: url(/images/Eliminatoria.png); height: 60px; background-size: contain; background-repeat: no-repeat; position: relative; margin-left: 400px; margin-top:30px;"></div>               
+             
+            <table border="0" style="margin: 30px; margin-top: -50px;" >                          
 	
                   <tfoot>
                       <tr>
@@ -56,271 +110,123 @@
                   </tfoot>
 
                   <tbody>
-                      <tr><td height=30></td></tr>
                       <tr>
-                         <td width="100" class="td">Equipo1</td> 
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td ></td> 
-                          <td width=180 rowspan="8"></td>
-                      </tr>
+                          <td><div class="td"><div id="1-1" style="width: 120px; margin-top: 5px;">ALDEBARAN FC</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/OSTERSUNDS_FK-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="1-1a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                                                                         
+                      </tr>   
                       <tr>
-                           <td></td>
-                          <td width="50"></td>
-                          <td width="100" class="td">team(1/2)</td>  
+                             <tr >
+                                <td ></td>
+                                <td width="10"></td>
+                                <td><div class="td"><div id="2-1" style="width: 120px; margin-top: 5px;">ALDEBARAN FC</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/OSTERSUNDS_FK-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="2-1a" style="margin-top: -40px; margin-left: 160px;">2</div></td>                                                                                                        
+
+                            </tr>
                           
                       </tr>
                        <tr>
-                         <td  class="td">Equipo2</td> 
-                          <td>  </td>
-                          <td>  </td>
-                          <td>  </td>
-                          <td> </td>
-                          <td>  </td>                          
-                          <td></td>  
+                            <td><div class="td"><div id="1-2" style="width: 100px; margin-top: 5px;">Los Infernaless</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/AIK_SOLNA-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="1-2a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                                                                                                        
+                                                                           
+                      </tr> 
+                      <tr height="60px;">                           
+                                <td ></td>
+                                <td width="10"></td>
+                                <td></td>
+                                <td width="20"></td>
+                                <td><div ><div class="td"><div  id="3-1" style="width: 100px; margin-top: 5px;">ALDEBARAN FC</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/OSTERSUNDS_FK-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="3-1a" style="margin-top: -40px; margin-left: 160px;">3</div></div></td>                                                                                                        
+                                                      
                           
                       </tr>
-                          <td></td> 
-                          <td>  </td>
-                          <td>  </td>
-                          <td width="50">  </td>
-                          <td width="100" class="td"> team(1-2/3-4) </td>
-                          <td>  </td>
-                          <td> </td>
+                       <tr>
+                          <
+                           <td><div class="td"><div id="1-3" style="width: 100px; margin-top: 5px;">FOS FC</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/DJURGARDENS_IF-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="1-3a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                                                                                                        
+                      </tr> 
+                            <tr >
+                                <td ></td>
+                                <td width="10"></td>
+                                
+                                <td><div class="td"><div id="2-2" style="width: 100px; margin-top: 5px;">FOS FC</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/DJURGARDENS_IF-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="2-2a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                                                                                                        
+                                
+
+                            </tr>
+                       <tr>
+                            <td><div class="td"><div id="1-4" style="width: 100px; margin-top: 5px;">CARIÑOSOS</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/GEFLE_IF-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="1-4a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                                                                                                        
                           
+                                                 
+                      </tr> 
+                      <tr height="60"></tr>
+                       <tr>
+                           <td><div class="td"><div id="1-5" style="width: 100px; margin-top: 5px;">LEÑAS FC</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/HELSINGBORGS_IF-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="1-5a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                                                                                                        
+                                                                          
+                      </tr> 
                       <tr>
-                          
+                             <tr >
+                                <td ></td>
+                                <td width="50"></td>
+                                <td><div class="td"><div id="2-3" style="width: 100px; margin-top: 5px;">CANALLAS</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/HAMMARBY_IF-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="2-3a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                                                                                                        
+                             </tr>
                       </tr>
                        <tr>
-                         <td   class="td">Equipo3</td> 
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>                          
-                      </tr>
-                      <tr height=5>
-                          <td></td>
-                          <td></td>
-                          <td  class="td">team(3/4)</td>   
+                            <td><div class="td"><div id="1-6" style="width: 100px; margin-top: 5px;">CANALLAS</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/HAMMARBY_IF-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="1-6a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                                                                                                                               
+                      </tr> 
+                      <tr height="60px;">
+                                 <td ></td>
+                                <td width="10"></td>
+                                <td ></td>
+                                 <td width="10"></td>.
+                                 <td><div ><div class="td"><div  id="3-2" style="width: 100px; margin-top: 5px;">MISERABLES</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/IFK_GOTEBORG-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="3-2a" style="margin-top: -40px; margin-left: 160px;">2</div></div></td>                                                                                                        
+                                 
                       </tr>
                        <tr>
-                         <td   class="td">Equipo4</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td >  </td>
-                          <td >  </td>
-                          <td ></td>                          
-                      </tr>
-                       <tr height=25>
-                            <td ></td> 
-                          <td >  </td>
-                          <td >  </td>
-                          <td >  </td>
-                          <td width=100></td>
-                          <td width="50">  </td>
-                          <td width="100"  class="td"> FINAL</td>                            
-                       </tr>
-                          <tr>
-                         <td   class="td">Equipo5</td> 
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>                          
-                      </tr>
-                      <tr height=5>
-                          <td></td>
-                          <td></td>
-                          <td  class="td">team(5/6)</td>   
+                             <td><div class="td"><div id="1-7" style="width: 100px; margin-top: 5px;">CHICHAROS</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/KALMAR-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="1-7a" style="margin-top: -40px; margin-left: 165px;">1</div></td>                                                                                                                               
+                                                                     
+                      </tr> 
+                      <tr >
+                             <tr >
+                                <td ></td>
+                                <td width="50"></td>
+                                 <td><div class="td"><div id="2-4" style="width: 100px; margin-top: 5px;">MISERABLES</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/IFK_GOTEBORG-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="2-4a" style="margin-top: -40px; margin-left: 160px;">1</div></td>
+                             </tr>
                       </tr>
                        <tr>
-                         <td   class="td">Equipo6</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td ></td>   
-                          <td rowspan="9" style="background:url(/images/trofeo.png); background-size: cover; background-position-x: -10px;"></td>
-                      </tr>
-                      <tr height=25>
-                         <td ></td> 
-                          <td >  </td>
-                          <td >  </td>
-                          <td >  </td>
-                          <td width=100  class="td"> team(5-6/7-8) </td>
-                          <td >  </td>
-                          <td > </td>   
-                      </tr>
-                       <tr>
-                         <td   class="td">Equipo7</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td ></td>                          
-                      </tr>
-                      <tr height=5>
-                          <td></td>
-                          <td></td>
-                          <td  class="td">team(7/8)</td>  
-                      </tr>
-                       <tr>
-                         <td   class="td">Equipo8</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td > </td>                          
-                      </tr>
-                      <tr height=25>   
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td > </td> 
-                          <td></td>
-                          
-                      </tr>
-                       <tr>
-                         <td   class="td">Equipo9</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td > </td> 
-                          
-                      </tr>
-                      <tr height=5>
-                          <td></td>
-                          <td></td>
-                          <td  class="td">team(9/10)</td>
-                      </tr>
-                       <tr>
-                         <td   class="td">Equipo10</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td > </td>                          
-                      </tr>
-                      <tr height=25>   
-                          <td ></td> 
-                          <td >  </td>
-                          <td >  </td>
-                          <td >  </td>
-                          <td width=100  class="td"> team(9-10/11-12) </td>
-                          <td >  </td>
-                          <td > </td>   
-                          <td width=80 rowspan="4" class="td2">Ganador</td>
-                      </tr>
-                       <tr>
-                         <td   class="td">Equipo11</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td > </td>                          
-                      </tr>
-                      <tr height=5>
-                          <td></td>
-                          <td></td>
-                          <td  class="td">team(11/12)</td>
-                      </tr>
-                       <tr>
-                         <td width=2  class="td">Equipo12</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td > </td>                          
-                      </tr>
-                       <tr height=25>
-                         
-                           <td ></td> 
-                          <td >  </td>
-                          <td >  </td>
-                          <td >  </td>
-                          <td width=100></td>
-                          <td >  </td>
-                          <td   class="td"> FINAL</td>  
-                       </tr>
-                          <tr>
-                         <td   class="td">Equipo13</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td ></td>                          
-                      </tr>
-                      <tr height=5>
-                           <td></td>
-                          <td></td>
-                          <td  class="td">team(13/14)</td>
-                      </tr>
-                       <tr>
-                         <td   class="td">Equipo14</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td ></td>                          
-                      </tr>
-                      <tr height=25>
-                          <td ></td> 
-                          <td >  </td>
-                          <td >  </td>
-                          <td >  </td>
-                          <td width=100  class="td"> team(13-14/15-16) </td>
-                          <td >  </td>
-                          <td > </td>   
-                      </tr>
-                       <tr>
-                         <td   class="td">Equipo15</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td>
-                          <td >  </td>
-                          <td ></td>                          
-                      </tr>
-                      <tr height=5>
-                          <td></td>
-                          <td></td>
-                          <td  class="td">team(15/16)</td> 
-                      </tr>
-                       <tr>
-                         <td   class="td">Equipo16</td> 
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td > </td>
-                          <td >  </td>
-                          <td ></td> 
-                          
-                      </tr>
-                      <tr height=25>                                                  
-                      </tr>
+                            <td><div class="td"><div id="1-8" style="width: 100px; margin-top: 5px;">MISERABLES</div> <div style="margin-top: -20px; margin-left: 120px; width:50px;"><img src="/Imagenes/ALLSVENSKAN_SUECIA/IFK_GOTEBORG-LOGO.png" style="width:20px;"></div></div> <div class="marcador"id="1-8a" style="margin-top: -40px; margin-left: 160px;">1</div></td>                        
+                      </tr> 
+                      <tr height="50px;"></tr>
+                  
                       
                   </tbody>
              
-           </table>    
+           </table>  
+             
+            <div style="background: url('/images/trofeo.png'); width: 180px; height: 240px; background-size: cover; position: relative; top: -650px; right: -770px;"></div>
+             <div class="td2" style="width: 200px; height: 140px; background-size: cover; position: relative; top: -750px; right: -250px;">
+                 <div class="conte">
+                 <ul class="ul2">
+                             <li>CAMPEONES</li>
+                             <li>DE</li>
+                             <li>COPA</li>			     
+                 </ul>
+                 </div>
+                 <div class="wnr" >ALDEBARAN FC<img src="/Imagenes/ALLSVENSKAN_SUECIA/OSTERSUNDS_FK-LOGO.png" style="width:45px; margin-top: -15px;" align="right"></div>
+             </div>
+             
 
         </div>
-@endsection
+       
+        
+        </body>
+    
+    <script>
+    
+    $(document).ready(function () {
+  $('#ListaMenuLateral > li > a').click(function(){
+    if ($(this).attr('class') != 'active'){
+      $('#ListaMenuLateral li ul').slideUp();
+      $(this).next().slideToggle();
+      $('#ListaMenuLateral li a').removeClass('active');
+      $(this).addClass('active');
+    }
+  });
+});
+    </script>
+</html>
+
+

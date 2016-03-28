@@ -35,7 +35,7 @@
         </ul>
     </div>
 
-    <div id="menuCentral" style="background:url(../../../public/images/middleMenu.jpeg); background-size: cover;">
+    <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;">
         <div style="width:700px; height:400px; background-color:whitesmoke; position: relative; top:200px; left:300px; ">
             <div class="container">
                 <form action="/clubes-pro" name="FormaCrearClub" method="post" class="form-horizontal" role="form"

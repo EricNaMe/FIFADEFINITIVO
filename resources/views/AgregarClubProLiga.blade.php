@@ -20,22 +20,22 @@
 
             <li><a>TORNEOS VIGENTES</a>
                 <ul>
-                    <li><a>PRIMERA DIVISIÓN</a></li>
-                    <li><a>SEGUNDA DIVISIÓN A</a></li>
-                    <li><a>SEGUNDA DIVISIÓN B</a></li>
-                    <li><a>TERCERA DIVISIÓN A</a></li>
-                    <li><a>TERCERA DIVISIÓN B</a></li>
+                    <li><a>PRIMERA DIVISIÃ“N</a></li>
+                    <li><a>SEGUNDA DIVISIÃ“N A</a></li>
+                    <li><a>SEGUNDA DIVISIÃ“N B</a></li>
+                    <li><a>TERCERA DIVISIÃ“N A</a></li>
+                    <li><a>TERCERA DIVISIÃ“N B</a></li>
 
                 </ul>
-                </li>
-                
-                
-                <li><a>CLUBES</a>
-            <ul>
-                <li><a>BUSCAR CLUB</a></li>
-                <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
-            
-              
+            </li>
+
+
+            <li><a>CLUBES</a>
+                <ul>
+                    <li><a>BUSCAR CLUB</a></li>
+                    <li><a href="/CrearClub">CREAR CLUB</a></li>
+
+
                 </ul>
             </li>
 
@@ -87,7 +87,7 @@
                 <br></br>
 
                 <div style="position:relative; top:500px; left:500px;" class="container">
-                    <form action="/clubes-pro">
+                    <form action="/CLUBESPRO">
                         <button class="btn btn-primary">Enviar</button>
                     </form>
                 </div>
@@ -150,7 +150,8 @@
                 </form>
 
 
-                <div style=" background-color: white; height:200px; overflow-y: scroll; width:390px; ">
+                <br></br> <br>
+                <div  style="margin-left: 80px; background-color: white; max-height:300px;  width:390px; ">
                     <?php $i = 1; ?>
                     @foreach($league->proTeams as $leagueTeams)
                         <ul style="list-style:none;">
@@ -172,6 +173,5 @@
 
     </div>
 @endsection
-
 
 

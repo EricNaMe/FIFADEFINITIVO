@@ -163,3 +163,10 @@ Route::post('ModificarLiga','PlayerController@ModificarLiga');
 Route::post('ModificarCopa','PlayerController@ModificarCopa');
 Route::post('EliminarClubLiga','PlayerController@BorrarClubLiga');
 Route::post('EliminarClubCopa','PlayerController@BorrarClubCopa');
+
+
+Route::post('videoSave1','ComentarioController@videoYoutube1');
+Route::post('videoSave2','ComentarioController@videoYoutube2');
+Route::post('videoSave3','ComentarioController@videoYoutube3');
+Route::post('clipsCommen','ComentarioController@clipscommen');
+

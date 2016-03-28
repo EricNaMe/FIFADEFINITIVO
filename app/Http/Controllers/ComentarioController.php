@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Clips;
+use App\URLVideos;
 use Illuminate\Http\Request;
 use Input;
 use App\Http\Requests;
@@ -75,6 +77,101 @@ class ComentarioController extends Controller
     {
         //
     }
+
+    public function videoYoutube1()
+    {
+
+        $urlClip=  Input::get('url1');
+        $urlClip=  str_replace(".com/", ".com/embed/", $urlClip);
+        $Descripcion=Input::get('nameClip1');
+        if(URLVideos::find(1)){
+            $video=URLVideos::find(1);
+
+            $video->url =$urlClip;
+            $video->descripcion=$Descripcion;
+            $video->update();
+            return redirect()->back();
+        }
+        else{
+            $nuevoVideo=new URLVideos;
+            $nuevoVideo->url=$urlClip;
+            $nuevoVideo->descripcion=$Descripcion;
+            $nuevoVideo->save();
+            return redirect()->back();
+
+        }
+
+
+    }
+    public function videoYoutube2()
+    {
+
+        $urlClip=  Input::get('url2');
+        $urlClip=  str_replace(".com/", ".com/embed/", $urlClip);
+        $Descripcion=Input::get('nameClip2');
+        if(URLVideos::find(1)){
+            $video=URLVideos::find(1);
+
+            $video->url =$urlClip;
+            $video->descripcion=$Descripcion;
+            $video->update();
+            return redirect()->back();
+        }
+        else{
+            $nuevoVideo=new URLVideos;
+            $nuevoVideo->url=$urlClip;
+            $nuevoVideo->descripcion=$Descripcion;
+            $nuevoVideo->save();
+            return redirect()->back();
+
+        }
+    }
+    public function videoYoutube3()
+    {
+
+        $urlClip=  Input::get('url3');
+        $urlClip=  str_replace(".com/", ".com/embed/", $urlClip);
+        $Descripcion=Input::get('nameClip3');
+        if(URLVideos::find(1)){
+            $video=URLVideos::find(1);
+
+            $video->url =$urlClip;
+            $video->descripcion=$Descripcion;
+            $video->update();
+            return redirect()->back();
+        }
+        else{
+            $nuevoVideo=new URLVideos;
+            $nuevoVideo->url=$urlClip;
+            $nuevoVideo->descripcion=$Descripcion;
+            $nuevoVideo->save();
+            return redirect()->back();
+
+        }
+    }
+
+
+    public function clipscommen(){
+        if(Auth::check()){
+            $comentarioTexto=Input::get('comentarioTexto');
+            $id=Input::get('InputId');
+            //  var_dump(Input::all());
+
+            $data = array(
+                'message' => $comentarioTexto,
+                'user_id' => $id
+
+            );
+        }
+        $response = Clips::create($data);
+        if ($response) {
+            return redirect()->back();
+
+
+        }
+
+    }
+
 
     public function save(){
 

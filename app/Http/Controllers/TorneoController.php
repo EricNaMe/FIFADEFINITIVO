@@ -61,33 +61,33 @@ class TorneoController extends Controller {
      * Runs a round robin to make a schedule.
      */
     public function RoundRobin() {
-    
-          $teams[]="Pedro";
-                    $teams[]="Alejandro";
-                    $teams[]="Esqueda";
-                    $teams[]="Edgar";
 
-    if (count($teams)%2 != 0){
-        array_push($teams,"bye");
-    }
-    $away = array_splice($teams,(count($teams)/2));
-    $home = $teams;
-    for ($i=0; $i < count($home)+count($away)-1; $i++)
-    {
-        for ($j=0; $j<count($home); $j++)
-        {
-            $round[$i][$j]["Home"]=$home[$j];
-            $round[$i][$j]["Away"]=$away[$j];
+        $teams[]="Pedro";
+        $teams[]="Alejandro";
+        $teams[]="Esqueda";
+        $teams[]="Edgar";
+
+        if (count($teams)%2 != 0){
+            array_push($teams,"bye");
         }
-        if(count($home)+count($away)-1 > 2)
+        $away = array_splice($teams,(count($teams)/2));
+        $home = $teams;
+        for ($i=0; $i < count($home)+count($away)-1; $i++)
         {
-            $s = array_splice( $home, 1, 1 );
-            $slice = array_shift( $s  );
-            array_unshift($away,$slice );
-            array_push( $home, array_pop($away ) );
+            for ($j=0; $j<count($home); $j++)
+            {
+                $round[$i][$j]["Home"]=$home[$j];
+                $round[$i][$j]["Away"]=$away[$j];
+            }
+            if(count($home)+count($away)-1 > 2)
+            {
+                $s = array_splice( $home, 1, 1 );
+                $slice = array_shift( $s  );
+                array_unshift($away,$slice );
+                array_push( $home, array_pop($away ) );
+            }
         }
-    }
-    return $round;
+        return $round;
     }
 
     /**
@@ -151,6 +151,22 @@ class TorneoController extends Controller {
         $proTeam = ProTeam::find($clubSelect);
         $league = ProLeague::find($LeagueInput);
         $clubes = ProTeam::All();
+        $Ligas=ProLeague::All();
+
+
+
+        foreach($Ligas as $liga){
+
+            foreach($liga->proTeams as $Ligaa){
+
+                if ($proTeam->id == $Ligaa->id) {
+                    return redirect()->back()->withErrors("El equipo ya está en otra liga");
+                }
+            }
+        }
+
+
+
         $proTeam->proLeague()->attach($LeagueInput, ['status' => 'acepted']);
 
         if ($proTeam->save()) {
@@ -240,7 +256,7 @@ class TorneoController extends Controller {
         $league=ProLeague::find($liga);
 
         if($league->generateAndSaveCalendar()){
-            return view('clubes-pro');
+            return view('clubespro');
         }
         else {
             return "Error al crear calendario";

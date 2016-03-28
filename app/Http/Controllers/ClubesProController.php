@@ -183,104 +183,104 @@ class ClubesProController extends Controller
            /*Borrar _id*/
            if($Posicion[$i]=="PO"){
                $Partido->PO_local_id=$UsuariosLocal[$i]->id;
-               $Partido->PO_local_red_id=$Rojas[$i];
-               $Partido->PO_local_yellow_id=$Amarillas[$i];
-               $Partido->PO_local_assistance_id=$Asistencias[$i];
-               $Partido->PO_local_goal_id=$Goles[$i];
+               $Partido->PO_local_red=$Rojas[$i];
+               $Partido->PO_local_yellow=$Amarillas[$i];
+               $Partido->PO_local_assistance=$Asistencias[$i];
+               $Partido->PO_local_goal=$Goles[$i];
                $Partido->PO_local_unbeaten=$UsuariosLocal[$i]->id;
            }
            if($Posicion[$i]=="DFC"){
                $Partido->DFC_local_id=$UsuariosLocal[$i]->id;
-               $Partido->DFC_local_red_id=$Rojas[$i];
-               $Partido->DFC_local_yellow_id=$Amarillas[$i];
-               $Partido->DFC_local_assistance_id=$Asistencias[$i];
-               $Partido->DFC_local_goal_id=$Goles[$i];
+               $Partido->DFC_local_red=$Rojas[$i];
+               $Partido->DFC_local_yellow=$Amarillas[$i];
+               $Partido->DFC_local_assistance=$Asistencias[$i];
+               $Partido->DFC_local_goal=$Goles[$i];
            }
 
            if($Posicion[$i]=="LTI"){
                $Partido->LTI_local_id=$UsuariosLocal[$i]->id;
-               $Partido->LTI_local_red_id=$Rojas[$i];
-               $Partido->LTI_local_yellow_id=$Amarillas[$i];
-               $Partido->LTI_local_assistance_id=$Asistencias[$i];
-               $Partido->LTI_local_goal_id=$Goles[$i];
+               $Partido->LTI_local_red=$Rojas[$i];
+               $Partido->LTI_local_yellow=$Amarillas[$i];
+               $Partido->LTI_local_assistance=$Asistencias[$i];
+               $Partido->LTI_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="LTD"){
                $Partido->LTD_local_id=$UsuariosLocal[$i]->id;
-               $Partido->LTD_local_red_id=$Rojas[$i];
-               $Partido->LTD_local_yellow_id=$Amarillas[$i];
-               $Partido->LTD_local_assistance_id=$Asistencias[$i];
-               $Partido->LTD_local_goal_id=$Goles[$i];
+               $Partido->LTD_local_red=$Rojas[$i];
+               $Partido->LTD_local_yellow=$Amarillas[$i];
+               $Partido->LTD_local_assistance=$Asistencias[$i];
+               $Partido->LTD_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="MCD"){
                $Partido->MCD_local_id=$UsuariosLocal[$i]->id;
-               $Partido->MCD_local_red_id=$Rojas[$i];
-               $Partido->MCD_local_yellow_id=$Amarillas[$i];
-               $Partido->MCD_local_assistance_id=$Asistencias[$i];
-               $Partido->MCD_local_goal_id=$Goles[$i];
+               $Partido->MCD_local_red=$Rojas[$i];
+               $Partido->MCD_local_yellow=$Amarillas[$i];
+               $Partido->MCD_local_assistance=$Asistencias[$i];
+               $Partido->MCD_local_goal=$Goles[$i];
 
            }
            if($Posicion[$i]=="MC"){
                $Partido->MC_local_id=$UsuariosLocal[$i]->id;
-               $Partido->MC_local_red_id=$Rojas[$i];
-               $Partido->MC_local_yellow_id=$Amarillas[$i];
-               $Partido->MC_local_assistance_id=$Asistencias[$i];
-               $Partido->MC_local_goal_id=$Goles[$i];
+               $Partido->MC_local_red=$Rojas[$i];
+               $Partido->MC_local_yellow=$Amarillas[$i];
+               $Partido->MC_local_assistance=$Asistencias[$i];
+               $Partido->MC_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="MI"){
                $Partido->MI_local_id=$UsuariosLocal[$i]->id;
-               $Partido->MI_local_red_id=$Rojas[$i];
-               $Partido->MI_local_yellow_id=$Amarillas[$i];
-               $Partido->MI_local_assistance_id=$Asistencias[$i];
-               $Partido->MI_local_goal_id=$Goles[$i];
+               $Partido->MI_local_red=$Rojas[$i];
+               $Partido->MI_local_yellow=$Amarillas[$i];
+               $Partido->MI_local_assistance=$Asistencias[$i];
+               $Partido->MI_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="MD"){
                $Partido->MD_local_id=$UsuariosLocal[$i]->id;
-               $Partido->MD_local_red_id=$Rojas[$i];
-               $Partido->MD_local_yellow_id=$Amarillas[$i];
-               $Partido->MD_local_assistance_id=$Asistencias[$i];
-               $Partido->MD_local_goal_id=$Goles[$i];
+               $Partido->MD_local_red=$Rojas[$i];
+               $Partido->MD_local_yellow=$Amarillas[$i];
+               $Partido->MD_local_assistance=$Asistencias[$i];
+               $Partido->MD_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="MCO"){
                $Partido->MCO_local_id=$UsuariosLocal[$i]->id;
-               $Partido->MCO_local_red_id=$Rojas[$i];
-               $Partido->MCO_local_yellow_id=$Amarillas[$i];
-               $Partido->MCO_local_assistance_id=$Asistencias[$i];
-               $Partido->MCO_local_goal_id=$Goles[$i];
+               $Partido->MCO_local_red=$Rojas[$i];
+               $Partido->MCO_local_yellow=$Amarillas[$i];
+               $Partido->MCO_local_assistance=$Asistencias[$i];
+               $Partido->MCO_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="EI"){
                $Partido->EI_local_id=$UsuariosLocal[$i]->id;
-               $Partido->EI_local_red_id=$Rojas[$i];
-               $Partido->EI_local_yellow_id=$Amarillas[$i];
-               $Partido->EI_local_assistance_id=$Asistencias[$i];
-               $Partido->EI_local_goal_id=$Goles[$i];
+               $Partido->EI_local_red=$Rojas[$i];
+               $Partido->EI_local_yellow=$Amarillas[$i];
+               $Partido->EI_local_assistance=$Asistencias[$i];
+               $Partido->EI_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="ED"){
                $Partido->ED_local_id=$UsuariosLocal[$i]->id;
-               $Partido->ED_local_red_id=$Rojas[$i];
-               $Partido->ED_local_yellow_id=$Amarillas[$i];
-               $Partido->ED_local_assistance_id=$Asistencias[$i];
-               $Partido->ED_local_goal_id=$Goles[$i];
+               $Partido->ED_local_red=$Rojas[$i];
+               $Partido->ED_local_yellow=$Amarillas[$i];
+               $Partido->ED_local_assistance=$Asistencias[$i];
+               $Partido->ED_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="DI"){
                $Partido->DI_local_id=$UsuariosLocal[$i]->id;
-               $Partido->DI_local_red_id=$Rojas[$i];
-               $Partido->DI_local_yellow_id=$Amarillas[$i];
-               $Partido->DI_local_assistance_id=$Asistencias[$i];
-               $Partido->DI_local_goal_id=$Goles[$i];
+               $Partido->DI_local_red=$Rojas[$i];
+               $Partido->DI_local_yellow=$Amarillas[$i];
+               $Partido->DI_local_assistance=$Asistencias[$i];
+               $Partido->DI_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="DD"){
                $Partido->DD_local_id=$UsuariosLocal[$i]->id;
-               $Partido->DD_local_red_id=$Rojas[$i];
-               $Partido->DD_local_yellow_id=$Amarillas[$i];
-               $Partido->DD_local_assistance_id=$Asistencias[$i];
-               $Partido->DD_local_goal_id=$Goles[$i];
+               $Partido->DD_local_red=$Rojas[$i];
+               $Partido->DD_local_yellow=$Amarillas[$i];
+               $Partido->DD_local_assistance=$Asistencias[$i];
+               $Partido->DD_local_goal=$Goles[$i];
            }
            if($Posicion[$i]=="DC"){
                $Partido->DC_local_id=$UsuariosLocal[$i]->id;
-               $Partido->DC_local_red_id=$Rojas[$i];
-               $Partido->DC_local_yellow_id=$Amarillas[$i];
-               $Partido->DC_local_assistance_id=$Asistencias[$i];
-               $Partido->DC_local_goal_id=$Goles[$i];
+               $Partido->DC_local_red=$Rojas[$i];
+               $Partido->DC_local_yellow=$Amarillas[$i];
+               $Partido->DC_local_assistance=$Asistencias[$i];
+               $Partido->DC_local_goal=$Goles[$i];
            }
 
 
@@ -324,107 +324,107 @@ class ClubesProController extends Controller
 
             if($PosicionVisitante[$i]=="PO"){
                 $Partido->PO_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->PO_visitor_red_id=$RojasVisitante[$i];
-                $Partido->PO_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->PO_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->PO_visitor_goal_id=$GolesVisitante[$i];
-                $Partido->PO_visitor_unbeaten_id=$UsuariosVisitante[$i];
+                $Partido->PO_visitor_red=$RojasVisitante[$i];
+                $Partido->PO_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->PO_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->PO_visitor_goal=$GolesVisitante[$i];
+                $Partido->PO_visitor_unbeaten=$UsuariosVisitante[$i];
 
             }
             if($Posicion[$i]=="DFC"){
                 $Partido->DFC_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->DFC_visitor_red_id=$RojasVisitante[$i];
-                $Partido->DFC_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->DFC_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->DFC_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->DFC_visitor_red=$RojasVisitante[$i];
+                $Partido->DFC_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->DFC_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->DFC_visitor_goal=$GolesVisitante[$i];
             }
 
             if($Posicion[$i]=="LTI"){
                 $Partido->LTI_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->LTI_visitor_red_id=$RojasVisitante[$i];
-                $Partido->LTI_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->LTI_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->LTI_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->LTI_visitor_red=$RojasVisitante[$i];
+                $Partido->LTI_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->LTI_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->LTI_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="LTD"){
                 $Partido->LTD_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->LTD_visitor_red_id=$RojasVisitante[$i];
-                $Partido->LTD_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->LTD_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->LTD_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->LTD_visitor_red=$RojasVisitante[$i];
+                $Partido->LTD_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->LTD_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->LTD_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="MCD"){
 
                 $Partido->MCD_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->MCD_visitor_red_id=$RojasVisitante[$i];
-                $Partido->MCD_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->MCD_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->MCD_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->MCD_visitor_red=$RojasVisitante[$i];
+                $Partido->MCD_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MCD_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MCD_visitor_goal=$GolesVisitante[$i];
 
             }
             if($Posicion[$i]=="MC"){
                 $Partido->MC_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->MC_visitor_red_id=$RojasVisitante[$i];
-                $Partido->MC_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->MC_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->MC_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->MC_visitor_red=$RojasVisitante[$i];
+                $Partido->MC_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MC_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MC_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="MI"){
                 $Partido->MI_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->MI_visitor_red_id=$RojasVisitante[$i];
-                $Partido->MI_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->MI_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->MI_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->MI_visitor_red=$RojasVisitante[$i];
+                $Partido->MI_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MI_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MI_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="MD"){
                 $Partido->MD_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->MD_visitor_red_id=$RojasVisitante[$i];
-                $Partido->MD_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->MD_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->MD_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->MD_visitor_red=$RojasVisitante[$i];
+                $Partido->MD_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MD_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MD_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="MCO"){
                 $Partido->MCO_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->MCO_visitor_red_id=$RojasVisitante[$i];
-                $Partido->MCO_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->MCO_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->MCO_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->MCO_visitor_red=$RojasVisitante[$i];
+                $Partido->MCO_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MCO_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MCO_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="EI"){
                 $Partido->EI_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->EI_visitor_red_id=$RojasVisitante[$i];
-                $Partido->EI_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->EI_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->EI_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->EI_visitor_red=$RojasVisitante[$i];
+                $Partido->EI_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->EI_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->EI_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="ED"){
 
                 $Partido->ED_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->ED_visitor_red_id=$RojasVisitante[$i];
-                $Partido->ED_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->ED_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->ED_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->ED_visitor_red=$RojasVisitante[$i];
+                $Partido->ED_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->ED_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->ED_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="DI"){
                 $Partido->DI_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->DI_visitor_red_id=$RojasVisitante[$i];
-                $Partido->DI_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->DI_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->DI_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->DI_visitor_red=$RojasVisitante[$i];
+                $Partido->DI_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->DI_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->DI_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="DD"){
                 $Partido->DD_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->DD_visitor_red_id=$RojasVisitante[$i];
-                $Partido->DD_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->DD_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->DD_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->DD_visitor_red=$RojasVisitante[$i];
+                $Partido->DD_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->DD_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->DD_visitor_goal=$GolesVisitante[$i];
             }
             if($Posicion[$i]=="DC"){
                 $Partido->DC_visitor_id=$UsuariosVisitante[$i]->id;
-                $Partido->DC_visitor_red_id=$RojasVisitante[$i];
-                $Partido->DC_visitor_yellow_id=$AmarillasVisitante[$i];
-                $Partido->DC_visitor_assistance_id=$AsistenciasVisitante[$i];
-                $Partido->DC_visitor_goal_id=$GolesVisitante[$i];
+                $Partido->DC_visitor_red=$RojasVisitante[$i];
+                $Partido->DC_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->DC_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->DC_visitor_goal=$GolesVisitante[$i];
             }
 
 

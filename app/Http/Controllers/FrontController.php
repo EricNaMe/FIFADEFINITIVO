@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\League;
 use App\Cup;
+use App\URLVideos;
+use App\Clips;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -305,9 +307,15 @@ $clubes=  ProTeam::all();
     }
 
 
+
+
+
     public function Clips()
     {
-        return view('Clips');
+        $comment=Clips::all();
+        $videos=URLVideos::all();
+
+        return view('Clips',['comment'=>$comment,'videos'=>$videos]);
     }
 
     public function Fase1PvsP()
