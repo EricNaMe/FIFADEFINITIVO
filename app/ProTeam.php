@@ -9,12 +9,20 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ProTeam extends Model
 {
+    use \Nicolaslopezj\Searchable\SearchableTrait;
+
     protected $fillable = [
         'name',
         'quote',
         'state',
         'status',
         'points',
+    ];
+
+    protected $searchable = [
+        'columns' => [
+            'name' => 1,
+        ],
     ];
 
     public function users()
