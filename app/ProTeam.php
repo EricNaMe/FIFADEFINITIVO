@@ -51,9 +51,9 @@ class ProTeam extends Model
     {
         $image = \Image::make($file);
         $image->fit(200,200);
-        $image->save('images/clubes-pro/'.$this->id.'_sm');
-        $image->fit(50,50);
         $image->save('images/clubes-pro/'.$this->id.'_md');
+        $image->fit(50,50);
+        $image->save('images/clubes-pro/'.$this->id.'_sm');
     }
 
     public function getImageUrl($size = 'sm')
