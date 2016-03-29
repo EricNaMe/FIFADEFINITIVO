@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LeagueProCalendar;
 use App\Notification;
 use App\ProCup;
 use App\ProLeague;
@@ -127,6 +128,9 @@ class ClubesProController extends Controller
         $EquipoLoc=input::get("EquipoLocalInput");
         $EquipoVis=input::get("EquipoVisitanteInput");
         $League=input::get("leagueInput");
+        $CalendarioInput=input::get("calendarioInput");
+
+        $calendario=LeagueProCalendar::find($CalendarioInput);
 
             $usuariosLocal=User::find($usuarioLocal);
             $usuariosVisitante=User::find($usuarioVisitante);
@@ -141,7 +145,7 @@ class ClubesProController extends Controller
 
 
 
-        return view('ReportarResultadosPro',['usuariosLocal'=>$usuariosLocal,'usuariosVisitante'=>$usuariosVisitante,'EquipoLocal'=>$EquipoLocal,'EquipoVisitante'=>$EquipoVisitante,'league'=>$league]);
+        return view('ReportarResultadosPro',['usuariosLocal'=>$usuariosLocal,'usuariosVisitante'=>$usuariosVisitante,'EquipoLocal'=>$EquipoLocal,'EquipoVisitante'=>$EquipoVisitante,'league'=>$league,'calendario'=>$calendario]);
 
     }
 
@@ -169,9 +173,11 @@ class ClubesProController extends Controller
         $Amarillas=Input::get('AmarillasSelect');
         $Rojas=Input::get('RojasSelect');
         $Asistencias=Input::get('AsistenciasSelect');
+        $CalendarioInput=Input::get('calendarioInput');
         $radio=Input::get('optradio');
 
 
+        $calendario=LeagueProCalendar::find($CalendarioInput);
 
 
 
@@ -446,19 +452,26 @@ class ClubesProController extends Controller
         $Partido->visitor_score=$marcadorVisitante;
 
         $Partido->save();
+        $calendario->match_id=$Partido->id;
+        $calendario->update();
+
+        return ('Inicio');
+
 
 
     }
 
-    public function ReportarPartidoMetodo($id,$id2,$id3)
+    public function ReportarPartidoMetodo($id,$id2,$id3,$id4)
     {
       $Equipo1=ProTeam::find($id);
       $Equipo2=ProTeam::find($id2);
       $league=ProLeague::find($id3);
+      $calendario=LeagueProCalendar::find($id4);
 
 
 
-        return view('ReportarPartidoPro',['Equipo1'=>$Equipo1,'Equipo2'=>$Equipo2,'league'=>$league]);
+
+        return view('ReportarPartidoPro',['Equipo1'=>$Equipo1,'Equipo2'=>$Equipo2,'league'=>$league,'calendario'=>$calendario]);
     }
 
     public function buscarClub(){

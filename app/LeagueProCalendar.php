@@ -28,4 +28,9 @@ class LeagueProCalendar extends Model
     {
         return $this->belongsTo('App\ProLeague');
     }
+
+    public function matchProTeam()
+    {
+        return $this->belongsTo('App\ProMatch','match_id');
+    }
 }
