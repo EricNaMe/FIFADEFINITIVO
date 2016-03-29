@@ -208,21 +208,7 @@
         </div>
         @endif
     </div>
-    <div style="background-color: white;  position:relative; top:0px; left:550px; width: 300px; ">
-        <ul id="ListaDatosPerfil2">
-            <li style="background-color: #080808;  ">
-                <a style="font-weight: bold; color: white; font-size: 20px;text-align: center;">Goleadores</a>
-            </li>
 
-            <li style=" ">
-                    <div id="LogoEquipo"
-                         style=" background:url(/images/Clausura/3.png); background-size:cover;"></div>
-                <a style="font-weight: bold;">Coche
-                </a>
-                <a style="float:right;">3</a>
-            </li>
-        </ul>
-    </div>
 </div>
 
 @endsection

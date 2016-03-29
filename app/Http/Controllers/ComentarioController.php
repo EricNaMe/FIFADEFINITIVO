@@ -109,8 +109,8 @@ class ComentarioController extends Controller
         $urlClip=  Input::get('url2');
         $urlClip=  str_replace(".com/", ".com/embed/", $urlClip);
         $Descripcion=Input::get('nameClip2');
-        if(URLVideos::find(1)){
-            $video=URLVideos::find(1);
+        if(URLVideos::find(2)){
+            $video=URLVideos::find(2);
 
             $video->url =$urlClip;
             $video->descripcion=$Descripcion;
@@ -132,8 +132,8 @@ class ComentarioController extends Controller
         $urlClip=  Input::get('url3');
         $urlClip=  str_replace(".com/", ".com/embed/", $urlClip);
         $Descripcion=Input::get('nameClip3');
-        if(URLVideos::find(1)){
-            $video=URLVideos::find(1);
+        if(URLVideos::find(3)){
+            $video=URLVideos::find(3);
 
             $video->url =$urlClip;
             $video->descripcion=$Descripcion;

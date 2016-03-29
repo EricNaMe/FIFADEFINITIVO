@@ -66,7 +66,7 @@
 
     <div style="background-color:whitesmoke; width:500px; height:600px;position:relative; left:200px; top:30px;">
 
-        <div style="background-color: green; height: 150px; width:150px; position: relative; top:20px; left:160px; background:url(/images/Clausura/{{$proTeam->id}}.png); background-size:cover;"></div>
+        <div style="background-color: green; height: 150px; width:150px; position: relative; top:20px; left:160px;  background:url({{$proTeam->getImageUrl()}}); background-size:cover;"></div>
 
 
         <div style="background-color: white;  position:relative; top:50px; left:0px; width: 500px; height: auto;">
