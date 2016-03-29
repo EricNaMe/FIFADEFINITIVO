@@ -41,7 +41,7 @@
 
 
 
-            <div style="height: 400px; border-radius: 10px; width: 300px; top:-300px; background-color: whitesmoke; left: 700px; position: relative;">
+            <div style="height: 440px; border-radius: 10px; width: 300px; top:-300px; background-color: whitesmoke; left: 700px; position: relative;">
 
                 <div style="left:20px;overflow-y: scroll; position:relative; top:20px;height: 300px; width: 260px;background-color: white;">
 
