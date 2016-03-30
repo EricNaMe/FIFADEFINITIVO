@@ -1,9 +1,7 @@
 @extends('template')
 
 @section('content')
-
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
-
         <ul id="ListaMenuLateral">
             <li><a href="Inicio">HOME</a></li>
             <li><a>ADMINISTRADOR</a>
@@ -33,7 +31,7 @@
             <li><a>CLUBES</a>
                 <ul>
                     <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
-                    <li><a href="clubes-pro/buscar">BUSCAR CLUB</a></li>
+                    <li><a href="#">BUSCAR CLUB</a></li>
                 </ul>
             </li>
             <li><a href="Transferencias">TRANSFERENCIAS</a>
@@ -52,48 +50,55 @@
 
     </div>
 
-    <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
-
-
-
-
-        <div style="width: 700px; height: 250px;border-radius: 10px; position:relative;top:100px;left:200px; background-color: whitesmoke;">
-
-            <div class="container">
-                <h2>Crear Copa PRO</h2>
-                <form action="" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
+    <div id="menuCentral" style="background:url(/images/middleMenu.jpeg);
+    background-size: cover;" >
+        <div style="text-align: center; width: 1000px;">
+            <div style="width: 500px; margin: 20px; padding: 20px; box-sizing: content-box;
+        height:80px;background-color: whitesmoke;
+        display: inline-block; position: relative">
+                <form action="" name="search" method="post" class="form-horizontal" role="form">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="InputIdEditar" value="{{Auth::User()->id}}"/>
-
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Nombre de la copa:</label>
+                        <label class="col-sm-2 control-label">Buscar:</label>
                         <div class="col-sm-5">
-                            <input class="form-control" name="name"  type="text" value="">
+                            <input class="form-control" name="search" type="text" value="{{$search}}">
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Número de equipos:</label>
-                        <div class="col-sm-5">
-                            <input class="form-control" name="JornadasInput" id="focusedInput" type="number" min="1" max="100" value="">
-                        </div>
-                    </div>
-
-                    <br></br>
-
-                    <div style="position:relative; left:500px;" class="container">
-                        <button  type="button" class="btn btn-primary">Reset</button>
+                    <div >
+                        <button type="button" class="btn btn-primary">Reset</button>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>
-
-
-
-
-
-
                 </form>
             </div>
+            <br/>
+            <div id="TablaPrimera" style="display: inline-block">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Equipo</th>
+                        <th>DT</th>
+                        <th>Pts</th>
+                    </tr>
+                    </thead>
+                    @foreach($pro_team_search as $proTeam)
+                        <tr>
+                            <td>
+                                <div id="PosicionTabla"> {{$proTeam->id}}</div>
+                            </td>
+                            <td style="text-align:left;">
+                                <div id="LogoEquipo"
+                                     style=" background:url({{$proTeam->getImageUrl()}}); background-size:cover;"></div>
+                                <a href="clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
+                            <td>{{$proTeam->getDT()?$proTeam->getDT()->user_name:''}}</td>
+                            <td>{{$proTeam->points}}</td>
 
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
 
-        </div
+    </div>
 @endsection
+

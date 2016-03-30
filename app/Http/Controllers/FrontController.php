@@ -312,14 +312,7 @@ class FrontController extends Controller
     }
 
 
-    public function BuscarClub(){
 
-        $clubes=Proteam::all();
-        $ligas= ProLeague::all();
-        $copas=ProCup::all();
-
-        return view('BuscarClub',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
-    }
 
     public function AgregarClubProCopa(){
         $ligas= ProLeague::all();

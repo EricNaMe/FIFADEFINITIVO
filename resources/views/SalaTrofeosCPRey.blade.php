@@ -77,7 +77,7 @@
             <li><a>CLUBES</a>
                 <ul>
                     <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
-                    <li><a href="BuscarClub">BUSCAR CLUB</a></li>
+                    <li><a href="clubes-pro/buscar">BUSCAR CLUB</a></li>
                 </ul>
             </li>
             <li><a href="Transferencias">TRANSFERENCIAS</a>

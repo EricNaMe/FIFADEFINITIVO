@@ -474,12 +474,15 @@ class ClubesProController extends Controller
         return view('ReportarPartidoPro',['Equipo1'=>$Equipo1,'Equipo2'=>$Equipo2,'league'=>$league,'calendario'=>$calendario]);
     }
 
-    public function buscarClub(){
-        
-        $Busqueda =  Input::get('BuscarInput');
-        $Resultado = DB::table('clubesproequipos')->where('nombreequipo',$Busqueda)->first();
-        
-        
+    public function buscar(){
+        $search = Input::get('search');
+        return view('clubes-pro.buscar',[
+            'clubes' => Proteam::all(),
+            'ligas' => ProLeague::all(),
+            'copas' => ProCup::all(),
+            'search' => Input::get('search'),
+            'pro_team_search' => ProTeam::search($search)->get(),
+        ]);
     }
 
 }
