@@ -3,18 +3,14 @@
 @section('content')
 
 
-<div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
+<div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
     <ul id="ListaMenuLateral">
         <li><a>1 VS 1</a>
 
         <li><a>DIVISIONES LIGA</a>
             <ul>
-                <li><a href="#">PRIMERA DIVISIÓN</a></li>
-                <li><a>SEGUNDA DIVISIÓN A</a></li>
-                <li><a>SEGUNDA DIVISIÓN B</a></li>
-                <li><a>TERCERA DIVISIÓN A</a></li>
-                <li><a>TERCERA DIVISIÓN B</a></li>
+
 
             </ul>
         </li>
@@ -22,14 +18,14 @@
 
         <li><a>COPA</a>
             <ul>
-                <li><a href="Fase1PvsP">FASE 1</a></li>
+                <li><a href="/Fase1PvsP">FASE 1</a></li>
                 <li><a>FASE 2</a></li>
                 <li><a>FASE 3</a></li>
 
             </ul>
         </li>
         <li><a href="#">SALA DE TROFEOS 1VS1</a></li>
-        <li><a href="Ranking1VS1">RANKING</a></li>
+        <li><a href="/Ranking1VS1">RANKING</a></li>
         <li><a>ADMINISTRADOR</a>
             <ul>
                 <li><a>CREAR TORNEO</a></li>
@@ -38,14 +34,14 @@
 
             </ul>
         </li>
-        <li><a href="Inicio">HOME</a></li>
+        <li><a href="/Inicio">HOME</a></li>
 
     </ul>
 
 
 </div>
 
-<div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover;" >
+<div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
 
     <!-- <div id="Menu1vs1" style="background-color:gray; position:relative; height: 100px; width:900px; left:100px; top:100px;">
@@ -67,116 +63,104 @@
 
     </div>
 
-    <select style="position:relative; left:850px;top:30px; ">
-        <option>Jornada 1</option>
-    </select>
+  <style>
+      th{
+          text-align: center;
+      }
 
+  </style>
 
-    <div id="TablaPrimera" style=" width:500px;position: absolute; top:18%; left:19%;">
+    <div id="TablaPrimera" style="max-height:800px; width:700px;position: absolute; top:18%; left:15%;">
 
 
         <table>
             <thead>
             <tr>
 
-                <th>Local</th>
+                <th >Local</th>
                 <th>Marcador</th>
                 <th>Visitante</th>
-
-
-            </tr>
-            </thead>
-
-            <thead>
-            <tr>
-
-
-                <th colspan="4" style="background-color: darkslategrey;">JORNADA 1, 18 DE FEBRERO DE 2016, 18:00</th>
+                <th>Detalles</th>
+                <th>Reportar</th>
 
             </tr>
             </thead>
 
+            <?php
+            $j=0;
+            $k=2;
 
-            <tr>
-                <td style=""><a>América</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">3</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">2</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>Cruz Azul</td>
-
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Toluca</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/3.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">2</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/4.png); background-size:cover;"></div>Querétaro</td>
+            ?>
 
 
 
-            </tr>
+            <?php $l=2;?>
 
-            <tr>
-                <td style=""><a>Santos Laguna</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/5.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">1</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">3</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/6.png); background-size:cover;"></div>Dorados</td>
-
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Pachuca</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/7.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/8.png); background-size:cover;"></div>Puebla</td>
+            @foreach($calendario as $Equipos)
+                @if($j==0)
+                    <thead>
+                    <tr>
 
 
+                        <th colspan="5" style="text-align: center; background-color: darkslategrey;">JORNADA 1</th>
 
-            </tr>
+                    </tr>
+                    </thead>
+                    <?php $j++ ?>
 
-            <tr>
-                <td style=""><a>Pumas</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/9.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">2</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">2</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/10.png); background-size:cover;"></div>Tigres UANL</td>
+                @endif
 
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>Chiapas</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/11.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">3</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">3</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/12.png); background-size:cover;"></div>Atlas</td>
-
+                @if($Equipos->match==null)
+                    <tr>
+                        <td style="">{{$Equipos->localTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
+                        <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">0</div></td>
+                        <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipos->visitorTeam->name}}</td>
+                        <td></td>
+                        <td><a href="/ReportarPartidoProMetodo/{{$Equipos->localTeam->id}}/{{$Equipos->visitorTeam->id}}/{{$Equipos->league_id}}/{{$Equipos->id}}">Reportar</a></td>
 
 
-            </tr>
+                    </tr>
+                @else
 
-            <tr>
-                <td style=""><a>Chivas</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/13.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">3</div></td>
-                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/14.png); background-size:cover;"></div>Tijuana</td>
-
-
-
-            </tr>
-
-            <tr>
-                <td style=""><a>León</a><div id="LogoEquipo" style="float:right; background:url(images/Clausura/15.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">2</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
-                <td style=""><div id="LogoEquipo" style="  float:left; background:url(images/Clausura/16.png); background-size:cover;"></div>Monterrey</td>
+                    <tr>
+                        <td style="">{{$Equipos->localProTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
+                        <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">{{$Equipos->matchProTeam->local_score}}</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">{{$Equipos->matchProTeam->visitor_score}}</div></td>
+                        <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}</td>
+                        <td><a href="/DetallesPartido">Detalles</a></td>
+                        <td><a >Ya Reportado</a></td>
 
 
+                    </tr>
+                @endif
 
-            </tr>
-            <tr>
-                <td style=""><a >Veracruz</a><div id="LogoEquipo" style="float:right; float:right;background:url(images/Clausura/17.png); background-size:cover;"></div></td>
-                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">1</div></td>
-                <td style=""><div id="LogoEquipo" style=" float:left; background:url(images/Clausura/18.png); background-size:cover;"></div>Morelia</td>
 
-            </tr>
+                @if($k==$Equipos->jornada)
+
+                    <thead>
+                    <tr>
+
+
+                        <th colspan="5" style="text-align:center;background-color: darkslategrey;">JORNADA {{$l}}</th>
+
+                    </tr>
+                    </thead>
+                    <?php $k++; $l++; ?>
+                @endif
+
+
+
+
+            @endforeach
+
+
+
 
         </table>
 
+
+
+
     </div>
+
 </div>
 @endsection

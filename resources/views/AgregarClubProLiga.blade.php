@@ -20,11 +20,7 @@
 
             <li><a>TORNEOS VIGENTES</a>
                 <ul>
-                    <li><a>PRIMERA DIVISIÃ“N</a></li>
-                    <li><a>SEGUNDA DIVISIÃ“N A</a></li>
-                    <li><a>SEGUNDA DIVISIÃ“N B</a></li>
-                    <li><a>TERCERA DIVISIÃ“N A</a></li>
-                    <li><a>TERCERA DIVISIÃ“N B</a></li>
+
 
                 </ul>
             </li>

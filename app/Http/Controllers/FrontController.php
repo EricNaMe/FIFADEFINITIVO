@@ -32,7 +32,7 @@ class FrontController extends Controller
     }
 
     public function storage(){
-          return view('storage');
+        return view('storage');
     }
 
     public function ProCalendario(){
@@ -41,43 +41,58 @@ class FrontController extends Controller
         $Equipo2=ProTeam::find(2);
         return view('ProCalendario',['Equipo1'=>$Equipo1,'Equipo2'=>$Equipo2]);
     }
-    
-    
+
+
     public function ProCrearLiga(){
 
-        return view('ProCrearLiga');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+        return view ('ProCrearLiga',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
-    
+
     public function ProCrearCopa(){
 
-        return view('ProCrearCopa');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+        return view ('ProCrearCopa',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
     public function Equipo_CP(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
-        return view('Equipo_CP');
+        return view ('Equipo_CP',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function PerfilClubes(){
 
         return view('PerfilClubes');
     }
-    
-       public function PerfilNoAutenticadoClub(){
+
+    public function PerfilNoAutenticadoClub(){
 
         return view('PerfilNoAutenticadoClub');
     }
 
 
     public function CrearCopa(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
-        return view('CrearCopa');
+        return view ('CrearCopa',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function CrearLiga(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
-        return view('CrearLiga');
+        return view ('CrearLiga',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function AgregarTeamCopa(){
@@ -89,12 +104,12 @@ class FrontController extends Controller
 
         return view('AgregarTeamLiga');
     }
-    
-    
+
+
     public function EliminarEquiposPvsP(){
 
         $clubes=Team::All();
-        
+
         return view('EliminarEquiposPvsP',['clubes'=>$clubes]);
     }
 
@@ -104,16 +119,19 @@ class FrontController extends Controller
 
 
     public function AgregarClubProLiga() {
-        
         $clubes=Proteam::all();
-        return view('AgregarClubProLiga',['clubes' => $clubes]);
-    }
-    
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
-    
-       public function ModificarLigaPro(){
- $clubes=Proteam::all();
- $ligas= ProLeague::all();
+        return view ('AgregarClubProLiga',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+
+    }
+
+
+
+    public function ModificarLigaPro(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
         $copas=ProCup::all();
 
         return view('ModificarLigaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
@@ -143,7 +161,7 @@ class FrontController extends Controller
 
         return view('ModificarLiga',['ligas'=>$ligas,'copas'=>$copas]);
     }
-    
+
 
     public function EditarPerfil(){
 
@@ -165,64 +183,104 @@ class FrontController extends Controller
 
     public function PerfilDetalles(){
 
-        
+
         return view('PerfilDetalles');
+    }
+
+    public function SalaTrofeo1vs1(){
+
+
+        return view('SalaTrofeo1vs1');
+    }
+
+    public function SalaTrofeo1vs1Div(){
+
+
+        return view('SalaTrofeo1vs1Div');
     }
 
 
     public function SalaTrofeosCP(){
 
 
-        return view('SalaTrofeosCP');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('SalaTrofeosCP',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
     public function SalaTrofeosCPAsi(){
 
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
-        return view('SalaTrofeosCPAsi');
+        return view('SalaTrofeosCPAsi',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
 
     public function SalaTrofeosCPPor(){
 
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
-        return view('SalaTrofeosCPPor');
+        return view('SalaTrofeosCPPor',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
     public function SalaTrofeosCPRey(){
 
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
-        return view('SalaTrofeosCPRey');
+        return view('SalaTrofeosCPRey',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function SalaTrofeosCPGol(){
 
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
-        return view('SalaTrofeosCPGol');
+        return view('SalaTrofeosCPGol',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
     public function Transferencias(){
 
 
-        return view('Transferencias');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('Transferencias',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
     public function TransferenciasBuscarE(){
 
 
-        return view('TransferenciasBuscarE');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('TransferenciasBuscarE',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
     public function TransferenciasBuscarJ(){
 
 
-        return view('TransferenciasBuscarJ');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('TransferenciasBuscarJ',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
@@ -234,8 +292,8 @@ class FrontController extends Controller
 
     public function LigaPro(){
 
-         $clubes=Proteam::all();
- $ligas= ProLeague::all();
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
         $copas=ProCup::all();
         return view('LigaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
@@ -247,30 +305,36 @@ class FrontController extends Controller
         $copas=ProCup::all();
         return view('CopaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
-    
-        public function UnirteClub(){
+
+    public function UnirteClub(){
 
         return view('UnirteClub');
     }
-    
-    
-     public function BuscarClub(){
 
-        return view('BuscarClub');
-    }
-    
-      public function AgregarClubProCopa(){
 
-        return view('AgregarClubProCopa');
+    public function BuscarClub(){
+
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('BuscarClub',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
-    
-    
-    
-    
-    
-    
-      public function ClubDetalles(){
-$clubes=  ProTeam::all();
+
+    public function AgregarClubProCopa(){
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('AgregarClubProCopa',['ligas'=>$ligas,'copas'=>$copas]);
+    }
+
+
+
+
+
+
+    public function ClubDetalles(){
+        $clubes=  ProTeam::all();
         return view('ClubDetalles',['clubes' => $clubes]);
     }
 
@@ -291,7 +355,7 @@ $clubes=  ProTeam::all();
     public function DetallesPartido()
     {
         return view('DetallesPartido');
-        
+
     }
 
     public function Liga()
@@ -353,7 +417,11 @@ $clubes=  ProTeam::all();
 
     public function RankingCP()
     {
-        return view('RankingCP');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('RankingCP',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function edit($id)
@@ -363,7 +431,7 @@ $clubes=  ProTeam::all();
 
     public function Reglamento()
     {
-     return view('Reglamento');
+        return view('Reglamento');
     }
 
     public function Divisiones()

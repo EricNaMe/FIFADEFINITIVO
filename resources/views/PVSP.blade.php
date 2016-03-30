@@ -41,7 +41,7 @@
                 
                 </ul>
                 </li>
-              <li><a href="#">SALA DE TROFEOS 1VS1</a></li>
+              <li><a href="SalaTrofeo1vs1">SALA DE TROFEOS 1VS1</a></li>
               <li><a href="Ranking1VS1">RANKING</a></li>
 
 
@@ -52,16 +52,25 @@
 
         <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover;" >
 
-            <div>
-                <ul id="MenuPerfil" style="width: 410px;">
+            <div style="margin-left: 70px;">
+                <ul id="MenuPerfil" style=" width: 260px;">
                     <li id="ListaPerfil"><a href="#">Tabla general</a></li>
-                    <li id="ListaPerfil"><a class="active" href="PvsPCalendario">Calendario</a></li>
+
                     <li id="ListaPerfil"><a class="active" href="#">Campeón</a></li>
 
 
                 </ul>
 
             </div>
+
+            <style>
+                th {
+                    text-align: center;
+                }
+                td{
+                    text-align: center;
+                }
+            </style>
 
             <div id="TablaPrimera" style="position: absolute; top:20%; left:10%;">
 

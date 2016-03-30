@@ -11,59 +11,57 @@
 
     }
     </script>
+    <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
-        <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
-            
-          <ul id="ListaMenuLateral">
-              <li><a>CLUBES PRO</a>
-               
-                <li><a>TORNEOS VIGENTES</a>
-               <ul>
-                <li><a>PRIMERA DIVISIÓN</a></li>
-                <li><a>SEGUNDA DIVISIÓN A</a></li>
-                <li><a>SEGUNDA DIVISIÓN B</a></li>
-                <li><a>TERCERA DIVISIÓN A</a></li>
-                <li><a>TERCERA DIVISIÓN B</a></li>
-              
+        <ul id="ListaMenuLateral">
+            <li><a href="Inicio">HOME</a></li>
+            <li><a>ADMINISTRADOR</a>
+                <ul>
+                    <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
+                    <li><a href="#">CREAR COPA</a></li>
+                    <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
+                    <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
                 </ul>
-                </li>
-                
-                
-                <li><a>CLUBES</a>
-            <ul>
-                <li><a>BUSCAR CLUB</a></li>
-                <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
-            
-              
+            </li>
+            <li><a>LIGAS VIGENTES</a>
+                <ul>
+                    @foreach($ligas as $liga)
+                        <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
+
+                    @endforeach
                 </ul>
-                </li>
-                
-                <li><a>JUGADORES</a>
-             
-                </li>
-                
-                 <li><a>TRANSFERENCIAS</a>
-             
-                </li>
-              
-                
-                 <li><a href="/RankingCP">RANKING POR CLUBES</a>
-                       <li><a>ADMINISTRADOR</a>
-                    <ul>
-                <li><a>CREAR LIGA</a></li>
-                <li><a>CREAR COPA</a></li>
-                    </ul>
-                 </li>
-              <li><a href="Inicio">HOME</a></li>
-             
-                </li>
-                
-                
-                
-            </ul>
-            
-            
-        </div>
+            </li>
+            <li><a>COPAS VIGENTES</a>
+                <ul>
+                    @foreach($copas as $copa1)
+                        <li><a href="EncontrarCopa/{{$copa1->id}}">{{$copa1->name}}</a></li>
+
+                    @endforeach
+                </ul>
+            </li>
+            <li><a>CLUBES</a>
+                <ul>
+                    <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
+                    <li><a href="BuscarClub">BUSCAR CLUB</a></li>
+                </ul>
+            </li>
+            <li><a href="Transferencias">TRANSFERENCIAS</a>
+            </li>
+            <li><a href="RankingCP">RANKING POR CLUBES</a>
+            </li>
+            <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
+            </li>
+            <li><a href="Equipo_CP">EQUIPO DE LA TEMPORADA</a>
+            </li>
+            <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a>
+            </li>
+        </ul>
+
+
+    </div>
+
+
+
     <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
 
@@ -78,7 +76,7 @@
             
                <div style="position:relative; left:50px;"class="form-group">
                 <label class="col-sm-2 control-label">Copa:</label>
-                <div class="col-sm-4">
+                <div class="col-sm-4" style="margin-left: -100px;">
                     <input class="form-control" name="JornadasInput" id="focusedInput" type="text" disabled value="{{$copa->name}}">
                 </div>
             </div>
@@ -122,7 +120,7 @@
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="InputIdLeague" value="{{$copa->id}}"/>
-            <input type="text" id="InputIdClub" name="InputIdClub" value=""/>
+            <input type="hidden" id="InputIdClub" name="InputIdClub" value=""/>
 
 
             <div style="position:relative; top:-50px; left:550px;" class="container">

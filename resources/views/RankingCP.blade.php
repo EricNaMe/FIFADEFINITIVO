@@ -22,36 +22,46 @@ and open the template in the editor.
 
     <ul id="ListaMenuLateral">
         <li><a href="Inicio">HOME</a></li>
-
-        <li><a>TORNEOS VIGENTES</a>
-
-        </li>
-
-
-        <li><a>CLUBES</a>
+        <li><a>ADMINISTRADOR</a>
             <ul>
-                <li><a>BUSCAR CLUB</a></li>
-                <li><a href="CrearClub">CREAR CLUB</a></li>
-
-
+                <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
+                <li><a href="/ProCrearCopa">CREAR COPA</a></li>
+                <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
+                <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
             </ul>
         </li>
+        <li><a>LIGAS VIGENTES</a>
+            <ul>
+                @foreach($ligas as $liga)
+                    <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
 
-
-
+                @endforeach
+            </ul>
         </li>
+        <li><a>COPAS VIGENTES</a>
+            <ul>
+                @foreach($copas as $copa)
+                    <li><a href="EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
 
-        <li href="Transferencias"><a>TRANSFERENCIAS</a>
-
+                @endforeach
+            </ul>
         </li>
-
-        <li><a href="#">RANKING POR CLUBES</a></li>
-
-        <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a></li>
-        <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a></li>
-
-
-
+        <li><a>CLUBES</a>
+            <ul>
+                <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
+                <li><a href="BuscarClub">BUSCAR CLUB</a></li>
+            </ul>
+        </li>
+        <li><a href="Transferencias">TRANSFERENCIAS</a>
+        </li>
+        <li><a href="#">RANKING POR CLUBES</a>
+        </li>
+        <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
+        </li>
+        <li><a href="Equipo_CP">EQUIPO DE LA TEMPORADA</a>
+        </li>
+        <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a>
+        </li>
     </ul>
 
 

@@ -23,11 +23,7 @@
 
         <li><a>TORNEOS VIGENTES</a>
             <ul>
-                <li><a>PRIMERA DIVISIÓN</a></li>
-                <li><a>SEGUNDA DIVISIÓN A</a></li>
-                <li><a>SEGUNDA DIVISIÓN B</a></li>
-                <li><a>TERCERA DIVISIÓN A</a></li>
-                <li><a>TERCERA DIVISIÓN B</a></li>
+
 
             </ul>
         </li>
@@ -74,27 +70,21 @@
 
 
 
-    <div style="width: 700px; height: 750px;border-radius: 10px; position:relative;top:100px;left:200px; background-color: whitesmoke;">
+    <div style="width: 700px; height: 350px;border-radius: 10px; position:relative;top:100px;left:200px; background-color: whitesmoke;">
 
         <div class="container">
             <h2>Asignar Equipos</h2>
 
 
 
-            <div style="position:relative; left:50px;"class="form-group">
-                <label style="left:26px"class="col-sm-1 control-label">Liga:</label>
-                <div class="col-sm-4">
-                    <input class="form-control" name="JornadasInput" id="focusedInput" type="text" disabled value="">
-                </div>
-            </div>
 
 
 
 
             <br></br>
 
-            <div style="position:relative; top:500px; left:500px;" class="container">
-                <form action="//clubes-pro">
+            <div style="position:relative; top:200px; left:300px;" class="container">
+                <form action="PVSP">
                     <button class="btn btn-primary">Enviar</button>
                 </form>
             </div>
@@ -123,16 +113,14 @@
                         </select>
                     </div>
                 </div>
-                <div style="position:relative; top:-50px; left:550px;" class="container">
-                    <button type="submit" class="btn btn-primary">Agregar</button>
-                </div>
+
             </form>
             
                      <form action="EliminarTeamLiga" name="FormaAgregarClubaLiga2" method="post" class="form-horizontal" role="form">
             
  <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <input type="hidden" name="InputIdLeague" value=""/>
-  <input type="text" id="InputIdClub" name="InputIdClub" value=""/>
+  <input type="hidden" id="InputIdClub" name="InputIdClub" value=""/>
   
         
          <div style="position:relative; top:-50px; left:550px;" class="container">

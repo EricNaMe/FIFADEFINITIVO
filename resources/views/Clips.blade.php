@@ -230,7 +230,7 @@
             </content>
         </article>
 
-        <div style="height: 400px; border-radius: 10px; width: 300px; top: -1570px; background-color: whitesmoke; left: 650px; position: relative;">
+        <div style="height: 400px; border-radius: 10px; width: 300px; top:-1850px;background-color: whitesmoke; left: 750px; position: relative;">
 
             <div style="left:20px;overflow-y: scroll; position:relative; top:20px;height: 300px; width: 260px;background-color: white;">
 

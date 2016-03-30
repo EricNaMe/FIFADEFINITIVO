@@ -85,7 +85,8 @@ Route::get('TransferenciasBuscarE','FrontController@TransferenciasBuscarE');
 Route::get('TransferenciasBuscarJ','FrontController@TransferenciasBuscarJ');
 Route::get('ReportarPartidoPro','FrontController@ReportarPartidoPro');
 Route::get('ReportarResultadosPro','FrontController@ReportarResultadosPro');
-
+Route::get('SalaTrofeo1vs1','FrontController@SalaTrofeo1vs1');
+Route::get('SalaTrofeo1vs1Div','FrontController@SalaTrofeo1vs1Div');
 
 
 
@@ -164,6 +165,8 @@ Route::post('ModificarCopa','PlayerController@ModificarCopa');
 Route::post('EliminarClubLiga','PlayerController@BorrarClubLiga');
 Route::post('EliminarClubCopa','PlayerController@BorrarClubCopa');
 
+Route::post('CrearCalendario','TorneoController@crearCalendario');
+Route::get('EncCalendario/{League}','TorneoController@buscarCalendario');
 
 Route::post('videoSave1','ComentarioController@videoYoutube1');
 Route::post('videoSave2','ComentarioController@videoYoutube2');

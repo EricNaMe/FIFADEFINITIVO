@@ -25,11 +25,7 @@
 
         <li><a>TORNEOS VIGENTES</a>
             <ul>
-                <li><a>PRIMERA DIVISIÓN</a></li>
-                <li><a>SEGUNDA DIVISIÓN A</a></li>
-                <li><a>SEGUNDA DIVISIÓN B</a></li>
-                <li><a>TERCERA DIVISIÓN A</a></li>
-                <li><a>TERCERA DIVISIÓN B</a></li>
+
 
             </ul>
         </li>
@@ -135,15 +131,28 @@
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="InputIdLeague" value="{{$league->id}}"/>
-                <input type="text" id="InputIdClub" name="InputIdClub" value=""/>
+                <input type="hidden" id="InputIdClub" name="InputIdClub" value=""/>
 
 
-                <div style="position:relative; top:-50px; left:550px;" class="container">
+                <div style="" class="col-md-2 col-lg-offset-2">
                     <button type="submit" class="btn btn-primary">Borrar</button>
                 </div>
             </form>
 
+            <form action="CrearCalendario" name="FormaAgregarClubaLiga2" method="post" class="form-horizontal"
+                  role="form">
 
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="InputIdLeague" value="{{$league->id}}"/>
+
+
+
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-primary">CrearCalendario</button>
+                </div>
+            </form>
+
+            <br></br>
 
             <div style="position:relative; background-color: white; height:300px; width:390px; left:140px;">
                 <?php $i=1; ?>

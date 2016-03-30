@@ -43,6 +43,11 @@
 
     @include('partial.navbar')
 
+    <style>
+        th{
+            text-align: center;
+        }
+    </style>
     <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
         <div>
             <ul id="MenuPerfil" style="position:relative; left:170px;width: 230px;">
@@ -66,7 +71,7 @@
                             <div id="PosicionTabla">
                                 {{$i}}</div>
                         </td>
-                        <td style=""><div id="LogoEquipo" style=" background:url({{$club->getImageUrl()}}); background-size:cover;">
+                        <td style="text-align: left;"><div id="LogoEquipo" style=" background:url({{$club->getImageUrl()}}); background-size:cover;">
                             </div>
                             <a href="/clubes-pro/{{$club->id}}">
                                 {{$club->name}}

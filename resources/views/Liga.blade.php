@@ -52,7 +52,7 @@
     <div>
         <ul id="MenuPerfil" style="width: 580px;">
             <li id="ListaPerfil"><a href="#">Tabla general</a></li>
-            <li id="ListaPerfil"><a class="active" href="/ProCalendario">Calendario</a></li>
+            <li id="ListaPerfil"><a class="active" href="/EncCalendario/{{$league->id}}">Calendario</a></li>
             <li id="ListaPerfil"><a class="active" href="#">Estadísticas</a></li>
             <li id="ListaPerfil"><a href="#">Campeones</a></li>
 

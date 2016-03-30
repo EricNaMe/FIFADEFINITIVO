@@ -43,12 +43,12 @@
 
 
 
-            <li><a href="Transferencias">TRANSFERENCIAS</a>
+            <li><a href="/Transferencias">TRANSFERENCIAS</a>
 
             </li>
 
 
-            <li><a href="RankingCP">RANKING POR CLUBES</a>
+            <li><a href="/RankingCP">RANKING POR CLUBES</a>
 
 
 
@@ -61,28 +61,34 @@
 
     </div>
 
-        <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
+    <style>
+        th{
+            text-align: center;
+        }
+        </style>
+
+    <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
 
-            <div>
-                <ul id="MenuPerfil" style="width: 580px;">
-                    <li id="ListaPerfil"><a href="#">Tabla general</a></li>
-                    <li id="ListaPerfil"><a class="active" href="/ProCalendarioEnc/{{$league->id}}">Calendario</a></li>
-                    <li id="ListaPerfil"><a class="active" href="#">Estadísticas</a></li>
-                    <li id="ListaPerfil"><a href="#">Campeones</a></li>
+        <div>
+            <ul id="MenuPerfil" style="width: 580px;">
+                <li id="ListaPerfil"><a href="#">Tabla general</a></li>
+                <li id="ListaPerfil"><a class="active" href="/ProCalendarioEnc/{{$league->id}}">Calendario</a></li>
+                <li id="ListaPerfil"><a class="active" href="#">Estadísticas</a></li>
+                <li id="ListaPerfil"><a href="#">Campeones</a></li>
 
-                </ul>
+            </ul>
 
-            </div>
-            
-            
-      
-                
-               <span style="background-color: darkslategrey; height:60px; width: auto;padding: 10px; position:relative; display: inline-block; left:420px;"> <a style="padding-top:5px;font-size: 50px;color:white; font-family: sans-serif; font-weight: bold;">{{$league->name}}</a></span>
-                
-        
-                 
-                  <div id="TablaPrimera" style="position: absolute; top:22%; left:14%;">
+        </div>
+
+
+
+
+        <span style="background-color: darkslategrey; height:70px; width: auto;padding: 10px; position:relative; display: inline-block; left:420px;"> <a style="padding-top:5px;font-size: 50px;color:white; font-family: sans-serif; font-weight: bold;">{{$league->name}}</a></span>
+
+
+
+        <div id="TablaPrimera" style="position: absolute; top:25%; left:14%;">
             <table>
                 <thead>
                 <tr>
@@ -100,30 +106,30 @@
                 </thead>
                 <?php $i=1; ?>
 
-            @foreach($league->proTeams as $proTeam)
-               
-                
-
-                <tr>
-                    <td><div id="PosicionTabla">   {{$i}}</div></td>
-                    <td style="text-align:left;"><div id="LogoEquipo" style=" background:url(/images/Clausura/{{$proTeam->id}}.png); background-size:cover;"></div><a href="/clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                @foreach($league->proTeams as $proTeam)
 
 
-                    <?php $i++; ?>
-                </tr>
+
+                    <tr>
+                        <td><div id="PosicionTabla">   {{$i}}</div></td>
+                        <td style="text-align:left;"><div id="LogoEquipo" style=" background:url({{$proTeam->getImageUrl()}});  background-size:cover;"></div><a href="/clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
+                        <td>{{$proTeam->points}}</td>
+                        <td>{{$proTeam->JJ}}</td>
+                        <td>{{$proTeam->JG}}</td>
+                        <td>{{$proTeam->JE}}</td>
+                        <td>{{$proTeam->JP}}</td>
+                        <td>{{$proTeam->GF}}</td>
+                        <td>{{$proTeam->GC}}</td>
+                        <td>{{$DF=$proTeam->GF-$proTeam->GC}}</td>
+
+
+                        <?php $i++; ?>
+                    </tr>
                 @endforeach
             </table>
         </div>
-            
-        </div>
-        
+
+    </div>
+
 
 @endsection
