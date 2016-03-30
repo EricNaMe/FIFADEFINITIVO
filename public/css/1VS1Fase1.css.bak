@@ -181,10 +181,9 @@ ul.subnavegador li{
 	-webkit-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
 	-moz-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
 	-o-box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
-	box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999; 
-        width: 180px;
-        height: 39px;
-       
+	box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #156785, 0px 10px 5px #999;
+        width: 150px;
+        height: 30px;
         
 }
 
@@ -309,27 +308,6 @@ background: linear-gradient(to right, white, black); /* Standard syntax */
 	overflow: hidden;
 }
 
-.marcador{
-    color: red;
-	font-family: fantasy;
-	font-size:20px;
-        font-weight: bold;       
-        text-align: left;   
-        -webkit-text-stroke: 1px white;
-        background: black;
-        text-align: center;
-        padding: 6px;
-        -webkit-border-top-right-radius: 5px;
-	-webkit-border-bottom-right-radius: 5px;
-	-moz-border-radius-topright: 5px;
-	-moz-border-radius-bottomright: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	-webkit-box-shadow: inset 0px 1px 0px #05050F, 0px 5px 0px 0px #000000, 0px 10px 5px #000;
-	-moz-box-shadow: inset 0px 1px 0px #05050F, 0px 5px 0px 0px #000000, 0px 10px 5px #000;
-	-o-box-shadow: inset 0px 1px 0px #05050F, 0px 5px 0px 0px #000000, 0px 10px 5px #000;
-	box-shadow: inset 0px 1px 0px #05050F, 0px 5px 0px 0px #000000, 0px 10px 5px #000;
-        width: 30px;
-        
-      
+table {
+    border-collapse: collapse;
 }

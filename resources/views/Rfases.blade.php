@@ -32,93 +32,54 @@ and open the template in the editor.
   }    
 
         </script>
-       
+        @extends('template')
+
+        @section('content')
         
         <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
             
           <ul id="ListaMenuLateral">
-              <li><a>1 VS 1</a>
-               
+                            <li><a href="Inicio">HOME</a></li>
+              <li><a>ADMINISTRADOR</a>
+                  <ul>
+                      <li><a href="CrearLiga">CREAR LIGA</a></li>
+                      <li><a href="CrearCopa">CREAR COPA</a></li>
+                      <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
+                      <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
+                      <li><a href="ModificarLiga">MODIFICAR LIGA</a></li>
+                      <li><a href="ModificarCopa">MODIFICAR COPA</a></li>
+
+
+                  </ul>
+              </li>
                 <li><a>DIVISIONES LIGA</a>
                 <ul>
-                <li><a>PRIMERA DIVISIÓN</a></li>
-                <li><a>SEGUNDA DIVISIÓN A</a></li>
-                <li><a>SEGUNDA DIVISIÓN B</a></li>
-                <li><a>TERCERA DIVISIÓN A</a></li>
-                <li><a>TERCERA DIVISIÓN B</a></li>
-              
+                <li><a href="#">PRIMERA DIVISIÓN</a></li>
+                    @foreach($ligas as $liga)
+                        <li><a href="EncontrarLigaPlay/{{$liga->id}}">{{$liga->name}}</a></li>
+
+                    @endforeach
+
                 </ul>
                 </li>
-                
-                
+
+
                 <li><a>COPA</a>
                 <ul>
-                <li><a href="Fase1PvsP">FASE 1</a></li>
-                <li><a href="Fases">FASE 2</a></li>
-                <li><a>FASE 3</a></li>
-                
+                <li><a href="Fase1PvsP">ELIMINATORIAS</a></li>
+                    @foreach($copas as $copa)
+                <li><a href="EncontrarCopaPlay/{{$copa->id}}">{{$copa->name}}</a></li>
+
+                    @endforeach
+                <li><a href="Fases">PRELIMINARES 1</a></li>
                 </ul>
                 </li>
-                <li><a href="#.php">SALA DE TROFEOS 1VS1</a></li>
-                <li><a href="Ranking1VS1">RANKING</a></li>
-                
-                <li><a>ADMINISTRADOR</a>
-                <ul>
-                <li><a>CREAR TORNEO</a></li>
-                <li><a>CREAR COPA</a></li>
-                
-                
-                
-                </ul>
-
-                </li>
-              <li><a href="Inicio">HOME</a></li>
-                
-            </ul>
-            
-            
-        </div>
-
-
-
-
-
-        <div id="menuSuperior" style="background:url(/images/topMenu.jpeg); background-size: cover; ">
-
-            <ul id="ListaMenuSuperior" style="margin-left: 400px;">
-                <li><a href="CLUBESPRO">CLUBES PRO</a></li>
-                <li><a href="PVSP">1 VS 1</a></li>
-                <li><a href="Reglamento">REGLAMENTO</a></li>
-                <li><a href="Clips">CLIPS</a></li>
-                <li><a href="Noticias">NOTICIAS</a></li>
-                @if (Auth::check())
-                    <li id="LoginMenu"><a href="#" ><div id="LogoEquipo" style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatarpic-l.png); background-size:cover;"></div>{{Auth::User()->user_name}}</a>
-                        <ul id="SubMenu">
-
-                            <li style="font-size: 12px; "><a href="Perfil" >Ver Perfil</a></li>
-                            <li style="font-size: 12px; "><a href="EditarPerfil" >Editar Perfil</a></li>
-                            <li style="font-size: 12px; "><a href="/auth/logout" >Cerrar sesión</a></li>
-
-
-                        </ul>
-                    </li>
-                @else
-                    <li id="LoginMenu"><a href="/auth/login" >LOGIN</a>
-
-
-                        <ul id="SubMenu">
-                            <li style="font-size: 12px; "><a href="/auth/login" >Iniciar Sesión</a></li>
-                            <li style="font-size: 12px; margin-left: 5px; "><a href="/auth/register" >Registrarse</a></li>
-
-                        </ul>
-                    </li>
-                @endif
-
-            </ul>
+              <li><a href="SalaTrofeo1vs1">SALA DE TROFEOS 1VS1</a></li>
+              <li><a href="Ranking1VS1">RANKING</a></li>
 
 
         </div>
-
+ 
         <div id="menuCentral" style="background:url(/images/balon.png); background: no-repeat;" >              
            
          <div style="margin-top: 25px; margin-left: 250px;"><img src="images/Resultados.png" width="500"></div>

@@ -200,7 +200,9 @@ background: linear-gradient(to right, white, black); /* Standard syntax */
       transition-timing-function: linear, linear;
       transition-delay: 0s ,0.5s, 0.5s;
       -webkit-border-radius: 20px 20px;
-      -webkit-border-radius: 20px 20px;
+      -webkit-border-radius: 20px 20px; 
+      
+   
    }
    
    .Info
@@ -209,8 +211,12 @@ background: linear-gradient(to right, white, black); /* Standard syntax */
     font-size: 20px;
     font-family: Arial;
     text-align: left;
-    color: #333;
+    color: maroon;
     font-weight: bolder;
+}
+.Info:hover
+{
+    color: black
 }
    .Info2
 {
@@ -218,8 +224,12 @@ background: linear-gradient(to right, white, black); /* Standard syntax */
     font-size: 20px;
     font-family: Arial;
     text-align: left;
-    color: #333;
+    color: maroon;
     font-weight: bolder;
+}
+.Info2:hover
+{
+    color: black
 }
 .star
 {

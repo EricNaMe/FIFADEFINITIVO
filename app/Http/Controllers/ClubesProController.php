@@ -32,7 +32,10 @@ class ClubesProController extends Controller
     }
 
     public function getCrear(){
-        return view('clubes-pro.crear');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();        
+        return view('clubes-pro.crear',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     /*

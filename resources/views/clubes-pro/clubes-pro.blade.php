@@ -1,11 +1,11 @@
 @extends('template')
 
 @section('content')
-    <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
+<div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
     <ul id="ListaMenuLateral">
-      <li><a>CLUBES PRO</a>
+      
       <li><a href="Inicio">HOME</a></li>
-      <li><a>ADMINISTRADOR</a>
+     <li><a>ADMINISTRADOR</a>
           <ul>
               <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
               <li><a href="/ProCrearCopa">CREAR COPA</a></li>
@@ -32,12 +32,10 @@
         <li><a>CLUBES</a>
     <ul>
         <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
+         <li><a href="BuscarClub">BUSCAR CLUB</a></li>
         </ul>
         </li>
-         <li><a href="Transferencias">TRANSFERENCIAS</a>
-        </li>
-         <li><a href="RankingCP">RANKING POR CLUBES</a>
-        </li>
+         <li><a href="Transferencias">DATOS Y ESTADISTICAS</a>    
     </ul>
     </div>
 

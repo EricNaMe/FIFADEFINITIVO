@@ -45,60 +45,57 @@ and open the template in the editor.
         <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
             
           <ul id="ListaMenuLateral">
-              <li><a>1 VS 1</a>
-               
+                           <li><a href="Inicio">HOME</a></li>
+              <li><a>ADMINISTRADOR</a>
+                  <ul>
+                      <li><a href="CrearLiga">CREAR LIGA</a></li>
+                      <li><a href="CrearCopa">CREAR COPA</a></li>
+                      <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
+                      <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
+                      <li><a href="ModificarLiga">MODIFICAR LIGA</a></li>
+                      <li><a href="ModificarCopa">MODIFICAR COPA</a></li>
+
+
+                  </ul>
+              </li>
                 <li><a>DIVISIONES LIGA</a>
                 <ul>
-                <li><a>PRIMERA DIVISIÓN</a></li>
-                <li><a>SEGUNDA DIVISIÓN A</a></li>
-                <li><a>SEGUNDA DIVISIÓN B</a></li>
-                <li><a>TERCERA DIVISIÓN A</a></li>
-                <li><a>TERCERA DIVISIÓN B</a></li>
-              
+                <li><a href="#">PRIMERA DIVISIÓN</a></li>
+                    @foreach($ligas as $liga)
+                        <li><a href="EncontrarLigaPlay/{{$liga->id}}">{{$liga->name}}</a></li>
+
+                    @endforeach
+
                 </ul>
                 </li>
-                
-                
+
+
                 <li><a>COPA</a>
                 <ul>
-                <li><a href="Fase1PvsP">FASE 1</a></li>
-                <li><a href="Fases">FASE 2</a></li>
-                <li><a>FASE 3</a></li>
-                
-                </ul>
-                </li>
-                <li><a href="#.php">SALA DE TROFEOS 1VS1</a></li>
-                <li><a href="Ranking1VS1">RANKING</a></li>
-                
-                <li><a>ADMINISTRADOR</a>
-                <ul>
-                <li><a>CREAR TORNEO</a></li>
-                <li><a>CREAR COPA</a></li>
-                
-                
-                
-                </ul>
+                <li><a href="Fase1PvsP">ELIMINATORIAS</a></li>
+                    @foreach($copas as $copa)
+                <li><a href="EncontrarCopaPlay/{{$copa->id}}">{{$copa->name}}</a></li>
 
+                    @endforeach
+                <li><a href="#">PRELIMINARES 1</a></li>
+                </ul>
                 </li>
-              <li><a href="Inicio">HOME</a></li>
-                
+              <li><a href="SalaTrofeo1vs1">SALA DE TROFEOS 1VS1</a></li>
+              <li><a href="Ranking1VS1">RANKING</a></li>
+
+   
             </ul>
             
             
         </div>
-
-
-
-
-
-
-
+        
         <div id="menuCentral" style="background:url(/images/balon.png); background: no-repeat;" >
                  
            
             <div>
                <IMG src="images/balon.png" ALIGN=right WIDTH=250 style="margin-right:220px; margin-top: 140px">
                <h1 class="title" align="left">PRELIMINARES</h1>
+               </br>
                 <div style="background-color: crimson; height:5px; position: relative;" class="banner"></div>
                 <div style="background-color: transparent; height:50px; position: relative;"></div>
                 

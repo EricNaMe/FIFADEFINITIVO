@@ -48,47 +48,17 @@
 
     <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
 
-        <ul id="ListaMenuLateral">
-            <li><a href="Inicio">HOME</a></li>
-            <li><a>ADMINISTRADOR</a>
-                <ul>
-                    <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
-                    <li><a href="/ProCrearCopa">CREAR COPA</a></li>
-                    <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
-                    <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
-                </ul>
-            </li>
-            <li><a>LIGAS VIGENTES</a>
-                <ul>
-                    @foreach($ligas as $liga)
-                        <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
-
-                    @endforeach
-                </ul>
-            </li>
-            <li><a>COPAS VIGENTES</a>
-                <ul>
-                    @foreach($copas as $copa)
-                        <li><a href="EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
-
-                    @endforeach
-                </ul>
-            </li>
-            <li><a>CLUBES</a>
-                <ul>
-                    <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
-                    <li><a href="clubes-pro/buscar">BUSCAR CLUB</a></li>
-                </ul>
-            </li>
+        <ul id="ListaMenuLateral" style="margin-top: 60%">
+          <li><a href="Inicio">HOME</a></li>
             <li><a href="Transferencias">TRANSFERENCIAS</a>
             </li>
-            <li><a href="RankingCP">RANKING POR CLUBES</a>
+             <li><a href="RankingCP">RANKING POR CLUBES</a>
             </li>
             <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
             </li>
-            <li><a href="Equipo_CP">EQUIPO DE LA TEMPORADA</a>
+            <li><a href="Equipo_CPTemp">EQUIPO DE LA TEMPORADA</a>
             </li>
-            <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a>
+            <li><a href="#">SALA DE TROFEOS</a>
             </li>
         </ul>
 
@@ -107,7 +77,7 @@
 
         <div class="myBox"style="background-image: url(//images/canchaF.png); background-size: cover; position: absolute; width: 780px; height: 600px; margin-left: 210px; top: 100px;-webkit-border-radius: 20px 20px;-webkit-border-radius: 20px 20px;">
             <div onmouseover="muestra('star');" onmouseout="ocultar('star');" class="cuadro" style="margin-left: 20px; margin-top: 70px;">
-                <div style="margin-top: 5px; margin-left: -15px;display: inline-block; background-size:45px 85px;background-repeat: no-repeat;"><img src="/Imagenes/LIGA_BBVA_ESPAÑA/REAL_MADRID-LOGO.png"></div>
+                <div style="margin-top: 5px; margin-left: -15px;display: inline-block; background-size:45px 85px;background-repeat: no-repeat;"><img src="/Imagenes/LIGA_BBVA_ESPANA/REAL_MADRID-LOGO.png"></div>
                 <div style="width: 30px; margin-top: -132px; margin-left: 150px;">
                     <span class="Info">TEMPORADA</span>
                     <br></br>
@@ -116,7 +86,7 @@
                     <span class="Info">NOMBRE</span>
 
                 </div>
-                <div style="width: 300px; margin-top: -105px; margin-left: 300px;">
+                <div style="width: 300px; margin-top: -125px; margin-left: 300px;">
                     <span id="temp" class="Info2">8va</span>
                     <br></br>
                     <span id="divi" class="Info2">1ra</span>
@@ -137,7 +107,7 @@
 
             <!--seccion que se debe repetir de aqui para abajo se borra solo es para presentación-->
             <div onmouseover="muestra('star2');" onmouseout="ocultar('star2');" class="cuadro" style="margin-left: 20px; margin-top: 70px;">
-                <div style="margin-top: 5px; margin-left: -15px;display: inline-block; background-size:45px 85px;background-repeat: no-repeat;"><img src="/Imagenes/LIGA_BBVA_ESPAÑA/FC_BARCELONA-LOGO.png"></div>
+                <div style="margin-top: 5px; margin-left: -15px;display: inline-block; background-size:45px 85px;background-repeat: no-repeat;"><img src="/Imagenes/LIGA_BBVA_ESPANA/FC_BARCELONA-LOGO.png"></div>
                 <div style="width: 30px; margin-top: -132px; margin-left: 150px;">
                     <span class="Info">TEMPORADA</span>
                     <br></br>
@@ -146,7 +116,7 @@
                     <span class="Info">NOMBRE</span>
 
                 </div>
-                <div style="width: 300px; margin-top: -105px; margin-left: 300px;">
+                <div style="width: 300px; margin-top: -125px; margin-left: 300px;">
                     <span id="temp2" class="Info2">2da</span>
                     <br></br>
                     <span id="divi2" class="Info2">2da</span>
@@ -167,7 +137,7 @@
             </div>
             <br ></br> <br ></br>
             <div onmouseover="muestra('star3');" onmouseout="ocultar('star3');" class="cuadro" style="margin-left: 20px; margin-top: 70px;">
-                <div style="margin-top: 5px; margin-left: -15px;display: inline-block; background-size:45px 85px;background-repeat: no-repeat;"><img src="/Imagenes/LIGA_BBVA_ESPAÑA/MÁLAGA_CLUB_DE_FÚTBOL-LOGO.png"></div>
+                <div style="margin-top: 5px; margin-left: -15px;display: inline-block; background-size:45px 85px;background-repeat: no-repeat;"><img src="/Imagenes/LIGA_BBVA_ESPANA/MALAGA_CLUB_DE_FUTBOL-LOGO.png"></div>
                 <div style="width: 30px; margin-top: -132px; margin-left: 150px;">
                     <span class="Info">TEMPORADA</span>
                     <br></br>
@@ -176,7 +146,7 @@
                     <span class="Info">NOMBRE</span>
 
                 </div>
-                <div style="width: 300px; margin-top: -105px; margin-left: 300px;">
+                <div style="width: 300px; margin-top: -125px; margin-left: 300px;">
                     <span id="temp3" class="Info2">1ra</span>
                     <br></br>
                     <span id="divi3" class="Info2">3ra</span>
@@ -197,7 +167,7 @@
             </div>
             <br ></br> <br ></br>
             <div onmouseover="muestra('star4');" onmouseout="ocultar('star4');" class="cuadro" style="margin-left: 20px; margin-top: 70px;">
-                <div style="margin-top: 5px; margin-left: -15px;display: inline-block; background-size:45px 85px;background-repeat: no-repeat;"><img src="/Imagenes/LIGA_BBVA_ESPAÑA/REAL_BETIS_BALOMPIÉ-LOGO.png"></div>
+                <div style="margin-top: 5px; margin-left: -15px;display: inline-block; background-size:45px 85px;background-repeat: no-repeat;"><img src="/Imagenes/LIGA_BBVA_ESPANA/REAL_BETIS_BALOMPIE-LOGO.png"></div>
                 <div style="width: 30px; margin-top: -132px; margin-left: 150px;">
                     <span class="Info">TEMPORADA</span>
                     <br></br>
@@ -206,7 +176,7 @@
                     <span class="Info">NOMBRE</span>
 
                 </div>
-                <div style="width: 300px; margin-top: -105px; margin-left: 300px;">
+                <div style="width: 300px; margin-top: -125px; margin-left: 300px;">
                     <span id="temp4" class="Info2">5ta</span>
                     <br></br>
                     <span id="divi4" class="Info2">4ta</span>

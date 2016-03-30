@@ -6,47 +6,45 @@
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
         <ul id="ListaMenuLateral">
-            <li><a href="Inicio">HOME</a></li>
-            <li><a>ADMINISTRADOR</a>
+                      <li><a href="Inicio">HOME</a></li>
+              <li><a>ADMINISTRADOR</a>
+                  <ul>
+                      <li><a href="CrearLiga">CREAR LIGA</a></li>
+                      <li><a href="#">CREAR COPA</a></li>
+                      <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
+                      <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
+                      <li><a href="ModificarLiga">MODIFICAR LIGA</a></li>
+                      <li><a href="ModificarCopa">MODIFICAR COPA</a></li>
+
+
+                  </ul>
+              </li>
+                <li><a>DIVISIONES LIGA</a>
                 <ul>
-                    <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
-                    <li><a href="#">CREAR COPA</a></li>
-                    <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
-                    <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
-                </ul>
-            </li>
-            <li><a>LIGAS VIGENTES</a>
-                <ul>
+                <li><a href="#">PRIMERA DIVISIÓN</a></li>
                     @foreach($ligas as $liga)
-                        <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
+                        <li><a href="EncontrarLigaPlay/{{$liga->id}}">{{$liga->name}}</a></li>
 
                     @endforeach
+
                 </ul>
-            </li>
-            <li><a>COPAS VIGENTES</a>
+                </li>
+
+
+                <li><a>COPA</a>
                 <ul>
+                <li><a href="Fase1PvsP">ELIMINATORIAS</a></li>
                     @foreach($copas as $copa)
-                        <li><a href="EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
+                <li><a href="EncontrarCopaPlay/{{$copa->id}}">{{$copa->name}}</a></li>
 
                     @endforeach
+                <li><a href="Fases">PRELIMINARES 1</a></li>
                 </ul>
-            </li>
-            <li><a>CLUBES</a>
-                <ul>
-                    <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
-                    <li><a href="clubes-pro/buscar">BUSCAR CLUB</a></li>
-                </ul>
-            </li>
-            <li><a href="Transferencias">TRANSFERENCIAS</a>
-            </li>
-            <li><a href="RankingCP">RANKING POR CLUBES</a>
-            </li>
-            <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
-            </li>
-            <li><a href="Equipo_CP">EQUIPO DE LA TEMPORADA</a>
-            </li>
-            <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a>
-            </li>
+                </li>
+              <li><a href="SalaTrofeo1vs1">SALA DE TROFEOS 1VS1</a></li>
+              <li><a href="Ranking1VS1">RANKING</a></li>
+
+
         </ul>
 
 

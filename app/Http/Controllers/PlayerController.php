@@ -247,6 +247,7 @@ class PlayerController extends Controller
         
         
           $Team=Team::find($clubSelect);
+          
 
          foreach($Team->users as $userTeam){
 

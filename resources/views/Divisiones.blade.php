@@ -46,13 +46,15 @@
              <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
             
           <ul id="ListaMenuLateral">
-              <li><a>1 VS 1</a>
-              <li><a href="Inicio">HOME</a></li>
+                           <li><a href="Inicio">HOME</a></li>
               <li><a>ADMINISTRADOR</a>
                   <ul>
                       <li><a href="CrearLiga">CREAR LIGA</a></li>
                       <li><a href="CrearCopa">CREAR COPA</a></li>
-                      <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
+                      <li><a href="#">ASIGNAR EQUIPOS</a></li>
+                      <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
+                      <li><a href="ModificarLiga">MODIFICAR LIGA</a></li>
+                      <li><a href="ModificarCopa">MODIFICAR COPA</a></li>
 
 
                   </ul>
@@ -60,8 +62,8 @@
                 <li><a>DIVISIONES LIGA</a>
                 <ul>
                 <li><a href="#">PRIMERA DIVISIÓN</a></li>
-                    @foreach($ligas as $ligass)
-                        <li><a href="EncontrarLigaPlay/{{$ligass->id}}">{{$ligass->name}}</a></li>
+                    @foreach($ligas as $liga)
+                        <li><a href="EncontrarLigaPlay/{{$liga->id}}">{{$liga->name}}</a></li>
 
                     @endforeach
 
@@ -71,15 +73,15 @@
 
                 <li><a>COPA</a>
                 <ul>
-                <li><a href="Fase1PvsP">FASE 1</a></li>
+                <li><a href="Fase1PvsP">ELIMINATORIAS</a></li>
                     @foreach($copas as $copa)
                 <li><a href="EncontrarCopaPlay/{{$copa->id}}">{{$copa->name}}</a></li>
 
                     @endforeach
-                
+                <li><a href="Fases">PRELIMINARES 1</a></li>
                 </ul>
                 </li>
-              <li><a href="#">SALA DE TROFEOS 1VS1</a></li>
+              <li><a href="SalaTrofeo1vs1">SALA DE TROFEOS 1VS1</a></li>
               <li><a href="Ranking1VS1">RANKING</a></li>
 
 
@@ -256,7 +258,7 @@
                 
 
                 <form action="DivisionesAgregar" name="FormaCrearClub" method="post" class="form-horizontal" role="form" enctype=”multipart/form-data”>
-                    <div style="position:relative; top:-250px" class="ListBox3"><a style="position:relative; top:-50px; left:220px;">Selecciona Usuario</a>
+                    <div style="position:relative; top:-250px" class="ListBox3"><a style="position:relative; top:-40px; left:220px;">Selecciona Usuario</a>
                     <select name="userSelect" class="select" value="Escoger usuario">
                         @foreach($users as $user)
                             <option value="{{$user->id}}">{{$user->user_name}}</option>

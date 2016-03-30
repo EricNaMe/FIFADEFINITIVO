@@ -37,9 +37,9 @@
             </li>
              <li><a href="RankingCP">RANKING POR CLUBES</a>
             </li>
-            <li><a href="#">EQUIPO DE LA SEMANA</a>
+            <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
             </li>
-            <li><a href="Equipo_CPTemp">EQUIPO DE LA TEMPORADA</a>
+            <li><a href="#">EQUIPO DE LA TEMPORADA</a>
             </li>
             <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a>
             </li>
@@ -53,7 +53,7 @@
 
         <div>
             <div style="background:url(/images/Alineacion.png);background-size: 100%; width: 450px; height: 650px; background-repeat: no-repeat;margin-top: 4%;"><span class="titleA"><div  style="margin-top: -6%; margin-left: -3%;">ALDEBARAN FC</div></span>
-                <div id="carta"  style=" background:url(/images/CPSemana.png); width: 190px; height:300px; top:69px; left:600px; position:relative; background-size: 100%; display:inline-block; margin-top: -102px;margin-left:-470px; display: none; ">
+                <div id="carta"  style=" background:url(/images/CPTemporada.png); width: 190px; height:300px; top:69px; left:600px; position:relative; background-size: 100%; display:inline-block; margin-top: -102px;margin-left:-470px; display: none; ">
 
                     <div id="avatarB"style="background:url(https://avatar-ssl.xboxlive.com/avatar/werux/avatar-body.png); background-size:150px 280px;background-repeat: no-repeat;  display:inline-block; margin-top: 1px;margin-left: 60px; width: 150px; height: 150px;">  </div>
                     <div id="logoCP" style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 70px; height:70px; position:relative; top:-110px; margin-left: 10px;"></div>
@@ -75,9 +75,9 @@
 
 
             </div>
-            <div style="background:url(/images/cancha3d.png); background-size: 100%; width: 600px; height: 950px; position: absolute; background-repeat: no-repeat;margin-top: -57%; margin-left: 35%;">
+            <div style="background:url(/images/cancha3d.png); background-size: 100%; width: 600px; height: 950px; position:absolute; background-repeat: no-repeat;margin-top: -57%; margin-left: 35%;">
                 <!---DC----->
-                <div onmouseover="visible('dc1')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:120px; left:600px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-240px; ">
+                <div onmouseover="visible('dc1')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:120px; left:600px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-240px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/jorgeCR7bbc/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -91,7 +91,7 @@
                 </div>
 
                 <!---DC----->
-                <div onmouseover="visible('dc2')"  onmouseout="ocultar()"  style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:120px; left:650px; position: relative; background-size: 100%; display:inline-block; margin-top: -45px;margin-left:-310px; ">
+                <div onmouseover="visible('dc2')"  onmouseout="ocultar()"  style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:120px; left:650px; position: relative; background-size: 100%; display:inline-block; margin-top: -45px;margin-left:-310px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/cochexbox123/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -104,7 +104,7 @@
 
                 </div>
                 <!---MCO----->
-                <div onmouseover="visible('mco')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:230px; left:900px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
+                <div onmouseover="visible('mco')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:230px; left:900px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/soyMariohig/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -118,7 +118,7 @@
                 </div>
 
                 <!---MI----->
-                <div onmouseover="visible('mi')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:320px; left:900px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
+                <div onmouseover="visible('mi')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:320px; left:900px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/MEX%20STURMTIGER/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -131,7 +131,7 @@
 
                 </div>
                 <!---MD----->
-                <div onmouseover="visible('md')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:320px; left:1300px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-180px; ">
+                <div onmouseover="visible('md')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:320px; left:1300px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-180px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/DiegoHA17/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -144,7 +144,7 @@
 
                 </div>
                 <!---MCD----->
-                <div onmouseover="visible('mcd')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:430px; left:1300px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
+                <div onmouseover="visible('mcd')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:430px; left:1300px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/LLeninLis/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -157,7 +157,7 @@
 
                 </div>
                 <!---LI----->
-                <div onmouseover="visible('li1')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:540px; left:1620px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-195px; ">
+                <div onmouseover="visible('li1')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:540px; left:1620px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-195px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/barajasruben/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -170,7 +170,7 @@
 
                 </div>
                 <!---LD----->
-                <div onmouseover="visible('ld')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:540px; left:1380px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
+                <div onmouseover="visible('ld')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:540px; left:1380px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/VFL118/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -183,7 +183,7 @@
 
                 </div>
                 <!---DFC----->
-                <div onmouseover="visible('dfc1')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:560px; left:1790px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
+                <div onmouseover="visible('dfc1')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:560px; left:1790px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/dragsville/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -196,7 +196,7 @@
 
                 </div>
                 <!---DFC----->
-                <div onmouseover="visible('dfc2')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:560px; left:1780px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
+                <div onmouseover="visible('dfc2')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:560px; left:1780px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/Werux/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -209,7 +209,7 @@
 
                 </div>
                 <!---POR----->
-                <div onmouseover="visible('por')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:690px; left:1995px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
+                <div onmouseover="visible('por')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:690px; left:1995px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/alangraciano2/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -233,7 +233,7 @@
             <div style="background:url(/images/BancaCP.png); background-size: 89%; width: 550px; height:350px; position:absolute; top: 500px; margin-left: -15px;">
                 <span class="titleA"><div  style="margin-top: 5%; margin-left: -15%;">BANCA</div></span>
                 <!---DC----->
-                <div onmouseover="visible('dcB')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top: 88px; left:315px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-240px; ">
+                <div onmouseover="visible('dcB')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top: 88px; left:315px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-240px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/SaltyBunny99620/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -246,7 +246,7 @@
 
                 </div>
                 <!---MCO----->
-                <div  onmouseover="visible('mcoB')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:87px; left:555px; position:relative; background-size: 100%; display:inline-block; margin-top: -80px;margin-left:-225px; ">
+                <div  onmouseover="visible('mcoB')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:87px; left:555px; position:relative; background-size: 100%; display:inline-block; margin-top: -80px;margin-left:-225px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/ealtamirano91/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -259,7 +259,7 @@
 
                 </div>
                 <!---LD----->
-                <div onmouseover="visible('ldB')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:87px; left:795px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
+                <div onmouseover="visible('ldB')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:87px; left:795px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/kelly%20uchiha/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -272,7 +272,7 @@
 
                 </div>
                 <!---POR----->
-                <div onmouseover="visible('porB')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:87px; left:1020px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
+                <div onmouseover="visible('porB')"  onmouseout="ocultar()" style=" background:url(/images/CPTemporada.png); width: 67px; height:105px; top:87px; left:1020px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
 
                     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/FERACE/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>

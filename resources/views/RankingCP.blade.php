@@ -21,47 +21,19 @@ and open the template in the editor.
 <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
     <ul id="ListaMenuLateral">
-        <li><a href="Inicio">HOME</a></li>
-        <li><a>ADMINISTRADOR</a>
-            <ul>
-                <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
-                <li><a href="/ProCrearCopa">CREAR COPA</a></li>
-                <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
-                <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
-            </ul>
-        </li>
-        <li><a>LIGAS VIGENTES</a>
-            <ul>
-                @foreach($ligas as $liga)
-                    <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
-
-                @endforeach
-            </ul>
-        </li>
-        <li><a>COPAS VIGENTES</a>
-            <ul>
-                @foreach($copas as $copa)
-                    <li><a href="EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
-
-                @endforeach
-            </ul>
-        </li>
-        <li><a>CLUBES</a>
-            <ul>
-                <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
-                <li><a href="clubes-pro/buscar">BUSCAR CLUB</a></li>
-            </ul>
-        </li>
-        <li><a href="Transferencias">TRANSFERENCIAS</a>
-        </li>
-        <li><a href="#">RANKING POR CLUBES</a>
-        </li>
-        <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
-        </li>
-        <li><a href="Equipo_CP">EQUIPO DE LA TEMPORADA</a>
-        </li>
-        <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a>
-        </li>
+    	<ul id="ListaMenuLateral" style="margin-top: 60%">
+		<li><a href="Inicio">HOME</a></li>
+		<li><a href="Transferencias">TRANSFERENCIAS</a>
+		</li>
+		 <li><a href="RankingCP">RANKING POR CLUBES</a>
+		</li>
+		<li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
+		</li>
+		<li><a href="Equipo_CP">EQUIPO DE LA TEMPORADA</a>
+		</li>
+		<li><a href="SalaTrofeosCP">SALA DE TROFEOS</a>
+		</li>
+    
     </ul>
 
 
@@ -75,6 +47,8 @@ and open the template in the editor.
 
         <h1 class="title">RANKINGS Clubes PRO</h1>
     </div>
+    </br>
+    
     <div style="background-color: crimson; height:5px; position: relative;" class="banner"></div>
     <div style="background-color: transparent; height:50px; position: relative;"></div>
 
@@ -104,8 +78,8 @@ and open the template in the editor.
             </td>
             <td width="25"></td>
             <td >
-                <div style="width: 500px; height: 500px; margin-left: 0px; margin-top: -540px;"><table border="0">
-                        <img src="/images/stars.png" style="text-align: center; margin-left: 80px; margin-top: 50px;">
+                <div style="width: 500px; height: 500px; margin-left: -100px; margin-top: -540px;"><table border="0">
+                        <img src="/images/stars.png" style="text-align: center; margin-left: -80px; margin-top: 50px;">
 
                     </table>
 
@@ -115,9 +89,9 @@ and open the template in the editor.
 
     </table>
     <div style="background-color: transparent; height:80px; position: relative;"></div>
-    <table>
+    <table >
         <tr>
-            <td>
+            <td style="width: 500px;">
                 <div class="datagrid" style="width: 400px; height: 600px; margin-left: 25px""><table border="0">
                     <thead><tr><th colspan="2" style="text-align: center;">Delanteros</th><th style="text-align: left;"><h1 style="text-align: center;">☆</h1></th><th><img alt="Imagen" src="/images/xbox.png" height="50" width="50" /></th></tr></thead>
                     <tbody><tr><td style="width: 10px;">1er</td><td><img style="width:50px; height:50px;" src="https://avatar-ssl.xboxlive.com/avatar/cochexbox123/avatarpic-l.png;"/></td><td style="text-align: center;">cochexbox123</td><td>Pts. 120</td></tr>
@@ -151,7 +125,7 @@ and open the template in the editor.
 <div style="background-color: transparent; height:80px; position: relative;"></div>
 <table>
     <tr>
-        <td>
+        <td style="width: 500px;">>
             <div class="datagrid" style="width: 400px; height: 600px; margin-left: 25px""><table border="0">
                 <thead><tr><th colspan="2" style="text-align: center;">Medios Ofensivos</th><th style="text-align: left;"><h1 style="text-align: center;">☆</h1></th><th><img src="/images/xbox.png" height="50" width="50" /></th></tr></thead>
                 <tbody><tr><td style="width: 10px;">1er</td><td><img style="width:50px; height:50px;" src="https://avatar-ssl.xboxlive.com/avatar/cochexbox123/avatarpic-l.png;"/></td><td style="text-align: center;">cochexbox123</td><td>Pts. 120</td></tr>

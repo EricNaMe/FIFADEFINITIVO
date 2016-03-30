@@ -6,47 +6,45 @@
 <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
     <ul id="ListaMenuLateral">
-        <li><a>CLUBES PRO</a>
-
-        <li><a>TORNEOS VIGENTES</a>
-            <ul>
-
-
-            </ul>
-        </li>
-
-
-        <li><a>CLUBES</a>
-            <ul>
-                <li><a>BUSCAR CLUB</a></li>
-                <li><a href="clubes-pro/crear">CREAR CLUB</a></li>
+                  <li><a href="Inicio">HOME</a></li>
+              <li><a>ADMINISTRADOR</a>
+                  <ul>
+                      <li><a href="CrearLiga">CREAR LIGA</a></li>
+                      <li><a href="CrearCopa">CREAR COPA</a></li>
+                      <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
+                      <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
+                      <li><a href="ModificarLiga">MODIFICAR LIGA</a></li>
+                      <li><a href="#">MODIFICAR COPA</a></li>
 
 
-            </ul>
-        </li>
+                  </ul>
+              </li>
+                <li><a>DIVISIONES LIGA</a>
+                <ul>
+                <li><a href="#">PRIMERA DIVISIÓN</a></li>
+                    @foreach($ligas as $liga)
+                        <li><a href="EncontrarLigaPlay/{{$liga->id}}">{{$liga->name}}</a></li>
 
-        <li><a>JUGADORES</a>
+                    @endforeach
 
-        </li>
-
-        <li><a>TRANSFERENCIAS</a>
-
-        </li>
-
-
-        <li><a href="RankingCP">RANKING POR CLUBES</a>
-        <li><a>ADMINISTRADOR</a>
-            <ul>
-                <li><a>CREAR LIGA</a></li>
-                <li><a>CREAR COPA</a></li>
-            </ul>
-        </li>
-        <li><a href="Inicio">HOME</a></li>
-
-        </li>
+                </ul>
+                </li>
 
 
+                <li><a>COPA</a>
+                <ul>
+                <li><a href="Fase1PvsP">ELIMINATORIAS</a></li>
+                    @foreach($copas as $copa)
+                <li><a href="EncontrarCopaPlay/{{$copa->id}}">{{$copa->name}}</a></li>
 
+                    @endforeach
+                <li><a href="Fases">PRELIMINARES 1</a></li>
+                </ul>
+                </li>
+              <li><a href="SalaTrofeo1vs1">SALA DE TROFEOS 1VS1</a></li>
+              <li><a href="Ranking1VS1">RANKING</a></li>
+
+  
     </ul>
 
 

@@ -67,6 +67,13 @@ class FrontController extends Controller
 
         return view ('Equipo_CP',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
+     public function Equipo_CPTemp(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view ('Equipo_CPTemp',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+    }
 
     public function PerfilClubes(){
 
@@ -108,9 +115,13 @@ class FrontController extends Controller
 
     public function EliminarEquiposPvsP(){
 
+        $ligas=League::All();
+        $copas=Cup::All();
+        $teams=Team::all();      
+
         $clubes=Team::All();
 
-        return view('EliminarEquiposPvsP',['clubes'=>$clubes]);
+        return view('EliminarEquiposPvsP',['clubes'=>$clubes, 'teams' => $teams,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
@@ -377,12 +388,25 @@ class FrontController extends Controller
 
     public function Fase1PvsP()
     {
-        return view('Fase1PvsP');
+         $ligas=League::All();
+        $copas=Cup::All();
+        $teams=Team::all();
+        return view('Fase1PvsP',['teams' => $teams,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function Fases()
     {
-        return view('Fases');
+          $ligas=League::All();
+        $copas=Cup::All();
+        $teams=Team::all();
+        return view('Fases',['teams' => $teams,'ligas'=>$ligas,'copas'=>$copas]);
+    }
+    public function Rfases()
+    {
+          $ligas=League::All();
+        $copas=Cup::All();
+        $teams=Team::all();
+        return view('Rfases',['teams' => $teams,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function Noticias()

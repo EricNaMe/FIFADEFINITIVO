@@ -4,8 +4,7 @@
         
         <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
             
-          <ul id="ListaMenuLateral">
-              <li><a>1 VS 1</a>
+          <ul id="ListaMenuLateral">             
               <li><a href="Inicio">HOME</a></li>
               <li><a>ADMINISTRADOR</a>
                   <ul>
@@ -33,12 +32,12 @@
 
                 <li><a>COPA</a>
                 <ul>
-                <li><a href="Fase1PvsP">FASE 1</a></li>
+                <li><a href="Fase1PvsP">ELIMINATORIAS</a></li>
                     @foreach($copas as $copa)
                 <li><a href="EncontrarCopaPlay/{{$copa->id}}">{{$copa->name}}</a></li>
 
                     @endforeach
-                
+                <li><a href="Fases">PRELIMINARES 1</a></li>
                 </ul>
                 </li>
               <li><a href="SalaTrofeo1vs1">SALA DE TROFEOS 1VS1</a></li>
@@ -53,12 +52,8 @@
         <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover;" >
 
             <div style="margin-left: 70px;">
-                <ul id="MenuPerfil" style=" width: 260px;">
-                    <li id="ListaPerfil"><a href="#">Tabla general</a></li>
-
-                    <li id="ListaPerfil"><a class="active" href="#">Campeón</a></li>
-
-
+                <ul id="MenuPerfil" style=" width: 150px; margin-left: 380px;">
+                    <li id="ListaPerfil"><a href="#">Tabla general</a></li>               
                 </ul>
 
             </div>

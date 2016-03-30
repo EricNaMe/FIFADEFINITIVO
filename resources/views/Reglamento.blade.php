@@ -15,7 +15,7 @@
 
 <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
 
-    <ul id="ListaMenuLateral">
+    <ul id="ListaMenuLateral" style="margin-top: 60%;">
         <li><a>REGLAS</a></li>
         <li><a href="Inicio">HOME</a></li>
 

@@ -7,42 +7,18 @@
 
     <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
 
-        <ul id="ListaMenuLateral">
-            <li><a>CLUBES PRO</a>
-
-            <li><a href="Inicio">HOME</a>
-                <!--  <ul>
-                  <li><a>PRIMERA DIVISIÓN</a></li>
-                  <li><a>SEGUNDA DIVISIÓN A</a></li>
-                  <li><a>SEGUNDA DIVISIÓN B</a></li>
-                  <li><a>TERCERA DIVISIÓN A</a></li>
-                  <li><a>TERCERA DIVISIÓN B</a></li>
-
-                  </ul>-->
+        <ul id="ListaMenuLateral" style="margin-top: 60%;">
+        <li><a href="Inicio">HOME</a></li>
+            <li><a href="#">TRANSFERENCIAS</a>
             </li>
-
-
-            <li><a href="/clubes-pro">CLUBES</a>
-
+             <li><a href="RankingCP">RANKING POR CLUBES</a>
             </li>
-
-
-
-
-
-            <li><a href="Transferencias">TRANSFERENCIAS</a>
-
+            <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
             </li>
-
-            <li><a href="RankingCP">RANKING POR CLUBES</a>
-
-            <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a></li>
-            <li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a></li>
-
+            <li><a href="Equipo_CPTemp">EQUIPO DE LA TEMPORADA</a>
             </li>
-
-
-
+            <li><a href="SalaTrofeosCP">SALA DE TROFEOS</a>
+            </li> 
         </ul>
 
 
@@ -76,7 +52,7 @@
             <!--Tabla de datos de la base de datos-->
 
 
-            <div id="contenedor" style="position:relative;top:0px">
+            <div id="contenedor" style="position:absolute;top:280px; left: 20px;">
                 <div id="contenidos1">
 
                     <div id="columna21" >GAMER TAG</div>
