@@ -56,14 +56,31 @@
                     <div id="columna11" style="width: 16s0px; font-size: 15px;">NUEVO CLUB</div>
                 </div>
                 <!--Aqui se repiten los contenidos para llenarlos desde la bd-->
+                @foreach($transfers as $transfer)
                 <div id="contenidos">
-                    <div id="columna1" > <div style="width: 40px; height: 40px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/Rotciv26/avatarpic-l.png" style="width: 40px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 160px; margin-left: 50px;font-size: 20px; ">Rotciv26</div> </div>
+                    <div id="columna1">
+                        <div style="width: 40px; height: 40px; position: absolute; margin-top: -10px;">
+                            <img src="https://avatar-ssl.xboxlive.com/avatar/{{$transfer->user->gamertag}}/avatarpic-l.png" style="width: 40px;"/>
+                        </div>
+                        <div class="title" style="color: navy;  line-height: normal; width: 160px; margin-left: 50px;font-size: 20px; ">{{$transfer->user->user_name}}</div>
+                    </div>
                     <div id="columna1" class="title" style="color: black; font-size: 18px; font-style: normal; font-family: Arial;">Se ha Transferido de</div>
-                    <div id="columna1" > <div style="width: 40px;  height: 40px; position: absolute; margin-top: -10px;"><img src="Imagenes/MLS/NEW_ENGLAND_REVOLUTION-LOGO.png" style="width: 40px;"/></div> <div class="title" style="font-size: 20px; line-height: normal; width: 170px; margin-left: 50px; ">ALDEBARAN FC</div> </div>
+                    <div id="columna1" >
+                        <div style="width: 40px;  height: 40px; position: absolute; margin-top: -10px;">
+                            <img src="{{$transfer->downProTeam->getImageUrl()}}" style="width: 40px;"/></div>
+                        <div class="title" style="font-size: 20px; line-height: normal; width: 170px; margin-left: 50px; ">{{$transfer->downProTeam->name}}</div>
+                    </div>
                     <div id="columna1" class="title" style="color: black; font-size: 18px; font-style: normal; font-family: Arial;">a</div>
-                    <div id="columna1" > <div style="width: 40px; height: 40px; position: absolute; margin-top: -10px;"><img src="Imagenes/MLS/LA_GALAXY-LOGO.png" style="width: 40px;"/></div> <div class="title" style=" font-size: 20px;line-height: normal; width: 170px; margin-left: 50px; ">INFERNALES FC</div> </div>
-
+                    <div id="columna1" >
+                        <div style="width: 40px; height: 40px; position: absolute; margin-top: -10px;">
+                            <img src="{{$transfer->upProTeam->getImageUrl()}}" style="width: 40px;"/></div>
+                        <div class="title" style=" font-size: 20px;line-height: normal; width: 170px; margin-left: 50px; ">
+                            {{$transfer->upProTeam->name}}
+                        </div>
+                    </div>
                 </div>
+                @endforeach
+{{--
 
                 <div id="contenidos">
                     <div id="columna1" > <div style="width: 40px; height: 40px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/Cochexbox123/avatarpic-l.png" style="width: 40px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 160px; margin-left: 50px;font-size: 20px; ">Cochexbox123</div> </div>
@@ -93,6 +110,7 @@
 
                 </div>
 
+--}}
 
             </div>
 

@@ -73,8 +73,27 @@
             <div>
                 <ul id="ListaDatosPerfil2">
                     <li style="background-color: #080808;">
-                        <a style="font-weight: bold; color: white; font-size: 30px;text-align: center;">{{$proTeam->name}}
-                            <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte" class="btn btn-primary">Solicitar entrada</a>
+                        <a style="font-weight: bold; color: white; font-size: 30px;text-align: center;">
+                            {{$proTeam->name}}
+                            @if(! $status = $proTeam->isInTeamStatus(Auth::user()))
+                                <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte"
+                                   class="btn btn-primary">
+                                    Solicitar entrada
+                                </a>
+                            @else
+                                @if(Auth::check() &&
+                                    $proTeam->getDT()->id != Auth::user()->id)
+                                {{Form::open([
+                                          'url' => "/clubes-pro/$proTeam->id/baja/me" ,
+                                          'method' => 'delete'
+                                          ])}}
+                                <button type="submit"
+                                        class="btn btn-danger">
+                                    Baja de equipo
+                                </button>
+                                {{Form::close()}}
+                                @endif
+                            @endif
                         </a>
                     </li>
                     <li><a style="font-weight: bold;">Lema:</a><a style="float:right;">{{$proTeam->quote}}</a></li>

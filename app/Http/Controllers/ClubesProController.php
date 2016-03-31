@@ -488,4 +488,10 @@ class ClubesProController extends Controller
         ]);
     }
 
+    public function deleteBaja(ProTeam $proTeam)
+    {
+        $proTeam->downUser(Auth::user());
+        return redirect()->back();
+    }
+
 }

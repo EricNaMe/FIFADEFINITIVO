@@ -116,6 +116,7 @@ Route::group(['prefix' => 'clubes-pro'], function () {
         Route::group(['middleware' => 'auth'], function () {
             Route::get('unirte','ClubesProController@getUnirte');
             Route::post('unirte','ClubesProController@postUnirte');
+            Route::delete('baja/me','ClubesProController@deleteBaja');
             Route::put('autorizar/{user}','ClubesProController@putAutorizar');
             Route::put('denegar/{user}','ClubesProController@putDenegar');
         });

@@ -48,6 +48,16 @@ class ProTeam extends Model
             ->withPivot('status');
     }
 
+    public function transferUp()
+    {
+        return $this->hasMany('App\Transfer','up_pro_team_id');
+    }
+
+    public function transferDown()
+    {
+        return $this->hasMany('App\Transfer','down_pro_team_id');
+    }
+
     public function getDT()
     {
         return $this->users()
@@ -140,6 +150,8 @@ class ProTeam extends Model
                 [
                     'status' => 'accepted'
                 ]);
+
+            Transfer::completeTransferIfExists($user,$this);
             $this->sendAcceptedUserNotification($user);
         }
         else
@@ -171,6 +183,26 @@ class ProTeam extends Model
         }
     }
 
+    public function downUser(User $user)
+    {
+        $this->users()->detach($user->id);
+        Transfer::create([
+            'user_id' => $user->id,
+            'down_pro_team_id' => $this->id,
+        ]);
+    }
 
+    public function isInTeamStatus( $user)
+    {
+        if(!isset($user))
+        {
+            return false;
+        }
+        $existUser = $this->users()
+            ->whereUserId($user->id)
+            ->first();
+
+        return $existUser?$existUser->pivot->status:false;
+    }
 
 }

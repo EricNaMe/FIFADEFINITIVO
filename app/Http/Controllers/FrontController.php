@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\League;
 use App\Cup;
+use App\Transfer;
 use App\URLVideos;
 use App\Clips;
 use Illuminate\Http\Request;
@@ -269,7 +270,12 @@ class FrontController extends Controller
         $ligas= ProLeague::all();
         $copas=ProCup::all();
 
-        return view('Transferencias',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+        return view('Transferencias',[
+            'clubes' => $clubes,
+            'ligas'=>$ligas,
+            'copas'=>$copas,
+            'transfers' => Transfer::whereNotNull('up_pro_team_id')->get(),
+        ]);
     }
 
 
