@@ -125,6 +125,13 @@ class ProTeam extends Model
                 'No se puede agregar al club, ya se encuentra incluido'
             );
         }
+
+        if($user->isInAnyTeam())
+        {
+            throw new PermissionException(
+                'Ya se encuentra en otro club'
+            );
+        }
     }
 
     public function canAuthorizeUserRequest(User $user)
@@ -142,6 +149,12 @@ class ProTeam extends Model
     public function authorizeUserRequest(User $user)
     {
         $this->canAuthorizeUserRequest(Auth::user());
+        if($user->isInAnyTeam())
+        {
+            throw new PermissionException(
+                'Ya se encuentra en otro club'
+            );
+        }
         $userRequested = $this->users()->whereUserId($user->id)->first();
         if($userRequested
             && $userRequested->pivot->status == 'pending')

@@ -82,4 +82,10 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\Transfer');
     }
+
+    public function isInAnyTeam()
+    {
+        return $this->proTeams()
+            ->wherePivot('status','accepted')->first() ? true : false;
+    }
 }
