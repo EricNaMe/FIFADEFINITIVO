@@ -81,8 +81,7 @@
                                     </a>
                                 @endif
                             @else
-                                @if(Auth::check() &&
-                                    $proTeam->getDT()->id != Auth::user()->id)
+                                @if(Auth::check())
                                 {{Form::open([
                                           'url' => "/clubes-pro/$proTeam->id/baja/me" ,
                                           'method' => 'delete'
