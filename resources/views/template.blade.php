@@ -7,6 +7,7 @@ and open the template in the editor.
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="/css/MenuPrincipalCSS3.css" type="text/css" media="screen">
     <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="/js/notify.min.js" type="text/javascript"></script>

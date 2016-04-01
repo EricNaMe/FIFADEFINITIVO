@@ -37,7 +37,7 @@
             </li>
 
 
-            <li><a href="RankingCP">RANKING POR CLUBES</a>
+            <li><a href="RankingCP">RANKING CLUBES PRO</a>
             <li><a>ADMINISTRADOR</a>
                 <ul>
                     <li><a>CREAR LIGA</a></li>

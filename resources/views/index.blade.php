@@ -2,15 +2,16 @@
 
 @section('content')
 
+
 <script>
 function rotar_imagen(){
   var tiempo = 3000;//tiempo en milisegundos
   var tiempo2 = 200;//tiempo en milisegundos
   var arrImagenes = ['/images/TC3.png','/images/TC2.png', '/images/TC.png'];
-  var arrImagenes2 = ['/images/B1.png','/images/B2.png', '/images/b3.png', '/images/b4.png'];
+ // var arrImagenes2 = ['/images/B1.png','/images/B2.png', '/images/b3.png', '/images/b4.png'];
   
   _img = document.getElementById('TC');
-  _img2 = document.getElementById('B');
+ // _img2 = document.getElementById('B');
   
   //cargar la 1er imagen
   _img.src = arrImagenes[0];
@@ -21,11 +22,11 @@ function rotar_imagen(){
     _img.src = arrImagenes[i];   
     i = (i == arrImagenes.length-1)? 0 : (i+1);
   }, tiempo);
-  setInterval(function(){      
-    _img2.src = arrImagenes2[R];   
-    R = (R == arrImagenes2.length-1)? 0 : (R+1);
-  }, tiempo2);
-  
+//  setInterval(function(){      
+//    _img2.src = arrImagenes2[R];   
+//    R = (R == arrImagenes2.length-1)? 0 : (R+1);
+//  }, tiempo2);
+//  
   
 }
 </script>

@@ -62,7 +62,7 @@
     </div>
 
 
-    <div style="background-color:whitesmoke; width:500px; height:600px;position:relative; left:200px; top:30px;">
+    <div style="background-color:whitesmoke; width:500px; height:500px;position:relative; left:200px; top:30px;">
 
         <div style="background-color: green; height: 150px; width:150px; position: relative; top:20px; left:160px;  background:url({{$proTeam->getImageUrl()}}); background-size:cover;"></div>
 
@@ -101,7 +101,7 @@
 
 
                     <li><a style="font-weight: bold;">Rank:</a><a style="float:right;">4</a></li>
-                    <li><a style="font-weight: bold;">Estado:</a><a style="float:right;">{{$proTeam->state}}</a></li>
+                    <!--<li><a style="font-weight: bold;">Estado:</a><a style="float:right;">{{$proTeam->state}}</a></li>-->
                     <li style="border-bottom: none;"><a style="font-weight: bold;">Experiencia:</a><a
                                 style="float:right;">{{$proTeam->id}}Amateur</a></li>
 
@@ -122,18 +122,11 @@
                                 style="font-weight: bold; color: white; font-size: 20px;text-align: center;">Ultimos
                             partidos</a></li>
 
-                    <li><a style="font-weight: bold;">vs
+                    <!--<li><a style="font-weight: bold;">vs
                             <div id="LogoEquipo"
                                  style=" background:url(/images/Clausura/3.png); background-size:cover;"></div>
-                        </a> <a style="">Los pitudos FC</a><a style="float:right;">4 - 3</a></li>
-                    <li><a style="font-weight: bold;">vs
-                            <div id="LogoEquipo"
-                                 style=" background:url(/images/Clausura/4.png); background-size:cover;"></div>
-                        </a> <a style="">Valedores</a><a style="float:right;">2 - 3</a></li>
-                    <li><a style="font-weight: bold;">vs
-                            <div id="LogoEquipo"
-                                 style=" background:url(/images/Clausura/5.png); background-size:cover;"></div>
-                        </a> <a style="">Los miserables</a><a style="float:right;">5 - 3</a></li>
+                        </a> <a style="">Los pitudos FC</a><a style="float:right;">4 - 3</a></li>-->
+                
 
 
 

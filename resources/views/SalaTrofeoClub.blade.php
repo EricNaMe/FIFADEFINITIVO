@@ -58,10 +58,7 @@
 <div id="menuCentral" style="background:url(/images/middlMenu.jpeg); background-size: cover;">
 
    <div>
-        <ul id="MenuPerfil" style="width: 494px;"> 
-           <li id="ListaPerfil"><a href="/clubes-pro/">Equipo</a></li>
-            <li id="ListaPerfil"><a class="active" href="/PlantillaPro">Plantilla</a></li>
-            <li id="ListaPerfil"><a href="#">Estadísticas</a></li>
+        <ul id="MenuPerfil" style="width: 160px;">            
             <li id="ListaPerfil"><a href="#">Sala de trofeos</a></li>
         </ul>
 
@@ -85,27 +82,8 @@
         <div id="nomEqui"style=" color: #511414; -webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 26pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-150px; left: 350px;">Aldebaran FC</div> 
         <div id="Temporada" style=" color: #511414;-webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 22pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-195px; left: 535px;">Temporada 2</div>                       
     </div>  
-    </br></br></br></br></br>
-    
-    <div style="background: url(/images/banner1.jpg); height: 160px; background-repeat: no-repeat; background-size: contain; inline-block; position:relative; left:260px; top:-200px;">
-        <div id="logoE" style="background: url(/Imagenes/ALKA_SUPERLIGA_DINAMARCA/AALBORG_BK-LOGO.png); height: 160px; background-repeat: no-repeat; background-size: contain; inline-block; position:relative; width: 70px; top: 80px; left: 250px;"></div> 
-        <div id="tipoCam"style=" color: #511414;  -webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 29pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-150px; left: 250px;">Campeón de División <div style="margin-top: -45px; margin-right: -650px;"><img src="/images/star.png" width="50" height="50"></div></div> 
-        <div id="nomEqui"style=" color: #511414; -webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 26pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-150px; left: 350px;">Aldebaran FC</div> 
-        <div id="Temporada" style=" color: #511414;-webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 22pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-195px; left: 535px;">División 3</div>                       
-    </div>  
-    </br></br></br></br></br>
-    
-    
-    
-    
-    <div class="myBox" style="margin-top: 5px; margin-left: 135px;" >
-       <div class="titleA" style="font-size: 35px;">NOMENCLATURA DE TROFEOS</div>
-       <div width="150" style="margin-top: 20px;"><a class="letras">Campeón de div. Clubes&nbsp&nbsp</a><img src="/images/star.png" width="50" height="50"></div>
-       <div width="150" style="margin-top: 20px;"><a class="letras">Campeón de Copa CP&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a><img src="/images/starCP.png" width="50" height="50"></div>
-       <div width="150" style="margin-top: 30px;"><a class="letras">Líder de Goleo   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a><img src="/images/balonG.png" width="50" height="50"></div>
-       <div width="150" style="margin-top: 30px;"><a class="letras">Líder de Asistencias  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a><img src="/images/medallAsi.png" width="50" height="50"></div>
-       <div width="150" style="margin-top: 30px;"><a class="letras">Portero Invicto  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a><img src="/images/guanteP.png" width="50" height="50"></div>             
-   </div> 
+    </br></br></br></br></br>    
+  
    
 </div>
 

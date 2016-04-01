@@ -77,12 +77,12 @@
     </div>
 
 
-    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatar-body.png); background-size:300px 300px;  display:inline-block; margin-top: 20px;margin-left: 20px; width: 300px; height: 300px;">
+    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatar-body.png);  background-size: contain; background-repeat: no-repeat;  display:inline-block; margin-top: 20px;margin-left: 90px; width: 300px; height: 400px;">
 
 
     </div>
 
-    <div style="background-color: white;  position:relative; top:-320px; left:380px; width: 300px; height: auto;">
+    <div style="background-color: white;  position:relative; top:-300px; left:380px; width: 300px; height: auto;">
      <div>
         <ul id="ListaDatosPerfil">
             <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Datos generales</a></li>
@@ -99,7 +99,7 @@
      </div>
     </div>
 
-    <div style="background-color: white;   position:relative; top:-680px; left:740px; width: 300px; height: auto;">
+    <div style="background-color: white;   position:relative; top:-600px; left:740px; width: 300px; height: auto;">
         <div>
             <ul id="ListaDatosPerfil">
                 <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Estadísticas generales</a></li>

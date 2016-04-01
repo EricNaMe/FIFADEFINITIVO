@@ -35,7 +35,7 @@
            <li><a href="Inicio">HOME</a></li>
             <li><a href="Transferencias">TRANSFERENCIAS</a>
             </li>
-             <li><a href="RankingCP">RANKING POR CLUBES</a>
+             <li><a href="RankingCP">RANKING CLUBES PRO</a>
             </li>
             <li><a href="#">EQUIPO DE LA SEMANA</a>
             </li>

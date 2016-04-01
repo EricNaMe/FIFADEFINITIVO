@@ -85,7 +85,7 @@
                             <td style="text-align:left;">
                                 <div id="LogoEquipo"
                                      style=" background:url({{$proTeam->getImageUrl()}}); background-size:cover;"></div>
-                                <a href="clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
+                                <a href="/clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
                             <td>{{$proTeam->getDT()?$proTeam->getDT()->user_name:''}}</td>
                            
 

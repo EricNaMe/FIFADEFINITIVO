@@ -8,43 +8,39 @@
 
 
         <ul id="ListaMenuLateral">
-            <li><a>CLUBES PRO</a>
+           <li><a href="Inicio">HOME</a></li>
+     <li><a>ADMINISTRADOR</a>
+          <ul>
+              <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
+              <li><a href="/ProCrearCopa">CREAR COPA</a></li>
+              <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
+              <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
+          </ul>
+      </li>
+        <li><a>LIGAS VIGENTES</a>
+       <ul>
+           @foreach($ligas as $liga)
+        <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
 
-            <li><a>TORNEOS VIGENTES</a>
-                <!--  <ul>
-                  <li><a>PRIMERA DIVISIÓN</a></li>
-                  <li><a>SEGUNDA DIVISIÓN A</a></li>
-                  <li><a>SEGUNDA DIVISIÓN B</a></li>
-                  <li><a>TERCERA DIVISIÓN A</a></li>
-                  <li><a>TERCERA DIVISIÓN B</a></li>
+           @endforeach
+        </ul>
+        </li>
+      <li><a>COPAS VIGENTES</a>
+          <ul>
+              @foreach($copas as $copa1)
+                  <li><a href="EncontrarCopa/{{$copa1->id}}">{{$copa1->name}}</a></li>
 
-                  </ul>-->
-            </li>
-
-
-            <li><a>CLUBES</a>
-                <ul>
-                    <li><a>BUSCAR CLUB</a></li>
-                    <li><a href="CrearClub">CREAR CLUB</a></li>
-
-
-                </ul>
-            </li>
-
-            <li><a>JUGADORES</a>
-
-            </li>
-
-            <li><a>TRANSFERENCIAS</a>
-
-            </li>
-
-            <li><a>RANKING POR CLUBES</a>
-
-            </li>
-
-
-
+              @endforeach
+          </ul>
+      </li>
+        <li><a>CLUBES</a>
+    <ul>
+        <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
+         <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
+        </ul>
+        </li>
+         <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a> 
+    
         </ul>
 
 
@@ -66,7 +62,7 @@
                 <li id="ListaPerfil"><a href="/clubes-pro">Tabla general</a></li>
                 <li id="ListaPerfil"><a class="active" href="#">Calendario</a></li>
                 <li id="ListaPerfil"><a class="active" href="#">Estadísticas</a></li>
-                <li id="ListaPerfil"><a href="#">Campeones</a></li>
+                <li id="ListaPerfil"><a href="/SalaTrofeosCP">Campeones</a></li>
 
             </ul>
 
@@ -102,29 +98,28 @@
                 </thead>
 
                 <?php
-                $j=0;
-                $k=2;
+                $jor=1;
+                
 
                 ?>
 
 
 
-                <?php $l=2;?>
+                <?php ?>
 
-                @foreach($proCalendar as $Equipos)
-                    @if($j==0)
-                        <thead>
-                        <tr>
+                @foreach($proCalendar as $Equipos) 
+                  @if($jor==$Equipos->jornada)
 
+                            <thead>
+                            <tr>
+                                <th colspan="5" style="text-align:center;background-color: darkslategrey;">JORNADA {{$jor}}</th>
 
-                            <th colspan="5" style="text-align: center; background-color: darkslategrey;">JORNADA 1</th>
-
-                        </tr>
-                        </thead>
-                        <?php $j++ ?>
-
-                    @endif
-
+                            </tr>
+                            </thead>
+                          <?php $jor++; ?> 
+                            
+                   @endif
+              
                 @if($Equipos->matchProTeam==null)
                     <tr>
                         <td style="">{{$Equipos->localProTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
@@ -136,7 +131,7 @@
 
                     </tr>
                   @else
-
+                    
                         <tr>
                             <td style="">{{$Equipos->localProTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
                             <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">{{$Equipos->matchProTeam->local_score}}</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">{{$Equipos->matchProTeam->visitor_score}}</div></td>
@@ -146,41 +141,13 @@
 
 
                         </tr>
-                        @endif
-
-
-                        @if($k==$Equipos->jornada)
-
-                            <thead>
-                            <tr>
-
-
-                                <th colspan="5" style="text-align:center;background-color: darkslategrey;">JORNADA {{$l}}</th>
-
-                            </tr>
-                            </thead>
-                            <?php $k++; $l++; ?>
-                        @endif
-
-
-
-
-                @endforeach
-
-
-
+                  @endif
+                  
+               @endforeach
 
             </table>
 
-
-
-
         </div>
-
-
-
-
-
 
     </div>
 

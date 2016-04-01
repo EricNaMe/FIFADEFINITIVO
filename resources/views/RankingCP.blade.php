@@ -25,7 +25,7 @@ and open the template in the editor.
 		<li><a href="Inicio">HOME</a></li>
 		<li><a href="Transferencias">TRANSFERENCIAS</a>
 		</li>
-		 <li><a href="RankingCP">RANKING POR CLUBES</a>
+		 <li><a href="RankingCP">RANKING CLUBES PRO</a>
 		</li>
 		<li><a href="Equipo_CP">EQUIPO DE LA SEMANA</a>
 		</li>

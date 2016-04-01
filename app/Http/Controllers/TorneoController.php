@@ -269,9 +269,10 @@ class TorneoController extends Controller {
 
     public function EncontrarCalendario(ProLeague $proLeague)
     {
-
+        $ligas=ProLeague::all();
+         $copas=ProCup::all();
         $proCalendar = $proLeague->proCalendar;
-        return view('ProCalendario',['proCalendar'=>$proCalendar]);
+        return view('ProCalendario',['proCalendar'=>$proCalendar, 'ligas'=>$ligas, 'copas'=>$copas]);
     }
 
     public function buscarCalendario(League $League)

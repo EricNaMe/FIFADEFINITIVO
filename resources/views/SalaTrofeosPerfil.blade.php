@@ -21,11 +21,6 @@
 </div>
 
 
-
-
-
-
-
 <div id="menuCentral" style="background-color:darkslategray; background-size: cover;" >
     <style>
      #MenuPerfil {
@@ -73,10 +68,8 @@
 
     </style>
 <div>
-    <ul id="MenuPerfil">
-        <li id="ListaPerfil"><a class="active" href="/Perfil">Perfil</a></li>       
-        <li id="ListaPerfil"><a href="/PerfilNoAutenticadoClubes">Clubes Pro</a></li>       
-        <li id="ListaPerfil"><a href="/SalaTrofeosPerfil">Sala de trofeo</a></li>
+    <ul id="MenuPerfil" style="width: 160px;">            
+        <li id="ListaPerfil"><a href="">Sala de trofeo</a></li>
     </ul>
 
 </div>

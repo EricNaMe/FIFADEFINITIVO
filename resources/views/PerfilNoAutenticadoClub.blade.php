@@ -63,7 +63,7 @@
         <ul id="MenuPerfil">
             <li id="ListaPerfil"><a class="active" href="/PerfilDetalles/{{$user->id}}">Perfil</a></li>
             <li id="ListaPerfil"><a href="#">Clubes Pro</a></li>            
-            <li id="ListaPerfil"><a href="#about">Sala de trofeos</a></li>
+            <li id="ListaPerfil"><a href="/SalaTrofeosPerfil">Sala de trofeos</a></li>
         </ul>
 
     </div>
