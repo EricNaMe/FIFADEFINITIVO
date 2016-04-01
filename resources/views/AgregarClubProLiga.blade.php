@@ -16,57 +16,47 @@
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
         <ul id="ListaMenuLateral">
-            <li><a>CLUBES PRO</a>
+        <li><a href="Inicio">HOME</a></li>
+     <li><a>ADMINISTRADOR</a>
+          <ul>
+              <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
+              <li><a href="/ProCrearCopa">CREAR COPA</a></li>
+              <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
+              <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
+          </ul>
+      </li>
+        <li><a>LIGAS VIGENTES</a>
+       <ul>
+           @foreach($ligas as $liga)
+        <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
 
-            <li><a>TORNEOS VIGENTES</a>
-                <ul>
-
-
-                </ul>
-            </li>
-
-
-            <li><a>CLUBES</a>
-                <ul>
-                    <li><a>BUSCAR CLUB</a></li>
-                    <li><a href="/CrearClub">CREAR CLUB</a></li>
-
-
-                </ul>
-            </li>
-
-            <li><a>JUGADORES</a>
-
-            </li>
-
-            <li><a>TRANSFERENCIAS</a>
-
-            </li>
-
-
-            <li><a href="/RankingCP">RANKING POR CLUBES</a>
-            <li><a>ADMINISTRADOR</a>
-                <ul>
-                    <li><a>CREAR LIGA</a></li>
-                    <li><a>CREAR COPA</a></li>
-                </ul>
-            </li>
-            <li><a href="Inicio">HOME</a></li>
-
-            </li>
-
-
+           @endforeach
         </ul>
+        </li>
+      <li><a>COPAS VIGENTES</a>
+          <ul>
+              @foreach($copas as $copa)
+                  <li><a href="EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
 
+              @endforeach
+          </ul>
+      </li>
+        <li><a>CLUBES</a>
+    <ul>
+        <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
+         <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
+        </ul>
+        </li>
+         <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a> 
 
     </div>
 
     <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;">
 
 
-        <div style="width: 700px; height: 750px;border-radius: 10px; position:relative;top:100px;left:200px; background-color: whitesmoke;">
+        <div style="width: 700px; height: 260px;border-radius: 10px; position:relative;top:250px;left:200px; background-color: whitesmoke;">
 
-            <div class="container">
+            <div class="container" >
                 <h2>Asignar Equipos</h2>
 
 
@@ -83,8 +73,8 @@
                 <br></br>
 
                 <div style="position:relative; top:500px; left:500px;" class="container">
-                    <form action="/CLUBESPRO">
-                        <button class="btn btn-primary">Enviar</button>
+                    <form action="/clubes-pro">
+                        <!--<button class="btn btn-primary">Enviar</button>-->
                     </form>
                 </div>
 
@@ -128,7 +118,7 @@
 
 
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-primary">Borrar</button>
+                        <button type="submit" onclick="if(document.getElementById('clubSelect').selectedIndex==0 || document.getElementById('clubSelect').selectedIndex==null){alert('Selecciona un Equipo');return false;}else{};" class="btn btn-primary">Borrar</button>
                     </div>
                 </form>
 
@@ -141,7 +131,7 @@
 
 
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-primary">CrearCalendario</button>
+                        <button type="submit" class="btn btn-primary">CrearTorneo</button>
                     </div>
                 </form>
 

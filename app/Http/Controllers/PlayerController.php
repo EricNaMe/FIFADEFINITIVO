@@ -143,10 +143,13 @@ class PlayerController extends Controller
         $Team=Team::find($clubSelect);
         $league=League::find($LeagueInput);
         $clubes=Team::All();
+             $ligas=League::all();
+            $copas=Cup::all();
+        
         $Team->League()->attach($LeagueInput,['status'=>'acepted']);
 
         if($Team->save()){
-            return view('AgregarTeamLiga', ['Team' => $Team,'league'=>$league,'clubes'=>$clubes]);
+            return view('AgregarTeamLiga', ['Team' => $Team,'league'=>$league,'clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
         } else {
             return redirect()->back()->withErrors("Algo falló!!!");
         }
@@ -159,12 +162,14 @@ class PlayerController extends Controller
             $clubes=Team::all();
             $league = new League;
 
-
+            $ligas=League::all();
+            $copas=Cup::all();
+            
             $league->name =  Input::get('name');
 
 
             if($league->save()){
-                return view('/AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes]);
+                return view('/AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
             } else {
                 return redirect()->back()->withErrors("Algo falló!!!");
             }
@@ -194,9 +199,11 @@ class PlayerController extends Controller
             $idLiga=Input::get('leagueSelect');
             $clubes=Team::All();
             $league=League::find($idLiga);
+            
+            $ligas=League::all();
+            $copas=Cup::all();
 
-
-            return view('/AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes]);
+            return view('/AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
 
 
         }

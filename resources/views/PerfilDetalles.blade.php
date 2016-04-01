@@ -21,7 +21,7 @@
             padding: 0;
             overflow: hidden;
             background-color: #333;
-            width: 500px;
+            width: 365px;
             margin-left: 300px;
         }
 
@@ -62,9 +62,8 @@
 <div>
     <ul id="MenuPerfil">
         <li id="ListaPerfil"><a class="active" href="#">Perfil</a></li>
-        <li id="ListaPerfil"><a href="/PerfilNoAutenticadoClubes/{{$user->id}}">Clubes Pro</a></li>
-        <li id="ListaPerfil"><a href="#">Virtual</a></li>
-        <li id="ListaPerfil"><a href="#">Sala de trofeos</a></li>
+        <li id="ListaPerfil"><a href="/PerfilNoAutenticadoClubes/{{$user->id}}">Clubes Pro</a></li>       
+        <li id="ListaPerfil"><a href="/SalaTrofeosPerfil">Sala de trofeo</a></li>
     </ul>
 
 </div>
@@ -78,12 +77,12 @@
     </div>
 
 
-    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->gamertag}}/avatar-body.png); background-size:300px 300px;  display:inline-block; margin-top: 20px;margin-left: 20px; width: 300px; height: 300px;">
+    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->gamertag}}/avatar-body.png); background-size: contain; background-repeat: no-repeat;  display:inline-block; margin-top: 20px;margin-left: 90px; width: 300px; height: 400px;">
 
 
     </div>
 
-    <div style="background-color: white;  position:relative; top:-320px; left:380px; width: 300px; height: auto;">
+    <div style="background-color: white;  position:relative; top:-330px; left:310px; width: 300px; height: auto;">
      <div>
         <ul id="ListaDatosPerfil">
             <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Datos generales</a></li>
@@ -100,7 +99,7 @@
      </div>
     </div>
 
-    <div style="background-color: white;   position:relative; top:-630px; left:740px; width: 300px; height: auto;">
+    <div style="background-color: white;   position:relative; top:-660px; left:720px; width: 300px; height: auto;">
         <div>
             <ul id="ListaDatosPerfil">
                 <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Estadísticas generales</a></li>

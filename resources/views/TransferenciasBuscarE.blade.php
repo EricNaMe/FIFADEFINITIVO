@@ -36,43 +36,47 @@
 
         </div>
 
-        <div class="myBox"style=" background-size: cover; position: absolute; width: 900px; height: 700px; margin-left: 200px; top: 100px;-webkit-border-radius: 20px 20px;-webkit-border-radius: 20px 20px;">
-            <form id="formEquipo" class="container subcontainer light-grey">
-                <h2>Buscar Equipo</h2>
-                <p>
+        
+          <div class="myBox"style=" background-size: cover; position: relative ; width: 900px; height: 700px; margin-left: 200px; top: -10px;-webkit-border-radius: 20px 20px;-webkit-border-radius: 20px 20px;">
+                <form id="formEquipo" class="container subcontainer light-grey">
+                    <h2>Buscar Equipo</h2>
+                    <p>      
                     <label>Ingresa Club</label>
                     <input class="input1 border1" type="text"></p>
-                <p>
-                    <button class="boton grey" type="button" >Genera Resultados</button>
-            </form>
-            </br>
-            </br>
-            </br>
-            </br>
+                    <p>  
+                        <button class="boton grey" type="button">Genera Resultados</button>
+                </form>
+                </br>
+                </br>
+                </br>
+                </br>
 
-            <!--Tabla de datos de la base de datos-->
+                <!--Tabla de datos de la base de datos-->
+                
+                
+                     <div id="contenedor" style="position:absolute; top: 280px; left: 20px;">
+                         <div id="contenidos1">                            
+                            
+                            <div id="columna21" style="text-align: center">CLUB</div>
+                            <div id="columna21" style="width: 150px;">ACCION</div>
+                        </div>
+                       	@foreach($pro_team_search as $proTeam)
+                            <div id="contenidos">
+                                <div id="columna1" style="width: 60px;"><div style=" background:url ({{$proTeam->getImageUrl()}}); background-size:cover;"></div> <div class="title"> <a href="clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></div></div>
+
+                                <div id="columna2" style="width: 150px;"><form action="/clubes-pro/{{$proTeam->id}}"><button type="submit" class="boton2 grey">Ver Equipo</button></form></div>
+                            </div>                 
+                        @endforeach
+                    </div>
+                
+ 
+                
+                
+            </div> 
+      
 
 
-            <div id="contenedor" style="position:absolute; top: 280px; left: 20px;">
-                <div id="contenidos1">
-
-                    <div id="columna21" style="text-align: center">CLUB</div>
-                    <div id="columna21" style="width: 150px;">ACCION</div>
-                </div>
-                <div id="contenidos">
-                    <div id="columna1" style="width: 60px;"><img src="Imagenes/MLS/CHICAGO_FIRE-LOGO.png" style="width: 50px;"> <div class="title">ALDEBARAN FC</div></div>
-
-                    <div id="columna2" style="width: 150px;"><button type="button" class="boton2 grey">Solicitar Ingreso</button></div>
-                </div>
-                <div id="contenidos">
-                    <div id="columna1" style="width: 60px;"><img src="Imagenes/MLS/NEW_ENGLAND_REVOLUTION-LOGO.png" style="width: 50px;"><div  class="title">PANADEROS FC</div> </div>
-
-                    <div id="columna2" style="width: 150px;"><button type="button" class="boton2 grey">Solicitar Ingreso</button></div>
-                </div>
-            </div>
 
 
-
-
-        </div>
+   </div>
 @endsection

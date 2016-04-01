@@ -9,7 +9,7 @@ use App\Transfer;
 use App\URLVideos;
 use App\Clips;
 use Illuminate\Http\Request;
-
+use Input;
 use App\Http\Requests;
 use App\Team;
 use App\ProLeague;
@@ -59,7 +59,20 @@ class FrontController extends Controller
         $copas=ProCup::all();
         return view ('ProCrearCopa',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
+ public function SalaTrofeosPerfil(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
 
+        return view ('SalaTrofeosPerfil',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+    }
+    public function SalaTrofeoClub(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view ('SalaTrofeoClub',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+    }
 
     public function Equipo_CP(){
         $clubes=Proteam::all();
@@ -96,21 +109,29 @@ class FrontController extends Controller
     }
 
     public function CrearLiga(){
-        $clubes=Proteam::all();
-        $ligas= ProLeague::all();
-        $copas=ProCup::all();
+        $clubes=Team::all();
+        $ligas= League::all();
+        $copas=Cup::all();
 
         return view ('CrearLiga',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function AgregarTeamCopa(){
 
-        return view('AgregarTeamCopa');
+       $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view ('AgregarTeamCopa',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function AgregarTeamLiga(){
 
-        return view('AgregarTeamLiga');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view ('AgregarTeamCopa',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
@@ -134,7 +155,6 @@ class FrontController extends Controller
         $clubes=Proteam::all();
         $ligas= ProLeague::all();
         $copas=ProCup::all();
-
         return view ('AgregarClubProLiga',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
 
     }
@@ -282,22 +302,43 @@ class FrontController extends Controller
     public function TransferenciasBuscarE(){
 
 
-        $clubes=Proteam::all();
-        $ligas= ProLeague::all();
-        $copas=ProCup::all();
-
+        $search = Input::get('search');
+        return view('TransferenciasBuscarE',[
+            'clubes' => Proteam::all(),
+            'ligas' => ProLeague::all(),
+            'copas' => ProCup::all(),
+            'search' => Input::get('search'),
+            'pro_team_search' => ProTeam::search($search)->get(),
+        ]);
         return view('TransferenciasBuscarE',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
 
     public function TransferenciasBuscarJ(){
+$search = Input::get('search');
+        return view('TransferenciasBuscarJ',[
+            'users' => User::all(),
+            'ligas' => ProLeague::all(),
+            'copas' => ProCup::all(),
+            'search' => Input::get('search'),
+            'user_search' => User::search($search)->get(),
+        ]);
+    }
+    
+    
+    public function ReportarPartido(){
+        
+       
+         $ligas=League::All();
+        $copas=Cup::All();
+        $teams=Team::all();      
 
+        $clubes=Team::All();
 
-        $clubes=Proteam::all();
-        $ligas= ProLeague::all();
-        $copas=ProCup::all();
-
-        return view('TransferenciasBuscarJ',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+       return view('ReportarPardido',['clubes'=>$clubes, 'teams' => $teams,'ligas'=>$ligas,'copas'=>$copas]);
+        
+        
+        
     }
 
 

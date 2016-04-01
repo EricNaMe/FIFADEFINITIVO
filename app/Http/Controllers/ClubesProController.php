@@ -102,12 +102,18 @@ class ClubesProController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getDetalle(ProTeam $proTeam){
-        return view('clubes-pro.detalle', ['proTeam' => $proTeam]);
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();        
+        return view('clubes-pro.detalle', ['proTeam' => $proTeam,'clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function getPlantilla(ProTeam $proTeam){
-        return view('clubes-pro.plantilla',
-            ['proTeam' => $proTeam]);
+         $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();   
+        
+        return view('clubes-pro.plantilla', ['proTeam' => $proTeam, 'clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function putAutorizar(ProTeam $proTeam, User $user)
@@ -181,9 +187,46 @@ class ClubesProController extends Controller
 
 
         $calendario=LeagueProCalendar::find($CalendarioInput);
+        $equipoLoc=ProTeam::find($equipoLocal);
+        $equipoVis=ProTeam::find($equipoVisitante);
 
 
-
+        if($marcadorLocal==$marcadorVisitante){
+            
+            $equipoLoc->JE+=1;
+            $equipoVis->JE+=1;
+            $equipoLoc->points+=1;
+            $equipoVis->points+=1;
+            $equipoLoc->JJ+=1;
+             $equipoVis->JJ+=1;
+            $equipoLoc->update();
+            $equipoVis->update();
+        }
+        
+         if($marcadorLocal>$marcadorVisitante){
+            $equipoVis->JJ+=1;
+             $equipoLoc->JJ+=1;
+            $equipoLoc->JG+=1;
+            $equipoVis->JP+=1;
+            $equipoLoc->points+=3;
+            
+           
+            $equipoLoc->update();
+            $equipoVis->update();
+        }
+        
+          if($marcadorLocal<$marcadorVisitante){
+             $equipoVis->JJ+=1;
+             $equipoLoc->JJ+=1;
+            $equipoLoc->JP+=1;
+            $equipoVis->JG+=1;
+            $equipoVis->points+=3;
+           
+            $equipoLoc->update();
+            $equipoVis->update();
+        }
+        
+           
 
        for($i=0;$i<sizeof($Goles);$i++){
 
@@ -458,7 +501,7 @@ class ClubesProController extends Controller
         $calendario->match_id=$Partido->id;
         $calendario->update();
 
-        return ('Inicio');
+        return view('Inicio');
 
 
 
@@ -485,6 +528,30 @@ class ClubesProController extends Controller
             'copas' => ProCup::all(),
             'search' => Input::get('search'),
             'pro_team_search' => ProTeam::search($search)->get(),
+        ]);
+    }
+    
+    
+     public function buscarEquipo(){
+        $search = Input::get('search');
+        return view('TransferenciasBuscarE',[
+            'clubes' => Proteam::all(),
+            'ligas' => ProLeague::all(),
+            'copas' => ProCup::all(),
+            'search' => Input::get('search'),
+            'pro_team_search' => ProTeam::search($search)->get(),
+        ]);
+    }
+    
+    
+        public function buscarJugador(){
+        $search = Input::get('search');
+        return view('TransferenciasBuscarJ',[
+            'users' => User::all(),
+            'ligas' => ProLeague::all(),
+            'copas' => ProCup::all(),
+            'search' => Input::get('search'),
+            'user_search' => User::search($search)->get(),
         ]);
     }
 

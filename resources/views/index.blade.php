@@ -1,6 +1,38 @@
 @extends('template')
 
 @section('content')
+
+<script>
+function rotar_imagen(){
+  var tiempo = 3000;//tiempo en milisegundos
+  var tiempo2 = 200;//tiempo en milisegundos
+  var arrImagenes = ['/images/TC3.png','/images/TC2.png', '/images/TC.png'];
+  var arrImagenes2 = ['/images/B1.png','/images/B2.png', '/images/b3.png', '/images/b4.png'];
+  
+  _img = document.getElementById('TC');
+  _img2 = document.getElementById('B');
+  
+  //cargar la 1er imagen
+  _img.src = arrImagenes[0];
+  _img2.src = arrImagenes2[0];
+  var i=1;
+  var R=1;
+  setInterval(function(){
+    _img.src = arrImagenes[i];   
+    i = (i == arrImagenes.length-1)? 0 : (i+1);
+  }, tiempo);
+  setInterval(function(){      
+    _img2.src = arrImagenes2[R];   
+    R = (R == arrImagenes2.length-1)? 0 : (R+1);
+  }, tiempo2);
+  
+  
+}
+</script>
+
+      
+    <body onload="rotar_imagen();">
+
         
         <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
             
@@ -12,10 +44,16 @@
             
         </div>
 
-        <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover;" >
+        <div id="menuCentral" style="background:url(images/middleMen.jpeg); background-size: cover;" >
 
-
-            <article style="background-color: whitesmoke;  width: 400px; position: relative; top:100px; left:100px; border-radius: 10px; " class="Articulo2" >
+      <div class="img-responsive" id="banner" style="background:url(/images/home.jpg);background-size: contain; margin-top: 15px; height:330px;background-repeat: no-repeat;">
+                <div><img id="TC" src="/images/TC.png"/></div>         
+                <div><img id="FBJ" src="/images/FBJ.png" width="350" style="margin-left: 30px;"/>
+                    <div style="margin-left: 330px; margin-top: -165px;"><img id="B" src="/images/B1.png" width="50"/></div> 
+                </div>
+            </div>
+                
+            <article style="background-color: whitesmoke;  width: 500px; position: relative; top:50px; left:70px; border-radius: 10px; " class="Articulo2" >
                 <content>
                     <div id="wrapper" ">
                         <div style="padding:10px; font-size: 20px; text-align: center; font-family: sans-serif; font-weight: bold;" id="menu">
@@ -41,7 +79,7 @@
 
 
 
-            <div style="height: 440px; border-radius: 10px; width: 300px; top:-300px; background-color: whitesmoke; left: 700px; position: relative;">
+            <div style="height: 400px; border-radius: 10px; width: 300px; top:-385px; background-color: whitesmoke; left: 650px; position: relative;">
 
                 <div style="left:20px;overflow-y: scroll; position:relative; top:20px;height: 300px; width: 260px;background-color: white;">
 
@@ -57,7 +95,7 @@
                                     <span><p style="word-break:break-all;width:110px; font-family: sans-serif;font-weight: bold;">{{$commen->message}}</p></span>
                                 </div>
                                  
-                                <div style="position:relative; top:-40px; left:130px; 
+                                <div style="position:relative; top:-25px; left:120px; 
                                      display: inline-block;background-color: pink; width:60px; height: 60px;">
                                     <div  style="width:60px; height: 60px; background:url(https://avatar-ssl.xboxlive.com/avatar/{{$commen->user->gamertag}}/avatarpic-l.png); background-size:cover;">
                                 </div>
@@ -70,8 +108,7 @@
                     @endforeach
                 </div>
 
-         
-                
+
                 <form action="" method="POST" role="form">
                     <div style="top:20px;position: relative;" class="form-group">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -94,10 +131,8 @@
 
             </div>
 
-            
-
-
 
             
         </div>
+    </body>
 @endsection

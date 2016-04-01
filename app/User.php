@@ -18,6 +18,7 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, ValidatesRequests;
+    use \Nicolaslopezj\Searchable\SearchableTrait;
 
     /**
      * The database table used by the model.
@@ -26,7 +27,11 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $table = 'users';
 
-
+   protected $searchable = [
+        'columns' => [
+            'user_name' => 1,
+        ],
+    ];
     /**
      * The attributes that are mass assignable.
      *

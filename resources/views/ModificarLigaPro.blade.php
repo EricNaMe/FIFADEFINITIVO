@@ -37,7 +37,7 @@
          <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
         </ul>
         </li>
-         <li><a href="Transferencias">DATOS Y ESTADISTICAS</a>    
+         <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a>    
    
         </ul>
 

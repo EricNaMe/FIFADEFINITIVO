@@ -1,148 +1,113 @@
-{{--{{$proTeam->load('users')}}
-{{dd()}}--}}
+@extends('template')
 
-  
-        <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-<head>
-    <meta charset="UTF-8">
+@section('content')
     <link rel="stylesheet" href="/css/MenuPrincipalCSS3.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/css/SalaPerfil.css" type="text/css" media="screen">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <title></title>
-</head>
-<body>
-
+    
+  <body style="background-color:darkslategray; background-size: cover;">
 
 <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
     <ul id="ListaMenuLateral">
-        <li><a>CLUBES PRO</a>
+       <li><a href="Inicio">HOME</a></li>
+     <li><a>ADMINISTRADOR</a>
+          <ul>
+              <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
+              <li><a href="/ProCrearCopa">CREAR COPA</a></li>
+              <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
+              <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
+          </ul>
+      </li>
+        <li><a>LIGAS VIGENTES</a>
+       <ul>
+           @foreach($ligas as $liga)
+        <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
 
-        <li><a>TORNEOS VIGENTES</a>
-            <!--  <ul>
-              <li><a>PRIMERA DIVISIÓN</a></li>
-              <li><a>SEGUNDA DIVISIÓN A</a></li>
-              <li><a>SEGUNDA DIVISIÓN B</a></li>
-              <li><a>TERCERA DIVISIÓN A</a></li>
-              <li><a>TERCERA DIVISIÓN B</a></li>
-
-              </ul>-->
+           @endforeach
+        </ul>
         </li>
+      <li><a>COPAS VIGENTES</a>
+          <ul>
+              @foreach($copas as $copa1)
+                  <li><a href="EncontrarCopa/{{$copa1->id}}">{{$copa1->name}}</a></li>
 
-
+              @endforeach
+          </ul>
+      </li>
         <li><a>CLUBES</a>
-            <ul>
-                <li><a>BUSCAR CLUB</a></li>
-                <li><a href="/CrearClub">CREAR CLUB</a></li>
-
-
-            </ul>
+    <ul>
+        <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
+         <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
+        </ul>
         </li>
-
-        <li><a>JUGADORES</a>
-
-        </li>
-
-        <li><a>TRANSFERENCIAS</a>
-
-        </li>
-
-        <li><a>RANKING POR CLUBES</a>
-
-        </li>
-
-
+         <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a> 
     </ul>
 
 
 </div>
 
 
-<div id="menuSuperior" style="background:url(/images/topMenu.jpeg); background-size: cover; ">
-
-    <ul id="ListaMenuSuperior" style="margin-left: 400px;">
-        <li><a href="/CLUBESPRO">CLUBES PRO</a></li>
-        <li><a href="/PVSP">1 VS 1</a></li>
-        <li><a href="/Reglamento">REGLAMENTO</a></li>
-        <li><a href="/Clips">CLIPS</a></li>
-        <li><a href="/Noticias">NOTICIAS</a></li>
-        @if (Auth::check())
-            <li id="LoginMenu"><a href="#" ><div id="LogoEquipo" style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatarpic-l.png); background-size:cover;"></div>{{Auth::User()->user_name}}</a>
-                <ul id="SubMenu">
-
-                    <li style="font-size: 12px; "><a href="/Perfil" >Ver Perfil</a></li>
-                    <li style="font-size: 12px; "><a href="/EditarPerfil" >Editar Perfil</a></li>
-                    <li style="font-size: 12px; "><a href="/auth/logout" >Cerrar sesión</a></li>
-
-
-                </ul>
-            </li>
-        @else
-            <li id="LoginMenu"><a href="/auth/login" >LOGIN</a>
-
-
-                <ul id="SubMenu">
-                    <li style="font-size: 12px; "><a href="/auth/login" >Iniciar Sesión</a></li>
-                    <li style="font-size: 12px; margin-left: 5px; "><a href="/auth/register" >Registrarse</a></li>
-
-                </ul>
-            </li>
-        @endif
-
-    </ul>
-
-
-</div>
 
 
 <!-- inicio menu club -->
 
 
 
-<div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;">
+<div id="menuCentral" style="background:url(/images/middlMenu.jpeg); background-size: cover;">
 
-    <div>
-        <ul id="MenuPerfil" style="width: 494px;">
-            <li id="ListaPerfil"><a href="#">Equipo</a></li>
-            <li id="ListaPerfil"><a class="active" href="/PlantillaPro/{{$proTeam->id}}">Plantilla</a></li>
+   <div>
+        <ul id="MenuPerfil" style="width: 494px;"> 
+           <li id="ListaPerfil"><a href="/clubes-pro/">Equipo</a></li>
+            <li id="ListaPerfil"><a class="active" href="/PlantillaPro">Plantilla</a></li>
             <li id="ListaPerfil"><a href="#">Estadísticas</a></li>
             <li id="ListaPerfil"><a href="#">Sala de trofeos</a></li>
         </ul>
 
     </div>
-     <div style="background-color: white; width: 500px; height: 100px; position: relative; left: 300px;">
+    <div style="background-color: white; width: 500px; height: 100px; position: relative; left: 300px;">
 
         <div style="background:url(/Imagenes/ALKA_SUPERLIGA_DINAMARCA/AALBORG_BK-LOGO.png); background-size:80px ; background-repeat: no-repeat; display: inline-block; position:relative; left:10px;top:10px;width:90px; height: 80px;"></div>
         <span style="display: inline-block;position: relative;top:-40px;left:20px;font-size: 20px;font-family: sans-serif;"><a>Aldebaran FC</a></span>
         <span style="color:gray;display:inline-block;  width: 400px; position: relative;top:-40px;left:110px;font-size: 20px;font-family: sans-serif;"><a>"{{Auth::User()->quote}}"</a></span>
-        <div style="margin-top: -105px; margin-left: 280px; width: 180px;" class="letras">
-        <img src="/images/guanteP.png" width="20" height="20">
-        <img src="/images/star.png" width="20" height="20">
-        <img src="/images/star.png" width="20" height="20">
-        <img src="/images/balonG.png" width="20" height="20">
-        <img src="/images/medallAsi.png" width="20" height="20">                   
-        </div>
+        
     </div>
+    
+    
+    <div style="background-color: black; border: 3px solid white;  width: 200px; height: 200px; margin-left: 40px; margin-top: 80px;"><img src="/Imagenes/ALKA_SUPERLIGA_DINAMARCA/AALBORG_BK-LOGO.png" style="margin-left: 12px; margin-top: 10px; width: 180px;"></div>    
+                  
 
-
-   <div class="myBox" style="margin-top: 5px; margin-left: 135px;" >
+    <!---Aqui comienza lso trofeos-->
+    <div style="background: url(/images/banner1.jpg); height: 160px; background-repeat: no-repeat; background-size: contain; inline-block; position:relative; left:260px; top:-200px;">
+        <div id="logoE" style="background: url(/Imagenes/ALKA_SUPERLIGA_DINAMARCA/AALBORG_BK-LOGO.png); height: 160px; background-repeat: no-repeat; background-size: contain; inline-block; position:relative; width: 70px; top: 80px; left: 250px;"></div> 
+        <div id="tipoCam"style=" color: #511414;  -webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 29pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-150px; left: 250px;">Campeón Copa CP <div style="margin-top: -45px; margin-right: -650px;"><img src="/images/starCP.png" width="50" height="50"></div></div> 
+        <div id="nomEqui"style=" color: #511414; -webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 26pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-150px; left: 350px;">Aldebaran FC</div> 
+        <div id="Temporada" style=" color: #511414;-webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 22pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-195px; left: 535px;">Temporada 2</div>                       
+    </div>  
+    </br></br></br></br></br>
+    
+    <div style="background: url(/images/banner1.jpg); height: 160px; background-repeat: no-repeat; background-size: contain; inline-block; position:relative; left:260px; top:-200px;">
+        <div id="logoE" style="background: url(/Imagenes/ALKA_SUPERLIGA_DINAMARCA/AALBORG_BK-LOGO.png); height: 160px; background-repeat: no-repeat; background-size: contain; inline-block; position:relative; width: 70px; top: 80px; left: 250px;"></div> 
+        <div id="tipoCam"style=" color: #511414;  -webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 29pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-150px; left: 250px;">Campeón de División <div style="margin-top: -45px; margin-right: -650px;"><img src="/images/star.png" width="50" height="50"></div></div> 
+        <div id="nomEqui"style=" color: #511414; -webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 26pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-150px; left: 350px;">Aldebaran FC</div> 
+        <div id="Temporada" style=" color: #511414;-webkit-text-stroke: .5px white; font-weight: bolder; text-align: center; font-family: Tw Cen MT;font-size: 22pt; font-style:italic; height:80px; width: 220px; inline-block; white-space:nowrap; position:relative; top:-195px; left: 535px;">División 3</div>                       
+    </div>  
+    </br></br></br></br></br>
+    
+    
+    
+    
+    <div class="myBox" style="margin-top: 5px; margin-left: 135px;" >
        <div class="titleA" style="font-size: 35px;">NOMENCLATURA DE TROFEOS</div>
        <div width="150" style="margin-top: 20px;"><a class="letras">Campeón de div. Clubes&nbsp&nbsp</a><img src="/images/star.png" width="50" height="50"></div>
+       <div width="150" style="margin-top: 20px;"><a class="letras">Campeón de Copa CP&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a><img src="/images/starCP.png" width="50" height="50"></div>
        <div width="150" style="margin-top: 30px;"><a class="letras">Líder de Goleo   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a><img src="/images/balonG.png" width="50" height="50"></div>
        <div width="150" style="margin-top: 30px;"><a class="letras">Líder de Asistencias  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a><img src="/images/medallAsi.png" width="50" height="50"></div>
        <div width="150" style="margin-top: 30px;"><a class="letras">Portero Invicto  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a><img src="/images/guanteP.png" width="50" height="50"></div>             
    </div> 
    
 </div>
-
-
 
 
 </div>

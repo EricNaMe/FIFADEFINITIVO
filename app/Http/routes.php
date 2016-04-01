@@ -64,6 +64,8 @@ Route::get('PVSP','FrontController@PVSP');
 Route::get('EditarPerfil','FrontController@EditarPerfil');
 Route::get('UnirteClub','FrontController@UnirteClub');
 Route::get('ClubDetalles','FrontController@ClubDetalles');
+Route::get('SalaTrofeoClub','FrontController@SalaTrofeoClub');
+Route::get('SalaTrofeosPerfil','FrontController@SalaTrofeosPerfil');
 
 Route::get('CrearCopa','FrontController@CrearCopa');
 Route::get('CrearLiga','FrontController@CrearLiga');
@@ -88,7 +90,7 @@ Route::get('ReportarPartidoPro','FrontController@ReportarPartidoPro');
 Route::get('ReportarResultadosPro','FrontController@ReportarResultadosPro');
 Route::get('SalaTrofeo1vs1','FrontController@SalaTrofeo1vs1');
 Route::get('SalaTrofeo1vs1Div','FrontController@SalaTrofeo1vs1Div');
-
+Route::get('ReportarPartido','FrontController@ReportarPartido');
 
 
 
@@ -151,6 +153,10 @@ Route::post('AgregarProTeamLiga','TorneoController@AgregarProClubLiga');
 Route::get('DetallesPartidoMetodo/{id}/{id2}','ClubesProController@DetallesPartidoMetodo');
 Route::get('ReportarPartidoProMetodo/{id}/{id2}/{id3}/{id4}','ClubesProController@ReportarPartidoMetodo');
 
+Route::get('ReportarPartidoPvsPMetodo/{id}/{id2}/{id3}/{id4}','TorneoController@ReportarPartidoPvsPMetodo');
+
+
+
 Route::post('AgregarProClub','TorneoController@AgregarProClubLiga');
 Route::post('AgregarProClubCopa','TorneoController@AgregarProClubCopa');
 
@@ -174,4 +180,5 @@ Route::post('videoSave1','ComentarioController@videoYoutube1');
 Route::post('videoSave2','ComentarioController@videoYoutube2');
 Route::post('videoSave3','ComentarioController@videoYoutube3');
 Route::post('clipsCommen','ComentarioController@clipscommen');
-
+  Route::post('TransferenciasBuscarJ','ClubesProController@buscarJugador');
+ Route::post('TransferenciasBuscarE','ClubesProController@buscarEquipo');

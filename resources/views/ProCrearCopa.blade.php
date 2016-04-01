@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Nombre de la copa:</label>
                         <div class="col-sm-5">
-                            <input class="form-control" name="name"  type="text" value="">
+                            <input class="form-control" name="name" id="name" type="text" value="">
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
 
                     <div style="position:relative; left:500px;" class="container">
                         <button  type="button" class="btn btn-primary">Reset</button>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button onclick="if(document.getElementById('name').value=='' || document.getElementById('focusedInput').value==''){alert('Ingresa la Información requerida');return false;}else{};"  type="submit"  class="btn btn-primary">Enviar</button>
                     </div>
 
 

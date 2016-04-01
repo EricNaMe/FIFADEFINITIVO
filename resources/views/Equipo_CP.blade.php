@@ -75,7 +75,7 @@
 
 
             </div>
-            <div style="background:url(/images/cancha3d.png); background-size: 100%; width: 600px; height: 950px; position: absolute; background-repeat: no-repeat;margin-top: -57%; margin-left: 35%;">
+            <div style="background:url(/images/cancha3D.png); background-size: 100%; width: 600px; height: 950px; position: absolute; background-repeat: no-repeat;margin-top: -57%; margin-left: 35%;">
                 <!---DC----->
                 <div onmouseover="visible('dc1')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:120px; left:600px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-240px; ">
 

@@ -246,7 +246,7 @@
                                 <span><p style="word-break:break-all;width:110px; font-family: sans-serif;font-weight: bold;">{{$commen->message}}</p></span>
                             </div>
 
-                            <div style="position:relative; top:-40px; left:130px;display: inline-block;background-color: pink; width:60px; height: 60px;">
+                            <div style="position:relative; top:-25px; left:120px;display: inline-block;background-color: pink; width:60px; height: 60px;">
                                 <div  style="width:60px; height: 60px; background:url(https://avatar-ssl.xboxlive.com/avatar/{{$commen->user->gamertag}}/avatarpic-l.png); background-size:cover;"></div>
 
                             </div>

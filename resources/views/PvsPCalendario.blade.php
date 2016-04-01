@@ -116,7 +116,7 @@
                         <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">0</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">0</div></td>
                         <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipos->visitorTeam->name}}</td>
                         <td></td>
-                        <td><a href="/ReportarPartidoProMetodo/{{$Equipos->localTeam->id}}/{{$Equipos->visitorTeam->id}}/{{$Equipos->league_id}}/{{$Equipos->id}}">Reportar</a></td>
+                        <td><a href="/ReportarPartidoPvsPMetodo/{{$Equipos->localTeam->id}}/{{$Equipos->visitorTeam->id}}/{{$Equipos->league_id}}/{{$Equipos->id}}">Reportar</a></td>
 
 
                     </tr>
@@ -136,8 +136,8 @@
 
                 @if($k==$Equipos->jornada)
 
-                    <thead>
-                    <tr>
+                    <tr>                    <thead>
+
 
 
                         <th colspan="5" style="text-align:center;background-color: darkslategrey;">JORNADA {{$l}}</th>

@@ -21,7 +21,7 @@
             padding: 0;
             overflow: hidden;
             background-color: #333;
-            width: 500px;
+            width: 365px;
             margin-left: 300px;
         }
 
@@ -62,8 +62,7 @@
     <div>
         <ul id="MenuPerfil">
             <li id="ListaPerfil"><a class="active" href="/PerfilDetalles/{{$user->id}}">Perfil</a></li>
-            <li id="ListaPerfil"><a href="#">Clubes Pro</a></li>
-            <li id="ListaPerfil"><a href="#contact">Virtual</a></li>
+            <li id="ListaPerfil"><a href="#">Clubes Pro</a></li>            
             <li id="ListaPerfil"><a href="#about">Sala de trofeos</a></li>
         </ul>
 
@@ -78,12 +77,12 @@
     </div>
 
 
-    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->gamertag}}/avatar-body.png); background-size:300px 300px;  display:inline-block; margin-top: 20px;margin-left: 20px; width: 300px; height: 300px;">
+    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->gamertag}}/avatar-body.png); background-size: contain; background-repeat: no-repeat;  display:inline-block; margin-top: 20px;margin-left: 60px; width: 300px; height: 400px;">
 
 
     </div>
 
-    <div style="background-color: white;  position:relative; top:-320px; left:380px; width: 300px; height: auto;">
+    <div style="background-color: white;  position:relative; top:-350px; left:300px; width: 300px; height: auto;">
         <div>
             <ul id="ListaDatosPerfil">
                 <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Historial clubes Pro</a></li>
@@ -103,7 +102,7 @@
         </div>
     </div>
 
-    <div style="background-color: white;   position:relative; top:-764px; left:740px; width: 300px; height: auto;">
+    <div style="background-color: white;   position:relative; top:-804px; left:700px; width: 300px; height: auto;">
         <div>
             <ul id="ListaDatosPerfil">
                 <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Temporada actual</a></li>

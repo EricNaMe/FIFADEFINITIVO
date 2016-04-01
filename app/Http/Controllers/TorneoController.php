@@ -106,13 +106,14 @@ class TorneoController extends Controller {
         if (Auth::check()) { // este si lo he probado
             $clubes = Proteam::all();
             $league = new ProLeague;
-
+            $ligas= ProLeague::all();
+            $copas=ProCup::all();
 
             $league->name = Input::get('name');
 
 
             if ($league->save()) {
-                return view('/AgregarClubProLiga', ['league' => $league, 'clubes' => $clubes]);
+                return view('/AgregarClubProLiga', ['league' => $league, 'clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas]);
             } else {
                 return redirect()->back()->withErrors("Algo falló!!!");
             }
@@ -127,9 +128,10 @@ class TorneoController extends Controller {
             $clubes = ProTeam::All();
             $league = ProLeague::find($idLiga);
             $copas=ProCup::All();
+             $ligas= ProLeague::all();
 
 
-            return view('/AgregarClubProLiga', ['league' => $league, 'clubes' => $clubes,'copas'=>$copas]);
+            return view('/AgregarClubProLiga', ['league' => $league, 'ligas' => $ligas, 'clubes' => $clubes,'copas'=>$copas]);
         }
     }
 
@@ -166,7 +168,7 @@ class TorneoController extends Controller {
             foreach($liga->proTeams as $Ligaa){
 
                 if ($proTeam->id == $Ligaa->id) {
-                    return view('ModificarLigaPro',['ligas' => $ligas, 'clubes' => $clubes,'copas'=>$copas])->withErrors("El equipo ya está en otra liga");
+                    return view('ModificarLigaPro',['ligas' => $ligas,  'clubes' => $clubes,'copas'=>$copas])->withErrors("El equipo ya está en otra liga");
                 }
             }
         }
@@ -176,25 +178,44 @@ class TorneoController extends Controller {
         $proTeam->proLeague()->attach($LeagueInput, ['status' => 'acepted']);
 
         if ($proTeam->save()) {
-            return view('AgregarClubProLiga', ['proTeam' => $proTeam, 'league' => $league, 'clubes' => $clubes]);
+            return view('AgregarClubProLiga', ['proTeam' => $proTeam, 'copas' => $copas,  'ligas' => $ligas,'league' => $league, 'clubes' => $clubes]);
         } else {
             return redirect()->back()->withErrors("Algo falló!!!");
         }
     }
+    
+    
+    
+    public function ReportarPartidoPvsPMetodo($id,$id2,$id3,$id4)
+    {
+      $Equipo1=Team::find($id);
+      $Equipo2=Team::find($id2);
+      $league=League::find($id3);
+      $calendario=CalendarLeague::find($id4);
+
+
+
+
+        return view('ReportarPardido',['Equipo1'=>$Equipo1,'Equipo2'=>$Equipo2,'league'=>$league,'calendario'=>$calendario]);
+    }
+
+    
+    
 
     public function BorrarProClubLiga() {
 
 
         $clubSelect = Input::get('InputIdClub');
-
+        $ligas=ProLeague::All();    
         $LeagueInput = Input::get('InputIdLeague');
         $proTeam = ProTeam::find($clubSelect);
         $league = ProLeague::find($LeagueInput);
         $clubes = ProTeam::All();
+         $copas = Procup::All();
         $league->proTeams()->detach($clubSelect, []);
 
         if ($proTeam->save()) {
-            return view('AgregarClubProLiga', ['proTeam' => $proTeam, 'league' => $league, 'clubes' => $clubes]);
+            return view('AgregarClubProLiga', ['proTeam' => $proTeam, 'copas' => $copas, 'ligas' => $ligas, 'league' => $league, 'clubes' => $clubes]);
         } else {
             return redirect()->back()->withErrors("Algo falló!!!");
         }
@@ -204,16 +225,16 @@ class TorneoController extends Controller {
 
 
         $clubSelect = Input::get('InputIdClub');
-
+         $copas = Procup::All();
         $CopaInput = Input::get('InputIdLeague');
-
+        $ligas=ProLeague::All();    
         $proTeam = ProTeam::find($clubSelect);
         $copa = ProCup::find($CopaInput);
         $clubes = ProTeam::All();
         $copa->proTeams()->detach($clubSelect, []);
 
         if ($proTeam->save()) {
-            return view('AgregarClubProCopa', ['proTeam' => $proTeam, 'copa' => $copa, 'clubes' => $clubes]);
+            return view('AgregarClubProCopa', ['proTeam' => $proTeam,'copas' => $copas, 'ligas' => $ligas, 'copa' => $copa, 'clubes' => $clubes]);
         } else {
             return redirect()->back()->withErrors("Algo falló!!!");
         }
@@ -221,18 +242,19 @@ class TorneoController extends Controller {
 
     public function AgregarProClubCopa() {
 
-
+         $CopaInput = Input::get('InputIdLeague');
         $clubSelect = Input::get('clubSelect');
         $LeagueInput = Input::get('InputIdLeague');
         $proTeam = ProTeam::find($clubSelect);
         $league = ProCup::find($LeagueInput);
         $ligas=ProLeague::all();
+        $copa = ProCup::find($CopaInput);
         $copas=ProCup::all();
         $clubes = ProTeam::All();
         $proTeam->proCup()->attach($LeagueInput, ['status' => 'accepted']);
 
         if ($proTeam->save()) {
-            return view('AgregarClubProCopa', ['proTeam' => $proTeam, 'league' => $league, 'clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+            return view('AgregarClubProCopa', ['proTeam' => $proTeam, 'copa' => $copa, 'league' => $league, 'clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
         } else {
             return redirect()->back()->withErrors("Algo falló!!!");
         }
@@ -264,15 +286,19 @@ class TorneoController extends Controller {
         $copas = ProCup::All();
         $ligas = ProLeague::All();
         $copa = ProCup::find($id);
+         $teams=Team::all();
         return view('/CopaPro', ['copa' => $copa, 'copas' => $copas, 'ligas' => $ligas]);
     }
 
     public function CrearCalendarioPro() {
         $liga=Input::get('InputIdLeague');
         $league=ProLeague::find($liga);
-
+         $copas = ProCup::All();
+        $ligas = ProLeague::All();
+        $clubes=ProTeam::all();
+        
         if($league->generateAndSaveCalendar()){
-            return view('clubespro');
+            return view('clubes-pro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
         }
         else {
             return "Error al crear calendario";

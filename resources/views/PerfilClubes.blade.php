@@ -62,9 +62,8 @@
     <div>
         <ul id="MenuPerfil">
             <li id="ListaPerfil"><a class="active" href="Perfil">Perfil</a></li>
-            <li id="ListaPerfil"><a href="#">Clubes Pro</a></li>
-            <li id="ListaPerfil"><a href="#contact">Virtual</a></li>
-            <li id="ListaPerfil"><a href="#about">Sala de trofeos</a></li>
+            <li id="ListaPerfil"><a href="#">Clubes Pro</a></li>           
+            <li id="ListaPerfil"><a href="/SalaTrofeosPerfil">Sala de trofeo</a></li>
         </ul>
 
     </div>
