@@ -298,10 +298,10 @@ class TorneoController extends Controller {
         $clubes=ProTeam::all();
         
         if($league->generateAndSaveCalendar()){
-            return view('clubes-pro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+            return view('clubes-pro.clubes-pro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
         }
         else {
-            return "Error al crear calendario";
+            return view('clubes-pro.clubes-pro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas])->withErrors("Ya se creó un torneo anteriormente");
         }
     }
 

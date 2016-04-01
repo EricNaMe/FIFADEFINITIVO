@@ -4,7 +4,7 @@
 
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
         <ul id="ListaMenuLateral">
-              <li><a href="Inicio">HOME</a></li>
+              <li><a href="/Inicio">HOME</a></li>
      <li><a>ADMINISTRADOR</a>
           <ul>
               <li><a href="/ProCrearLiga">CREAR LIGA</a></li>

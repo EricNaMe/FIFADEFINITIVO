@@ -70,7 +70,7 @@
 
 
 
-        <div id="TablaPrimera" style="position: absolute; top:25%; left:14%;">
+        <div id="TablaPrimera" style="position: absolute; top:35%; left:14%;">
             <table>
                 <thead>
                 <tr>

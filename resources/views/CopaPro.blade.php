@@ -60,11 +60,11 @@
 
 
 
-        <span style="background-color: darkslategrey; height:60px; width: auto;padding: 10px; position:relative; display: inline-block; left:420px;"> <a style="padding-top:5px;font-size: 50px;color:white; font-family: sans-serif; font-weight: bold;">{{$copa->name}}</a></span>
+        <span style="background-color: darkslategrey; height:70px; width: auto;padding: 10px; position:relative; display: inline-block; left:420px;"> <a style="padding-top:5px;font-size: 50px;color:white; font-family: sans-serif; font-weight: bold;">{{$copa->name}}</a></span>
 
 
 
-        <div id="TablaPrimera" style="position: absolute; top:22%; left:14%;">
+        <div id="TablaPrimera" style="position: absolute; top:35%; left:14%;">
             <table>
                 <thead>
                 <tr>

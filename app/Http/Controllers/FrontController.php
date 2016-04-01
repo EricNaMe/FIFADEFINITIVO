@@ -471,7 +471,7 @@ $search = Input::get('search');
 
     public function clubespro()
     {
-        return view('clubes-pro');
+        return view('clubes-pro.clubes-pro');
     }
 
     public function Ranking1VS1()

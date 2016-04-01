@@ -82,7 +82,9 @@ class ClubesProController extends Controller
     public function getUnirte(ProTeam $proTeam){
         $proTeam->canAddUser(Auth::user());
 
-        return view('clubes-pro.unirte', ['club' => $proTeam]);
+        $ligas=ProLeague::all();
+        $copas=ProCup::all();
+        return view('clubes-pro.unirte', ['club' => $proTeam,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
     public function postUnirte(ProTeam $proTeam){
@@ -199,8 +201,15 @@ class ClubesProController extends Controller
             $equipoVis->points+=1;
             $equipoLoc->JJ+=1;
              $equipoVis->JJ+=1;
+
+            $equipoLoc->GF+=$marcadorLocal;
+            $equipoVisitante->GF+=$marcadorVisitante;
+            $equipoLoc->GF-=$marcadorVisitante;
+            $equipoVisitante->GF-=$marcadorLocal;
+
             $equipoLoc->update();
             $equipoVis->update();
+
         }
         
          if($marcadorLocal>$marcadorVisitante){
@@ -209,7 +218,10 @@ class ClubesProController extends Controller
             $equipoLoc->JG+=1;
             $equipoVis->JP+=1;
             $equipoLoc->points+=3;
-            
+             $equipoLoc->GF+=$marcadorLocal;
+             $equipoVisitante->GF+=$marcadorVisitante;
+             $equipoLoc->GF-=$marcadorVisitante;
+             $equipoVisitante->GF-=$marcadorLocal;
            
             $equipoLoc->update();
             $equipoVis->update();
@@ -221,6 +233,10 @@ class ClubesProController extends Controller
             $equipoLoc->JP+=1;
             $equipoVis->JG+=1;
             $equipoVis->points+=3;
+              $equipoLoc->GF+=$marcadorLocal;
+              $equipoVisitante->GF+=$marcadorVisitante;
+              $equipoLoc->GF-=$marcadorVisitante;
+              $equipoVisitante->GF-=$marcadorLocal;
            
             $equipoLoc->update();
             $equipoVis->update();

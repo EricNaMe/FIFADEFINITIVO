@@ -54,7 +54,7 @@
     <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;">
 
 
-        <div style="width: 700px; height: 260px;border-radius: 10px; position:relative;top:250px;left:200px; background-color: whitesmoke;">
+        <div style="width: 700px; border-radius: 10px;  top:10%; left:15%; background-color: whitesmoke;">
 
             <div class="container" >
                 <h2>Asignar Equipos</h2>
@@ -131,7 +131,7 @@
 
 
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-primary">CrearTorneo</button>
+                        <button type="submit" class="btn btn-primary">Crear Torneo</button>
                     </div>
                 </form>
 

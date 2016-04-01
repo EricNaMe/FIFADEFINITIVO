@@ -62,7 +62,7 @@
                         <div style="width: 40px; height: 40px; position: absolute; margin-top: -10px;">
                             <img src="https://avatar-ssl.xboxlive.com/avatar/{{$transfer->user->gamertag}}/avatarpic-l.png" style="width: 40px;"/>
                         </div>
-                        <div class="title" style="color: navy;  line-height: normal; width: 160px; margin-left: 50px;font-size: 20px; ">{{$transfer->user->user_name}}</div>
+                        <div class="title" style="color: navy;  line-height: normal; width: 160px; margin-left: 50px;font-size: 20px; "><a href="/PerfilDetalles/{{$transfer->user->id}}">{{$transfer->user->user_name}}</a></div>
                     </div>
                     <div id="columna1" class="title" style="color: black; font-size: 18px; font-style: normal; font-family: Arial;">Se ha Transferido de</div>
                     <div id="columna1" >
