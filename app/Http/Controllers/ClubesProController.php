@@ -82,7 +82,8 @@ class ClubesProController extends Controller
     public function getUnirte(ProTeam $proTeam){
         $proTeam->canAddUser(Auth::user());
 
-        return view('clubes-pro.unirte', ['club' => $proTeam]);
+        return view('clubes-pro.unirte',
+            ['club' => $proTeam]);
     }
 
     public function postUnirte(ProTeam $proTeam){

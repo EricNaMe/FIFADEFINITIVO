@@ -16,7 +16,7 @@
       </li>
         <li><a>LIGAS VIGENTES</a>
        <ul>
-           @foreach($ligas as $liga)
+           @foreach(\App\ProLeague::all() as $liga)
         <li><a href="EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
 
            @endforeach
@@ -24,7 +24,7 @@
         </li>
       <li><a>COPAS VIGENTES</a>
           <ul>
-              @foreach($copas as $copa)
+              @foreach(\App\ProCup::all() as $copa)
                   <li><a href="EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
 
               @endforeach

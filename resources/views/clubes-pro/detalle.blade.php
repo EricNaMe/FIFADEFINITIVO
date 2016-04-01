@@ -74,10 +74,12 @@
                         <a style="font-weight: bold; color: white; font-size: 30px;text-align: center;">
                             {{$proTeam->name}}
                             @if(! $status = $proTeam->isInTeamStatus(Auth::user()))
-                                <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte"
-                                   class="btn btn-primary">
-                                    Solicitar entrada
-                                </a>
+                                @if(!Auth::user()->isInAnyTeam())
+                                    <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte"
+                                       class="btn btn-primary">
+                                        Solicitar entrada
+                                    </a>
+                                @endif
                             @else
                                 @if(Auth::check() &&
                                     $proTeam->getDT()->id != Auth::user()->id)
