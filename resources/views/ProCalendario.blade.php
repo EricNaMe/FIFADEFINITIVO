@@ -141,7 +141,7 @@
                             <td style="">{{$Equipos->localProTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
                             <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">{{$Equipos->matchProTeam->local_score}}</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">{{$Equipos->matchProTeam->visitor_score}}</div></td>
                             <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}</td>
-                            <td><a href="/DetallesPartido">Detalles</a></td>
+                            <td><a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a></td>
                             <td><a >Ya Reportado</a></td>
 
 

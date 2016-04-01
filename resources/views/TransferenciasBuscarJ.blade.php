@@ -72,7 +72,7 @@
                  
                  <div id="contenidos">
                     <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/{{$proTeam->gamertag}}/avatarpic-l.png" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 200px; margin-left: 50px; ">{{$proTeam->user_name}}</div> </div>
-                    <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="Imagenes/MLS/TORONTO_FC-LOGO.png" style="width: 50px;"/></div> <div class="title" style=" line-height: normal; width: 210px; margin-left: 50px; "></div> </div>
+                    <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"></div> <div class="title" style=" line-height: normal; width: 210px; margin-left: 50px; "></div> </div>
                     <div id="columna2" style="width: 150px;"><form action="/PerfilDetalles/{{$proTeam->id}}"><button type="submit" class="boton2 grey">Ver perfil</button></a></form></div>
                 </div>        
                  

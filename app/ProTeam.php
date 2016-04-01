@@ -17,6 +17,12 @@ class ProTeam extends Model
         'state',
         'status',
         'points',
+        'JJ',
+        'JG',
+        'JE',
+        'JP',
+        'GF',
+        'GC',
     ];
 
     protected $searchable = [

@@ -110,6 +110,15 @@ class ClubesProController extends Controller
         return view('clubes-pro.detalle', ['proTeam' => $proTeam,'clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
 
+    public function DetallesPartidoMetodo($id){
+
+      $partido=ProMatch::find($id);
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+        return view('DetallesPartido', ['proTeam' => $proTeam,'clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas,'partido'=>$partido]);
+    }
+
     public function getPlantilla(ProTeam $proTeam){
          $clubes=Proteam::all();
         $ligas= ProLeague::all();
@@ -203,9 +212,10 @@ class ClubesProController extends Controller
              $equipoVis->JJ+=1;
 
             $equipoLoc->GF+=$marcadorLocal;
-            $equipoVisitante->GF+=$marcadorVisitante;
-            $equipoLoc->GF-=$marcadorVisitante;
-            $equipoVisitante->GF-=$marcadorLocal;
+            $equipoVis->GF+=$marcadorVisitante;
+
+            $equipoLoc->GC+=$marcadorVisitante;
+            $equipoVis->GC+=$marcadorLocal;
 
             $equipoLoc->update();
             $equipoVis->update();
@@ -219,9 +229,10 @@ class ClubesProController extends Controller
             $equipoVis->JP+=1;
             $equipoLoc->points+=3;
              $equipoLoc->GF+=$marcadorLocal;
-             $equipoVisitante->GF+=$marcadorVisitante;
-             $equipoLoc->GF-=$marcadorVisitante;
-             $equipoVisitante->GF-=$marcadorLocal;
+             $equipoVis->GF+=$marcadorVisitante;
+
+             $equipoLoc->GC+=$marcadorVisitante;
+             $equipoVis->GC+=$marcadorLocal;
            
             $equipoLoc->update();
             $equipoVis->update();
@@ -234,9 +245,10 @@ class ClubesProController extends Controller
             $equipoVis->JG+=1;
             $equipoVis->points+=3;
               $equipoLoc->GF+=$marcadorLocal;
-              $equipoVisitante->GF+=$marcadorVisitante;
-              $equipoLoc->GF-=$marcadorVisitante;
-              $equipoVisitante->GF-=$marcadorLocal;
+              $equipoVis->GF+=$marcadorVisitante;
+
+              $equipoLoc->GC+=$marcadorVisitante;
+              $equipoVis->GC+=$marcadorLocal;
            
             $equipoLoc->update();
             $equipoVis->update();

@@ -150,7 +150,7 @@ Route::post('ProCrearCalendario','TorneoController@CrearCalendarioPro');
 Route::post('ProCrearCopa','TorneoController@CrearCopaPro');
 Route::post('roundRobin','TorneoController@RoundRobin');
 Route::post('AgregarProTeamLiga','TorneoController@AgregarProClubLiga');
-Route::get('DetallesPartidoMetodo/{id}/{id2}','ClubesProController@DetallesPartidoMetodo');
+Route::get('DetallesPartidoMetodo/{id}/','ClubesProController@DetallesPartidoMetodo');
 Route::get('ReportarPartidoProMetodo/{id}/{id2}/{id3}/{id4}','ClubesProController@ReportarPartidoMetodo');
 
 Route::get('ReportarPartidoPvsPMetodo/{id}/{id2}/{id3}/{id4}','TorneoController@ReportarPartidoPvsPMetodo');

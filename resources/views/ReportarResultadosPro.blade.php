@@ -69,6 +69,14 @@
                 height: auto;
 
             }
+
+            th{
+                text-align: center;
+            }
+
+            td{
+                text-align: center;
+            }
         </style>
 
 
@@ -78,6 +86,8 @@
             <span><a  style="color:white; font-size: 18px; font-weight: bold; ">{{$EquipoLocal->name}}</a></span>
         </div>
 
+
+        <div class="col-lg-9">
             <div  id="TablaPrimeraClubesPro2"  class="co-lg-9">
 
                 <table>
@@ -249,14 +259,18 @@
 
                 <br></br>
             </div>
+            </div>
 
 
+        <br></br>
 
         <br></br><br>
 
         <div style="background-color: gray; padding: 10px;" class="col-lg-9 text-center">
             <span><a style="color:white; font-size: 18px; font-weight: bold; ">{{$EquipoVisitante->name}}</a></span>
         </div>
+
+
         <div id="TablaPrimeraClubesPro2" class="col-lg-9">
             <table>
                 <thead>
@@ -433,16 +447,14 @@
         </div>
 
 
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div style="background-color: white;" class="col-lg-6">
+<div class="row"><br></br></div>
+
+        <div style="background-color: white; margin-top: 30px;" class="col-lg-6">
 
 
             <div class="col-sm-12">
                 <div class="col-xs-2">
-                    <label class="" for="usr">{{$EquipoLocal->name}}</label>
+                    <label class="" for="usr">{{$EquipoLocal->name}}<div id="LogoEquipo" style=" background:url({{$EquipoLocal->getImageUrl()}});  background-size:cover;"></div></label>
                 </div>
                 <div class="col-xs-1" style="width:14%;">
                     <input type="number" min="0"  name="LocalInput" class="col-md-2 form-control" id="usr">
@@ -455,7 +467,7 @@
                 </div>
 
                 <div class="col-xs-2">
-                    <label class=""  for="usr">{{$EquipoVisitante->name}}</label>
+                    <label class=""  for="usr"><div id="LogoEquipo" style=" background:url({{$EquipoVisitante->getImageUrl()}});  background-size:cover;">{{$EquipoVisitante->name}}</label>
                 </div>
 
 
