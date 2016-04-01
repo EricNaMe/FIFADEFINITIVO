@@ -11,7 +11,7 @@ class Notification extends Model
 
     public function notifiable()
     {
-        return $this->morphTo();
+        return $this->morphTo()->withTrashed();
     }
 
     public function getMessage()

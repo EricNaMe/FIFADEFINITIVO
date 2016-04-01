@@ -4,12 +4,15 @@ namespace App;
 
 use App\Exceptions\PermissionException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ProTeam extends Model
 {
-    use \Nicolaslopezj\Searchable\SearchableTrait;
+    use SearchableTrait;
+    use SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -24,6 +27,10 @@ class ProTeam extends Model
             'name' => 1,
         ],
     ];
+
+
+    protected $dates = ['deleted_at'];
+    protected $softDelete = true;
 
     public function users()
     {
@@ -198,7 +205,25 @@ class ProTeam extends Model
 
     public function downUser(User $user)
     {
+        $user_dt =$this->getDT();
         $this->users()->detach($user->id);
+
+        if($user_dt->id == $user->id)
+        {
+            if($new_dt = $this->users()->wherePivot('status','accepted')->first())
+            {
+                $this->users()->updateExistingPivot(
+                    $new_dt->id ,
+                    ['position' => 'dt']
+                );
+            }
+            else
+            {
+                \Log::info("Deleted");
+                $this->delete();
+            }
+        }
+
         Transfer::create([
             'user_id' => $user->id,
             'down_pro_team_id' => $this->id,

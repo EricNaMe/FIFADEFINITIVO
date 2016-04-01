@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\PermissionException;
 use App\LeagueProCalendar;
 use App\Notification;
 use App\ProCup;
@@ -42,6 +43,12 @@ class ClubesProController extends Controller
      * Create a Club-pro
      */
     public function postIndex(Request $request){
+        if(Auth::user()->isInAnyTeam())
+        {
+            throw new PermissionException(
+                'Ya se encuentra en otro club'
+            );
+        }
         $club = new ProTeam;
         $club->name =  Input::get('nombreequipo');
         $club->quote = Input::get('lema');
@@ -106,7 +113,11 @@ class ClubesProController extends Controller
         $clubes=Proteam::all();
         $ligas= ProLeague::all();
         $copas=ProCup::all();        
-        return view('clubes-pro.detalle', ['proTeam' => $proTeam,'clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+        return view('clubes-pro.detalle',
+            ['proTeam' => $proTeam,
+                'clubes' => $clubes,
+                'ligas'=>$ligas,
+                'copas'=>$copas]);
     }
 
     public function getPlantilla(ProTeam $proTeam){
@@ -559,6 +570,10 @@ class ClubesProController extends Controller
     public function deleteBaja(ProTeam $proTeam)
     {
         $proTeam->downUser(Auth::user());
+        if(ProTeam::whereId(\Auth::user()->id)->first())
+        {
+            return redirect()->to('clubes-pro');
+        }
         return redirect()->back();
     }
 
