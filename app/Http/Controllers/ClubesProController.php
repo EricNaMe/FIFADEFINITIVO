@@ -540,7 +540,11 @@ class ClubesProController extends Controller
         $calendario->match_id=$Partido->id;
         $calendario->update();
 
-        return view('Inicio');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('clubes-pro.clubes-pro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
 
 
 
@@ -572,6 +576,7 @@ class ClubesProController extends Controller
     
     
      public function buscarEquipo(){
+
         $search = Input::get('search');
         return view('TransferenciasBuscarE',[
             'clubes' => Proteam::all(),
@@ -601,7 +606,7 @@ class ClubesProController extends Controller
         {
             return redirect()->to('clubes-pro');
         }
-        return redirect()->back();
+        return redirect()->to('clubes-pro');
     }
 
 }

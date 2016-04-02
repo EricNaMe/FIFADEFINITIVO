@@ -19,10 +19,10 @@
             </li>
 
 
-        <li><a>CLUBES</a>
-            <ul>
-                <li><a>BUSCAR CLUB</a></li>
-                <li><a href="clubes-pro/crear">CREAR CLUB</a></li>
+            <li><a>CLUBES</a>
+                <ul>
+                    <li><a>BUSCAR CLUB</a></li>
+                    <li><a href="clubes-pro/crear">CREAR CLUB</a></li>
 
 
                 </ul>
@@ -39,7 +39,7 @@
 
             <li><a href="RankingCP">RANKING CLUBES PRO</a>
             @if (Auth::check())
-                <?php $user=Auth::user();
+                <?php $user = Auth::user();
                 ?>
 
 
@@ -85,11 +85,11 @@
 
             }
 
-            th{
+            th {
                 text-align: center;
             }
 
-            td{
+            td {
                 text-align: center;
             }
         </style>
@@ -98,12 +98,12 @@
         <br></br>
 
         <div style="background-color: gray; padding: 10px;" class="col-lg-9 text-center">
-            <span><a  style="color:white; font-size: 18px; font-weight: bold; ">{{$EquipoLocal->name}}</a></span>
+            <span><a style="color:white; font-size: 18px; font-weight: bold; ">{{$EquipoLocal->name}}</a></span>
         </div>
 
 
         <div class="col-lg-9">
-            <div  id="TablaPrimeraClubesPro2"  class="co-lg-9">
+            <div id="TablaPrimeraClubesPro2" class="co-lg-9">
 
                 <table>
                     <thead>
@@ -274,7 +274,7 @@
 
                 <br></br>
             </div>
-            </div>
+        </div>
 
 
         <br></br>
@@ -462,17 +462,24 @@
         </div>
 
 
-<div class="row"><br></br></div>
+        <div class="row"><br></br></div>
 
         <div style="background-color: white; margin-top: 30px;" class="col-lg-6">
 
 
             <div class="col-sm-12">
-                <div class="col-xs-2">
-                    <label class="" for="usr">{{$EquipoLocal->name}}<div id="LogoEquipo" style=" background:url({{$EquipoLocal->getImageUrl()}});  background-size:cover;"></div></label>
+                <div class="col-sm-3">
+                    <div class="col-xs-6">
+                        <label class="" for="usr">{{$EquipoLocal->name}}</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <div id=""
+                             style="height:40px; width:40px; background:url({{$EquipoLocal->getImageUrl()}});  background-size:cover;"></div>
+                    </div>
                 </div>
+
                 <div class="col-xs-1" style="width:14%;">
-                    <input type="number" min="0"  name="LocalInput" class="col-md-2 form-control" id="usr">
+                    <input type="number" min="0" name="LocalInput" class="col-md-2 form-control" id="usr">
                 </div>
                 <div class="col-xs-1">
                     <a>VS</a>
@@ -481,9 +488,21 @@
                     <input type="number" min="0" name="VisitorInput" class="col-md-2 form-control" id="usr">
                 </div>
 
-                <div class="col-xs-2">
-                    <label class=""  for="usr"><div id="LogoEquipo" style=" background:url({{$EquipoVisitante->getImageUrl()}});  background-size:cover;">{{$EquipoVisitante->name}}</label>
+                <div class="col-sm-3">
+                    <div class="col-xs-4">
+                        <div id="" style="height:40px; width:40px; background:url({{$EquipoVisitante->getImageUrl()}});  background-size:cover;"></div>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <label class="" for="usr">{{$EquipoVisitante->name}}</label>
+                    </div>
+
                 </div>
+
+
+
+
+
 
 
             </div>

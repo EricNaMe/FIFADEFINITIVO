@@ -38,13 +38,14 @@
 
         
           <div class="myBox"style=" background-size: cover; position: relative ; width: 900px; height: 700px; margin-left: 200px; top: -10px;-webkit-border-radius: 20px 20px;-webkit-border-radius: 20px 20px;">
-                <form id="formEquipo" class="container subcontainer light-grey">
+                <form action="" id="formEquipo"  method="post" class="container subcontainer light-grey">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <h2>Buscar Equipo</h2>
                     <p>      
                     <label>Ingresa Club</label>
-                    <input class="input1 border1" type="text"></p>
+                    <input name="search" value="{{$search}}"class="input1 border1" type="text"></p>
                     <p>  
-                        <button class="boton grey" type="button">Genera Resultados</button>
+                        <button class="boton grey" type="submit">Genera Resultados</button>
                 </form>
                 </br>
                 </br>
@@ -62,7 +63,7 @@
                         </div>
                        	@foreach($pro_team_search as $proTeam)
                             <div id="contenidos">
-                                <div id="columna1" style="width: 60px;"><div style=" background:url ({{$proTeam->getImageUrl()}}); background-size:cover;"></div> <div class="title"> <a href="clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></div></div>
+                                <div id="columna1" style="width: 60px;"><div style=" background:url ({{$proTeam->getImageUrl()}}); background-size:cover;"></div> <div class="title"> <div  style="position:relative; top:-10px;height:70px; width:70px;background:url('{{$proTeam->getImageUrl('md')}}'); background-size:cover; "></div><a style="position:relative; top:-38px;"href="clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></div></div>
 
                                 <div id="columna2" style="width: 150px;"><form action="/clubes-pro/{{$proTeam->id}}"><button type="submit" class="boton2 grey">Ver Equipo</button></form></div>
                             </div>                 

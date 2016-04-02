@@ -67,7 +67,7 @@
             </ul>
         </div>
 
-        <div id="TablaPrimeraClubesPro" style="position: absolute; top:20%; left:22%;">
+        <div id="TablaPrimeraClubesPro" style="position: absolute; top:20%; left:22%; max-height:400px;">
             <table>
                 <thead>
                     <tr>
