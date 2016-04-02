@@ -6,19 +6,28 @@
 
     <ul id="ListaMenuLateral">
                     <li><a href="Inicio">HOME</a></li>
-              <li><a>ADMINISTRADOR</a>
-                  <ul>
-                      <li><a href="CrearLiga">CREAR LIGA</a></li>
-                      <li><a href="CrearCopa">CREAR COPA</a></li>
-                      <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
-                      <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
-                      <li><a href="#">MODIFICAR LIGA</a></li>
-                      <li><a href="ModificarCopa">MODIFICAR COPA</a></li>
+        @if (Auth::check())
+            <?php $user=Auth::user();
+            ?>
+
+            @if($user->user_name==="Administrador22")
+                <li><a>ADMINISTRADOR</a>
+                    <ul>
+                        <li><a href="CrearLiga">CREAR LIGA</a></li>
+                        <li><a href="CrearCopa">CREAR COPA</a></li>
+                        <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
+                        <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
+                        <li><a href="ModificarLiga">MODIFICAR LIGA</a></li>
+                        <li><a href="ModificarCopa">MODIFICAR COPA</a></li>
 
 
-                  </ul>
-              </li>
-                <li><a>DIVISIONES LIGA</a>
+                    </ul>
+                </li>
+
+            @endif
+        @endif
+
+        <li><a>DIVISIONES LIGA</a>
                 <ul>
                 <li><a href="#">PRIMERA DIVISIÓN</a></li>
                     @foreach($ligas as $liga)

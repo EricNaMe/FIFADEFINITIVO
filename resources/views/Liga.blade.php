@@ -31,15 +31,27 @@
         </li>
         <li><a href="#">SALA DE TROFEOS 1VS1</a></li>
         <li><a href="/Ranking1VS1">RANKING</a></li>
-        <li><a>ADMINISTRADOR</a>
-            <ul>
-                <li><a href="/CrearLiga">CREAR LIGA</a></li>
-                <li><a href="/CrearCopa">CREAR COPA</a></li>
-                <li><a href="/Divisiones">ASIGNAR EQUIPOS</a></li>
+        @if (Auth::check())
+            <?php $user=Auth::user();
+            ?>
+
+            @if($user->user_name==="Administrador22")
+                <li><a>ADMINISTRADOR</a>
+                    <ul>
+                        <li><a href="CrearLiga">CREAR LIGA</a></li>
+                        <li><a href="#">CREAR COPA</a></li>
+                        <li><a href="Divisiones">ASIGNAR EQUIPOS</a></li>
+                        <li><a href="EliminarEquiposPvsP">ELIMINAR EQUIPOS</a></li>
+                        <li><a href="ModificarLiga">MODIFICAR LIGA</a></li>
+                        <li><a href="ModificarCopa">MODIFICAR COPA</a></li>
 
 
-            </ul>
-        </li>
+                    </ul>
+                </li>
+
+            @endif
+        @endif
+
 
     </ul>
 

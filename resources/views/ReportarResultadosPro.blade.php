@@ -38,13 +38,28 @@
 
 
             <li><a href="RankingCP">RANKING CLUBES PRO</a>
-            <li><a>ADMINISTRADOR</a>
-                <ul>
-                    <li><a>CREAR LIGA</a></li>
-                    <li><a>CREAR COPA</a></li>
-                </ul>
-            </li>
-            <li><a href="Inicio">HOME</a></li>
+            @if (Auth::check())
+                <?php $user=Auth::user();
+                ?>
+
+
+
+
+                @if($user->user_name==="Administrador22")
+                    <li><a>ADMINISTRADOR</a>
+                        <ul>
+                            <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
+                            <li><a href="/ProCrearCopa">CREAR COPA</a></li>
+                            <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
+                            <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
+                        </ul>
+                    </li>
+
+                @endif
+            @endif
+
+
+            <li><a href="/Inicio">HOME</a></li>
 
             </li>
 
