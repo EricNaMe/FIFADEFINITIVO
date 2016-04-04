@@ -19,12 +19,14 @@ class Transfer extends Model
 
     public function downProTeam()
     {
-        return $this->belongsTo('App\ProTeam','down_pro_team_id');
+        return $this->belongsTo('App\ProTeam','down_pro_team_id')
+            ->withTrashed();
     }
 
     public function upProTeam()
     {
-        return $this->belongsTo('App\ProTeam','up_pro_team_id');
+        return $this->belongsTo('App\ProTeam','up_pro_team_id')
+            ->withTrashed();
     }
 
     public static function completeTransferIfExists(User $user, ProTeam $proTeam)

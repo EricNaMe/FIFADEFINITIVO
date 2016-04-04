@@ -16,12 +16,14 @@ class LeagueProCalendar extends Model
 
     public function localProTeam()
     {
-        return $this->belongsTo('App\ProTeam','local_id');
+        return $this->belongsTo('App\ProTeam','local_id')
+            ->withTrashed();
     }
 
     public function visitorProTeam()
     {
-        return $this->belongsTo('App\ProTeam','visitor_id');
+        return $this->belongsTo('App\ProTeam','visitor_id')
+            ->withTrashed();
     }
 
     public function proLeague()

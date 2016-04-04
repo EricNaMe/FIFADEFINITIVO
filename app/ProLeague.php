@@ -21,7 +21,8 @@ class ProLeague extends Model
 
     public function proTeams(){
         return $this->belongsToMany('App\ProTeam')
-            ->withPivot('status');
+            ->withPivot('status')
+            ->withTrashed();
     }
     
     public function proLeagues(){
@@ -43,7 +44,8 @@ class ProLeague extends Model
     
        public function IdProTeams(){
        
-          return $this->hasMany('App\ProTeam','id','pro_team_id');
+          return $this->hasMany('App\ProTeam','id','pro_team_id')
+              ->withTrashed();
     
     }
 

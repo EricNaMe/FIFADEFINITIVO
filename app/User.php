@@ -58,7 +58,8 @@ class User extends Model implements AuthenticatableContract,
 
     public function proTeams(){
         return $this->belongsToMany('App\ProTeam')
-            ->withPivot('status', 'position');
+            ->withPivot('status', 'position')
+            ->withTrashed();
     }
 
     public function comments(){

@@ -193,12 +193,14 @@ class ProMatch extends Model
 
     public function localProTeam()
     {
-        return $this->belongsTo('App\ProTeam','team_local_id');
+        return $this->belongsTo('App\ProTeam','team_local_id')
+            ->withTrashed();
     }
 
     public function visitorProTeam()
     {
-        return $this->belongsTo('App\ProTeam','team_visitor_id');
+        return $this->belongsTo('App\ProTeam','team_visitor_id')
+            ->withTrashed();
     }
 
     public function proLeague()
