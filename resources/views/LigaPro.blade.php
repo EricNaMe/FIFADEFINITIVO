@@ -5,9 +5,9 @@
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
         <ul id="ListaMenuLateral">
-                        <li><a href="/Inicio">HOME</a></li>
+            <li><a href="/Inicio">HOME</a></li>
             @if (Auth::check())
-                <?php $user=Auth::user();
+                <?php $user = Auth::user();
                 ?>
 
 
@@ -25,29 +25,29 @@
 
                 @endif
             @endif
-               <li><a>LIGAS VIGENTES</a>
-              <ul>
-                  @foreach($ligas as $liga)
-               <li><a href="/EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
+            <li><a>LIGAS VIGENTES</a>
+                <ul>
+                    @foreach($ligas as $liga)
+                        <li><a href="/EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
 
-                  @endforeach
-               </ul>
-               </li>
-             <li><a>COPAS VIGENTES</a>
-                 <ul>
-                     @foreach($copas as $copa)
-                         <li><a href="/EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
+                    @endforeach
+                </ul>
+            </li>
+            <li><a>COPAS VIGENTES</a>
+                <ul>
+                    @foreach($copas as $copa)
+                        <li><a href="/EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
 
-                     @endforeach
-                 </ul>
-             </li>
-               <li><a>CLUBES</a>
-           <ul>
-               <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
-                <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
-               </ul>
-               </li>
-                <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a>  
+                    @endforeach
+                </ul>
+            </li>
+            <li><a>CLUBES</a>
+                <ul>
+                    <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
+                    <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
+                </ul>
+            </li>
+            <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a>
 
         </ul>
 
@@ -55,12 +55,12 @@
     </div>
 
     <style>
-        th{
+        th {
             text-align: center;
         }
-        </style>
+    </style>
 
-    <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
+    <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;">
 
 
         <div>
@@ -75,10 +75,8 @@
         </div>
 
 
-
-
-        <span style="background-color: darkslategrey; height:70px; width: auto;padding: 10px; position:relative; display: inline-block; left:420px;"> <a style="padding-top:5px;font-size: 50px;color:white; font-family: sans-serif; font-weight: bold;">{{$league->name}}</a></span>
-
+        <span style="background-color: darkslategrey; height:70px; width: auto;padding: 10px; position:relative; display: inline-block; left:420px;"> <a
+                    style="padding-top:5px;font-size: 50px;color:white; font-family: sans-serif; font-weight: bold;">{{$league->name}}</a></span>
 
 
         <div id="TablaPrimera" style="position: absolute; top:35%; left:14%;">
@@ -97,25 +95,59 @@
                     <th>DG</th>
                 </tr>
                 </thead>
-                <?php $i=1; ?>
+                <?php $i = 1; ?>
 
                 @foreach($league->proTeams as $proTeam)
 
 
 
                     <tr>
-                        <td><div id="PosicionTabla">   {{$i}}</div></td>
-                        <td style="text-align:left;"><div id="LogoEquipo" style=" background:url({{$proTeam->getImageUrl()}});  background-size:cover;"></div><a href="/clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
-                        <td>{{$proTeam->points}}</td>
-                        <td>{{$proTeam->JJ}}</td>
-                        <td>{{$proTeam->JG}}</td>
-                        <td>{{$proTeam->JE}}</td>
-                        <td>{{$proTeam->JP}}</td>
-                        <td>{{$proTeam->GF}}</td>
-                        <td>{{$proTeam->GC}}</td>
-                        <td>{{$DF=$proTeam->GF-$proTeam->GC}}</td>
+                        <td>
+                            <div id="PosicionTabla">   {{$i}}</div>
+                        </td>
+                        <td style="text-align:left;">
+                            @foreach($proTeam->proLeagueEstatistics as $estadisticas)
+                            <div id="LogoEquipo"
+                                 style=" background:url({{$proTeam->getImageUrl()}});  background-size:cover;"></div>
+                            <a href="/clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
 
-
+                            @if($estadisticas->pivot->points==0)
+                                <td>0</td>
+                            @else
+                                <td>{{$estadisticas->pivot->points}}</td>
+                            @endif
+                            @if($estadisticas->pivot->JJ==0)
+                                <td>0</td>
+                            @else
+                                <td>{{$estadisticas->pivot->JJ}}</td>
+                            @endif
+                            @if($estadisticas->pivot->JG==0)
+                                <td>0</td>
+                            @else
+                                <td>{{$estadisticas->pivot->JG}}</td>
+                            @endif
+                            @if($estadisticas->pivot->JE==0)
+                                <td>0</td>
+                            @else
+                                <td>{{$estadisticas->pivot->JE}}</td>
+                            @endif
+                            @if($estadisticas->pivot->JP==0)
+                                <td>0</td>
+                            @else
+                                <td>{{$estadisticas->pivot->JP}}</td>
+                            @endif
+                                @if($estadisticas->pivot->GF==0)
+                                    <td>0</td>
+                                @else
+                                    <td>{{$estadisticas->pivot->GF}}</td>
+                                @endif
+                                @if($estadisticas->pivot->GC==0)
+                                    <td>0</td>
+                                @else
+                                    <td>{{$estadisticas->pivot->GC}}</td>
+                                @endif
+                                <td>{{$DF=$estadisticas->pivot->GF-$estadisticas->pivot->GC}}</td>
+                        @endforeach
                         <?php $i++; ?>
                     </tr>
                 @endforeach

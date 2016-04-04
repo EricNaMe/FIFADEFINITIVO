@@ -55,6 +55,12 @@ class ProTeam extends Model
             ->withPivot('status');
     }
 
+    public function proLeagueEstatistics()
+    {
+        return $this->belongsToMany('App\ProLeague')
+            ->withPivot('JJ','JG','JE','GF','GC','points');
+    }
+
     public function proCup()
     {
         return $this->belongsToMany('App\ProCup')
@@ -130,21 +136,23 @@ class ProTeam extends Model
 
     public function canAddUser(User $user)
     {
-        if($this->users()
-            ->whereUserId($user->id)
-            ->first())
-        {
-            throw new PermissionException(
-                'No se puede agregar al club, ya se encuentra incluido'
-            );
+        if(Auth::check()) {
+            if ($this->users()
+                ->whereUserId($user->id)
+                ->first()
+            ) {
+                throw new PermissionException(
+                    'No se puede agregar al club, ya se encuentra incluido'
+                );
+            }
+
+            if ($user->isInAnyTeam()) {
+                throw new PermissionException(
+                    'Ya se encuentra en otro club'
+                );
+            }
         }
 
-        if($user->isInAnyTeam())
-        {
-            throw new PermissionException(
-                'Ya se encuentra en otro club'
-            );
-        }
     }
 
     public function canAuthorizeUserRequest(User $user)

@@ -155,11 +155,20 @@
                                 <div id="LogoEquipo"
                                      style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->playerGamertag()}}/avatarpic-l.png); background-size:cover;"></div>
                             </td>
+                            @if($user->playerGamertag()==null)
                             <td>
                                 <a href="/PerfilDetalles/{{$user->id}}">
                                     {{$user->playerName()}}
                                 </a>
                             </td>
+                            @else
+                                <td>
+                                    <a href="/PerfilDetalles/{{$user->id}}">
+                                        {{$user->playerGamertag()}}
+                                    </a>
+                                </td>
+                            @endif
+
                             <td style="font-weight: bold; ">
                                 {{$user->pivot->position}}
                             </td>
@@ -212,9 +221,15 @@
                                     background-size:cover;"></div>
 
                     </a>
+                    @if($dt->playerGamertag()==null)
                     <a style="" href="/PerfilDetalles/{{$dt->id}}">
                         {{$dt->playerName()}}
                     </a>
+                    @else
+                        <a style="" href="/PerfilDetalles/{{$dt->id}}">
+                            {{$dt->playerGamertag()}}
+                        </a>
+                    @endif
                     <a style="float:right;"></a>
                 </li>
             </ul>

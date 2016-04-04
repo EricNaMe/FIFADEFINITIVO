@@ -66,6 +66,7 @@ Route::get('UnirteClub','FrontController@UnirteClub');
 Route::get('ClubDetalles','FrontController@ClubDetalles');
 Route::get('SalaTrofeoClub','FrontController@SalaTrofeoClub');
 Route::get('SalaTrofeosPerfil','FrontController@SalaTrofeosPerfil');
+Route::get('DetallesPartidoPro','FrontController@DetallesPartidoPro');
 
 Route::get('CrearCopa','FrontController@CrearCopa');
 Route::get('CrearLiga','FrontController@CrearLiga');
@@ -134,6 +135,8 @@ Route::group([
 
 
 Route::get('PlantillaPro/{id}','ClubesProController@PlantillaClub');
+Route::post('EditarClubPro/{id}','ClubesProController@editarClub');
+Route::post('EditarImagen/{id}','ClubesProController@editarImagen');
 Route::post('/ReportarResultadosPro','ClubesProController@ReportarResultadosPro');
 Route::post('/ReportarResultados','ClubesProController@ReportarResultadosMetodo');
 
@@ -150,7 +153,7 @@ Route::post('ProCrearCalendario','TorneoController@CrearCalendarioPro');
 Route::post('ProCrearCopa','TorneoController@CrearCopaPro');
 Route::post('roundRobin','TorneoController@RoundRobin');
 Route::post('AgregarProTeamLiga','TorneoController@AgregarProClubLiga');
-Route::get('DetallesPartidoMetodo/{id}/','ClubesProController@DetallesPartidoMetodo');
+Route::get('DetallesPartido/{id}','ClubesProController@DetallesPartidoMetodo');
 Route::get('ReportarPartidoProMetodo/{id}/{id2}/{id3}/{id4}','ClubesProController@ReportarPartidoMetodo');
 
 Route::get('ReportarPartidoPvsPMetodo/{id}/{id2}/{id3}/{id4}','TorneoController@ReportarPartidoPvsPMetodo');

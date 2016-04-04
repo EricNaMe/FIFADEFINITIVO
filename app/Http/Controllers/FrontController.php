@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\League;
 use App\Cup;
+use App\ProMatch;
 use App\Transfer;
 use App\URLVideos;
 use App\Clips;
@@ -13,6 +14,7 @@ use Input;
 use App\Http\Requests;
 use App\Team;
 use App\ProLeague;
+
 use App\ProCup;
 use App\User;
 use App\ProTeam;
@@ -504,6 +506,21 @@ $search = Input::get('search');
         $copas=Cup::All();
         $ligas=League::All();
         return view('Divisiones',['users'=>$users,'copas'=>$copas,'ligas'=>$ligas]);
+    }
+
+
+    public function DetallesPartidoPro()
+    {
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+        $partido=ProMatch::find(2);
+
+
+        return view('DetallesPartidoPro',['clubes' => $clubes,
+            'ligas'=>$ligas,
+            'copas'=>$copas,
+            'partido'=>$partido]);
     }
 
 }

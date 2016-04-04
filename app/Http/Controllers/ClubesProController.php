@@ -127,7 +127,7 @@ class ClubesProController extends Controller
         $clubes=Proteam::all();
         $ligas= ProLeague::all();
         $copas=ProCup::all();
-        return view('DetallesPartido', ['proTeam' => $proTeam,'clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas,'partido'=>$partido]);
+        return view('DetallesPartidoPro', ['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas,'partido'=>$partido]);
     }
 
     public function getPlantilla(ProTeam $proTeam){
@@ -220,13 +220,47 @@ class ClubesProController extends Controller
             $equipoLoc->points+=1;
             $equipoVis->points+=1;
             $equipoLoc->JJ+=1;
-             $equipoVis->JJ+=1;
+            $equipoVis->JJ+=1;
+
 
             $equipoLoc->GF+=$marcadorLocal;
             $equipoVis->GF+=$marcadorVisitante;
 
             $equipoLoc->GC+=$marcadorVisitante;
             $equipoVis->GC+=$marcadorLocal;
+
+
+            $EstadisticasLoc=$equipoLoc->proLeagueEstatistics;
+            $EstadisticasVis=$equipoVis->proLeagueEstatistics;
+            $JJLocal=$EstadisticasLoc[0]->pivot->JJ;
+            $JELocal=$EstadisticasLoc[0]->pivot->JE;
+            $pointsLocal=$EstadisticasLoc[0]->pivot->points;
+            $GFLocal=$EstadisticasLoc[0]->pivot->GF;
+            $GCLocal=$EstadisticasLoc[0]->pivot->GC;
+
+            $JJVisitante=$EstadisticasVis[0]->pivot->JJ;
+            $JEVisitante=$EstadisticasVis[0]->pivot->JE;
+            $pointsVisitante=$EstadisticasVis[0]->pivot->points;
+            $GFVisitante=$EstadisticasVis[0]->pivot->GF;
+            $GCVisitante=$EstadisticasVis[0]->pivot->GC;
+
+
+            $JJLocal+=1;
+            $JELocal+=1;
+            $pointsLocal+=1;
+            $GFLocal+=$marcadorLocal;
+            $GCLocal+=$marcadorVisitante;
+
+            $JJVisitante+=1;
+            $JEVisitante+=1;
+            $pointsVisitante+=1;
+            $GFVisitante+=$marcadorVisitante;
+            $GCVisitante+=$marcadorLocal;
+
+
+            $equipoLoc->proLeagueEstatistics()->updateExistingPivot($League,['JJ'=>$JJLocal,'JE'=>$JELocal,'GF'=>$GFLocal,'GC'=>$GCLocal,'points'=>$pointsLocal]);
+
+            $equipoVis->proLeagueEstatistics()->updateExistingPivot($League,['JJ'=>$JJVisitante,'JE'=>$JEVisitante,'GF'=>$GFVisitante,'GC'=>$GCVisitante,'points'=>$pointsVisitante]);
 
             $equipoLoc->update();
             $equipoVis->update();
@@ -244,8 +278,43 @@ class ClubesProController extends Controller
 
              $equipoLoc->GC+=$marcadorVisitante;
              $equipoVis->GC+=$marcadorLocal;
-           
-            $equipoLoc->update();
+
+
+
+             $EstadisticasLoc=$equipoLoc->proLeagueEstatistics;
+             $EstadisticasVis=$equipoVis->proLeagueEstatistics;
+             $JJLocal=$EstadisticasLoc[0]->pivot->JJ;
+             $JGLocal=$EstadisticasLoc[0]->pivot->JG;
+             $pointsLocal=$EstadisticasLoc[0]->pivot->points;
+             $GFLocal=$EstadisticasLoc[0]->pivot->GF;
+             $GCLocal=$EstadisticasLoc[0]->pivot->GC;
+
+             $JJVisitante=$EstadisticasVis[0]->pivot->JJ;
+             $JPVisitante=$EstadisticasVis[0]->pivot->JP;
+             $pointsVisitante=$EstadisticasVis[0]->pivot->points;
+             $GFVisitante=$EstadisticasVis[0]->pivot->GF;
+             $GCVisitante=$EstadisticasVis[0]->pivot->GC;
+
+
+             $JJLocal+=1;
+             $JGLocal+=1;
+             $pointsLocal+=3;
+             $GFLocal+=$marcadorLocal;
+             $GCLocal+=$marcadorVisitante;
+
+             $JJVisitante+=1;
+             $JPVisitante+=1;
+             $pointsVisitante+=0;
+             $GFVisitante+=$marcadorVisitante;
+             $GCVisitante+=$marcadorLocal;
+
+
+             $equipoLoc->proLeagueEstatistics()->updateExistingPivot($League,['JJ'=>$JJLocal,'JG'=>$JGLocal,'GF'=>$GFLocal,'GC'=>$GCLocal,'points'=>$pointsLocal]);
+
+             $equipoVis->proLeagueEstatistics()->updateExistingPivot($League,['JJ'=>$JJVisitante,'JP'=>$JPVisitante,'GF'=>$GFVisitante,'GC'=>$GCVisitante,'points'=>$pointsVisitante]);
+
+
+             $equipoLoc->update();
             $equipoVis->update();
         }
         
@@ -260,8 +329,42 @@ class ClubesProController extends Controller
 
               $equipoLoc->GC+=$marcadorVisitante;
               $equipoVis->GC+=$marcadorLocal;
-           
-            $equipoLoc->update();
+
+
+              $EstadisticasLoc=$equipoLoc->proLeagueEstatistics;
+              $EstadisticasVis=$equipoVis->proLeagueEstatistics;
+              $JJLocal=$EstadisticasLoc[0]->pivot->JJ;
+              $JPLocal=$EstadisticasLoc[0]->pivot->JP;
+              $pointsLocal=$EstadisticasLoc[0]->pivot->points;
+              $GFLocal=$EstadisticasLoc[0]->pivot->GF;
+              $GCLocal=$EstadisticasLoc[0]->pivot->GC;
+
+              $JJVisitante=$EstadisticasVis[0]->pivot->JJ;
+              $JGVisitante=$EstadisticasVis[0]->pivot->JG;
+              $pointsVisitante=$EstadisticasVis[0]->pivot->points;
+              $GFVisitante=$EstadisticasVis[0]->pivot->GF;
+              $GCVisitante=$EstadisticasVis[0]->pivot->GC;
+
+
+              $JJLocal+=1;
+              $JPLocal+=1;
+              $pointsLocal+=0;
+              $GFLocal+=$marcadorLocal;
+              $GCLocal+=$marcadorVisitante;
+
+              $JJVisitante+=1;
+              $JGVisitante+=1;
+              $pointsVisitante+=3;
+              $GFVisitante+=$marcadorVisitante;
+              $GCVisitante+=$marcadorLocal;
+
+
+              $equipoLoc->proLeagueEstatistics()->updateExistingPivot($League,['JJ'=>$JJLocal,'JP'=>$JPLocal,'GF'=>$GFLocal,'GC'=>$GCLocal,'points'=>$pointsLocal]);
+
+              $equipoVis->proLeagueEstatistics()->updateExistingPivot($League,['JJ'=>$JJVisitante,'JG'=>$JGVisitante,'GF'=>$GFVisitante,'GC'=>$GCVisitante,'points'=>$pointsVisitante]);
+
+
+              $equipoLoc->update();
             $equipoVis->update();
         }
         
@@ -403,6 +506,7 @@ class ClubesProController extends Controller
         $GolesVisitante=Input::get('GolesSelectVisitante');
 
         $PosicionVisitante=Input::get('PosicionSelectVisitante');
+
         $AmarillasVisitante=Input::get('AmarillasSelectVisitante');
         $RojasVisitante=Input::get('RojasSelectVisitante');
         $AsistenciasVisitante=Input::get('AsistenciasSelectVisitante');
@@ -422,7 +526,7 @@ class ClubesProController extends Controller
                 $Partido->PO_visitor_unbeaten=$UsuariosVisitante[$i];
 
             }
-            if($Posicion[$i]=="DFC"){
+            if($PosicionVisitante[$i]=="DFC"){
                 $Partido->DFC_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->DFC_visitor_red=$RojasVisitante[$i];
                 $Partido->DFC_visitor_yellow=$AmarillasVisitante[$i];
@@ -430,21 +534,21 @@ class ClubesProController extends Controller
                 $Partido->DFC_visitor_goal=$GolesVisitante[$i];
             }
 
-            if($Posicion[$i]=="LTI"){
+            if($PosicionVisitante[$i]=="LTI"){
                 $Partido->LTI_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->LTI_visitor_red=$RojasVisitante[$i];
                 $Partido->LTI_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->LTI_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->LTI_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="LTD"){
+            if($PosicionVisitante[$i]=="LTD"){
                 $Partido->LTD_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->LTD_visitor_red=$RojasVisitante[$i];
                 $Partido->LTD_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->LTD_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->LTD_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="MCD"){
+            if($PosicionVisitante[$i]=="MCD"){
 
                 $Partido->MCD_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->MCD_visitor_red=$RojasVisitante[$i];
@@ -453,42 +557,42 @@ class ClubesProController extends Controller
                 $Partido->MCD_visitor_goal=$GolesVisitante[$i];
 
             }
-            if($Posicion[$i]=="MC"){
+            if($PosicionVisitante[$i]=="MC"){
                 $Partido->MC_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->MC_visitor_red=$RojasVisitante[$i];
                 $Partido->MC_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->MC_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->MC_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="MI"){
+            if($PosicionVisitante[$i]=="MI"){
                 $Partido->MI_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->MI_visitor_red=$RojasVisitante[$i];
                 $Partido->MI_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->MI_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->MI_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="MD"){
+            if($PosicionVisitante[$i]=="MD"){
                 $Partido->MD_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->MD_visitor_red=$RojasVisitante[$i];
                 $Partido->MD_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->MD_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->MD_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="MCO"){
+            if($PosicionVisitante[$i]=="MCO"){
                 $Partido->MCO_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->MCO_visitor_red=$RojasVisitante[$i];
                 $Partido->MCO_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->MCO_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->MCO_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="EI"){
+            if($PosicionVisitante[$i]=="EI"){
                 $Partido->EI_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->EI_visitor_red=$RojasVisitante[$i];
                 $Partido->EI_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->EI_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->EI_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="ED"){
+            if($PosicionVisitante[$i]=="ED"){
 
                 $Partido->ED_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->ED_visitor_red=$RojasVisitante[$i];
@@ -496,21 +600,21 @@ class ClubesProController extends Controller
                 $Partido->ED_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->ED_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="DI"){
+            if($PosicionVisitante[$i]=="DI"){
                 $Partido->DI_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->DI_visitor_red=$RojasVisitante[$i];
                 $Partido->DI_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->DI_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->DI_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="DD"){
+            if($PosicionVisitante[$i]=="DD"){
                 $Partido->DD_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->DD_visitor_red=$RojasVisitante[$i];
                 $Partido->DD_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->DD_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->DD_visitor_goal=$GolesVisitante[$i];
             }
-            if($Posicion[$i]=="DC"){
+            if($PosicionVisitante[$i]=="DC"){
                 $Partido->DC_visitor_id=$UsuariosVisitante[$i]->id;
                 $Partido->DC_visitor_red=$RojasVisitante[$i];
                 $Partido->DC_visitor_yellow=$AmarillasVisitante[$i];
@@ -607,6 +711,44 @@ class ClubesProController extends Controller
             return redirect()->to('clubes-pro');
         }
         return redirect()->to('clubes-pro');
+    }
+
+    public function editarClub($id)
+    {
+
+
+        $club=ProTeam::find($id);
+        $ligas=ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('EditarClubPro',['club'=>$club,'ligas'=>$ligas,'copas'=>$copas]);
+
+    }
+
+    public function editarImagen($id,Request $request)
+    {
+
+
+        $club=ProTeam::find($id);
+
+
+
+
+        $ligas=ProLeague::all();
+        $copas=ProCup::all();
+        $clubes=ProTeam::all();
+
+        $foto=Input::get('picture');
+        $picture = $request->file('picture');
+        if($picture)
+        {
+            $club->saveImage($picture);
+        }
+
+
+
+        return view('clubes-pro.clubes-pro',['clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
+
     }
 
 }

@@ -16,6 +16,7 @@ class ProLeague extends Model
         'JP',
         'GF',
         'GC',
+        'number_match',
     ];
 
     public function proTeams(){

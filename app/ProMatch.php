@@ -190,4 +190,175 @@ class ProMatch extends Model
         'PO_visitor_unbeaten',
 
     ];
+
+    public function localProTeam()
+    {
+        return $this->belongsTo('App\ProTeam','team_local_id');
+    }
+
+    public function visitorProTeam()
+    {
+        return $this->belongsTo('App\ProTeam','team_visitor_id');
+    }
+
+    public function proLeague()
+    {
+        return $this->belongsTo('App\ProLeague','league_id');
+    }
+
+    public function PO_local()
+    {
+        return $this->belongsTo('App\User','PO_local_id');
+    }
+
+
+    public function DFC_local()
+    {
+        return $this->belongsTo('App\User','DFC_local_id');
+    }
+
+
+    public function LTI_local()
+    {
+        return $this->belongsTo('App\User','LTI_local_id');
+    }
+
+
+    public function LTD_local()
+    {
+        return $this->belongsTo('App\User','LTD_local_id');
+    }
+
+
+    public function MCD_local()
+    {
+        return $this->belongsTo('App\User','MCD_local_id');
+    }
+
+
+    public function MC_local()
+    {
+        return $this->belongsTo('App\User','MC_local_id');
+    }
+
+
+    public function MI_local()
+    {
+        return $this->belongsTo('App\User','MI_local_id');
+    }
+
+
+    public function MD_local()
+    {
+        return $this->belongsTo('App\User','MD_local_id');
+    }
+
+    public function MCO_local()
+    {
+        return $this->belongsTo('App\User','MCO_local_id');
+    }
+
+    public function EI_local()
+    {
+        return $this->belongsTo('App\User','EI_local_id');
+    }
+
+    public function ED_local()
+    {
+        return $this->belongsTo('App\User','ED_local_id');
+    }
+
+    public function DI_local()
+    {
+        return $this->belongsTo('App\User','DI_local_id');
+    }
+
+    public function DD_local()
+    {
+        return $this->belongsTo('App\User','DD_local_id');
+    }
+
+    public function DC_local()
+    {
+        return $this->belongsTo('App\User','DC_local_id');
+    }
+
+    public function PO_visitor()
+    {
+        return $this->belongsTo('App\User','PO_visitor_id');
+    }
+
+
+    public function DFC_visitor()
+    {
+        return $this->belongsTo('App\User','DFC_visitor_id');
+    }
+
+
+    public function LTI_visitor()
+    {
+        return $this->belongsTo('App\User','LTI_visitor_id');
+    }
+
+
+    public function LTD_visitor()
+    {
+        return $this->belongsTo('App\User','LTD_visitor_id');
+    }
+
+
+    public function MCD_visitor()
+    {
+        return $this->belongsTo('App\User','MCD_visitor_id');
+    }
+
+
+    public function MC_visitor()
+    {
+        return $this->belongsTo('App\User','MC_visitor_id');
+    }
+
+
+    public function MI_visitor()
+    {
+        return $this->belongsTo('App\User','MI_visitor_id');
+    }
+
+
+    public function MD_visitor()
+    {
+        return $this->belongsTo('App\User','MD_visitor_id');
+    }
+
+    public function MCO_visitor()
+    {
+        return $this->belongsTo('App\User','MCO_visitor_id');
+    }
+
+    public function EI_visitor()
+    {
+        return $this->belongsTo('App\User','EI_visitor_id');
+    }
+
+    public function ED_visitor()
+    {
+        return $this->belongsTo('App\User','ED_visitor_id');
+    }
+
+    public function DI_visitor()
+    {
+        return $this->belongsTo('App\User','DI_visitor_id');
+    }
+
+    public function DD_visitor()
+    {
+        return $this->belongsTo('App\User','DD_visitor_id');
+    }
+
+    public function DC_visitor()
+    {
+        return $this->belongsTo('App\User','DC_visitor_id');
+    }
+
+
 }

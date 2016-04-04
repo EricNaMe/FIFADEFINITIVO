@@ -13,7 +13,7 @@
 
 </div>
 
-<div id="menuCentral" style="background-color:darkslategray; background-size: cover;" >
+<div id="menuCentral" style="height:140%;background-color:darkslategray; background-size: cover;" >
     <style>
         #MenuPerfil {
             list-style-type: none;
@@ -72,17 +72,22 @@
 
         <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatarpic-l.png); background-size:90px 80px;background-color:  #0000C2;display: inline-block; position:relative; left:10px;top:10px;width:90px; height: 80px;"></div>
 
-        <span style="display: inline-block;position: relative;top:-40px;left:20px;font-size: 20px;font-family: sans-serif;"><a>{{Auth::User()->gamertag}}</a></span>
+        <span style="display: inline-block;position: relative;top:-60px;left:20px;font-size: 20px;font-family: sans-serif;"><a><b>Username:</b>{{Auth::User()->user_name}}</a></span>
+        <span style="display: inline-block;position: relative;top:-40px;left:-145px;font-size: 20px;font-family: sans-serif;"><a><b>Gamertag:</b></b>{{Auth::User()->gamertag}}</a></span>
         <span style="color:gray;display:inline-block;  width: 400px; position: relative;top:-40px;left:110px;font-size: 20px;font-family: sans-serif;"><a>"{{Auth::User()->quote}}"</a></span>
     </div>
 
+    @if(Auth::user()->playerGamertag()==null)
+
+        <div style="background-color: #98EFFC;position:relative;border: groove;  top:-40px; left:40px; width:140px; height:100px;"><a><b>Agrega un gamertag, en la opción de editar perfil.</b></a></div>
+    @endif
 
     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatar-body.png);  background-size: contain; background-repeat: no-repeat;  display:inline-block; margin-top: 20px;margin-left: 90px; width: 300px; height: 400px;">
 
 
     </div>
 
-    <div style="background-color: white;  position:relative; top:-300px; left:380px; width: 300px; height: auto;">
+    <div style="background-color: white; display:inline-block; position:relative; top:-140px; width: 300px; height: auto;">
      <div>
         <ul id="ListaDatosPerfil">
             <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Datos generales</a></li>
@@ -99,7 +104,7 @@
      </div>
     </div>
 
-    <div style="background-color: white;   position:relative; top:-600px; left:740px; width: 300px; height: auto;">
+    <div style="background-color: white; display: inline-block; margin-left: 40px;  width: 300px; height: auto;">
         <div>
             <ul id="ListaDatosPerfil">
                 <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Estadísticas generales</a></li>

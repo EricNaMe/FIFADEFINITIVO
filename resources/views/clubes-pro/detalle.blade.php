@@ -73,6 +73,21 @@
     </div>
 
 
+    @if(Auth::check())
+
+        @if(Auth::user()->id == $proTeam->getDT()->id)
+
+
+            <form action="/EditarClubPro/{{$proTeam->id}}" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <button type="submit"
+                class="btn btn-danger">
+            Editar Imagen
+        </button>
+        </form>
+    @endif
+    @endif
+
     <div style="background-color:whitesmoke; width:500px; height:500px;position:relative; left:200px; top:30px;">
 
         <div style="background-color: green; height: 150px; width:150px; position: relative; top:20px; left:160px;  background:url({{$proTeam->getImageUrl('md')}}); background-size:cover;"></div>
@@ -84,6 +99,7 @@
                     <li style="background-color: #080808;">
                         <a style="font-weight: bold; color: white; font-size: 30px;text-align: center;">
                             {{$proTeam->name}}
+                            @if(Auth::check())
                             @if(! $status = $proTeam->isInTeamStatus(Auth::user()))
                                 @if(!Auth::user()->isInAnyTeam())
                                     <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte"
@@ -104,6 +120,7 @@
                                 {{Form::close()}}
                                 @endif
                             @endif
+                                @endif
                         </a>
                     </li>
                     <li><a style="font-weight: bold;">Lema:</a><a style="float:right;">{{$proTeam->quote}}</a></li>

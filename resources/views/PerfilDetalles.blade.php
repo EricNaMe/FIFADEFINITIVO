@@ -13,7 +13,7 @@
 
 </div>
 
-<div id="menuCentral" style="background-color:darkslategray; background-size: cover;" >
+<div id="menuCentral" style="height:140%;background-color:darkslategray; background-size: cover;" >
     <style>
         #MenuPerfil {
             list-style-type: none;
@@ -71,8 +71,8 @@
     <div style="background-color: white; width: 500px; height: 100px; position: relative; left: 300px;">
 
         <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->gamertag}}/avatarpic-l.png); background-size:90px 80px;background-color:  #0000C2;display: inline-block; position:relative; left:10px;top:10px;width:90px; height: 80px;"></div>
-
-        <span style="display: inline-block;position: relative;top:-40px;left:20px;font-size: 20px;font-family: sans-serif;"><a>{{$user->gamertag}}</a></span>
+        <span style="display: inline-block;position: relative;top:-60px;left:20px;font-size: 20px;font-family: sans-serif;"><a><b>Username:</b>{{$user->user_name}}</a></span>
+        <span style="display: inline-block;position: relative;top:-40px;left:-140px;font-size: 20px;font-family: sans-serif;"><a><b>Gamertag:</b>{{$user->gamertag}}</a></span>
         <span style="color:gray;display:inline-block;  width: 400px; position: relative;top:-40px;left:110px;font-size: 20px;font-family: sans-serif;"><a>"{{$user->quote}}"</a></span>
     </div>
 
