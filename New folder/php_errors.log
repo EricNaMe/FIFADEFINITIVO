@@ -1,0 +1,7 @@
+[07-Feb-2016 03:11:40 UTC] PHP Parse error:  syntax error, unexpected '20141012000000' (T_DNUMBER), expecting identifier (T_STRING) in C:\xampp\htdocs\FIFALAR\database\migrations\2016_02_07_030956_2014_10_12_000000_create_users_table.php on line 6
+[07-Feb-2016 03:12:09 UTC] PHP Parse error:  syntax error, unexpected '20141012000000' (T_DNUMBER), expecting identifier (T_STRING) in C:\xampp\htdocs\FIFALAR\database\migrations\2016_02_07_030956_2014_10_12_000000_create_users_table.php on line 6
+[20-Feb-2016 19:43:06 UTC] PHP Fatal error:  Cannot redeclare class ProLeagueProTEAM in C:\xampp\htdocs\FIFALAR2\database\migrations\2016_02_18_174634_pro_league_proTEAM.php on line 39
+[20-Feb-2016 19:43:51 UTC] PHP Fatal error:  Cannot redeclare class ProLeagueProTEAM2 in C:\xampp\htdocs\FIFALAR2\database\migrations\2016_02_18_184704_pro_league_proTEAM2.php on line 38
+[20-Feb-2016 20:06:06 UTC] PHP Fatal error:  Call to undefined method ProLeagueProTeam::up() in C:\xampp\htdocs\FIFALAR2\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php on line 135
+[14-Mar-2016 03:12:14 UTC] PHP Fatal error:  Call to undefined method Illuminate\Database\Schema\Blueprint::intger() in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\database\migrations\2016_03_14_194400_ProCalendario.php on line 30
+[26-Mar-2016 00:24:00 UTC] PHP Fatal error:  Call to undefined method Illuminate\Database\Schema\Blueprint::unisgnedInteger() in C:\Users\INIFAP\PhpstormProjects\FIFADEFINITIVO\database\migrations\2016_03_25_200618_pro_match_league.php on line 25

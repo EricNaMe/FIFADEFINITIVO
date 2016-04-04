@@ -20,7 +20,7 @@
 <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
     <ul id="ListaMenuLateral">
-       <li><a href="Inicio">HOME</a></li>
+       <li><a href="/Inicio">HOME</a></li>
         @if (Auth::check())
             <?php $user=Auth::user();
             ?>

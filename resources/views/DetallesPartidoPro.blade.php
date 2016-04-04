@@ -350,9 +350,9 @@
                         @if($partido->DI_local!=null)
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>DI</a> <img
-                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->ED_local->gamertag}}/avatarpic-l.png"
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->DI_local->gamertag}}/avatarpic-l.png"
                                         style="width: 50px;"/>
-                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->ED_local->user_name}}
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->DI_local->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->DI_local_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
                                     <?php for($i = 0;$i < $partido->DI_local_yellow;$i++){   ?>
@@ -667,9 +667,9 @@
                         @if($partido->DI_visitor!=null)
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>DI</a> <img
-                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->ED_visitor->gamertag}}/avatarpic-l.png"
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->DI_visitor->gamertag}}/avatarpic-l.png"
                                         style="width: 50px;"/>
-                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->ED_visitor->user_name}}
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->DI_visitor->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->DI_visitor_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
                                     <?php for($i = 0;$i < $partido->DI_visitor_yellow;$i++){   ?>

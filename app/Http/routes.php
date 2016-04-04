@@ -146,6 +146,7 @@ Route::get('EncontrarCopa/{id}','TorneoController@EncontrarCopa');
 Route::get('ProCalendarioEnc/{proLeague}','TorneoController@EncontrarCalendario');
 Route::post('ProCrearLiga','TorneoController@CrearLigaPro');
 Route::post('ProModificarLiga','TorneoController@ModificarLigaPro');
+Route::post('ProBorrarLiga','TorneoController@BorrarLigaPro');
 Route::post('ProModificarCopa','TorneoController@ModificarCopaPro');
 Route::post('ProEliminarClubLiga','TorneoController@BorrarProClubLiga');
 Route::post('ProEliminarClubCopa','TorneoController@BorrarProClubCopa');

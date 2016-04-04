@@ -16,7 +16,7 @@
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
         <ul id="ListaMenuLateral">
-        <li><a href="Inicio">HOME</a></li>
+        <li><a href="/Inicio">HOME</a></li>
             @if (Auth::check())
                 <?php $user=Auth::user();
                 ?>
@@ -95,6 +95,7 @@
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="InputIdLeague" value="{{$league->id}}"/>
+                   
 
                     <div style="position:relative; left:-40px;" class="form-group">
                         <label class="col-sm-2 control-label">Equipos:</label>
@@ -104,7 +105,9 @@
                                     type="text" value="">
                                 <option value=""></option>
                                 @foreach($clubes as $club)
+                                  
                                     <option value="{{$club->id}}">{{$club->name}}</option>
+                                
                                 @endforeach
                             </select>
                         </div>
@@ -112,7 +115,7 @@
                     <div style="position:relative; top:-50px; left:550px;" class="container">
                         <button type="submit" class="btn btn-primary">Agregar</button>
                     </div>
-
+ 
 
                 </form>
 
@@ -143,6 +146,19 @@
 
                     <div class="col-sm-2">
                         <button type="submit" class="btn btn-primary">Crear Torneo</button>
+                    </div>
+                </form>
+                
+                 <form action="ProBorrarLiga" name="FormaAgregarClubaLiga2" method="post" class="form-horizontal"
+                      role="form">
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="InputIdLeague" value="{{$league->id}}"/>
+
+
+
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary">Borrar Torneo</button>
                     </div>
                 </form>
 
