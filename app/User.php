@@ -89,4 +89,10 @@ class User extends Model implements AuthenticatableContract,
         return $this->proTeams()
             ->wherePivot('status','accepted')->first() ? true : false;
     }
+
+    public function hasBeenInAnyTeam()
+    {
+        return $this->transfer()
+            ->first() ? true : false;
+    }
 }

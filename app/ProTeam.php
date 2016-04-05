@@ -100,18 +100,12 @@ class ProTeam extends Model
 
     public function addPendingUser(User $user, $position)
     {
-        if(!$this->inscriptions_locked){
-            $this->canAddUser($user);
-            $this->users()->attach($user,
-                [
-                    'status' => 'Pending',
-                    'position' => $position,
-                ]);
-        } else{
-            throw new PermissionException(
-                'Inscripciones al equipo bloqueadas'
-            );
-        }
+        $this->canAddUser($user);
+        $this->users()->attach($user,
+            [
+                'status' => 'Pending',
+                'position' => $position,
+            ]);
     }
 
     public function sendPendingUserNotification()
@@ -155,6 +149,15 @@ class ProTeam extends Model
             if ($user->isInAnyTeam()) {
                 throw new PermissionException(
                     'Ya se encuentra en otro club'
+                );
+            }
+           /* var_dump($user->hasBeenInAnyTeam());
+            dd($user->toArray());*/
+
+            if($user->hasBeenInAnyTeam() && $this->inscriptions_locked){
+                throw new PermissionException(
+                    'Ya has estado en otro club, y el administrador
+                    de este club ha bloqueado las altas de usuarios transferidos'
                 );
             }
         }

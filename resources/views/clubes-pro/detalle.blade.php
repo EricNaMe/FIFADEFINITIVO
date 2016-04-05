@@ -109,7 +109,7 @@
                                                       'method' => 'put'
                                                       ])}}
                                             <button type="submit" class="btn btn-info">
-                                                Desbloquear altas
+                                                Desbloquear altas de transferencias
                                             </button>
                                             {{Form::close()}}
                                         @else
@@ -118,7 +118,7 @@
                                                      'method' => 'put'
                                                      ])}}
                                             <button type="submit" class="btn btn-warning">
-                                                Bloquear altas
+                                                Bloquear altas de transferencias
                                             </button>
                                             {{Form::close()}}
                                         @endif
