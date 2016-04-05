@@ -97,6 +97,9 @@
 
         <br></br>
 
+        
+        @if($EquipoUsuarioAuth==$EquipoLocal->id)
+        <script>alert("Entró a equipo local")</script>
         <div style="background-color: gray; padding: 10px;" class="col-lg-9 text-center">
             <span><a style="color:white; font-size: 18px; font-weight: bold; ">{{$EquipoLocal->name}}</a></span>
         </div>
@@ -276,11 +279,13 @@
             </div>
         </div>
 
-
+        @endif
         <br></br>
 
         <br></br><br>
 
+        @if($EquipoUsuarioAuth==$EquipoVisitante->id)
+        <script>alert("Entró a equipo Visitante")</script>
         <div style="background-color: gray; padding: 10px;" class="col-lg-9 text-center">
             <span><a style="color:white; font-size: 18px; font-weight: bold; ">{{$EquipoVisitante->name}}</a></span>
         </div>
@@ -307,7 +312,7 @@
 
 
 
-
+              
                 @foreach($usuariosVisitante as $userVisitante)
                     <tr>
 
@@ -441,10 +446,11 @@
                 @endforeach
             </table>
 
-
+                
             @foreach($VectorIdVisitante as $vector2)
                 <input type="hidden" name="VectorUsuarioVisitante[]" value="{{$vector2}}">
                 @endforeach
+               
 
 
                         <!--     <div style=" background:url(/images/CPSemana.jpg);background-color: yellow; width: 225px; height:356px; top:100px; left:600px; position:relative;">
@@ -460,7 +466,7 @@
 
 
         </div>
-
+@endif
 
         <div class="row"><br></br></div>
 

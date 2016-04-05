@@ -164,19 +164,21 @@ class ClubesProController extends Controller
         $calendario=LeagueProCalendar::find($CalendarioInput);
 
             $usuariosLocal=User::find($usuarioLocal);
+            
             $usuariosVisitante=User::find($usuarioVisitante);
 
+            
             $EquipoLocal=ProTeam::find($EquipoLoc);
             $EquipoVisitante=ProTeam::find($EquipoVis);
+           
 
+            
         $league=ProLeague::find($League);
-
-
-
-
-
-
-        return view('ReportarResultadosPro',['usuariosLocal'=>$usuariosLocal,'usuariosVisitante'=>$usuariosVisitante,'EquipoLocal'=>$EquipoLocal,'EquipoVisitante'=>$EquipoVisitante,'league'=>$league,'calendario'=>$calendario]);
+        $EquipoUsuarioAuth=Auth::user()->proTeams[0]->id;
+       
+      
+       
+        return view('ReportarResultadosPro',['usuariosLocal'=>$usuariosLocal,'EquipoUsuarioAuth'=>$EquipoUsuarioAuth,'usuariosVisitante'=>$usuariosVisitante,'EquipoLocal'=>$EquipoLocal,'EquipoVisitante'=>$EquipoVisitante,'league'=>$league,'calendario'=>$calendario]);
 
     }
 
@@ -660,11 +662,11 @@ class ClubesProController extends Controller
       $Equipo2=ProTeam::find($id2);
       $league=ProLeague::find($id3);
       $calendario=LeagueProCalendar::find($id4);
+      $EquipoUserAuth=Auth::user()->proTeams[0]->id;
 
 
 
-
-        return view('ReportarPartidoPro',['Equipo1'=>$Equipo1,'Equipo2'=>$Equipo2,'league'=>$league,'calendario'=>$calendario]);
+        return view('ReportarPartidoPro',['Equipo1'=>$Equipo1,'EquipoUserAuth'=>$EquipoUserAuth,'Equipo2'=>$Equipo2,'league'=>$league,'calendario'=>$calendario]);
     }
 
     public function buscar(){

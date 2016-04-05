@@ -77,6 +77,7 @@
         <div style="width: 700px; border-radius: 10px; display: block;  background-color: whitesmoke;">
 
             <div class="container">
+            @if($Equipo1->id==$EquipoUserAuth)    
                 <h2>{{$Equipo1->name}}</h2>
 
                 <form action="/ReportarResultadosPro" name="FormaProCrearLiga" method="post" class="form-horizontal"
@@ -114,22 +115,37 @@
 
                     <br></br>
 
+                         <div style="position:relative; left:500px; padding-bottom: 10px;" class="container">
 
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
 
-
+                </form>
 
             </div>
 
             <br>
 
+             @endif
             <div style="width: 700px; border-radius: 10px; display: block; background-color: whitesmoke;">
 
+                
+                
+                @if($EquipoUserAuth==$Equipo2->id)
                 <div class="container">
                     <h2>{{$Equipo2->name}}</h2>
 
 
 
-
+ <form action="/ReportarResultadosPro" name="FormaProCrearLiga" method="post" class="form-horizontal"
+                      role="form">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="InputIdEditar" value="{{Auth::User()->id}}"/>
+                    <input type="hidden" name="EquipoLocalInput" value="{{$Equipo1->id}}"/>
+                    <input type="hidden" name="EquipoVisitanteInput" value="{{$Equipo2->id}}"/>
+                    <input type="hidden" name="leagueInput" value="{{$league->id}}"/>
+                    <input type="hidden" name="calendarioInput" value="{{$calendario->id}}"/>
+     
                     <h4>ESCOGE LA ALINEACIÓN</h4>
 
                     <div style="position:relative; left:-40px;" class="form-group">
@@ -139,7 +155,7 @@
 
                             @foreach($Equipo2->users as $user)
                                 <ul style="list-style:none;>
-                            <li><a style=" list-style:none; font-weight: bold;">
+                            <li><a style="font-weight: bold;">
 
 
                                 <input type="checkbox" name="checkboxVisitante[]" value="{{$user->id}}">
@@ -167,7 +183,7 @@
 
             </div>
 
-
+@endif
         </div>
 
         <script>
