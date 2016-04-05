@@ -100,12 +100,18 @@ class ProTeam extends Model
 
     public function addPendingUser(User $user, $position)
     {
-        $this->canAddUser($user);
-        $this->users()->attach($user,
-            [
-                'status' => 'Pending',
-                'position' => $position,
-            ]);
+        if(!$this->inscriptions_locked){
+            $this->canAddUser($user);
+            $this->users()->attach($user,
+                [
+                    'status' => 'Pending',
+                    'position' => $position,
+                ]);
+        } else{
+            throw new PermissionException(
+                'Inscripciones al equipo bloqueadas'
+            );
+        }
     }
 
     public function sendPendingUserNotification()
@@ -255,6 +261,18 @@ class ProTeam extends Model
             ->first();
 
         return $existUser?$existUser->pivot->status:false;
+    }
+
+    public function lockInscriptions()
+    {
+        $this->inscriptions_locked = true;
+        $this->save();
+    }
+
+    public function unlockInscriptions()
+    {
+        $this->inscriptions_locked = false;
+        $this->save();
     }
 
 }

@@ -727,28 +727,48 @@ class ClubesProController extends Controller
 
     public function editarImagen($id,Request $request)
     {
-
-
         $club=ProTeam::find($id);
-
-
-
 
         $ligas=ProLeague::all();
         $copas=ProCup::all();
         $clubes=ProTeam::all();
 
-        $foto=Input::get('picture');
         $picture = $request->file('picture');
         if($picture)
         {
             $club->saveImage($picture);
         }
 
-
-
         return view('clubes-pro.clubes-pro',['clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
-
     }
+
+    public function putBloquearAltas(ProTeam $proTeam)
+    {
+        if(Auth::user()->id == $proTeam->getDT()->id)
+        {
+            $proTeam->lockInscriptions();
+            return redirect()->back()->with('message','Inscripciones bloqueadas');
+        }
+        else
+        {
+            return redirect()->back()->withErrors('El usuario no es el DT');
+        }
+    }
+
+
+    public function putDesbloquearAltas(ProTeam $proTeam)
+    {
+        if(Auth::user()->id == $proTeam->getDT()->id)
+        {
+            $proTeam->unlockInscriptions();
+            return redirect()->back()->with('message','Inscripciones desbloqueadas');
+        }
+        else
+        {
+            return redirect()->back()->withErrors('El usuario no es el DT');
+        }
+    }
+
+
 
 }

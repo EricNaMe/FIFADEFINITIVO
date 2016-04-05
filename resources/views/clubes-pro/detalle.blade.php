@@ -8,12 +8,7 @@
     <ul id="ListaMenuLateral">
           <li><a href="/Inicio">HOME</a></li>
         @if (Auth::check())
-            <?php $user=Auth::user();
-            ?>
-
-
-
-
+            <?php $user=Auth::user(); ?>
             @if($user->user_name==="Administrador22")
                 <li><a>ADMINISTRADOR</a>
                     <ul>
@@ -23,14 +18,13 @@
                         <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
                     </ul>
                 </li>
-
             @endif
         @endif
-        <li><a>LIGAS VIGENTES</a>
+        <li>
+            <a>LIGAS VIGENTES</a>
        <ul>
            @foreach($ligas as $liga)
-        <li><a href="/EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
-
+                <li><a href="/EncontrarLiga/{{$liga->id}}">{{$liga->name}}</a></li>
            @endforeach
         </ul>
         </li>
@@ -38,7 +32,6 @@
           <ul>
               @foreach($copas as $copa)
                   <li><a href="/EncontrarCopa/{{$copa->id}}">{{$copa->name}}</a></li>
-
               @endforeach
           </ul>
       </li>
@@ -58,10 +51,7 @@
 
 <!-- inicio menu club -->
 
-
-
 <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;">
-
     <div>
         <ul id="MenuPerfil" style="width: 494px;">
             <li id="ListaPerfil"><a href="#">Equipo</a></li>
@@ -69,23 +59,18 @@
             <li id="ListaPerfil"><a href="#">Estadísticas</a></li>
             <li id="ListaPerfil"><a href="/SalaTrofeoClub">Sala de trofeos</a></li>
         </ul>
-
     </div>
 
 
     @if(Auth::check())
-
         @if(Auth::user()->id == $proTeam->getDT()->id)
-
-
             <form action="/EditarClubPro/{{$proTeam->id}}" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <button type="submit"
-                class="btn btn-danger">
-            Editar Imagen
-        </button>
-        </form>
-    @endif
+                <button type="submit" class="btn btn-danger">
+                    Editar Imagen
+                </button>
+            </form>
+        @endif
     @endif
 
     <div style="background-color:whitesmoke; width:500px; height:500px;position:relative; left:200px; top:30px;">
@@ -100,27 +85,46 @@
                         <a style="font-weight: bold; color: white; font-size: 30px;text-align: center;">
                             {{$proTeam->name}}
                             @if(Auth::check())
-                            @if(! $status = $proTeam->isInTeamStatus(Auth::user()))
-                                @if(!Auth::user()->isInAnyTeam())
-                                    <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte"
-                                       class="btn btn-primary">
-                                        Solicitar entrada
-                                    </a>
-                                @endif
-                            @else
-                                @if(Auth::check())
-                                {{Form::open([
-                                          'url' => "/clubes-pro/$proTeam->id/baja/me" ,
-                                          'method' => 'delete'
-                                          ])}}
-                                <button type="submit"
-                                        class="btn btn-danger">
-                                    Baja de equipo
-                                </button>
-                                {{Form::close()}}
+                                @if(! $status = $proTeam->isInTeamStatus(Auth::user()))
+                                    @if(!Auth::user()->isInAnyTeam())
+                                        <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte"
+                                           class="btn btn-primary">
+                                            Solicitar entrada
+                                        </a>
+                                    @endif
+                                @else
+                                    {{Form::open([
+                                              'url' => "/clubes-pro/$proTeam->id/baja/me" ,
+                                              'method' => 'delete'
+                                              ])}}
+                                    <button type="submit"
+                                            class="btn btn-danger">
+                                        Baja de equipo
+                                    </button>
+                                    {{Form::close()}}
+                                    @if(Auth::user()->id == $proTeam->getDT()->id)
+                                        @if($proTeam->inscriptions_locked)
+                                            {{Form::open([
+                                                      'url' => "/clubes-pro/$proTeam->id/desbloquear-altas" ,
+                                                      'method' => 'put'
+                                                      ])}}
+                                            <button type="submit" class="btn btn-info">
+                                                Desbloquear altas
+                                            </button>
+                                            {{Form::close()}}
+                                        @else
+                                            {{Form::open([
+                                                     'url' => "/clubes-pro/$proTeam->id/bloquear-altas" ,
+                                                     'method' => 'put'
+                                                     ])}}
+                                            <button type="submit" class="btn btn-warning">
+                                                Bloquear altas
+                                            </button>
+                                            {{Form::close()}}
+                                        @endif
+                                    @endif
                                 @endif
                             @endif
-                                @endif
                         </a>
                     </li>
                     <li><a style="font-weight: bold;">Lema:</a><a style="float:right;">{{$proTeam->quote}}</a></li>

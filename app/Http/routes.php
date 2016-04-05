@@ -122,6 +122,9 @@ Route::group(['prefix' => 'clubes-pro'], function () {
             Route::delete('baja/me','ClubesProController@deleteBaja');
             Route::put('autorizar/{user}','ClubesProController@putAutorizar');
             Route::put('denegar/{user}','ClubesProController@putDenegar');
+
+            Route::put('bloquear-altas','ClubesProController@putBloquearAltas');
+            Route::put('desbloquear-altas','ClubesProController@putDesbloquearAltas');
         });
     });
 });
