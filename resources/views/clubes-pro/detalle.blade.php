@@ -62,6 +62,30 @@
     </div>
 
 
+
+    @if(Auth::user()->user_name=="Administrador22")
+    <form action="/bloquear-altas" name="FormaProCrearLiga" method="post"
+          class="form-horizontal" role="form">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary">Bloquear transferencias</button>
+        </div>
+    </form>
+    @endif
+
+    @if(Auth::user()->user_name=="Administrador22")
+    @if($proTeam->inscriptions_locked)
+        {{Form::open([
+                  'url' => "/desbloquear-altas" ,
+                  'method' => 'post'
+                  ])}}
+        <button type="submit" class="btn btn-info">
+            Desbloquear altas de transferencias
+        </button>
+        {{Form::close()}}
+    @endif
+    @endif
+
     @if(Auth::check())
         @if(Auth::user()->id == $proTeam->getDT()->id)
             <form action="/EditarClubPro/{{$proTeam->id}}" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
@@ -102,11 +126,13 @@
                                         Baja de equipo
                                     </button>
                                     {{Form::close()}}
-                                    @if(Auth::user()->id == $proTeam->getDT()->id)
+
+
+                                    @if(Auth::user()->user_name == "Administrador22")
                                         @if($proTeam->inscriptions_locked)
                                             {{Form::open([
-                                                      'url' => "/clubes-pro/$proTeam->id/desbloquear-altas" ,
-                                                      'method' => 'put'
+                                                      'url' => "/desbloquear-altas" ,
+                                                      'method' => 'post'
                                                       ])}}
                                             <button type="submit" class="btn btn-info">
                                                 Desbloquear altas de transferencias
@@ -114,8 +140,8 @@
                                             {{Form::close()}}
                                         @else
                                             {{Form::open([
-                                                     'url' => "/clubes-pro/$proTeam->id/bloquear-altas" ,
-                                                     'method' => 'put'
+                                                     'url' => "/bloquear-altas" ,
+                                                     'method' => 'post'
                                                      ])}}
                                             <button type="submit" class="btn btn-warning">
                                                 Bloquear altas de transferencias

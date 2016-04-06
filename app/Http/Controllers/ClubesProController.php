@@ -746,9 +746,13 @@ class ClubesProController extends Controller
 
     public function putBloquearAltas(ProTeam $proTeam)
     {
-        if(Auth::user()->id == $proTeam->getDT()->id)
-        {
-            $proTeam->lockInscriptions();
+        if(Auth::user()->user_name == "Administrador22") {
+
+            $EquiposAll = ProTeam::all();
+            foreach ($EquiposAll as $proTeam){
+                $proTeam->lockInscriptions();
+        }
+
             return redirect()->back()->with('message','Inscripciones bloqueadas');
         }
         else
@@ -760,9 +764,12 @@ class ClubesProController extends Controller
 
     public function putDesbloquearAltas(ProTeam $proTeam)
     {
-        if(Auth::user()->id == $proTeam->getDT()->id)
+        if(Auth::user()->user_name == "Administrador22")
         {
-            $proTeam->unlockInscriptions();
+            $ProteamAll=ProTeam::all();
+            foreach($ProteamAll as $proTeam) {
+                $proTeam->unlockInscriptions();
+            }
             return redirect()->back()->with('message','Inscripciones desbloqueadas');
         }
         else

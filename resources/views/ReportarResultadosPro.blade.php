@@ -97,6 +97,13 @@
 
         <br></br>
 
+        <form action="ReportarResultados" name="FormaProCrearLiga" method="post"
+              class="form-horizontal" role="form">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="EquipoLocalInput" value="{{$EquipoLocal->id}}">
+            <input type="hidden" name="EquipoVisitanteInput" value="{{$EquipoVisitante->id}}">
+            <input type="hidden" name="leagueInput" value="{{$league->id}}">
+            <input type="hidden" name="calendarioInput" value="{{$calendario->id}}">
         
         @if($EquipoUsuarioAuth==$EquipoLocal->id)
         <script>alert("Entró a equipo local")</script>
@@ -131,13 +138,8 @@
 
                     @foreach($usuariosLocal as $userLocal)
                         <tr>
-                            <form action="ReportarResultados" name="FormaProCrearLiga" method="post"
-                                  class="form-horizontal" role="form">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="hidden" name="EquipoLocalInput" value="{{$EquipoLocal->id}}">
-                                <input type="hidden" name="EquipoVisitanteInput" value="{{$EquipoVisitante->id}}">
-                                <input type="hidden" name="leagueInput" value="{{$league->id}}">
-                                <input type="hidden" name="calendarioInput" value="{{$calendario->id}}">
+
+
 
                                 <td>
                                     <div id="PosicionTabla">   {{$i}}</div>

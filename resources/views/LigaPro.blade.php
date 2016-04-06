@@ -95,62 +95,68 @@
                     <th>DG</th>
                 </tr>
                 </thead>
-                <?php $i = 1; ?>
+                <?php $i = 1;
 
-                @foreach($league->proTeams as $proTeam)
+                ?>
+                @foreach($proTeams as $estadisticas)
+
+                    <?php $clubname= $estadisticas ?>
 
 
 
-                    <tr>
-                        <td>
-                            <div id="PosicionTabla">   {{$i}}</div>
-                        </td>
-                        <td style="text-align:left;">
-                            @foreach($proTeam->proLeagueEstatistics as $estadisticas)
-                            <div id="LogoEquipo"
-                                 style=" background:url({{$proTeam->getImageUrl()}});  background-size:cover;"></div>
-                            <a href="/clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
+                            <tr>
+                                <td>
+                                    <div id="PosicionTabla">   {{$i}}</div>
+                                </td>
+                                <td style="text-align:left;">
 
-                            @if($estadisticas->pivot->points==0)
-                                <td>0</td>
-                            @else
-                                <td>{{$estadisticas->pivot->points}}</td>
-                            @endif
-                            @if($estadisticas->pivot->JJ==0)
-                                <td>0</td>
-                            @else
-                                <td>{{$estadisticas->pivot->JJ}}</td>
-                            @endif
-                            @if($estadisticas->pivot->JG==0)
-                                <td>0</td>
-                            @else
-                                <td>{{$estadisticas->pivot->JG}}</td>
-                            @endif
-                            @if($estadisticas->pivot->JE==0)
-                                <td>0</td>
-                            @else
-                                <td>{{$estadisticas->pivot->JE}}</td>
-                            @endif
-                            @if($estadisticas->pivot->JP==0)
-                                <td>0</td>
-                            @else
-                                <td>{{$estadisticas->pivot->JP}}</td>
-                            @endif
-                                @if($estadisticas->pivot->GF==0)
-                                    <td>0</td>
-                                @else
-                                    <td>{{$estadisticas->pivot->GF}}</td>
-                                @endif
-                                @if($estadisticas->pivot->GC==0)
-                                    <td>0</td>
-                                @else
-                                    <td>{{$estadisticas->pivot->GC}}</td>
-                                @endif
-                                <td>{{$DF=$estadisticas->pivot->GF-$estadisticas->pivot->GC}}</td>
-                        @endforeach
-                        <?php $i++; ?>
-                    </tr>
-                @endforeach
+
+
+                                        <div id="LogoEquipo"
+                                             style=" background:url({{$estadisticas->getImageUrl()}});  background-size:cover;"></div>
+                                        <a href="/clubes-pro/{{$estadisticas->id}}">{{$estadisticas->name}}</a></td>
+                                    @if($estadisticas->pivot->points==0)
+                                        <td>0</td>
+                                    @else
+                                        <td>{{$estadisticas->pivot->points}}</td>
+                                    @endif
+
+                                    @if($estadisticas->pivot->JJ==0)
+                                        <td>0</td>
+                                    @else
+                                        <td>{{$estadisticas->pivot->JJ}}</td>
+                                    @endif
+                                    @if($estadisticas->pivot->JG==0)
+                                        <td>0</td>
+                                    @else
+                                        <td>{{$estadisticas->pivot->JG}}</td>
+                                    @endif
+                                    @if($estadisticas->pivot->JE==0)
+                                        <td>0</td>
+                                    @else
+                                        <td>{{$estadisticas->pivot->JE}}</td>
+                                    @endif
+                                    @if($estadisticas->pivot->JP==0)
+                                        <td>0</td>
+                                    @else
+                                        <td>{{$estadisticas->pivot->JP}}</td>
+                                    @endif
+                                    @if($estadisticas->pivot->GF==0)
+                                        <td>0</td>
+                                    @else
+                                        <td>{{$estadisticas->pivot->GF}}</td>
+                                    @endif
+                                    @if($estadisticas->pivot->GC==0)
+                                        <td>0</td>
+                                    @else
+                                        <td>{{$estadisticas->pivot->GC}}</td>
+                                    @endif
+                                    <td>{{$DF=$estadisticas->pivot->GF-$estadisticas->pivot->GC}}</td>
+                                <?php $i++; ?>
+
+                            </tr>
+                    @endforeach
+
             </table>
         </div>
 

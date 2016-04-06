@@ -34,6 +34,9 @@ class ProTeam extends Model
         ],
     ];
 
+    public static $proLeaguePivotData = [
+        'JJ','JG','JP','JE','GF','GC','points',
+    ];
 
     protected $dates = ['deleted_at'];
     protected $softDelete = true;
@@ -58,7 +61,7 @@ class ProTeam extends Model
     public function proLeagueEstatistics()
     {
         return $this->belongsToMany('App\ProLeague')
-            ->withPivot('JJ','JG','JE','GF','GC','points');
+            ->withPivot(self::$proLeaguePivotData);
     }
 
     public function proCup()

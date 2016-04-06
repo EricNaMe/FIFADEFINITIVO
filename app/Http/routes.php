@@ -123,8 +123,7 @@ Route::group(['prefix' => 'clubes-pro'], function () {
             Route::put('autorizar/{user}','ClubesProController@putAutorizar');
             Route::put('denegar/{user}','ClubesProController@putDenegar');
 
-            Route::put('bloquear-altas','ClubesProController@putBloquearAltas');
-            Route::put('desbloquear-altas','ClubesProController@putDesbloquearAltas');
+
         });
     });
 });
@@ -142,6 +141,10 @@ Route::post('EditarClubPro/{id}','ClubesProController@editarClub');
 Route::post('EditarImagen/{id}','ClubesProController@editarImagen');
 Route::post('/ReportarResultadosPro','ClubesProController@ReportarResultadosPro');
 Route::post('/ReportarResultados','ClubesProController@ReportarResultadosMetodo');
+
+
+Route::post('bloquear-altas','ClubesProController@putBloquearAltas');
+Route::post('desbloquear-altas','ClubesProController@putDesbloquearAltas');
 
 
 Route::get('EncontrarLiga/{id}','TorneoController@EncontrarLiga');

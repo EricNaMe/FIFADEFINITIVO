@@ -16,6 +16,7 @@ use App\ProCup;
 use App\League;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Log;
 
 class TorneoController extends Controller {
 
@@ -219,7 +220,7 @@ class TorneoController extends Controller {
 
         $clubSelect = Input::get('InputIdClub');
         $clubSelectTodos = Input::get('Equipos');
-        return $clubSelectTodos;
+
         $ligas = ProLeague::All();
         $LeagueInput = Input::get('InputIdLeague');
         $proTeam = ProTeam::find($clubSelect);
@@ -234,9 +235,9 @@ class TorneoController extends Controller {
             return redirect()->back()->withErrors("Algo falló!!!");
         }
     }
-    
-    
-     public function BorrarTodosProClubLiga() {
+
+
+    public function BorrarTodosProClubLiga() {
 
 
         $clubSelect = Input::get('InputIdClub');
@@ -296,9 +297,41 @@ class TorneoController extends Controller {
 
     public function EncontrarLiga($id) {
         $ligas = ProLeague::All();
+        /** @var ProLeague $league */
         $league = ProLeague::find($id);
+        $proTeams = $league->proTeams()
+            ->select([
+                '*',
+                DB::raw('cast(pro_league_pro_team.GF as int)-cast(pro_league_pro_team.GC as int)
+                AS DG')
+            ])
+            ->withPivot(ProTeam::$proLeaguePivotData)
+            ->orderBy('pro_league_pro_team.points', 'desc')
+            ->orderBy('DG','desc')->get();
+
+
+
+        $clubname= DB::table('pro_league_pro_team')->select('pro_team_id')->where('pro_league_id', $id)
+            ->orderBy('points', 'desc')->get();
+        $ligapivote = DB::table('pro_league_pro_team')
+            ->select([
+                '*',
+                DB::raw('cast(GF as int)-cast(GC as int) AS DG')
+            ])
+            ->where('pro_league_id', $id)
+            ->orderBy('points', 'desc')
+            ->orderBy('DG','desc')->get();
+Log::info($ligapivote);
+
         $copas = Procup::All();
-        return view('/LigaPro', ['league' => $league, 'ligas' => $ligas, 'copas' => $copas]);
+        return view('/LigaPro', [
+            'league' => $league,
+            'ligas' => $ligas,
+            'copas' => $copas,
+            'ligapivote'=> $ligapivote,
+            'clubname'=>$clubname,
+            'proTeams' => $proTeams,
+        ]);
     }
 
     public function EncontrarCalendario(ProLeague $proLeague) {
