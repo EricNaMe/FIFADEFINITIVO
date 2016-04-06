@@ -140,7 +140,9 @@ Route::get('PlantillaPro/{id}','ClubesProController@PlantillaClub');
 Route::post('EditarClubPro/{id}','ClubesProController@editarClub');
 Route::post('EditarImagen/{id}','ClubesProController@editarImagen');
 Route::post('/ReportarResultadosPro','ClubesProController@ReportarResultadosPro');
+Route::post('/ReportarResultadosPro2','ClubesProController@ReportarResultadosPro2');
 Route::post('/ReportarResultados','ClubesProController@ReportarResultadosMetodo');
+Route::post('/ReportarResultados2','ClubesProController@ReportarResultadosMetodo2');
 
 
 Route::post('bloquear-altas','ClubesProController@putBloquearAltas');
@@ -162,6 +164,8 @@ Route::post('roundRobin','TorneoController@RoundRobin');
 Route::post('AgregarProTeamLiga','TorneoController@AgregarProClubLiga');
 Route::get('DetallesPartido/{id}','ClubesProController@DetallesPartidoMetodo');
 Route::get('ReportarPartidoProMetodo/{id}/{id2}/{id3}/{id4}','ClubesProController@ReportarPartidoMetodo');
+Route::get('ReportarPartidoProMetodo/{id}/{id2}/{id3}/{id4}/{id5}','ClubesProController@ReportarPartidoMetodo2');
+
 
 Route::get('ReportarPartidoPvsPMetodo/{id}/{id2}/{id3}/{id4}','TorneoController@ReportarPartidoPvsPMetodo');
 

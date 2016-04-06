@@ -311,7 +311,7 @@ class TorneoController extends Controller {
 
 
 
-        $clubname= DB::table('pro_league_pro_team')->select('pro_team_id')->where('pro_league_id', $id)
+ /*       $clubname= DB::table('pro_league_pro_team')->select('pro_team_id')->where('pro_league_id', $id)
             ->orderBy('points', 'desc')->get();
         $ligapivote = DB::table('pro_league_pro_team')
             ->select([
@@ -321,15 +321,14 @@ class TorneoController extends Controller {
             ->where('pro_league_id', $id)
             ->orderBy('points', 'desc')
             ->orderBy('DG','desc')->get();
-Log::info($ligapivote);
+Log::info($ligapivote); */
 
         $copas = Procup::All();
         return view('/LigaPro', [
             'league' => $league,
             'ligas' => $ligas,
             'copas' => $copas,
-            'ligapivote'=> $ligapivote,
-            'clubname'=>$clubname,
+        
             'proTeams' => $proTeams,
         ]);
     }

@@ -114,7 +114,7 @@
 
 
 
-<?php ?>
+            <?php ?>
 
             @foreach($proCalendar as $Equipos) 
             @if($jor==$Equipos->jornada)
@@ -125,7 +125,7 @@
 
                 </tr>
             </thead>
-<?php $jor++; ?> 
+            <?php $jor++; ?> 
 
             @endif
 
@@ -146,6 +146,7 @@
                 @else
                 <td><a>-</a></td>
                 @endif
+
                 @else
             <tr>
                 <td style="">{{$Equipos->localProTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
@@ -162,15 +163,38 @@
             </tr>
             @else
 
+
+            
+                @if($DTAuth!="Hola")
+                @if($DTLocal=$Equipos->localProTeam->getDT()) @endif
+                @if($DTVisitante=$Equipos->visitorProTeam->getDT()) @endif
+                @if($DTAuth->id==$DTLocal->id || $DTAuth->id==$DTVisitante->id)
             <tr>
                 <td style="">{{$Equipos->localProTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
                 <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">{{$Equipos->matchProTeam->local_score}}</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">{{$Equipos->matchProTeam->visitor_score}}</div></td>
                 <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}</td>
                 <td><a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a></td>
-                <td><a >Ya Reportado</a></td>
+                <td><a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}/{{$Equipos->matchProTeam->id}}">Editar</a></td>
 
 
             </tr>
+                @else
+                 <tr>
+                <td style="">{{$Equipos->localProTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
+                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">{{$Equipos->matchProTeam->local_score}}</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">{{$Equipos->matchProTeam->visitor_score}}</div></td>
+                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}</td>
+                <td><a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a></td>
+                <td><a>-</a></td>
+
+
+            </tr>
+                
+                
+                @endif
+                @endif
+            
+            
+            
             @endif
 
             @endforeach

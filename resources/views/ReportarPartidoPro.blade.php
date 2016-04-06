@@ -88,7 +88,7 @@
                     <input type="hidden" name="EquipoVisitanteInput" value="{{$Equipo2->id}}"/>
                     <input type="hidden" name="leagueInput" value="{{$league->id}}"/>
                     <input type="hidden" name="calendarioInput" value="{{$calendario->id}}"/>
-
+              
 
 
                     <h4>ESCOGE LA ALINEACIÓN</h4>
@@ -145,6 +145,7 @@
                     <input type="hidden" name="EquipoVisitanteInput" value="{{$Equipo2->id}}"/>
                     <input type="hidden" name="leagueInput" value="{{$league->id}}"/>
                     <input type="hidden" name="calendarioInput" value="{{$calendario->id}}"/>
+                  
      
                     <h4>ESCOGE LA ALINEACIÓN</h4>
 
