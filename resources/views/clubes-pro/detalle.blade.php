@@ -62,7 +62,7 @@
     </div>
 
 
-
+    @if(Auth::check())
     @if(Auth::user()->user_name=="Administrador22")
     <form action="/bloquear-altas" name="FormaProCrearLiga" method="post"
           class="form-horizontal" role="form">
@@ -83,6 +83,7 @@
             Desbloquear altas de transferencias
         </button>
         {{Form::close()}}
+    @endif
     @endif
     @endif
 
