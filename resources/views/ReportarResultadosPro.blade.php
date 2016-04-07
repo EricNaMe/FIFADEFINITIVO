@@ -95,46 +95,53 @@
         </style>
 
 
-        
         <script>
-        function validaPosicion()
-        {            
-            
-                
-              var elements = document.getElementsByName("PosicionSelectVisitante[]");
-              alert(elements);
-              var ids = new Array(elements.length)   
-               for(i=0;i< elements.length; i++) 
-                   {
-                 ids[i]=elements[i].options[elements[i].selectedIndex].value;               
-                 
-                   }
-                for(i=0;i< elements.length; i++) 
-                {
-                       for(e=0;e< elements.length; e++)  
-                           {
-                               if(i==e)
-                                   {
-                                       
-                                   }
-                                else
-                                    {
-                                        if(ids[i]==ids[e])  
-                                        {
-                                           alert("Existen dos jugadores con una posición igual!!");
-                                           i=elements.length;
-                                           e=elements.length;
-                                           return false;
-                                        }
+            function validaPosicion()
+            {
+                var elements=null;
 
-                                    }
-                                    
-                           }
+                if(document.getElementsByName("PosicionSelectVisitante[]").length==0)
+                {
+                    elements = document.getElementsByName("PosicionSelect[]");
                 }
-              return true;     
-            
-        }
-    </script>
+                else
+                {
+                    elements = document.getElementsByName("PosicionSelectVisitante[]");
+                }
+
+                var ids = new Array(elements.length)
+                for(i=0;i< elements.length; i++)
+                {
+                    ids[i]=elements[i].options[elements[i].selectedIndex].value;
+
+                }
+                for(i=0;i< elements.length; i++)
+                {
+                    for(e=0;e< elements.length; e++)
+                    {
+                        if(i==e)
+                        {
+
+                        }
+                        else
+                        {
+                            if(ids[i]==ids[e])
+                            {
+                                alert("Existen dos jugadores con una posición igual!!");
+                                i=elements.length;
+                                e=elements.length;
+                                return false;
+                            }
+
+                        }
+
+                    }
+                }
+                return true;
+
+            }
+        </script>
+
         <br></br>
 
         <form action="ReportarResultados" name="FormaProCrearLiga" method="post"
