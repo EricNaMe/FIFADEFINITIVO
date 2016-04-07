@@ -61,11 +61,7 @@
 
 
     <!-- <div id="Menu1vs1" style="background-color:gray; position:relative; height: 100px; width:900px; left:100px; top:100px;">
-
-
          <a href="#" class="myButton"><div style="width:30px; height: 30px; display:inline-block; background:url(images/calendar.png); background-size: cover;"></div>Calendario</a>
-
-
      </div>-->
 
     <div>
@@ -85,7 +81,6 @@
         th{
             text-align: center;
         }
-
         td{
             padding: 5px;
         }
@@ -191,6 +186,20 @@
                 
                 
                 @endif
+                
+                @else
+                   
+                 <tr>
+                <td style="">{{$Equipos->localProTeam->name}}<div id="LogoEquipo" style="float:right; background:url(images/Clausura/1.png); background-size:cover;"></div></td>
+                <td><div style="display:inline-block;left:-10px;" id="PosicionTabla">{{$Equipos->matchProTeam->local_score}}</div>-<div id="PosicionTabla" style="display:inline-block;left:10px;">{{$Equipos->matchProTeam->visitor_score}}</div></td>
+                <td style=""><div id="LogoEquipo" style="float:left; background:url(images/Clausura/2.png); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}</td>
+                <td><a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a></td>
+                <td><a>-</a></td>
+
+
+            </tr>
+                
+                
                 @endif
             
             
@@ -205,4 +214,3 @@
 
 </div>
 
-@endsection

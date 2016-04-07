@@ -47,11 +47,13 @@
             data=data.substring(data.indexOf("descripcion:")+12, data.indexOf(",url"));//Sacar la descripcion
             return data;
         }
-        function getUrl(data)
+     function getUrl(data)
         {
             data=data.substring(data.indexOf("url:")+4, data.indexOf(",created"));//Sacar el Url
+            data=replaceAllS(data, "watch?v=", "");
             return data;
         }
+
 
 
     </script>

@@ -909,6 +909,63 @@ class ClubesProController extends Controller
                $Partido->DC_local_goal=$Goles[$i];
            }
 
+           /*Nuevas posiciones */
+             if($Posicion[$i]=="DFC2"){
+               $Partido->DFC2_local_id=$UsuariosLocal[$i]->id;
+               $Partido->DFC2_local_red=$Rojas[$i];
+               $Partido->DFC2_local_yellow=$Amarillas[$i];
+               $Partido->DFC2_local_assistance=$Asistencias[$i];
+               $Partido->DFC2_local_goal=$Goles[$i];
+           }
+           if($Posicion[$i]=="DFC3"){
+               $Partido->DFC3_local_id=$UsuariosLocal[$i]->id;
+               $Partido->DFC3_local_red=$Rojas[$i];
+               $Partido->DFC3_local_yellow=$Amarillas[$i];
+               $Partido->DFC3_local_assistance=$Asistencias[$i];
+               $Partido->DFC3_local_goal=$Goles[$i];
+           }
+           if($Posicion[$i]=="MCD2"){
+               $Partido->MCD2_local_id=$UsuariosLocal[$i]->id;
+               $Partido->MCD2_local_red=$Rojas[$i];
+               $Partido->MCD2_local_yellow=$Amarillas[$i];
+               $Partido->MCD2_local_assistance=$Asistencias[$i];
+               $Partido->MCD2_local_goal=$Goles[$i];
+           }
+           if($Posicion[$i]=="MC2"){
+               $Partido->MC2_local_id=$UsuariosLocal[$i]->id;
+               $Partido->MC2_local_red=$Rojas[$i];
+               $Partido->MC2_local_yellow=$Amarillas[$i];
+               $Partido->MC2_local_assistance=$Asistencias[$i];
+               $Partido->MC2_local_goal=$Goles[$i];
+           }
+           if($Posicion[$i]=="MVI"){
+               $Partido->MVI_local_id=$UsuariosLocal[$i]->id;
+               $Partido->MVI_local_red=$Rojas[$i];
+               $Partido->MVI_local_yellow=$Amarillas[$i];
+               $Partido->MVI_local_assistance=$Asistencias[$i];
+               $Partido->MVI_local_goal=$Goles[$i];
+           }
+           
+           if($Posicion[$i]=="MVD"){
+               $Partido->MVD_local_id=$UsuariosLocal[$i]->id;
+               $Partido->MVD_local_red=$Rojas[$i];
+               $Partido->MVD_local_yellow=$Amarillas[$i];
+               $Partido->MVD_local_assistance=$Asistencias[$i];
+               $Partido->MVD_local_goal=$Goles[$i];
+           }
+           if($Posicion[$i]=="MCO2"){
+               $Partido->MCO2_local_id=$UsuariosLocal[$i]->id;
+               $Partido->MCO2_local_red=$Rojas[$i];
+               $Partido->MCO2_local_yellow=$Amarillas[$i];
+               $Partido->MCO2_local_assistance=$Asistencias[$i];
+               $Partido->MCO2_local_goal=$Goles[$i];
+           }
+           
+           
+           
+   
+        
+        
 
 
 
@@ -1054,6 +1111,60 @@ class ClubesProController extends Controller
                 $Partido->DC_visitor_yellow=$AmarillasVisitante[$i];
                 $Partido->DC_visitor_assistance=$AsistenciasVisitante[$i];
                 $Partido->DC_visitor_goal=$GolesVisitante[$i];
+            }
+            
+            
+            
+            /*Nuevas posiciones visitante */
+            
+            if($PosicionVisitante[$i]=="DFC2"){
+                $Partido->DFC2_visitor_id=$UsuariosVisitante[$i]->id;
+                $Partido->DFC2_visitor_red=$RojasVisitante[$i];
+                $Partido->DFC2_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->DFC2_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->DFC2_visitor_goal=$GolesVisitante[$i];
+            }
+            if($PosicionVisitante[$i]=="DFC3"){
+                $Partido->DFC3_visitor_id=$UsuariosVisitante[$i]->id;
+                $Partido->DFC3_visitor_red=$RojasVisitante[$i];
+                $Partido->DFC3_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->DFC3_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->DFC3_visitor_goal=$GolesVisitante[$i];
+            }
+            if($PosicionVisitante[$i]=="MCD2"){
+                $Partido->MCD2_visitor_id=$UsuariosVisitante[$i]->id;
+                $Partido->MCD2_visitor_red=$RojasVisitante[$i];
+                $Partido->MCD2_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MCD2_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MCD2_visitor_goal=$GolesVisitante[$i];
+            }
+            if($PosicionVisitante[$i]=="MC2"){
+                $Partido->MC2_visitor_id=$UsuariosVisitante[$i]->id;
+                $Partido->MC2_visitor_red=$RojasVisitante[$i];
+                $Partido->MC2_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MC2_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MC2_visitor_goal=$GolesVisitante[$i];
+            }
+            if($PosicionVisitante[$i]=="MVI"){
+                $Partido->MVI_visitor_id=$UsuariosVisitante[$i]->id;
+                $Partido->MVI_visitor_red=$RojasVisitante[$i];
+                $Partido->MVI_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MVI_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MVI_visitor_goal=$GolesVisitante[$i];
+            }
+            if($PosicionVisitante[$i]=="MVD"){
+                $Partido->MVD_visitor_id=$UsuariosVisitante[$i]->id;
+                $Partido->MVD_visitor_red=$RojasVisitante[$i];
+                $Partido->MVD_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MVD_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MVD_visitor_goal=$GolesVisitante[$i];
+            }
+              if($PosicionVisitante[$i]=="MCO2"){
+                $Partido->MCO2_visitor_id=$UsuariosVisitante[$i]->id;
+                $Partido->MCO2_visitor_red=$RojasVisitante[$i];
+                $Partido->MCO2_visitor_yellow=$AmarillasVisitante[$i];
+                $Partido->MCO2_visitor_assistance=$AsistenciasVisitante[$i];
+                $Partido->MCO2_visitor_goal=$GolesVisitante[$i];
             }
 
 

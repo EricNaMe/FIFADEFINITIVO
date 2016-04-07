@@ -410,6 +410,169 @@
 
                                 </a></li>
                         @endif
+                        
+                        
+                        
+                                     <!-- nuevas posiciones -->
+                              @if($partido->DFC2_local!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>DFC2</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->DFC2_local->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->DFC2_local->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->DFC2_local_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC2_local_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC2_local_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC2_local_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->DFC3_local!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>DFC3</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->DFC3_local->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->DFC3_local->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->DFC3_local_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC3_local_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC3_local_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC3_local_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MCD2_local!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MCD2</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MCD2_local->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MCD2_local->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MCD2_local_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCD2_local_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCD2_local_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCD2_local_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MC2_local!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MC2</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MC2_local->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MC2_local->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MC2_local_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MC2_local_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MC2_local_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MC2_local_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MVI_local!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MVI</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MVI_local->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MVI_local->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MVI_local_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVI_local_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVI_local_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVI_local_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MVD_local!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MVD</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MVD_local->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MVD_local->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MVD_local_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVD_local_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVD_local_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVD_local_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MCO2_local!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MCO2</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MCO2_local->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MCO2_local->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MCO2_local_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCO2_local_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCO2_local_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCO2_local_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
 
 
                     </ul>
@@ -727,6 +890,167 @@
 
                                 </a></li>
                         @endif
+                        
+                        <!-- nuevas posiciones -->
+                              @if($partido->DFC2_visitor!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>DFC2</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->DFC2_visitor->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->DFC2_visitor->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->DFC2_visitor_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC2_visitor_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC2_visitor_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC2_visitor_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->DFC3_visitor!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>DFC3</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->DFC3_visitor->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->DFC3_visitor->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->DFC3_visitor_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC3_visitor_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC3_visitor_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->DFC3_visitor_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MCD2_visitor!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MCD2</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MCD2_visitor->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MCD2_visitor->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MCD2_visitor_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCD2_visitor_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCD2_visitor_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCD2_visitor_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MC2_visitor!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MC2</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MC2_visitor->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MC2_visitor->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MC2_visitor_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MC2_visitor_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MC2_visitor_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MC2_visitor_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MVI_visitor!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MVI</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MVI_visitor->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MVI_visitor->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MVI_visitor_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVI_visitor_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVI_visitor_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVI_visitor_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MVD_visitor!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MVD</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MVD_visitor->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MVD_visitor->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MVD_visitor_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVD_visitor_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVD_visitor_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MVD_visitor_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
+                        
+                               <!-- nuevas posiciones -->
+                              @if($partido->MCO2_visitor!=null)
+                            <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
+    font-family: sans-serif;"><a>MCO2</a> <img
+                                        src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MCO2_visitor->gamertag}}/avatarpic-l.png"
+                                        style="width: 50px;"/>
+                                <a style="text-decoration:none;margin-left: 20px;">{{$partido->MCO2_visitor->user_name}}
+                                    &nbsp;<?php for($i = 0;$i < $partido->MCO2_visitor_goal;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCO2_visitor_yellow;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style=" width:15px;background-image:url(/images/tarjeta_amarilla.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCO2_visitor_red;$i++){   ?>
+                                    <div id="LogoEquipo"
+                                         style="width:15px; background-image:url(/images/tarjeta_roja.png)"></div><?php }?>
+                                    <?php for($i = 0;$i < $partido->MCO2_visitor_assistance;$i++){   ?>
+                                    <div id="LogoEquipo" style="background-image:url(/images/assist.png)"></div><?php }?>
+
+
+                                </a></li>
+                        @endif
+                        <!--fin nueva posicion -->
 
 
                     </ul>
