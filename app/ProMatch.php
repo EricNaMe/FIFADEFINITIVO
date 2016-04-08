@@ -284,6 +284,45 @@ class ProMatch extends Model
     {
         return $this->belongsTo('App\User','DC_local_id');
     }
+    
+     public function DFC2_local()
+    {
+        return $this->belongsTo('App\User','DFC2_local_id');
+    }
+
+    public function DFC3_local()
+    {
+        return $this->belongsTo('App\User','DFC3_local_id');
+    }
+
+    public function MCD2_local()
+    {
+        return $this->belongsTo('App\User','MCD2_local_id');
+    }
+
+    public function MC2_local()
+    {
+        return $this->belongsTo('App\User','MC2_local_id');
+    }
+    
+        public function MVI_local()
+    {
+        return $this->belongsTo('App\User','MVI_local_id');
+    }
+
+    public function MVD_local()
+    {
+        return $this->belongsTo('App\User','MVD_local_id');
+    }
+
+    public function MCO2_local()
+    {
+        return $this->belongsTo('App\User','MCO2_local_id');
+    }
+
+    
+    
+    
 
     public function PO_visitor()
     {
@@ -360,6 +399,41 @@ class ProMatch extends Model
     public function DC_visitor()
     {
         return $this->belongsTo('App\User','DC_visitor_id');
+    }
+    
+      public function DFC2_visitor()
+    {
+        return $this->belongsTo('App\User','DFC2_visitor_id');
+    }
+
+    public function DFC3_visitor()
+    {
+        return $this->belongsTo('App\User','DFC3_visitor_id');
+    }
+
+    public function MCD2_visitor()
+    {
+        return $this->belongsTo('App\User','MCD2_visitor_id');
+    }
+
+    public function MC2_visitor()
+    {
+        return $this->belongsTo('App\User','MC2_visitor_id');
+    }
+    
+        public function MVI_visitor()
+    {
+        return $this->belongsTo('App\User','MVI_visitor_id');
+    }
+
+    public function MVD_visitor()
+    {
+        return $this->belongsTo('App\User','MVD_visitor_id');
+    }
+
+    public function MCO2_visitor()
+    {
+        return $this->belongsTo('App\User','MCO2_visitor_id');
     }
 
 

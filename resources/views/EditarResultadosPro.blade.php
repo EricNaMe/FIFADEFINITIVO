@@ -202,15 +202,22 @@
                                         <div class="col-sm-2">
                                             <select style="width: 100px;" name="PosicionSelect[]" id="PosicionSelect"
                                                     class="form-control">
-                                                <option value="PO">PO</option>
+                                                     <option value="PO">PO</option>
                                                 <option value="DFC">DFC</option>
+                                                <option value="DFC2">DFC2</option>
+                                                <option value="DFC3">DFC3</option>
                                                 <option value="LTI">LTI</option>
                                                 <option value="LTD">LTD</option>
                                                 <option value="MCD">MCD</option>
+                                                <option value="MCD2">MCD2</option>
                                                 <option value="MC">MC</option>
+                                                <option value="MC2">MC2</option>
                                                 <option value="MI">MI</option>
                                                 <option value="MD">MD</option>
+                                                <option value="MVI">MVI</option>
+                                                <option value="MVD">MVD</option>
                                                 <option value="MCO">MCO</option>
+                                                <option value="MCO2">MCO2</option>
                                                 <option value="EI">EI</option>
                                                 <option value="ED">ED</option>
                                                 <option value="DI">DI</option>
@@ -380,20 +387,27 @@
                                 <div class="col-sm-2">
                                     <select style="width: 100px;" name="PosicionSelectVisitante[]"
                                             id="PosicionSelectVisitante" class="form-control">
-                                        <option value="PO">PO</option>
-                                        <option value="DFC">DFC</option>
-                                        <option value="LTI">LTI</option>
-                                        <option value="LTD">LTD</option>
-                                        <option value="MCD">MCD</option>
-                                        <option value="MC">MC</option>
-                                        <option value="MI">MI</option>
-                                        <option value="MD">MD</option>
-                                        <option value="MCO">MCO</option>
-                                        <option value="EI">EI</option>
-                                        <option value="ED">ED</option>
-                                        <option value="DI">DI</option>
-                                        <option value="DD">DD</option>
-                                        <option value="DC">DC</option>
+                                              <option value="PO">PO</option>
+                                                <option value="DFC">DFC</option>
+                                                <option value="DFC2">DFC2</option>
+                                                <option value="DFC3">DFC3</option>
+                                                <option value="LTI">LTI</option>
+                                                <option value="LTD">LTD</option>
+                                                <option value="MCD">MCD</option>
+                                                <option value="MCD2">MCD2</option>
+                                                <option value="MC">MC</option>
+                                                <option value="MC2">MC2</option>
+                                                <option value="MI">MI</option>
+                                                <option value="MD">MD</option>
+                                                <option value="MVI">MVI</option>
+                                                <option value="MVD">MVD</option>
+                                                <option value="MCO">MCO</option>
+                                                <option value="MCO2">MCO2</option>
+                                                <option value="EI">EI</option>
+                                                <option value="ED">ED</option>
+                                                <option value="DI">DI</option>
+                                                <option value="DD">DD</option>
+                                                <option value="DC">DC</option>
                                     </select>
                                 </div>
                             </div>

@@ -200,7 +200,7 @@
                                     <div class="form-group">
 
                                         <div class="col-sm-2">
-                                            <select style="width: 100px;" name="PosicionSelect[]" id="PosicionSelect"
+                                            <select style="width: 100px;" name="PosicionSelect[]"
                                                     class="form-control">
                                                 <option value="PO">PO</option>
                                                 <option value="DFC">DFC</option>
@@ -387,7 +387,7 @@
                                 <div class="col-sm-2">
                                     <select style="width: 100px;" name="PosicionSelectVisitante[]"
                                             id="PosicionSelectVisitante" class="form-control">
-                                      <option value="PO">PO</option>
+                                                <option value="PO">PO</option>
                                                 <option value="DFC">DFC</option>
                                                 <option value="DFC2">DFC2</option>
                                                 <option value="DFC3">DFC3</option>
@@ -548,13 +548,13 @@
                 </div>
 
                 <div class="col-xs-1" style="width:14%;">
-                    <input type="number" min="0" name="LocalInput" class="col-md-2 form-control" id="usr">
+                    <input type="number" min="0" value="0" name="LocalInput" class="col-md-2 form-control" id="usr">
                 </div>
                 <div class="col-xs-1">
                     <a>VS</a>
                 </div>
                 <div class="col-xs-1" style="width:14%;">
-                    <input type="number" min="0" name="VisitorInput" class="col-md-2 form-control" id="usr">
+                    <input type="number" min="0" value="0" name="VisitorInput" class="col-md-2 form-control" id="usr">
                 </div>
 
                 <div class="col-sm-3">

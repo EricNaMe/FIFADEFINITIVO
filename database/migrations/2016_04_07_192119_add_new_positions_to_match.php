@@ -151,6 +151,125 @@ class AddNewPositionsToMatch extends Migration
     public function down()
     {
         
+         Schema::table('pro_match_league',function(Blueprint $table){
+         $table->dropColumn('DFC2_local_yellow');
+         $table->dropColumn('DFC3_local_yellow');
+         $table->dropColumn('MCD2_local_yellow');
+         $table->dropColumn('MVI_local_yellow');
+         $table->dropColumn('MVD_local_yellow');
+         $table->dropColumn('MC2_local_yellow');
+         $table->dropColumn('MCO2_local_yellow');
+        
+         $table->dropColumn('DFC2_visitor_yellow');
+         $table->dropColumn('DFC3_visitor_yellow');
+         $table->dropColumn('MCD2_visitor_yellow');
+         $table->dropColumn('MVI_visitor_yellow');
+         $table->dropColumn('MVD_visitor_yellow');
+         $table->dropColumn('MC2_visitor_yellow');
+         $table->dropColumn('MCO2_visitor_yellow');
+         
+         $table->dropColumn('DFC2_local_red');
+         $table->dropColumn('DFC3_local_red');
+         $table->dropColumn('MCD2_local_red');
+         $table->dropColumn('MVI_local_red');
+         $table->dropColumn('MVD_local_red');
+         $table->dropColumn('MC2_local_red');
+         $table->dropColumn('MCO2_local_red');
+        
+         $table->dropColumn('DFC2_visitor_red');
+         $table->dropColumn('DFC3_visitor_red');
+         $table->dropColumn('MCD2_visitor_red');
+         $table->dropColumn('MVI_visitor_red');
+         $table->dropColumn('MVD_visitor_red');
+         $table->dropColumn('MC2_visitor_red');
+         $table->dropColumn('MCO2_visitor_red');
+         
+                  
+         $table->dropColumn('DFC2_local_goal');
+         $table->dropColumn('DFC3_local_goal');
+         $table->dropColumn('MCD2_local_goal');
+         $table->dropColumn('MVI_local_goal');
+         $table->dropColumn('MVD_local_goal');
+         $table->dropColumn('MC2_local_goal');
+         $table->dropColumn('MCO2_local_goal');
+        
+         $table->dropColumn('DFC2_visitor_goal');
+         $table->dropColumn('DFC3_visitor_goal');
+         $table->dropColumn('MCD2_visitor_goal');
+         $table->dropColumn('MVI_visitor_goal');
+         $table->dropColumn('MVD_visitor_goal');
+         $table->dropColumn('MC2_visitor_goal');
+         $table->dropColumn('MCO2_visitor_goal');
+         
+                  
+         $table->dropColumn('DFC2_local_assistance');
+         $table->dropColumn('DFC3_local_assistance');
+         $table->dropColumn('MCD2_local_assistance');
+         $table->dropColumn('MVI_local_assistance');
+         $table->dropColumn('MVD_local_assistance');
+         $table->dropColumn('MC2_local_assistance');
+         $table->dropColumn('MCO2_local_assistance');
+        
+         $table->dropColumn('DFC2_visitor_assistance');
+         $table->dropColumn('DFC3_visitor_assistance');
+         $table->dropColumn('MCD2_visitor_assistance');
+         $table->dropColumn('MVI_visitor_assistance');
+         $table->dropColumn('MVD_visitor_assistance');
+         $table->dropColumn('MC2_visitor_assistance');
+         $table->dropColumn('MCO2_visitor_assistance');
+         
+                  
+         $table->dropColumn('DFC2_local_best_player');
+         $table->dropColumn('DFC3_local_best_player');
+         $table->dropColumn('MCD2_local_best_player');
+         $table->dropColumn('MVI_local_best_player');
+         $table->dropColumn('MVD_local_best_player');
+         $table->dropColumn('MC2_local_best_player');
+         $table->dropColumn('MCO2_local_best_player');
+        
+         $table->dropColumn('DFC2_visitor_best_player');
+         $table->dropColumn('DFC3_visitor_best_player');
+         $table->dropColumn('MCD2_visitor_best_player');
+         $table->dropColumn('MVI_visitor_best_player');
+         $table->dropColumn('MVD_visitor_best_player');
+         $table->dropColumn('MC2_visitor_best_player');
+         $table->dropColumn('MCO2_visitor_best_player');
+         
+         $table->dropForeign('pro_match_league_DFC2_local_id_foreign');
+         $table->dropForeign('pro_match_league_DFC3_local_id_foreign');
+         $table->dropForeign('pro_match_league_MCD2_local_id_foreign');
+         $table->dropForeign('pro_match_league_MVI_local_id_foreign');
+         $table->dropForeign('pro_match_league_MVD_local_id_foreign');
+         $table->dropForeign('pro_match_league_MC2_local_id_foreign');
+         $table->dropForeign('pro_match_league_MCO2_local_id_foreign');
+         
+         $table->dropForeign('pro_match_league_DFC2_visitor_id_foreign');
+         $table->dropForeign('pro_match_league_DFC3_visitor_id_foreign');
+         $table->dropForeign('pro_match_league_MCD2_visitor_id_foreign');
+         $table->dropForeign('pro_match_league_MVI_visitor_id_foreign');
+         $table->dropForeign('pro_match_league_MVD_visitor_id_foreign');
+         $table->dropForeign('pro_match_league_MC2_visitor_id_foreign');
+         $table->dropForeign('pro_match_league_MCO2_visitor_id_foreign');
+         
+     
+         
+         $table->dropColumn('DFC2_visitor_id');
+         $table->dropColumn('DFC3_visitor_id');
+         $table->dropColumn('MCD2_visitor_id');
+         $table->dropColumn('MVI_visitor_id');
+         $table->dropColumn('MVD_visitor_id');
+         $table->dropColumn('MC2_visitor_id');
+         $table->dropColumn('MCO2_visitor_id');
+         
+         $table->dropColumn('DFC2_local_id');
+         $table->dropColumn('DFC3_local_id');
+         $table->dropColumn('MCD2_local_id');
+         $table->dropColumn('MVI_local_id');
+         $table->dropColumn('MVD_local_id');
+         $table->dropColumn('MC2_local_id');
+         $table->dropColumn('MCO2_local_id');
+         
+           });
         
     }
 }
