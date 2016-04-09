@@ -470,13 +470,14 @@ class ClubesProController extends Controller
                $Partido->PO_local_goal=$Goles[$i];
                 if($marcadorVisitante==0){
                 $Partido->PO_local_unbeaten=1;
-                    $UsuariosLocal[$i]->best_player+=1;
+                $UsuariosLocal[$i]->gk_unbeaten+=1;
+
 
                 }
                 if($idMejorJugador==$UsuariosLocal[$i]->id){
 
                     $Partido->PO_local_best_player=$idMejorJugador;
-                    $UsuariosLocal[$i]->gk_unbeaten+=1;
+
                     $UsuariosLocal[$i]->best_player+=1;
 
                 }
@@ -811,12 +812,13 @@ class ClubesProController extends Controller
                 $Partido->PO_visitor_goal=$GolesVisitante[$i];
                 if($marcadorLocal==0){
                 $Partido->PO_visitor_unbeaten=1;
+                    $UsuariosVisitante[$i]->gk_unbeaten+=1;
                 }
 
                 if($UsuariosVisitante[$i]->id==$idMejorJugador){
 
                     $Partido->PO_visitor_best_player=$idMejorJugador;
-                    $UsuariosVisitante[$i]->gk_unbeaten+=1;
+
                     $UsuariosVisitante[$i]->best_player+=1;
 
                 }
@@ -1470,12 +1472,12 @@ class ClubesProController extends Controller
                $UsuariosLocal[$i]->pro_JE++;
                $UsuariosLocal[$i]->pro_Points++;
            }
-           if($Partido->local_score<$Partido->visitor_score){
+           if($Partido->local_score>$Partido->visitor_score){
                $UsuariosLocal[$i]->pro_JG++;
                $UsuariosLocal[$i]->pro_Points+=3;
            }
 
-           if($Partido->local_score>$Partido->visitor_score){
+           if($Partido->local_score<$Partido->visitor_score){
                $UsuariosLocal[$i]->pro_JP++;
            }
 
