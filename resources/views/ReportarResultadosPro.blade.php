@@ -144,7 +144,7 @@
 
         <br></br>
 
-        <form action="ReportarResultados" name="FormaProCrearLiga" method="post"
+        <form action="ReportarResultados" onsubmit="document.forms['FormaReportarLiga']['enviar'].disabled=true;" name="FormaReportarLiga" method="post"
               class="form-horizontal" role="form">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="EquipoLocalInput" value="{{$EquipoLocal->id}}">
@@ -578,7 +578,7 @@
 
 
             <div class="col-sm-9">
-                <button type="submit" onclick="if(validaPosicion()){}else{return false;};"class="btn btn-primary">Enviar</button>
+                <button name="enviar" type="submit" onclick="if(validaPosicion()){}else{return false;};"class="btn btn-primary">Enviar</button>
             </div>
         </div>
 
