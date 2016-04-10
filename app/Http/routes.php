@@ -102,6 +102,7 @@ Route::get('FuncionEcho','ModeloEcho@FuncionEcho');
 Route::get('PerfilDetalles/{id}','PerfilController@EncontrarJugador');
 Route::get('PerfilNoAutenticadoClubes/{id}','PerfilController@EncontrarJugadorClubes');
 Route::post('EditarPerfil','PerfilController@EditarPerfilUsuario');
+Route::post('CrearNoticia','ClubesProController@crearNoticia');
 
 Route::group(['prefix' => 'clubes-pro'], function () {
     Route::get('','ClubesProController@index');

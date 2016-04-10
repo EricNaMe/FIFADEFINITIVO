@@ -9,7 +9,7 @@ use App\ProCup;
 use App\ProLeague;
 use App\ProTeam;
 use App\ProMatch;
-
+use App\News;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -65,6 +65,7 @@ class ClubesProController extends Controller
 
             if($club->save()){
                 $picture = $request->file('picture');
+
                 if($picture)
                 {
                    $club->saveImage($picture);
@@ -85,6 +86,50 @@ class ClubesProController extends Controller
         }
 
     }
+
+
+    public function crearNoticia(Request $request){
+
+        $noticia = new News;
+        $noticia->message =  Input::get('mensajeInput');
+
+
+
+        DB::beginTransaction();
+        try {
+
+
+
+            if($noticia->save()){
+                $picture = $request->file('picture');
+
+                if($picture)
+                {
+
+                    $noticia->saveImage($picture);
+                }
+                DB::commit();
+
+                $Noticias=News::all();
+                $users=User::all();
+
+                return view('Noticias',['users' => $users,'Noticias'=>$Noticias])->withErrors('Se añadió una noticia correctamente');
+            } else {
+                return redirect()->back()
+                    ->withErrors("Algo falló!!!");
+            }
+
+
+        }
+        catch(\Exception $e)
+        {
+            DB::rollBack();
+            \Log::error($e);
+            return redirect()->back()->withErrors("Algo falló!!!");
+        }
+
+    }
+
 
     public function getUnirte(ProTeam $proTeam){
         $proTeam->canAddUser(Auth::user());
@@ -271,8 +316,8 @@ class ClubesProController extends Controller
             
         }else{
         $GolesLocalT=array_sum($Goles);
-        if($GolesLocalT!=$marcadorLocal){
-            return view('Reglamento')->withErrors("No coincide los goles (local) marcados por tus jugadores con el marcador");
+        if($GolesLocalT>$marcadorLocal){
+            return view('Reglamento')->withErrors("Son mayores los goles (local) marcados por tus jugadores con el marcador");
         }
         }
         
@@ -280,8 +325,8 @@ class ClubesProController extends Controller
             
         }else{
         $GolesvisitaT=array_sum($GolesVisitante);
-         if($GolesvisitaT!=$marcadorVisitante){
-            return view('Reglamento')->withErrors("No coincide los goles (visita) marcados por tus jugadores con el marcador");
+         if($GolesvisitaT>$marcadorVisitante){
+            return view('Reglamento')->withErrors("Son mayores los goles (visita) marcados por tus jugadores con el marcador");
         }
         }
      /*   if($GolesLocalT!=$marcadorLocal){
@@ -1155,8 +1200,8 @@ class ClubesProController extends Controller
         }else{
         $GolesLocalT=array_sum($Goles);
         
-        if($GolesLocalT!=$Partido->local_score){
-            return view('Reglamento')->withErrors("No coincide los goles (local) marcados por tus jugadores con el marcador");
+        if($GolesLocalT>$Partido->local_score){
+            return view('Reglamento')->withErrors("Son mayores los goles (local) marcados por tus jugadores con el marcador");
         }
         }
         
@@ -1166,8 +1211,8 @@ class ClubesProController extends Controller
         $GolesvisitaT=array_sum($GolesVisitante);
       
        
-         if($GolesvisitaT!=$Partido->visitor_score){
-            return view('Reglamento')->withErrors("No coincide los goles (visita) marcados por tus jugadores con el marcador");
+         if($GolesvisitaT>$Partido->visitor_score){
+            return view('Reglamento')->withErrors("Son mayores  los goles (visita) marcados por tus jugadores con el marcador");
         }
         }
 

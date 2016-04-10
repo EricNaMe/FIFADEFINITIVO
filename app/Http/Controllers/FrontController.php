@@ -9,6 +9,7 @@ use App\ProMatch;
 use App\Transfer;
 use App\URLVideos;
 use App\Clips;
+use App\News;
 use Illuminate\Http\Request;
 use Input;
 use App\Http\Requests;
@@ -461,9 +462,9 @@ $search = Input::get('search');
     public function Noticias()
     {
         $comment=Comment::all();
-
+        $Noticias=News::all();
         $users=User::all();
-        return view('Noticias',['users' => $users,'comment'=>$comment]);
+        return view('Noticias',['users' => $users,'comment'=>$comment,'Noticias'=>$Noticias]);
     }
 
     public function PvsPCalendario()

@@ -47,13 +47,12 @@
             data=data.substring(data.indexOf("descripcion:")+12, data.indexOf(",url"));//Sacar la descripcion
             return data;
         }
-     function getUrl(data)
+        function getUrl(data)
         {
             data=data.substring(data.indexOf("url:")+4, data.indexOf(",created"));//Sacar el Url
             data=replaceAllS(data, "watch?v=", "");
             return data;
         }
-
 
 
     </script>
@@ -62,7 +61,7 @@
 
         <ul id="ListaMenuLateral">
             <li><a >CLIPS</a></li>
-            <li><a href="Inicio">HOME</a></li>
+            <li><a href="/Inicio">HOME</a></li>
 
         </ul>
 
@@ -176,54 +175,74 @@
 
             <div style="position: relative; top: -160px; left: 320px;"><img src="/images/Clip.png"/></div>
         </div>
-        <article class="Articulo1">
+        <article class="Articulo1" style="margin-left: 30px; margin-top: -10px;">
             <content>
-                <form action="videoSave1" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="url" class="input" id="url1" name="url1" placeholder="Ingrese URL"  required>
-                    </br>
-                    </br>
-                    <input type="text" class="input" name="nameClip1" id="nameClip1" placeholder="Ingresa Nombre del video" required>
-                    </br>
-                    </br>
-                    <button type="submit" name="btnURL">Guardar URL</button>
-                    </br>
-                    <h1 style="color:#696969;" id="Video1"></h1> <!---Aqui va el nombre del video (basedatos)--->
-                </form>
+                @if (Auth::check())
+                    <?php $user=Auth::user();
+                    ?>
+                    @if($user->user_name==="Administrador22")
+                        <form action="videoSave1" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="url" class="input" id="url1" name="url1" placeholder="Ingrese URL"  required>
+                            </br>
+                            </br>
+                            <input type="text" class="input" name="nameClip1" id="nameClip1" placeholder="Ingresa Nombre del video" required>
+                            </br>
+                            </br>
+                            <button type="submit" name="btnURL">Guardar URL</button>
+                            </br>
+
+                        </form>
+                    @endif
+                @endif
+                <h1 style="color:#696969;" id="Video1"></h1> <!---Aqui va el nombre del video (basedatos)--->
                 <iframe id="YouTube1" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
                 </br>
                 </br>
                 <!---------------------------------División de Videos---------------------------------------------------->
+                @if (Auth::check())
+                    <?php $user=Auth::user();
+                    ?>
+                    @if($user->user_name==="Administrador22")
+                        <form action="videoSave2" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="url" class="input" name="url2" id="url2" placeholder="Ingrese URL"  required>
+                            </br>
+                            </br>
+                            <input type="text" class="input" name="nameClip2"id="nameClip2" placeholder="Ingresa Nombre del video" required>
+                            </br>
+                            </br>
+                            <button type="submit" name="btnURL">Guardar URL</button>
 
-                <form action="videoSave2" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="url" class="input" name="url2" id="url2" placeholder="Ingrese URL"  required>
-                    </br>
-                    </br>
-                    <input type="text" class="input" name="nameClip2"id="nameClip2" placeholder="Ingresa Nombre del video" required>
-                    </br>
-                    </br>
-                    <button type="submit" name="btnURL">Guardar URL</button>
+                            </br>
 
-                    </br>
-                    <h1 style="color:#696969;" id="Video2"></h1> <!---Aqui va el nombre del video (basedatos)--->
-                </form>
+                        </form>
+                    @endif
+                @endif
+                <h1 style="color:#696969;" id="Video2"></h1> <!---Aqui va el nombre del video (basedatos)--->
                 <iframe id="YouTube2" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
                 </br>
                 </br>
                 <!---------------------------------División de Videos---------------------------------------------------->
-                <form action="videoSave3" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="url" class="input" id="url3" name="url3" placeholder="Ingrese URL" required >
-                    </br>
-                    </br>
-                    <input type="text" class="input" id="nameClip3" name="nameClip3" placeholder="Ingresa Nombre del video" required>
-                    </br>
-                    </br>
-                    <button type="submit" name="btnURL">Guardar URL</button>
-                    </br>
-                    <h1 style="color:#696969;" id="Video3"></h1> <!---Aqui va el nombre del video (basedatos)--->
-                </form>
+                @if (Auth::check())
+                    <?php $user=Auth::user();
+                    ?>
+                    @if($user->user_name==="Administrador22")
+                        <form action="videoSave3" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="url" class="input" id="url3" name="url3" placeholder="Ingrese URL" required >
+                            </br>
+                            </br>
+                            <input type="text" class="input" id="nameClip3" name="nameClip3" placeholder="Ingresa Nombre del video" required>
+                            </br>
+                            </br>
+                            <button type="submit" name="btnURL">Guardar URL</button>
+                            </br>
+
+                        </form>
+                    @endif
+                @endif
+                <h1 style="color:#696969;" id="Video3"></h1> <!---Aqui va el nombre del video (basedatos)--->
                 <iframe id="YouTube3" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
                 </br>
                 </br>
@@ -232,9 +251,9 @@
             </content>
         </article>
 
-        <div style="height: 400px; border-radius: 10px; width: 300px; top:-1850px;background-color: whitesmoke; left: 750px; position: relative;">
-
-            <div style="left:20px;overflow-y: scroll; position:relative; top:20px;height: 300px; width: 260px;background-color: white;">
+        <div style="height: 400px; border-radius: 10px; width: 300px; top:320px;background-color: whitesmoke; left: 840px; position: absolute;">
+            <h3 style="font-family: serif; font-style: italic;">COMENTARIOS:</h3>
+            <div style="left:-10px;overflow-y: scroll; position:relative; top:20px;height: 300px; width: 420px;background-color: white;">
 
                 @foreach($comment as $commen)
 
@@ -242,15 +261,13 @@
                     <div class="dialogbox">
                         <div class="body">
                             <!--    <span class="tip tip-right"></span>-->
-                            <div style=" font-weight: bold; font-family: sans-serif; color:gray; height:20px; width:200px;"><a style="font-size:10px;">{{$commen->created_at}}</a><a style="float:right;margin-right:30px; ">{{$commen->user->user_name}}</a></div>
+                            <div style=" font-weight: bold; font-family: sans-serif; color:gray; height:20px; width:200px;"><a style="font-size:10px;">{{$commen->created_at}}</a><a style="float:right;margin-right:-150px; ">{{$commen->user->user_name}}</a></div>
 
-                            <div style="word-break:break-all;" class="message">
-                                <span><p style="word-break:break-all;width:110px; font-family: sans-serif;font-weight: bold;">{{$commen->message}}</p></span>
-                            </div>
-
-                            <div style="position:relative; top:-25px; left:120px;display: inline-block;background-color: pink; width:60px; height: 60px;">
+                            <div style="position:relative; top: 10px; left:290px;display: inline-block;background-color: pink; width:60px; height: 60px;">
                                 <div  style="width:60px; height: 60px; background:url(https://avatar-ssl.xboxlive.com/avatar/{{$commen->user->gamertag}}/avatarpic-l.png); background-size:cover;"></div>
-
+                            </div>
+                            <div style="word-break:break-all;" class="message" >
+                                <span><p style="position:relative; top: -60px;word-break:break-all;width:280px; font-family: sans-serif;font-weight: bold;">{{$commen->message}}</p></span>
                             </div>
 
 

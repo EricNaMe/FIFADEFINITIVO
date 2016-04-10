@@ -3,20 +3,20 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 16/12/2015, 09:43:02 PM
     Author     : INIFAP
 */
 
-#menuLateral 
-{     
+#menuLateral
+{
     z-index: 8;
     background-color: green;
-    position:fixed; 
+    position:fixed;
     float: left;
     height: 92%;
     width: 18%;
-    left:0px; 
+    left:0px;
     top:10%;
     list-style-type: none;
 
@@ -25,59 +25,59 @@ and open the template in the editor.
 
 
 
- ul#ListaMenuLateral {
-     margin-top: 50%;
-     text-align: center;
-     padding: 0;
-     
-     font-family: sans-serif;
-     font-size: 16px;
-     font-weight: bold;
-    }
-    
-     ul#ListaLateral li {
-	
-	float: left;
-        
-       
-	height:2.5em;
-	line-height:2.5em;
+ul#ListaMenuLateral {
+    margin-top: 50%;
+    text-align: center;
+    padding: 0;
 
-	
-  }
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-  ul#ListaMenuLateral a {
-        
-	color: black;
-	text-decoration:none; 
-	padding: 20px 0; 
-	display: block;
-	height: 100%;
+ul#ListaLateral li {
+
+    float: left;
+
+
+    height:2.5em;
+    line-height:2.5em;
+
+
+}
+
+ul#ListaMenuLateral a {
+
+    color: black;
+    text-decoration:none;
+    padding: 20px 0;
+    display: block;
+    height: 100%;
 }
 
 
 
 
 #ListaMenuLateral li:hover {
-   
-       background-color: whitesmoke;
-     }
-     
-     
-   #ListaMenuLateral li:hover a {
-       
-       color: black;
-     }
-     
-     
-     
-     #ListaMenuLateral li a.active{
-         background: #999; 
-     }
-     
- #ListaMenuLateral li a:hover  {
-    background: #999; 
-   
+
+    background-color: whitesmoke;
+}
+
+
+#ListaMenuLateral li:hover a {
+
+    color: black;
+}
+
+
+
+#ListaMenuLateral li a.active{
+    background: #999;
+}
+
+#ListaMenuLateral li a:hover  {
+    background: #999;
+
     color: #fff;
 }
 #ListaMenuLateral li ul {
@@ -86,7 +86,7 @@ and open the template in the editor.
     display: none; // used to hide sub-menus
 }
 #ListaMenuLateral li ul li a {
-  
+
     padding: 10px 35px;
     background: whitesmoke;
     border-bottom: 1px dotted #ccc;
@@ -94,100 +94,115 @@ and open the template in the editor.
 
 #menuCentral{
 
-    background-color: blue; 
+    background-color: blue;
     height: 122%;
     width: 100%;
     position: absolute;
- 
+
     left: 18%;
     top: 8%;
-    
+
 }
 
 .title{
-  font-weight: bold;
-  font-size: 68px;
-  font-family: Impact;
-  font-style: italic;
-  text-shadow: 0 1px 0 #ccc, 
-               0 2px 0 #c9c9c9,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px rgba(0,0,0,.15);
-  -webkit-text-stroke: 2px white;
-  color: maroon;
-height: 40px;
+    font-weight: bold;
+    font-size: 68px;
+    font-family: Impact;
+    font-style: italic;
+    text-shadow: 0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+    -webkit-text-stroke: 2px white;
+    color: maroon;
+    height: 40px;
 
 }
 
 .title2{
+    font-weight: bold;
     font-size: 35px;
-   color: blue;
-   text-shadow: black 0.1em 0.1em 0.2em;
-   text-align: center;
+    font-family: Impact;
+    font-style: italic;
+    text-shadow: 0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+    -webkit-text-stroke: .5px white;
+    color: black;
+
 }
 .title3{
-font-family: "Palatino", sans-serif;
- font-size: 20px;
- text-align: center;
- font-style: italic;
- text-align: justify;
-  vertical-align: text-top;
+    font-family: "Palatino", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    font-style: italic;
+    text-align: justify;
+    vertical-align: text-top;
 }
 
 .banner{
- margin:0 auto;
-  background-color: crimson;
-  background-color: crimson;
-  background-image:-webkit-gradient(linear,0% 0%,0% 90%,from(rgba(28,91,155,.8)),to(rgba(108,191,255,.9)));
-  background-image:-moz-linear-gradient(rgba(28,91,155,.8) 0%,rgba(108,191,255,.9) 90%);  
-  -webkit-border-radius:16px;
-  -moz-border-radius:16px;
-  border-radius:16px;
-  border:2px solid #CCC;
-  border-color:#8BA2C1 #5890BF #4F93CA #768FA5; 
-  -webkit-box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
-  -moz-box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
-  box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+    margin:0 auto;
+    background-color: crimson;
+    background-color: crimson;
+    background-image:-webkit-gradient(linear,0% 0%,0% 90%,from(rgba(28,91,155,.8)),to(rgba(108,191,255,.9)));
+    background-image:-moz-linear-gradient(rgba(28,91,155,.8) 0%,rgba(108,191,255,.9) 90%);
+    -webkit-border-radius:16px;
+    -moz-border-radius:16px;
+    border-radius:16px;
+    border:2px solid #CCC;
+    border-color:#8BA2C1 #5890BF #4F93CA #768FA5;
+    -webkit-box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+    -moz-box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
+    box-shadow:rgba(66,140,240,0.5) 0px 10px 16px;
 }
 
 .back{
-background: -webkit-linear-gradient(left, green, Beige); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(right, green, Beige ); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(right, Beige , white); /* For Firefox 3.6 to 15 */
-background: linear-gradient(to right, white, black); /* Standard syntax */
+    background: -webkit-linear-gradient(left, green, Beige); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, green, Beige ); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, Beige , white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, white, black); /* Standard syntax */
 }
 .imagenTrans
 {
-  alignment-adjust: text-before-edge;
- -webkit-filter: opacity(0.5); /* 50% transparente */
- -moz-animation-fill-mode: forwards; 
- background-repeat: no-repeat; 
- background-size: contain;
+    alignment-adjust: text-before-edge;
+    -webkit-filter: opacity(0.5); /* 50% transparente */
+    -moz-animation-fill-mode: forwards;
+    background-repeat: no-repeat;
+    background-size: contain;
 
 }
 
 .welcome
-{ 
+{
     text-align: left;
-    float:left; 
+    float:left;
 }
 
 .Articulo2
-{  
-    background-color: transparent;     
-    padding: 0% 2% 2% 2%; /*change padding*/    
-    text-align: justify; 
-    width: 40%;      
+{
+    background-color: transparent;
+    padding: 0% 2% 2% 2%; /*change padding*/
+    text-align: justify;
+    width: 600px;
     border-radius: 10px;
-    font-style: Arial;    
+    font-style: Arial;
     margin-top: 5%;
 }
 
@@ -195,12 +210,12 @@ background: linear-gradient(to right, white, black); /* Standard syntax */
     margin-left: -5%;
     padding-bottom:25px;
     background:#EBF4FB;
-    width:450px;
+    width: 850px;
     border:1px solid #ACD8F0;
 }
 
-#menu { 
-    padding:12.5px 25px 12.5px 25px; 
+#menu {
+    padding:12.5px 25px 12.5px 25px;
 
 }
 
@@ -210,46 +225,47 @@ background: linear-gradient(to right, white, black); /* Standard syntax */
     margin-bottom:25px;
     padding:10px;
     background:#fff;
-    height:auto;
-    width:400px;
+    height:450px;
+    width:900px;
     border:1px solid #ACD8F0;
-    overflow:auto; 
+    overflow: auto;
+
 }
 
 .Articulo3{
     text-align: left;
-    font-size: medium;  
+    font-size: medium;
     font-stretch: extra-expanded;
     font-style: oblique;
     font-weight: bold;
-    
+
 }
 
 #wrapper2 {
     margin-left: -5%;
     padding-bottom:25px;
     background: #8BA2C1;
-    width:450px;
+    width:950px;
     border:1px solid #00557F;
 }
 
 #submitmsg {
-  border:transparent;
-  background:#D3D3D3;
-  color:black;
-  width: 60px;
-  margin-left:2%;
-  }
-  
-  #postback{  
-   border:transparent;
-  background:#D3D3D3;
-  color:black;
-  height:30px;
-  width:30px;
-  background-position:center;
-  margin-left:3%;
-  
+    border:transparent;
+    background:#D3D3D3;
+    color:black;
+    width: 60px;
+    margin-left:2%;
+}
+
+#postback{
+    border:transparent;
+    background:#D3D3D3;
+    color:black;
+    height:30px;
+    width:30px;
+    background-position:center;
+    margin-left:3%;
+
 }
 
 /*
@@ -689,7 +705,6 @@ tr:nth-child(even){background-color: #f2f2f2}
     font-size: 16px;
     font-family: sans-serif;
 }
-
 
 
 
