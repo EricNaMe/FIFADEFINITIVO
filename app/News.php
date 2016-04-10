@@ -24,15 +24,15 @@ class News extends Model
         $image = \Image::make($file);
         $image->fit(750,400);
 
-        $image->save('images/news/'.$this->id.'_md');
+        $image->save('public/images/news/'.$this->id.'_md');
         $image->fit(50,50);
-        $image->save('images/news/'.$this->id.'_sm');
+        $image->save('public/images/news/'.$this->id.'_sm');
     }
 
 
     public function getImageUrl($size = 'md')
     {
-        return url('images/news/',[$this->id.'_'.$size]);
+        return url('public/images/news/',[$this->id.'_'.$size]);
     }
 
 }
