@@ -171,6 +171,16 @@ class FrontController extends Controller
 
         return view('ModificarLigaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
     }
+    
+    
+    
+    public function ModificarDatosLigaPro(){
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+
+        return view('ModificarDatosLigaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+    }
 
     public function ModificarCopaPro(){
         $clubes=Proteam::all();

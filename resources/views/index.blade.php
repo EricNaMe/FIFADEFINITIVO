@@ -76,7 +76,7 @@
                     <div style="clear:both"></div>
                 </div>
                 <div style="background-color:whitesmoke;overflow-y: scroll; border-radius:10px; height: 300px;">
-                    @foreach($users as $user)
+                    @foreach($users->reverse() as $user)
 
                         <div  style=" background-color: white; padding: 10px;margin: 10px;" id="boxUser">
 
@@ -98,7 +98,7 @@
 
         <div style="left:15px;overflow-y: scroll; position:relative; top:20px;height: 300px; width: 425px;background-color: white;">
 
-            @foreach($comment as $commen)
+            @foreach($comment->reverse() as $commen)
 
 
                 <div class="dialogbox" >

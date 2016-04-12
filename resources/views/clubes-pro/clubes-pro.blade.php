@@ -18,8 +18,9 @@
           <ul>
               <li><a href="/ProCrearLiga">CREAR LIGA</a></li>
               <li><a href="/ProCrearCopa">CREAR COPA</a></li>
-              <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
+              <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>            
               <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
+              <li><a href="/ModificarDatosLigaPro">MODIFICAR TABLA DE LIGA</a></li>
           </ul>
       </li>
             <script>

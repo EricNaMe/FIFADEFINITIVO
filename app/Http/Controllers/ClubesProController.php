@@ -2005,6 +2005,138 @@ class ClubesProController extends Controller
             return redirect()->back()->withErrors('El usuario no es el DT');
         }
     }
+    
+    
+    public function editarMarcador($id){
+        
+        
+        $partido=ProMatch::find($id);
+        
+        
+        
+        $partido->local_score=$marcadorLocal;
+        $partido->visitor_score=$marcadorVisitante;
+        $partido->update();
+        $ligas=ProLeague::all();
+        $copas=ProCup::all();
+        $clubes=ProTeam::all();
+        
+        
+        
+        return view('clubes-pro.clubes-pro',['ligas'=>$ligas,'copas'=>$copas,'clubes'=>$clubes]);
+        
+        
+        
+        
+        
+    }
+    
+    
+ public function EscogerLigaPro(){
+     
+     $LigaInput=Input::get('leagueSelect');
+     $ligaPro=ProLeague::find($LigaInput);
+     $ligas=ProLeague::all();
+     $copas=ProCup::all();
+     $Bandera=1;
+     
+     
+     
+     return view('AlterarDatosLigaPro',['copas'=>$copas,'ligas'=>$ligas,'ligaPro'=>$ligaPro,'Bandera'=>$Bandera]);
+  
+ }
+    
+ 
+ 
+ public function BuscarDatosClub(){
+     
+     
+     $InputSelect=Input::get('clubSelect');
+     $InputLeague=Input::get('InputIdLeague');
+     
+     $ligas=ProLeague::all();
+     $copas=ProCup::all();
+     $ClubPro=ProTeam::find($InputSelect);
+     $ligaPro=ProLeague::find($InputLeague);
+  
+     $Estadisticas=$ClubPro->proLeagueEstatistics;
+    
+     
+  
+     $JJ=$Estadisticas[0]->pivot->JJ;
+     $JG=$Estadisticas[0]->pivot->JG;
+     $JE=$Estadisticas[0]->pivot->JE;
+     $JP=$Estadisticas[0]->pivot->JP;
+     $points=$Estadisticas[0]->pivot->points;
+     $GF=$Estadisticas[0]->pivot->GF;
+     $GC=$Estadisticas[0]->pivot->GC;
+    $Bandera=2;
+ 
+ 
+     return view('AlterarDatosLigaPro',['copas'=>$copas,
+         'ligas'=>$ligas,
+         'ligaPro'=>$ligaPro,
+         'JJ'=>$JJ,
+           'JP'=>$JP,
+           'JG'=>$JG,
+           'JE'=>$JE,
+           'GF'=>$GF,
+           'GC'=>$GC,
+           'ClubPro'=>$ClubPro,
+           'points'=>$points,
+           'Bandera'=>$Bandera]);
+     
+   
+ }
+ 
+ 
+ 
+  public function ModificarDatosLigaPro(){
+     
+     $InputLeague=Input::get('InputIdLeague');
+    
+     $InputJJ=Input::get('InputJJ');
+     $InputJG=Input::get('InputJG');
+     $InputJE=Input::get('InputJE');
+     $InputJP=Input::get('InputJP');
+     $InputGF=Input::get('InputGF');
+     $InputGC=Input::get('InputGC');
+     $InputPuntos=Input::get('InputPuntos');
+     $InputClub=Input::get('InputIdClub');
+     
+     
+     $ligas=ProLeague::all();
+     $copas=ProCup::all();
+     $equipo=ProTeam::find($InputClub);
+     
+     $Estadisticas=$equipo->proLeagueEstatistics;
+     $League=ProLeague::find($InputLeague);
+     
+      
+     $JJ=$Estadisticas[0]->pivot->JJ-$InputJJ;
+    
+     $JG=$Estadisticas[0]->pivot->JG-$InputJG;
+     $JE=$Estadisticas[0]->pivot->JE-$InputJE;
+     $JP=$Estadisticas[0]->pivot->JP-$InputJP;
+     $points=$Estadisticas[0]->pivot->points-$InputPuntos;
+     $GF=$Estadisticas[0]->pivot->GF-$InputGF;
+     $GC=$Estadisticas[0]->pivot->GC-$InputGC;
+     
+    
+       $equipo->proLeagueEstatistics()->updateExistingPivot($League,['JJ'=>$JJ,
+           'JG'=>$JG,
+           'JE'=>$JE,
+           'JP'=>$JP,
+           'GF'=>$GF,
+           'GC'=>$GC,
+           'points'=>$points]);
+      
+       $equipo->update();
+ 
+     return view('Reglamento');
+     
+   
+ }
 
 
 
