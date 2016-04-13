@@ -342,7 +342,7 @@ Log::info($ligapivote); */
         if (Auth::check()) {
 
             if (Auth::user()->proTeams->isEmpty()) {
-                $DTAuth = "Hola";
+                $DTAuth = "UsuarioSinEquipo";
 
                 return view('ProCalendario', ['proCalendar' => $proCalendar, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
             } else {
@@ -355,7 +355,7 @@ Log::info($ligapivote); */
                 return view('ProCalendario', ['proCalendar' => $proCalendar, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
             }
         } else {
-            $DTAuth = "Hola";
+            $DTAuth = "UsuarioSinEquipo";
             return view('ProCalendario', ['proCalendar' => $proCalendar, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
         }
     }

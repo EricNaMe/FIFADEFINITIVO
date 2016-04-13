@@ -66,7 +66,7 @@
             <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;">
 
 
-                <div style="width: 900px; border-radius: 10px;  top:10%; left:15%; background-color: whitesmoke;">
+                <div style="width: 800px; border-radius: 10px;  top:10%; left:15%; background-color: whitesmoke;">
 
                     <div class="container" >
                         <h2>Asignar Equipos</h2>
@@ -136,6 +136,7 @@
 
                         </style>
                       @if($Bandera!=1)
+                      <h2 style="margin-left:250px;">{{$ClubPro->name}}</h2>
                         <div class="row">   
                             <div  class="col-sm-9" style="">
                                 <ul id="ListaDatos">
@@ -184,7 +185,8 @@
                                         <input type="number" min="0" value="0" name="InputGC" class="col-md-2 form-control" id="usr">
                                     </div>
                              
-                                <div class="col-sm-9">
+                             <br></br><br></br>
+                                <div class="col-sm-9 col-sm-offset-3">
                                       <button  type="submit" class="btn btn-primary">Cambiar datos</button>
                                 </div>
                                     </form>        
