@@ -80,6 +80,7 @@ Route::get('SalaTrofeosCPGol','FrontController@SalaTrofeosCPGol');
 Route::get('SalaTrofeosCPPor','FrontController@SalaTrofeosCPPor');
 Route::get('SalaTrofeosCPRey','FrontController@SalaTrofeosCPRey');
 Route::get('Transferencias','FrontController@Transferencias');
+Route::get('EstadisticasLigaPro','FrontController@EstadisticasLigaPro');
 Route::get('ModificarLigaPro','FrontController@ModificarLigaPro');
 Route::get('ModificarDatosLigaPro','FrontController@ModificarDatosLigaPro');
 Route::get('ModificarCopaPro','FrontController@ModificarCopaPro');
@@ -137,6 +138,7 @@ Route::group([
     Route::get('delete/{notification}','NotificationController@deleteIndex');
 });
 
+Route::get('GoleadoresLigaPro','ClubesProController@ObtenerGoleadoresLigaPro');
 Route::post('EscogerLigaPro','ClubesProController@EscogerLigaPro');
 Route::post('BuscarDatosPro','ClubesProController@BuscarDatosClub');
 Route::post('ModificarDatosPro','ClubesProController@ModificarDatosLigaPro');

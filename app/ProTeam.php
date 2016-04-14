@@ -46,7 +46,7 @@ class ProTeam extends Model
         return $this->belongsToMany('App\User')
             ->withPivot('status', 'position');
     }
-
+      
     public function notifications()
     {
         return $this->morphMany('App\Notification', 'notifiable');

@@ -2086,15 +2086,39 @@ class ClubesProController extends Controller {
 
         $equipo->update();
 
-
-
         $ligaPro = $League;
-
         $Bandera = 1;
 
-
-
         return view('AlterarDatosLigaPro', ['copas' => $copas, 'ligas' => $ligas, 'ligaPro' => $ligaPro, 'Bandera' => $Bandera])->withErrors("Se han cambiado las estadísticas del equipo");
+    }
+    
+    
+    public function ObtenerGoleadoresLigaPro(){
+        
+        $League=ProLeague::find(1);
+        
+       foreach($League->ProTeams->users as $Liga){
+           foreach($Liga->users as $UsuariosEquipo){
+               $UsuariosEquipoNombre=$UsuariosEquipo->user_name;
+               $UsuariosEquipoGoles=$UsuariosEquipo->goals;
+           }
+       }
+        
+    
+       
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+        $UsuarioVal=1;
+       
+        return view('EstadisticasLigaPro',[
+            'UsuariosEquipoGoles'=>$UsuariosEquipoGoles,
+             'UsuariosEquipoNombre'=>$UsuariosEquipoNombre,
+            'ligas'=>$ligas,
+            'clubes'=>$clubes,
+            'UsuarioVal'=>$UsuarioVal,
+            'copas'=>$copas]);
+  
     }
 
 }

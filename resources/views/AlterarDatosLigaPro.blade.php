@@ -166,23 +166,23 @@
                                         <input type="number" min="0" value="0" name="InputJJ" class="col-md-2 form-control" id="usr">
                                     </div>
                                     <div class="col-xs-1" style="">
-                                        <input type="number" min="0" value="0" name="InputJG" class="col-md-2 form-control" id="usr">
+                                        <input type="number"  value="0" name="InputJG" class="col-md-2 form-control" id="usr">
                                     </div>
                                     <div class="col-xs-1" style="">
-                                        <input type="number" min="0" value="0" name="InputJE" class="col-md-2 form-control" id="usr">
+                                        <input type="number"  value="0" name="InputJE" class="col-md-2 form-control" id="usr">
                                     </div>
                                     <div class="col-xs-1" style="">
-                                        <input type="number" min="0" value="0" name="InputJP" class="col-md-2 form-control" id="usr">
+                                        <input type="number"  value="0" name="InputJP" class="col-md-2 form-control" id="usr">
                                     </div>
                                     <div class="col-xs-1" style="">
-                                        <input type="number" min="0" value="0" name="InputPuntos" class="col-md-2 form-control" id="usr">
+                                        <input type="number"  value="0" name="InputPuntos" class="col-md-2 form-control" id="usr">
                                     </div>
                                     
                                      <div class="col-xs-1" style="margin-left:14px;">
-                                        <input type="number" min="0" value="0" name="InputGF" class="col-md-2 form-control" id="usr">
+                                        <input type="number"  value="0" name="InputGF" class="col-md-2 form-control" id="usr">
                                     </div>
                                     <div class="col-xs-1" style="margin-left:14px;">
-                                        <input type="number" min="0" value="0" name="InputGC" class="col-md-2 form-control" id="usr">
+                                        <input type="number"  value="0" name="InputGC" class="col-md-2 form-control" id="usr">
                                     </div>
                              
                              <br></br><br></br>

@@ -533,5 +533,15 @@ $search = Input::get('search');
             'copas'=>$copas,
             'partido'=>$partido]);
     }
+    
+    
+        public function EstadisticasLigaPro(){
+
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+        $UsuarioVal=2;
+        return view('EstadisticasLigaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+    }
 
 }
