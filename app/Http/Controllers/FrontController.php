@@ -541,7 +541,7 @@ $search = Input::get('search');
         $ligas= ProLeague::all();
         $copas=ProCup::all();
         $UsuarioVal=2;
-        return view('EstadisticasLigaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+        return view('EstadisticasLigaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas,'UsuarioVal'=>$UsuarioVal]);
     }
 
 }
