@@ -59,6 +59,10 @@
         text-align: center;
     }
 
+    td{
+        font-size: 16px;
+    }
+
     #MenuEstadisticas {
         list-style-type: none;
         margin-top: 40px;
@@ -75,8 +79,8 @@
 
     <div>
         <ul id="MenuPerfil" style="width: 580px;">
-            <li id="ListaPerfil"><a href="#">Tabla general</a></li>
-            <li id="ListaPerfil"><a class="active" href="/ProCalendarioEnc/">Calendario</a></li>
+            <li id="ListaPerfil"><a href="/EncontrarLiga/{{$League->id}}">Tabla general</a></li>
+            <li id="ListaPerfil"><a class="active" href="/ProCalendarioEnc/{{$League->id}}">Calendario</a></li>
             <li id="ListaPerfil"><a class="active" href="#">Estadísticas</a></li>
             <li id="ListaPerfil"><a href="/SalaTrofeosCP">Campeones</a></li>
 
@@ -119,9 +123,16 @@
                 
                 
                 <td>
-                    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{$usuariosLiga->gamertag}}/avatarpic-l.png); 
+                    @if($usuariosLiga->gamertag==null)
+
+                    @else
+
+                    <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosLiga->gamertag}}/avatarpic-l.png">
+
+                    <div style="background:url();
                           background-size:90px 80px;"></div>
-                    <a href="/PerfilDetalles/">
+                    @endif
+                    <a href="/PerfilDetalles/{{$usuariosLiga->id}}">
                         {{$usuariosLiga->user_name}}
                     </a>
                 </td>
@@ -169,7 +180,16 @@
                 
                 
                 <td>
-                    <a href="/PerfilDetalles/">
+                    @if($usuariosAsistLiga->gamertag==null)
+
+                    @else
+
+                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosAsistLiga->gamertag}}/avatarpic-l.png">
+
+                        <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    @endif
+                    <a href="/PerfilDetalles/{{$usuariosAsistLiga->id}}">
                         {{$usuariosAsistLiga->user_name}}
                     </a>
                 </td>
@@ -213,7 +233,16 @@
                 
                 
                 <td>
-                    <a href="/PerfilDetalles/">
+                    @if($usuariosPorLiga->gamertag==null)
+
+                    @else
+
+                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosPorLiga->gamertag}}/avatarpic-l.png">
+
+                        <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    @endif
+                    <a href="/PerfilDetalles/{{$usuariosPorLiga->id}}">
                         {{$usuariosPorLiga->user_name}}
                     </a>
                 </td>
@@ -248,7 +277,7 @@
             
        
             ?>
-          @foreach($OrdenadoPorteros as $usuariosPorLiga)
+          @foreach($OrdenadoMejoresJugadores as $usuariosPorLiga)
             <tr>
                 <td>
                     <div id="PosicionTabla">
@@ -257,7 +286,16 @@
                 
                 
                 <td>
-                    <a href="/PerfilDetalles/">
+                    @if($usuariosPorLiga->gamertag==null)
+
+                    @else
+
+                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosPorLiga->gamertag}}/avatarpic-l.png">
+
+                        <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    @endif
+                    <a href="/PerfilDetalles/{{$usuariosPorLiga->id}}">
                         {{$usuariosPorLiga->user_name}}
                     </a>
                 </td>

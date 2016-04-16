@@ -20,6 +20,7 @@
                             <li><a href="/ProCrearCopa">CREAR COPA</a></li>
                             <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
                             <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
+                            <li><a href="/ModificarDatosLigaPro">MODIFICAR TABLA DE LIGA</a></li>
                         </ul>
                     </li>
 
@@ -67,7 +68,7 @@
             <ul id="MenuPerfil" style="width: 580px;">
                 <li id="ListaPerfil"><a href="#">Tabla general</a></li>
                 <li id="ListaPerfil"><a class="active" href="/ProCalendarioEnc/{{$league->id}}">Calendario</a></li>
-                <li id="ListaPerfil"><a class="active" href="#">Estadísticas</a></li>
+                <li id="ListaPerfil"><a class="active" href="/GoleadoresLigaPro/{{$league->id}}">Estadísticas</a></li>
                 <li id="ListaPerfil"><a href="/SalaTrofeosCP">Campeones</a></li>
 
             </ul>

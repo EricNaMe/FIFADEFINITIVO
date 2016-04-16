@@ -19,9 +19,11 @@ use Input;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
-class ClubesProController extends Controller {
+class ClubesProController extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
@@ -29,7 +31,8 @@ class ClubesProController extends Controller {
         return view('clubes-pro.clubes-pro', ['clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas]);
     }
 
-    public function getCrear() {
+    public function getCrear()
+    {
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
@@ -40,10 +43,11 @@ class ClubesProController extends Controller {
      * Create a Club-pro
      */
 
-    public function postIndex(Request $request) {
+    public function postIndex(Request $request)
+    {
         if (Auth::user()->isInAnyTeam()) {
             throw new PermissionException(
-            'Ya se encuentra en otro club'
+                'Ya se encuentra en otro club'
             );
         }
         $club = new ProTeam;
@@ -67,10 +71,10 @@ class ClubesProController extends Controller {
                 }
                 DB::commit();
                 return redirect('clubes-pro')
-                                ->with('message', 'Creación de club exitosa');
+                    ->with('message', 'Creación de club exitosa');
             } else {
                 return redirect()->back()
-                                ->withErrors("Algo falló!!!");
+                    ->withErrors("Algo falló!!!");
             }
         } catch (\Exception $e) {
             DB::rollBack();
@@ -79,16 +83,15 @@ class ClubesProController extends Controller {
         }
     }
 
-    public function crearNoticia(Request $request) {
+    public function crearNoticia(Request $request)
+    {
 
         $noticia = new News;
         $noticia->message = Input::get('mensajeInput');
 
 
-
         DB::beginTransaction();
         try {
-
 
 
             if ($noticia->save()) {
@@ -106,7 +109,7 @@ class ClubesProController extends Controller {
                 return view('Noticias', ['users' => $users, 'Noticias' => $Noticias])->withErrors('Se añadió una noticia correctamente');
             } else {
                 return redirect()->back()
-                                ->withErrors("Algo falló!!!");
+                    ->withErrors("Algo falló!!!");
             }
         } catch (\Exception $e) {
             DB::rollBack();
@@ -115,7 +118,8 @@ class ClubesProController extends Controller {
         }
     }
 
-    public function getUnirte(ProTeam $proTeam) {
+    public function getUnirte(ProTeam $proTeam)
+    {
         $proTeam->canAddUser(Auth::user());
 
         $ligas = ProLeague::all();
@@ -123,23 +127,25 @@ class ClubesProController extends Controller {
         return view('clubes-pro.unirte', ['club' => $proTeam, 'ligas' => $ligas, 'copas' => $copas]);
     }
 
-    public function postUnirte(ProTeam $proTeam) {
+    public function postUnirte(ProTeam $proTeam)
+    {
         $posicion = Input::get('PosicionSelect');
 
         $proTeam->addPendingUser(Auth::user(), $posicion);
         $proTeam->sendPendingUserNotification();
         return redirect()
-                        ->to('clubes-pro/' . $proTeam->id)
-                        ->with('message', 'Éxito!');
+            ->to('clubes-pro/' . $proTeam->id)
+            ->with('message', 'Éxito!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function getDetalle(ProTeam $proTeam) {
+    public function getDetalle(ProTeam $proTeam)
+    {
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
@@ -149,7 +155,8 @@ class ClubesProController extends Controller {
             'copas' => $copas]);
     }
 
-    public function DetallesPartidoMetodo($id) {
+    public function DetallesPartidoMetodo($id)
+    {
 
         $partido = ProMatch::find($id);
         $clubes = Proteam::all();
@@ -158,7 +165,8 @@ class ClubesProController extends Controller {
         return view('DetallesPartidoPro', ['clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas, 'partido' => $partido]);
     }
 
-    public function getPlantilla(ProTeam $proTeam) {
+    public function getPlantilla(ProTeam $proTeam)
+    {
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
@@ -166,19 +174,22 @@ class ClubesProController extends Controller {
         return view('clubes-pro.plantilla', ['proTeam' => $proTeam, 'clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas]);
     }
 
-    public function putAutorizar(ProTeam $proTeam, User $user) {
+    public function putAutorizar(ProTeam $proTeam, User $user)
+    {
         $proTeam->authorizeUserRequest($user);
         return redirect()->back()
-                        ->with('message', "Éxito");
+            ->with('message', "Éxito");
     }
 
-    public function putDenegar(ProTeam $proTeam, User $user) {
+    public function putDenegar(ProTeam $proTeam, User $user)
+    {
         $proTeam->rejectUserRequest($user);
         return redirect()->back()
-                        ->with('message', "Éxito");
+            ->with('message', "Éxito");
     }
 
-    public function ReportarResultadosPro() {
+    public function ReportarResultadosPro()
+    {
         $usuarioLocal = input::get("checkbox");
         $usuarioVisitante = input::get("checkboxVisitante");
         $EquipoLoc = input::get("EquipoLocalInput");
@@ -186,9 +197,6 @@ class ClubesProController extends Controller {
         $League = input::get("leagueInput");
         $CalendarioInput = input::get("calendarioInput");
         $partidoId = input::get("PartidoInput");
-
-
-
 
 
         $calendario = LeagueProCalendar::find($CalendarioInput);
@@ -202,10 +210,8 @@ class ClubesProController extends Controller {
         $EquipoVisitante = ProTeam::find($EquipoVis);
 
 
-
         $league = ProLeague::find($League);
         $EquipoUsuarioAuth = Auth::user()->proTeams[0]->id;
-
 
 
         return view('ReportarResultadosPro', ['usuariosLocal' => $usuariosLocal,
@@ -217,7 +223,8 @@ class ClubesProController extends Controller {
             'calendario' => $calendario]);
     }
 
-    public function ReportarResultadosPro2() {
+    public function ReportarResultadosPro2()
+    {
         $usuarioLocal = input::get("checkbox");
         $usuarioVisitante = input::get("checkboxVisitante");
         $EquipoLoc = input::get("EquipoLocalInput");
@@ -227,7 +234,6 @@ class ClubesProController extends Controller {
         $partidoId = input::get("PartidoInput");
 
         $partido = ProMatch::find($partidoId);
-
 
 
         $calendario = LeagueProCalendar::find($CalendarioInput);
@@ -241,10 +247,8 @@ class ClubesProController extends Controller {
         $EquipoVisitante = ProTeam::find($EquipoVis);
 
 
-
         $league = ProLeague::find($League);
         $EquipoUsuarioAuth = Auth::user()->proTeams[0]->id;
-
 
 
         return view('EditarResultadosPro', ['usuariosLocal' => $usuariosLocal,
@@ -257,7 +261,8 @@ class ClubesProController extends Controller {
             'calendario' => $calendario]);
     }
 
-    public function ReportarResultadosProAdmin($id, $id2, $id3, $id4, $id5) {
+    public function ReportarResultadosProAdmin($id, $id2, $id3, $id4, $id5)
+    {
 
         $partido = ProMatch::find($id5);
         $calendario = LeagueProCalendar::find($id4);
@@ -279,7 +284,8 @@ class ClubesProController extends Controller {
             'calendario' => $calendario]);
     }
 
-    public function ReportarMarcadorProAdmin() {
+    public function ReportarMarcadorProAdmin()
+    {
 
         $InputIdPartido = Input::get('InputPartido');
         $marcadorLocal = Input::get('InputMarcadorLocal');
@@ -302,7 +308,8 @@ class ClubesProController extends Controller {
             'ligas' => $ligas]);
     }
 
-    public function ReportarResultadosMetodo() {
+    public function ReportarResultadosMetodo()
+    {
 
         $VectorUsuariosLocal = Input::get('VectorUsuarioLocal');
 
@@ -329,9 +336,8 @@ class ClubesProController extends Controller {
         $GolesVisitante = Input::get('GolesSelectVisitante');
 
 
-
         if ($Goles == null) {
-            
+
         } else {
             $GolesLocalT = array_sum($Goles);
             if ($GolesLocalT > $marcadorLocal) {
@@ -340,7 +346,7 @@ class ClubesProController extends Controller {
         }
 
         if ($GolesVisitante == null) {
-            
+
         } else {
             $GolesvisitaT = array_sum($GolesVisitante);
             if ($GolesvisitaT > $marcadorVisitante) {
@@ -355,8 +361,6 @@ class ClubesProController extends Controller {
          */
 
 
-
-
         $calendario = LeagueProCalendar::find($CalendarioInput);
         $equipoLoc = ProTeam::find($equipoLocal);
         $equipoVis = ProTeam::find($equipoVisitante);
@@ -365,19 +369,19 @@ class ClubesProController extends Controller {
         if ($marcadorLocal == $marcadorVisitante) {
 
 
-            $equipoLoc->JE+=1;
-            $equipoVis->JE+=1;
-            $equipoLoc->points+=1;
-            $equipoVis->points+=1;
-            $equipoLoc->JJ+=1;
-            $equipoVis->JJ+=1;
+            $equipoLoc->JE += 1;
+            $equipoVis->JE += 1;
+            $equipoLoc->points += 1;
+            $equipoVis->points += 1;
+            $equipoLoc->JJ += 1;
+            $equipoVis->JJ += 1;
 
 
-            $equipoLoc->GF+=$marcadorLocal;
-            $equipoVis->GF+=$marcadorVisitante;
+            $equipoLoc->GF += $marcadorLocal;
+            $equipoVis->GF += $marcadorVisitante;
 
-            $equipoLoc->GC+=$marcadorVisitante;
-            $equipoVis->GC+=$marcadorLocal;
+            $equipoLoc->GC += $marcadorVisitante;
+            $equipoVis->GC += $marcadorLocal;
 
 
             $EstadisticasLoc = $equipoLoc->proLeagueEstatistics;
@@ -395,17 +399,17 @@ class ClubesProController extends Controller {
             $GCVisitante = $EstadisticasVis[0]->pivot->GC;
 
 
-            $JJLocal+=1;
-            $JELocal+=1;
-            $pointsLocal+=1;
-            $GFLocal+=$marcadorLocal;
-            $GCLocal+=$marcadorVisitante;
+            $JJLocal += 1;
+            $JELocal += 1;
+            $pointsLocal += 1;
+            $GFLocal += $marcadorLocal;
+            $GCLocal += $marcadorVisitante;
 
-            $JJVisitante+=1;
-            $JEVisitante+=1;
-            $pointsVisitante+=1;
-            $GFVisitante+=$marcadorVisitante;
-            $GCVisitante+=$marcadorLocal;
+            $JJVisitante += 1;
+            $JEVisitante += 1;
+            $pointsVisitante += 1;
+            $GFVisitante += $marcadorVisitante;
+            $GCVisitante += $marcadorLocal;
 
 
             $equipoLoc->proLeagueEstatistics()->updateExistingPivot($League, ['JJ' => $JJLocal, 'JE' => $JELocal, 'GF' => $GFLocal, 'GC' => $GCLocal, 'points' => $pointsLocal]);
@@ -417,17 +421,16 @@ class ClubesProController extends Controller {
         }
 
         if ($marcadorLocal > $marcadorVisitante) {
-            $equipoVis->JJ+=1;
-            $equipoLoc->JJ+=1;
-            $equipoLoc->JG+=1;
-            $equipoVis->JP+=1;
-            $equipoLoc->points+=3;
-            $equipoLoc->GF+=$marcadorLocal;
-            $equipoVis->GF+=$marcadorVisitante;
+            $equipoVis->JJ += 1;
+            $equipoLoc->JJ += 1;
+            $equipoLoc->JG += 1;
+            $equipoVis->JP += 1;
+            $equipoLoc->points += 3;
+            $equipoLoc->GF += $marcadorLocal;
+            $equipoVis->GF += $marcadorVisitante;
 
-            $equipoLoc->GC+=$marcadorVisitante;
-            $equipoVis->GC+=$marcadorLocal;
-
+            $equipoLoc->GC += $marcadorVisitante;
+            $equipoVis->GC += $marcadorLocal;
 
 
             $EstadisticasLoc = $equipoLoc->proLeagueEstatistics;
@@ -445,17 +448,17 @@ class ClubesProController extends Controller {
             $GCVisitante = $EstadisticasVis[0]->pivot->GC;
 
 
-            $JJLocal+=1;
-            $JGLocal+=1;
-            $pointsLocal+=3;
-            $GFLocal+=$marcadorLocal;
-            $GCLocal+=$marcadorVisitante;
+            $JJLocal += 1;
+            $JGLocal += 1;
+            $pointsLocal += 3;
+            $GFLocal += $marcadorLocal;
+            $GCLocal += $marcadorVisitante;
 
-            $JJVisitante+=1;
-            $JPVisitante+=1;
-            $pointsVisitante+=0;
-            $GFVisitante+=$marcadorVisitante;
-            $GCVisitante+=$marcadorLocal;
+            $JJVisitante += 1;
+            $JPVisitante += 1;
+            $pointsVisitante += 0;
+            $GFVisitante += $marcadorVisitante;
+            $GCVisitante += $marcadorLocal;
 
 
             $equipoLoc->proLeagueEstatistics()->updateExistingPivot($League, ['JJ' => $JJLocal, 'JG' => $JGLocal, 'GF' => $GFLocal, 'GC' => $GCLocal, 'points' => $pointsLocal]);
@@ -468,16 +471,16 @@ class ClubesProController extends Controller {
         }
 
         if ($marcadorLocal < $marcadorVisitante) {
-            $equipoVis->JJ+=1;
-            $equipoLoc->JJ+=1;
-            $equipoLoc->JP+=1;
-            $equipoVis->JG+=1;
-            $equipoVis->points+=3;
-            $equipoLoc->GF+=$marcadorLocal;
-            $equipoVis->GF+=$marcadorVisitante;
+            $equipoVis->JJ += 1;
+            $equipoLoc->JJ += 1;
+            $equipoLoc->JP += 1;
+            $equipoVis->JG += 1;
+            $equipoVis->points += 3;
+            $equipoLoc->GF += $marcadorLocal;
+            $equipoVis->GF += $marcadorVisitante;
 
-            $equipoLoc->GC+=$marcadorVisitante;
-            $equipoVis->GC+=$marcadorLocal;
+            $equipoLoc->GC += $marcadorVisitante;
+            $equipoVis->GC += $marcadorLocal;
 
 
             $EstadisticasLoc = $equipoLoc->proLeagueEstatistics;
@@ -495,17 +498,17 @@ class ClubesProController extends Controller {
             $GCVisitante = $EstadisticasVis[0]->pivot->GC;
 
 
-            $JJLocal+=1;
-            $JPLocal+=1;
-            $pointsLocal+=0;
-            $GFLocal+=$marcadorLocal;
-            $GCLocal+=$marcadorVisitante;
+            $JJLocal += 1;
+            $JPLocal += 1;
+            $pointsLocal += 0;
+            $GFLocal += $marcadorLocal;
+            $GCLocal += $marcadorVisitante;
 
-            $JJVisitante+=1;
-            $JGVisitante+=1;
-            $pointsVisitante+=3;
-            $GFVisitante+=$marcadorVisitante;
-            $GCVisitante+=$marcadorLocal;
+            $JJVisitante += 1;
+            $JGVisitante += 1;
+            $pointsVisitante += 3;
+            $GFVisitante += $marcadorVisitante;
+            $GCVisitante += $marcadorLocal;
 
 
             $equipoLoc->proLeagueEstatistics()->updateExistingPivot($League, ['JJ' => $JJLocal, 'JP' => $JPLocal, 'GF' => $GFLocal, 'GC' => $GCLocal, 'points' => $pointsLocal]);
@@ -518,10 +521,9 @@ class ClubesProController extends Controller {
         }
 
 
-
         for ($i = 0; $i < sizeof($Goles); $i++) {
 
-            $UsuariosLocal[$i]->goals+=$Goles[$i];
+            $UsuariosLocal[$i]->goals += $Goles[$i];
 
             /* Borrar _id */
             if ($Posicion[$i] == "PO") {
@@ -532,13 +534,13 @@ class ClubesProController extends Controller {
                 $Partido->PO_local_goal = $Goles[$i];
                 if ($marcadorVisitante == 0) {
                     $Partido->PO_local_unbeaten = 1;
-                    $UsuariosLocal[$i]->gk_unbeaten+=1;
+                    $UsuariosLocal[$i]->gk_unbeaten += 1;
                 }
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->PO_local_best_player = $idMejorJugador;
 
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DFC") {
@@ -550,7 +552,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
 
@@ -563,7 +565,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->LTI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "LTD") {
@@ -575,7 +577,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->LTD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MCD") {
@@ -587,7 +589,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MC") {
@@ -599,7 +601,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MI") {
@@ -611,7 +613,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MD") {
@@ -623,7 +625,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MCO") {
@@ -635,7 +637,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCO_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "EI") {
@@ -647,7 +649,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->EI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "ED") {
@@ -659,7 +661,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->ED_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DI") {
@@ -671,7 +673,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DD") {
@@ -683,7 +685,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DC") {
@@ -695,7 +697,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
 
@@ -709,7 +711,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DFC3") {
@@ -721,7 +723,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC3_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MCD2") {
@@ -733,7 +735,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCD2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MC2") {
@@ -745,7 +747,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MC2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MVI") {
@@ -757,7 +759,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MVI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
 
@@ -770,7 +772,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MVD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MCO2") {
@@ -782,18 +784,14 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCO2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
 
 
-
-
-
-
-            $UsuariosLocal[$i]->yellow_card+=$Amarillas[$i];
-            $UsuariosLocal[$i]->red_card+=$Rojas[$i];
-            $UsuariosLocal[$i]->assistance+=$Asistencias[$i];
+            $UsuariosLocal[$i]->yellow_card += $Amarillas[$i];
+            $UsuariosLocal[$i]->red_card += $Rojas[$i];
+            $UsuariosLocal[$i]->assistance += $Asistencias[$i];
             $UsuariosLocal[$i]->pro_JJ++;
             if ($marcadorLocal == $marcadorVisitante) {
                 $UsuariosLocal[$i]->pro_JE++;
@@ -801,7 +799,7 @@ class ClubesProController extends Controller {
             }
             if ($marcadorLocal > $marcadorVisitante) {
                 $UsuariosLocal[$i]->pro_JG++;
-                $UsuariosLocal[$i]->pro_Points+=3;
+                $UsuariosLocal[$i]->pro_Points += 3;
             }
 
             if ($marcadorLocal < $marcadorVisitante) {
@@ -815,10 +813,6 @@ class ClubesProController extends Controller {
         }
 
 
-
-
-
-
         $VectorUsuariosVisitante = Input::get('VectorUsuarioVisitante');
 
         $UsuariosVisitante = User::find($VectorUsuariosVisitante);
@@ -828,13 +822,9 @@ class ClubesProController extends Controller {
         $PosicionVisitante = Input::get('PosicionSelectVisitante');
 
 
-
         $AmarillasVisitante = Input::get('AmarillasSelectVisitante');
         $RojasVisitante = Input::get('RojasSelectVisitante');
         $AsistenciasVisitante = Input::get('AsistenciasSelectVisitante');
-
-
-
 
 
         for ($i = 0; $i < sizeof($GolesVisitante); $i++) {
@@ -848,14 +838,14 @@ class ClubesProController extends Controller {
                 $Partido->PO_visitor_goal = $GolesVisitante[$i];
                 if ($marcadorLocal == 0) {
                     $Partido->PO_visitor_unbeaten = 1;
-                    $UsuariosVisitante[$i]->gk_unbeaten+=1;
+                    $UsuariosVisitante[$i]->gk_unbeaten += 1;
                 }
 
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->PO_visitor_best_player = $idMejorJugador;
 
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
 
@@ -868,7 +858,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DFC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
 
@@ -881,7 +871,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->LTI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "LTD") {
@@ -893,7 +883,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->LTD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MCD") {
@@ -906,7 +896,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MC") {
@@ -918,7 +908,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MI") {
@@ -930,7 +920,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MD") {
@@ -942,7 +932,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MCO") {
@@ -954,7 +944,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCO_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "EI") {
@@ -966,7 +956,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->EI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "ED") {
@@ -979,7 +969,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->ED_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DI") {
@@ -991,7 +981,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DD") {
@@ -1003,7 +993,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DC") {
@@ -1015,7 +1005,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
 
@@ -1030,7 +1020,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DFC2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DFC3") {
@@ -1042,7 +1032,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DFC3_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MCD2") {
@@ -1054,7 +1044,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCD2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MC2") {
@@ -1066,7 +1056,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MC2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MVI") {
@@ -1078,7 +1068,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MVI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MVD") {
@@ -1090,7 +1080,7 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MVD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MCO2") {
@@ -1102,16 +1092,15 @@ class ClubesProController extends Controller {
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCO2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
 
 
-
-            $UsuariosVisitante[$i]->goals+=$GolesVisitante[$i];
-            $UsuariosVisitante[$i]->yellow_card+=$AmarillasVisitante[$i];
-            $UsuariosVisitante[$i]->red_card+=$RojasVisitante[$i];
-            $UsuariosVisitante[$i]->assistance+=$AsistenciasVisitante[$i];
+            $UsuariosVisitante[$i]->goals += $GolesVisitante[$i];
+            $UsuariosVisitante[$i]->yellow_card += $AmarillasVisitante[$i];
+            $UsuariosVisitante[$i]->red_card += $RojasVisitante[$i];
+            $UsuariosVisitante[$i]->assistance += $AsistenciasVisitante[$i];
             $UsuariosVisitante[$i]->pro_JJ++;
             if ($marcadorLocal == $marcadorVisitante) {
                 $UsuariosVisitante[$i]->pro_JE++;
@@ -1119,7 +1108,7 @@ class ClubesProController extends Controller {
             }
             if ($marcadorLocal < $marcadorVisitante) {
                 $UsuariosVisitante[$i]->pro_JG++;
-                $UsuariosVisitante[$i]->pro_Points+=3;
+                $UsuariosVisitante[$i]->pro_Points += 3;
             }
 
             if ($marcadorLocal > $marcadorVisitante) {
@@ -1129,7 +1118,6 @@ class ClubesProController extends Controller {
 
             $UsuariosVisitante[$i]->update();
         }
-
 
 
         $Partido->team_local_id = $equipoLocal;
@@ -1149,7 +1137,8 @@ class ClubesProController extends Controller {
         return view('clubes-pro.clubes-pro', ['clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas]);
     }
 
-    public function ReportarResultadosMetodo2() {
+    public function ReportarResultadosMetodo2()
+    {
 
         $VectorUsuariosLocal = Input::get('VectorUsuarioLocal');
 
@@ -1175,7 +1164,7 @@ class ClubesProController extends Controller {
 
 
         if ($Goles == null) {
-            
+
         } else {
             $GolesLocalT = array_sum($Goles);
 
@@ -1185,7 +1174,7 @@ class ClubesProController extends Controller {
         }
 
         if ($GolesVisitante == null) {
-            
+
         } else {
             $GolesvisitaT = array_sum($GolesVisitante);
 
@@ -1200,13 +1189,9 @@ class ClubesProController extends Controller {
         $equipoVis = ProTeam::find($equipoVisitante);
 
 
-
-
-
-
         for ($i = 0; $i < sizeof($Goles); $i++) {
 
-            $UsuariosLocal[$i]->goals+=$Goles[$i];
+            $UsuariosLocal[$i]->goals += $Goles[$i];
 
             /* Borrar _id */
             if ($Posicion[$i] == "PO") {
@@ -1217,12 +1202,12 @@ class ClubesProController extends Controller {
                 $Partido->PO_local_goal = $Goles[$i];
                 if ($marcadorVisitante == 0) {
                     $Partido->PO_local_unbeaten = 1;
-                    $UsuariosLocal[$i]->gk_unbeaten+=1;
+                    $UsuariosLocal[$i]->gk_unbeaten += 1;
                 }
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->PO_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DFC") {
@@ -1234,7 +1219,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
 
@@ -1247,7 +1232,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->LTI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "LTD") {
@@ -1259,7 +1244,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->LTD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MCD") {
@@ -1271,7 +1256,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MC") {
@@ -1283,7 +1268,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MI") {
@@ -1295,7 +1280,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MD") {
@@ -1307,7 +1292,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MCO") {
@@ -1319,7 +1304,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCO_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "EI") {
@@ -1331,7 +1316,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->EI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "ED") {
@@ -1343,7 +1328,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->ED_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DI") {
@@ -1355,7 +1340,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DD") {
@@ -1367,7 +1352,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DC") {
@@ -1379,11 +1364,9 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
-
-
 
 
             /* Nuevas posiciones visitante */
@@ -1397,7 +1380,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "DFC3") {
@@ -1409,7 +1392,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC3_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MCD2") {
@@ -1421,7 +1404,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCD2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MC2") {
@@ -1433,7 +1416,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MC2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MVI") {
@@ -1445,7 +1428,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MVI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MVD") {
@@ -1457,7 +1440,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MVD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
             if ($Posicion[$i] == "MCO2") {
@@ -1469,25 +1452,14 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCO2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player+=1;
+                    $UsuariosLocal[$i]->best_player += 1;
                 }
             }
 
 
-
-
-
-
-
-
-
-
-
-
-
-            $UsuariosLocal[$i]->yellow_card+=$Amarillas[$i];
-            $UsuariosLocal[$i]->red_card+=$Rojas[$i];
-            $UsuariosLocal[$i]->assistance+=$Asistencias[$i];
+            $UsuariosLocal[$i]->yellow_card += $Amarillas[$i];
+            $UsuariosLocal[$i]->red_card += $Rojas[$i];
+            $UsuariosLocal[$i]->assistance += $Asistencias[$i];
             $UsuariosLocal[$i]->pro_JJ++;
             $LocalUser[] = $UsuariosLocal[$i]->id;
 
@@ -1497,7 +1469,7 @@ class ClubesProController extends Controller {
             }
             if ($Partido->local_score > $Partido->visitor_score) {
                 $UsuariosLocal[$i]->pro_JG++;
-                $UsuariosLocal[$i]->pro_Points+=3;
+                $UsuariosLocal[$i]->pro_Points += 3;
             }
 
             if ($Partido->local_score < $Partido->visitor_score) {
@@ -1509,14 +1481,9 @@ class ClubesProController extends Controller {
         }
 
 
-
-
-
-
         $VectorUsuariosVisitante = Input::get('VectorUsuarioVisitante');
 
         $UsuariosVisitante = User::find($VectorUsuariosVisitante);
-
 
 
         $PosicionVisitante = Input::get('PosicionSelectVisitante');
@@ -1525,7 +1492,6 @@ class ClubesProController extends Controller {
         $RojasVisitante = Input::get('RojasSelectVisitante');
         $AsistenciasVisitante = Input::get('AsistenciasSelectVisitante');
         $radio = Input::get('optradio');
-
 
 
         for ($i = 0; $i < sizeof($GolesVisitante); $i++) {
@@ -1539,12 +1505,12 @@ class ClubesProController extends Controller {
                 $Partido->PO_visitor_goal = $GolesVisitante[$i];
                 if ($marcadorLocal == 0) {
                     $Partido->PO_visitor_unbeaten = 1;
-                    $UsuariosVisitante[$i]->gk_unbeaten+=1;
+                    $UsuariosVisitante[$i]->gk_unbeaten += 1;
                 }
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->PO_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DFC") {
@@ -1556,7 +1522,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->DFC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
 
@@ -1569,7 +1535,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->LTI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "LTD") {
@@ -1581,7 +1547,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->LTD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MCD") {
@@ -1594,7 +1560,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MCD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MC") {
@@ -1606,7 +1572,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MI") {
@@ -1618,7 +1584,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MD") {
@@ -1630,7 +1596,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MCO") {
@@ -1642,7 +1608,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MCO_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "EI") {
@@ -1654,7 +1620,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->EI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "ED") {
@@ -1667,7 +1633,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->ED_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DI") {
@@ -1679,7 +1645,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->DI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DD") {
@@ -1691,7 +1657,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->DD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DC") {
@@ -1703,10 +1669,9 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->DC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
-
 
 
             /* Nuevas posiciones visitante */
@@ -1720,7 +1685,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->DFC2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "DFC3") {
@@ -1732,7 +1697,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->DFC3_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MCD2") {
@@ -1744,7 +1709,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MCD2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MC2") {
@@ -1756,7 +1721,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MC2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MVI") {
@@ -1768,7 +1733,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MVI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MVD") {
@@ -1780,7 +1745,7 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MVD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
             if ($PosicionVisitante[$i] == "MCO2") {
@@ -1792,15 +1757,15 @@ class ClubesProController extends Controller {
                 if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
                     $Partido->MCO2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player+=1;
+                    $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
 
 
-            $UsuariosVisitante[$i]->goals+=$GolesVisitante[$i];
-            $UsuariosVisitante[$i]->yellow_card+=$AmarillasVisitante[$i];
-            $UsuariosVisitante[$i]->red_card+=$RojasVisitante[$i];
-            $UsuariosVisitante[$i]->assistance+=$AsistenciasVisitante[$i];
+            $UsuariosVisitante[$i]->goals += $GolesVisitante[$i];
+            $UsuariosVisitante[$i]->yellow_card += $AmarillasVisitante[$i];
+            $UsuariosVisitante[$i]->red_card += $RojasVisitante[$i];
+            $UsuariosVisitante[$i]->assistance += $AsistenciasVisitante[$i];
             $UsuariosVisitante[$i]->pro_JJ++;
 
             if ($Partido->local_score == $Partido->visitor_score) {
@@ -1809,13 +1774,12 @@ class ClubesProController extends Controller {
             }
             if ($Partido->local_score < $Partido->visitor_score) {
                 $UsuariosVisitante[$i]->pro_JG++;
-                $UsuariosVisitante[$i]->pro_Points+=3;
+                $UsuariosVisitante[$i]->pro_Points += 3;
             }
 
             if ($Partido->local_score > $Partido->visitor_score) {
                 $UsuariosVisitante[$i]->pro_JP++;
             }
-
 
 
             $UsuariosVisitante[$i]->update();
@@ -1833,13 +1797,13 @@ class ClubesProController extends Controller {
         return view('clubes-pro.clubes-pro', ['clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas]);
     }
 
-    public function ReportarPartidoMetodo($id, $id2, $id3, $id4) {
+    public function ReportarPartidoMetodo($id, $id2, $id3, $id4)
+    {
         $Equipo1 = ProTeam::find($id);
         $Equipo2 = ProTeam::find($id2);
         $league = ProLeague::find($id3);
         $calendario = LeagueProCalendar::find($id4);
         $EquipoUserAuth = Auth::user()->proTeams[0]->id;
-
 
 
         return view('ReportarPartidoPro', ['Equipo1' => $Equipo1,
@@ -1848,15 +1812,14 @@ class ClubesProController extends Controller {
             'calendario' => $calendario]);
     }
 
-    public function ReportarPartidoMetodo2($id, $id2, $id3, $id4, $id5) {
+    public function ReportarPartidoMetodo2($id, $id2, $id3, $id4, $id5)
+    {
         $Equipo1 = ProTeam::find($id);
         $Equipo2 = ProTeam::find($id2);
         $league = ProLeague::find($id3);
         $partido = ProMatch::find($id5);
         $calendario = LeagueProCalendar::find($id4);
         $EquipoUserAuth = Auth::user()->proTeams[0]->id;
-
-
 
 
         return view('EditarPartidoPro', ['Equipo1' => $Equipo1,
@@ -1867,7 +1830,8 @@ class ClubesProController extends Controller {
             'calendario' => $calendario]);
     }
 
-    public function buscar() {
+    public function buscar()
+    {
         $search = Input::get('search');
         return view('clubes-pro.buscar', [
             'clubes' => Proteam::all(),
@@ -1878,7 +1842,8 @@ class ClubesProController extends Controller {
         ]);
     }
 
-    public function buscarEquipo() {
+    public function buscarEquipo()
+    {
 
         $search = Input::get('search');
         return view('TransferenciasBuscarE', [
@@ -1890,7 +1855,8 @@ class ClubesProController extends Controller {
         ]);
     }
 
-    public function buscarJugador() {
+    public function buscarJugador()
+    {
         $search = Input::get('search');
         return view('TransferenciasBuscarJ', [
             'users' => User::all(),
@@ -1901,7 +1867,8 @@ class ClubesProController extends Controller {
         ]);
     }
 
-    public function deleteBaja(ProTeam $proTeam) {
+    public function deleteBaja(ProTeam $proTeam)
+    {
         $proTeam->downUser(Auth::user());
         if (ProTeam::whereId(\Auth::user()->id)->first()) {
             return redirect()->to('clubes-pro');
@@ -1909,7 +1876,8 @@ class ClubesProController extends Controller {
         return redirect()->to('clubes-pro');
     }
 
-    public function editarClub($id) {
+    public function editarClub($id)
+    {
 
 
         $club = ProTeam::find($id);
@@ -1919,7 +1887,8 @@ class ClubesProController extends Controller {
         return view('EditarClubPro', ['club' => $club, 'ligas' => $ligas, 'copas' => $copas]);
     }
 
-    public function editarImagen($id, Request $request) {
+    public function editarImagen($id, Request $request)
+    {
         $club = ProTeam::find($id);
 
         $ligas = ProLeague::all();
@@ -1934,7 +1903,8 @@ class ClubesProController extends Controller {
         return view('clubes-pro.clubes-pro', ['clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas]);
     }
 
-    public function putBloquearAltas(ProTeam $proTeam) {
+    public function putBloquearAltas(ProTeam $proTeam)
+    {
         if (Auth::user()->user_name == "Administrador22") {
 
             $EquiposAll = ProTeam::all();
@@ -1948,7 +1918,8 @@ class ClubesProController extends Controller {
         }
     }
 
-    public function putDesbloquearAltas(ProTeam $proTeam) {
+    public function putDesbloquearAltas(ProTeam $proTeam)
+    {
         if (Auth::user()->user_name == "Administrador22") {
             $ProteamAll = ProTeam::all();
             foreach ($ProteamAll as $proTeam) {
@@ -1960,11 +1931,11 @@ class ClubesProController extends Controller {
         }
     }
 
-    public function editarMarcador($id) {
+    public function editarMarcador($id)
+    {
 
 
         $partido = ProMatch::find($id);
-
 
 
         $partido->local_score = $marcadorLocal;
@@ -1975,11 +1946,11 @@ class ClubesProController extends Controller {
         $clubes = ProTeam::all();
 
 
-
         return view('clubes-pro.clubes-pro', ['ligas' => $ligas, 'copas' => $copas, 'clubes' => $clubes]);
     }
 
-    public function EscogerLigaPro() {
+    public function EscogerLigaPro()
+    {
 
         $LigaInput = Input::get('leagueSelect');
         $ligaPro = ProLeague::find($LigaInput);
@@ -1988,11 +1959,11 @@ class ClubesProController extends Controller {
         $Bandera = 1;
 
 
-
         return view('AlterarDatosLigaPro', ['copas' => $copas, 'ligas' => $ligas, 'ligaPro' => $ligaPro, 'Bandera' => $Bandera]);
     }
 
-    public function BuscarDatosClub() {
+    public function BuscarDatosClub()
+    {
 
 
         $InputSelect = Input::get('clubSelect');
@@ -2004,7 +1975,6 @@ class ClubesProController extends Controller {
         $ligaPro = ProLeague::find($InputLeague);
 
         $Estadisticas = $ClubPro->proLeagueEstatistics;
-
 
 
         $JJ = $Estadisticas[0]->pivot->JJ;
@@ -2031,7 +2001,8 @@ class ClubesProController extends Controller {
             'Bandera' => $Bandera]);
     }
 
-    public function ModificarDatosLigaPro() {
+    public function ModificarDatosLigaPro()
+    {
 
         $InputLeague = Input::get('InputIdLeague');
 
@@ -2080,32 +2051,40 @@ class ClubesProController extends Controller {
         return view('AlterarDatosLigaPro', ['copas' => $copas, 'ligas' => $ligas, 'ligaPro' => $ligaPro, 'Bandera' => $Bandera])->withErrors("Se han cambiado las estadísticas del equipo");
     }
 
-    public function ObtenerGoleadoresLigaPro($id) {
+    public function ObtenerGoleadoresLigaPro($id)
+    {
 
         $League = ProLeague::find($id);
 
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
-        $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
-                        $query->orderBy('goals', 'desc');
-                    }])->get();
 
+        $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
+            $query->orderBy('goals', 'desc');
+        }])->get();
 
 
         foreach ($usuariosLiga2 as $usuariosLiga) {
             $usuariosLiga3 = $usuariosLiga->proTeams;
+
             foreach ($usuariosLiga3 as $clubes) {
                 $usuariosLiga4 = $clubes->users;
-                foreach ($usuariosLiga4 as $usuariosLig) {
-                    $usuariosLiga5[] = $usuariosLig->id;
+
+                $FiltroLiga = $clubes->proLeague;
+                foreach ($FiltroLiga as $LigaFiltro) {
+                    if ($LigaFiltro->id == $League->id)
+                        foreach ($usuariosLiga4 as $usuariosLig) {
+                            $usuariosLiga5[] = $usuariosLig->id;
+                        }
                 }
+
             }
         }
 
         $USERSLeague = User::find($usuariosLiga5);
         $OrdenadoGoles = $USERSLeague->sortByDesc('goals')->take(10);
-       
+
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
@@ -2114,37 +2093,45 @@ class ClubesProController extends Controller {
         return view('EstadisticasLigaPro', [
             'usuariosLiga' => $usuariosLiga,
             'ligas' => $ligas,
-            'League'=>$League,
+            'League' => $League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
-            'OrdenadoGoles' =>$OrdenadoGoles]);
+            'OrdenadoGoles' => $OrdenadoGoles]);
     }
-    
-    
-        public function ObtenerAsistentesLigaPro($id) {
+
+
+    public function ObtenerAsistentesLigaPro($id)
+    {
 
         $League = ProLeague::find($id);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
         $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
-                        $query->orderBy('assistance', 'desc');
-                    }])->get();
+            $query->orderBy('assistance', 'desc');
+        }])->get();
 
         foreach ($usuariosLiga2 as $usuariosLiga) {
             $usuariosLiga3 = $usuariosLiga->proTeams;
+
             foreach ($usuariosLiga3 as $clubes) {
                 $usuariosLiga4 = $clubes->users;
-                foreach ($usuariosLiga4 as $usuariosLig) {
-                    $usuariosLiga5[] = $usuariosLig->id;
+
+                $FiltroLiga = $clubes->proLeague;
+                foreach ($FiltroLiga as $LigaFiltro) {
+                    if ($LigaFiltro->id == $League->id)
+                        foreach ($usuariosLiga4 as $usuariosLig) {
+                            $usuariosLiga5[] = $usuariosLig->id;
+                        }
                 }
+
             }
         }
 
         $USERSLeague = User::find($usuariosLiga5);
         $OrdenadoAsistencias = $USERSLeague->sortByDesc('assistance')->take(10);
-       
+
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
@@ -2153,38 +2140,45 @@ class ClubesProController extends Controller {
         return view('EstadisticasLigaPro', [
             'usuariosLiga' => $usuariosLiga,
             'ligas' => $ligas,
-            'League'=>$League,
+            'League' => $League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
-            'OrdenadoAsistencias' =>$OrdenadoAsistencias]);
+            'OrdenadoAsistencias' => $OrdenadoAsistencias]);
     }
-    
-    
-    
-    public function ObtenerPorterosLigaPro($id) {
+
+
+    public function ObtenerPorterosLigaPro($id)
+    {
 
         $League = ProLeague::find($id);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
         $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
-                        $query->orderBy('gk_unbeaten', 'desc');
-                    }])->get();
+            $query->orderBy('gk_unbeaten', 'desc');
+        }])->get();
 
         foreach ($usuariosLiga2 as $usuariosLiga) {
             $usuariosLiga3 = $usuariosLiga->proTeams;
+
             foreach ($usuariosLiga3 as $clubes) {
                 $usuariosLiga4 = $clubes->users;
-                foreach ($usuariosLiga4 as $usuariosLig) {
-                    $usuariosLiga5[] = $usuariosLig->id;
+
+                $FiltroLiga = $clubes->proLeague;
+                foreach ($FiltroLiga as $LigaFiltro) {
+                    if ($LigaFiltro->id == $League->id)
+                        foreach ($usuariosLiga4 as $usuariosLig) {
+                            $usuariosLiga5[] = $usuariosLig->id;
+                        }
                 }
+
             }
         }
 
         $USERSLeague = User::find($usuariosLiga5);
         $OrdenadoPorteros = $USERSLeague->sortByDesc('gk_unbeaten')->take(10);
-       
+
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
@@ -2193,37 +2187,44 @@ class ClubesProController extends Controller {
         return view('EstadisticasLigaPro', [
             'usuariosLiga' => $usuariosLiga,
             'ligas' => $ligas,
-            'League'=>$League,
+            'League' => $League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
-            'OrdenadoPorteros' =>$OrdenadoPorteros]);
+            'OrdenadoPorteros' => $OrdenadoPorteros]);
     }
 
-    
-    
-     public function ObtenerMejoresJugadoresLigaPro($id) {
+
+    public function ObtenerMejoresJugadoresLigaPro($id)
+    {
 
         $League = ProLeague::find($id);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
         $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
-                        $query->orderBy('best_player', 'desc');
-                    }])->get();
+            $query->orderBy('best_player', 'desc');
+        }])->get();
 
         foreach ($usuariosLiga2 as $usuariosLiga) {
             $usuariosLiga3 = $usuariosLiga->proTeams;
+
             foreach ($usuariosLiga3 as $clubes) {
                 $usuariosLiga4 = $clubes->users;
-                foreach ($usuariosLiga4 as $usuariosLig) {
-                    $usuariosLiga5[] = $usuariosLig->id;
+
+                $FiltroLiga = $clubes->proLeague;
+                foreach ($FiltroLiga as $LigaFiltro) {
+                    if ($LigaFiltro->id == $League->id)
+                        foreach ($usuariosLiga4 as $usuariosLig) {
+                            $usuariosLiga5[] = $usuariosLig->id;
+                        }
                 }
+
             }
         }
 
         $USERSLeague = User::find($usuariosLiga5);
-        $OrdenadoPorteros = $USERSLeague->sortByDesc('best_player')->take(10);
+        $OrdenadoMejoresJugadores = $USERSLeague->sortByDesc('best_player')->take(10);
 
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
@@ -2233,11 +2234,11 @@ class ClubesProController extends Controller {
         return view('EstadisticasLigaPro', [
             'usuariosLiga' => $usuariosLiga,
             'ligas' => $ligas,
-            'League'=> $League,
+            'League' => $League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
-            'OrdenadoPorteros' =>$OrdenadoPorteros]);
+            'OrdenadoMejoresJugadores' => $OrdenadoMejoresJugadores]);
     }
 
 }
