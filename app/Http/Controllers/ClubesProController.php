@@ -2054,14 +2054,14 @@ class ClubesProController extends Controller {
         $League = ProLeague::find($InputLeague);
 
 
-        $JJ = $Estadisticas[0]->pivot->JJ - $InputJJ;
+        $JJ = $Estadisticas[0]->pivot->JJ + $InputJJ;
 
-        $JG = $Estadisticas[0]->pivot->JG - $InputJG;
-        $JE = $Estadisticas[0]->pivot->JE - $InputJE;
-        $JP = $Estadisticas[0]->pivot->JP - $InputJP;
-        $points = $Estadisticas[0]->pivot->points - $InputPuntos;
-        $GF = $Estadisticas[0]->pivot->GF - $InputGF;
-        $GC = $Estadisticas[0]->pivot->GC - $InputGC;
+        $JG = $Estadisticas[0]->pivot->JG + $InputJG;
+        $JE = $Estadisticas[0]->pivot->JE + $InputJE;
+        $JP = $Estadisticas[0]->pivot->JP + $InputJP;
+        $points = $Estadisticas[0]->pivot->points + $InputPuntos;
+        $GF = $Estadisticas[0]->pivot->GF + $InputGF;
+        $GC = $Estadisticas[0]->pivot->GC + $InputGC;
 
 
         $equipo->proLeagueEstatistics()->updateExistingPivot($League->id, ['JJ' => $JJ,
@@ -2080,15 +2080,18 @@ class ClubesProController extends Controller {
         return view('AlterarDatosLigaPro', ['copas' => $copas, 'ligas' => $ligas, 'ligaPro' => $ligaPro, 'Bandera' => $Bandera])->withErrors("Se han cambiado las estadísticas del equipo");
     }
 
-    public function ObtenerGoleadoresLigaPro() {
+    public function ObtenerGoleadoresLigaPro($id) {
 
-        $League = ProLeague::find(1);
+        $League = ProLeague::find($id);
+
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
         $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
                         $query->orderBy('goals', 'desc');
                     }])->get();
+
+
 
         foreach ($usuariosLiga2 as $usuariosLiga) {
             $usuariosLiga3 = $usuariosLiga->proTeams;
@@ -2111,6 +2114,7 @@ class ClubesProController extends Controller {
         return view('EstadisticasLigaPro', [
             'usuariosLiga' => $usuariosLiga,
             'ligas' => $ligas,
+            'League'=>$League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
@@ -2118,9 +2122,9 @@ class ClubesProController extends Controller {
     }
     
     
-        public function ObtenerAsistentesLigaPro() {
+        public function ObtenerAsistentesLigaPro($id) {
 
-        $League = ProLeague::find(1);
+        $League = ProLeague::find($id);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
@@ -2149,6 +2153,7 @@ class ClubesProController extends Controller {
         return view('EstadisticasLigaPro', [
             'usuariosLiga' => $usuariosLiga,
             'ligas' => $ligas,
+            'League'=>$League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
@@ -2157,9 +2162,9 @@ class ClubesProController extends Controller {
     
     
     
-    public function ObtenerPorterosLigaPro() {
+    public function ObtenerPorterosLigaPro($id) {
 
-        $League = ProLeague::find(1);
+        $League = ProLeague::find($id);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
@@ -2188,6 +2193,7 @@ class ClubesProController extends Controller {
         return view('EstadisticasLigaPro', [
             'usuariosLiga' => $usuariosLiga,
             'ligas' => $ligas,
+            'League'=>$League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
@@ -2196,9 +2202,9 @@ class ClubesProController extends Controller {
 
     
     
-     public function ObtenerMejoresJugadoresLigaPro() {
+     public function ObtenerMejoresJugadoresLigaPro($id) {
 
-        $League = ProLeague::find(1);
+        $League = ProLeague::find($id);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
@@ -2218,7 +2224,7 @@ class ClubesProController extends Controller {
 
         $USERSLeague = User::find($usuariosLiga5);
         $OrdenadoPorteros = $USERSLeague->sortByDesc('best_player')->take(10);
-       
+
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
@@ -2227,6 +2233,7 @@ class ClubesProController extends Controller {
         return view('EstadisticasLigaPro', [
             'usuariosLiga' => $usuariosLiga,
             'ligas' => $ligas,
+            'League'=> $League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,

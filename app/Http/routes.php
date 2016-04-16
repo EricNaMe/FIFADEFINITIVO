@@ -138,10 +138,10 @@ Route::group([
     Route::get('delete/{notification}','NotificationController@deleteIndex');
 });
 
-Route::get('GoleadoresLigaPro','ClubesProController@ObtenerGoleadoresLigaPro');
-Route::get('AsistentesLigaPro','ClubesProController@ObtenerAsistentesLigaPro');
-Route::get('PorterosLigaPro','ClubesProController@ObtenerPorterosLigaPro');
-Route::get('MejoresJugadoresLigaPro','ClubesProController@ObtenerMejoresJugadoresLigaPro');
+Route::get('GoleadoresLigaPro/{id}','ClubesProController@ObtenerGoleadoresLigaPro');
+Route::get('AsistentesLigaPro/{id}','ClubesProController@ObtenerAsistentesLigaPro');
+Route::get('PorterosLigaPro/{id}','ClubesProController@ObtenerPorterosLigaPro');
+Route::get('MejoresJugadoresLigaPro/{id}','ClubesProController@ObtenerMejoresJugadoresLigaPro');
 Route::post('EscogerLigaPro','ClubesProController@EscogerLigaPro');
 Route::post('BuscarDatosPro','ClubesProController@BuscarDatosClub');
 Route::post('ModificarDatosPro','ClubesProController@ModificarDatosLigaPro');

@@ -336,6 +336,8 @@ Log::info($ligapivote); */
     public function EncontrarCalendario(ProLeague $proLeague) {
         $ligas = ProLeague::all();
         $copas = ProCup::all();
+
+        $LigaObj=ProLeague::find($proLeague->id);
         $proCalendar = $proLeague->proCalendar;
 
 
@@ -344,7 +346,7 @@ Log::info($ligapivote); */
             if (Auth::user()->proTeams->isEmpty()) {
                 $DTAuth = "UsuarioSinEquipo";
 
-                return view('ProCalendario', ['proCalendar' => $proCalendar, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
+                return view('ProCalendario', ['proCalendar' => $proCalendar,'LigaObj'=>$LigaObj, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
             } else {
 
                 $Equipoid = Auth::user()->proTeams[0]->id;
@@ -352,11 +354,11 @@ Log::info($ligapivote); */
                 $EquipoAuth = ProTeam::find($Equipoid);
                 $DTAuth = $EquipoAuth->getDT();
 
-                return view('ProCalendario', ['proCalendar' => $proCalendar, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
+                return view('ProCalendario', ['proCalendar' => $proCalendar, 'LigaObj'=>$LigaObj,'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
             }
         } else {
             $DTAuth = "UsuarioSinEquipo";
-            return view('ProCalendario', ['proCalendar' => $proCalendar, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
+            return view('ProCalendario', ['proCalendar' => $proCalendar,'LigaObj'=>$LigaObj, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
         }
     }
 

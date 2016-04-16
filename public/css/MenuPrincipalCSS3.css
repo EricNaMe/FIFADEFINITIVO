@@ -447,7 +447,7 @@ tr:nth-child(even) {
 
 .dialogbox .body {
     position: relative;
-    max-width: 200px;
+    max-width: 380px;
     height: auto;
     margin: 20px 10px;
     padding: 5px;
