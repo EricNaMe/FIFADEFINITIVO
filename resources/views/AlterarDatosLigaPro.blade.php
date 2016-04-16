@@ -8,7 +8,7 @@
     
         var seleccion = document.getElementById('clubSelect');
         document.getElementById('InputIdClub').value = seleccion.options[seleccion.selectedIndex].value;
-        FormaAgregarClubaLiga
+
 
     }
 
