@@ -256,23 +256,20 @@ class ClubesProController extends Controller {
             'partido' => $partido,
             'calendario' => $calendario]);
     }
-    
-    
-    
-    
-     public function ReportarResultadosProAdmin($id, $id2, $id3, $id4, $id5) {
+
+    public function ReportarResultadosProAdmin($id, $id2, $id3, $id4, $id5) {
 
         $partido = ProMatch::find($id5);
         $calendario = LeagueProCalendar::find($id4);
         $EquipoLocal = ProTeam::find($id);
         $EquipoVisitante = ProTeam::find($id2);
         $league = ProLeague::find($id3);
-        $ligas=ProLeague::all();
-        $copas=ProCup::all();
-  
+        $ligas = ProLeague::all();
+        $copas = ProCup::all();
+
 
         return view('ProEditarResultadoAdmin', [
-           
+
             'copas' => $copas,
             'ligas' => $ligas,
             'EquipoLocal' => $EquipoLocal,
@@ -281,39 +278,30 @@ class ClubesProController extends Controller {
             'partido' => $partido,
             'calendario' => $calendario]);
     }
-    
-    
-       public function ReportarMarcadorProAdmin() {
 
-       $InputIdPartido=Input::get('InputPartido');    
-       $marcadorLocal=Input::get('InputMarcadorLocal');  
-       $marcadorVisitante=Input::get('InputMarcadorVisitante');
-       
+    public function ReportarMarcadorProAdmin() {
+
+        $InputIdPartido = Input::get('InputPartido');
+        $marcadorLocal = Input::get('InputMarcadorLocal');
+        $marcadorVisitante = Input::get('InputMarcadorVisitante');
+
         $partido = ProMatch::find($InputIdPartido);
-   
-        $partido->local_score=$marcadorLocal;
-        $partido->visitor_score=$marcadorVisitante;
+
+        $partido->local_score = $marcadorLocal;
+        $partido->visitor_score = $marcadorVisitante;
         $partido->update();
 
-        $ligas=ProLeague::all();
-        $copas=ProCup::all();
-        $clubes=ProTeam::all();
-        
+        $ligas = ProLeague::all();
+        $copas = ProCup::all();
+        $clubes = ProTeam::all();
+
         return view('clubes-pro.clubes-pro', [
-           
-           'clubes' => $clubes,
-           'copas' => $copas,
-           'ligas' => $ligas]);
+
+            'clubes' => $clubes,
+            'copas' => $copas,
+            'ligas' => $ligas]);
     }
 
-
-
-    
-    
-    
-    
-    
-    
     public function ReportarResultadosMetodo() {
 
         $VectorUsuariosLocal = Input::get('VectorUsuarioLocal');
@@ -2091,34 +2079,158 @@ class ClubesProController extends Controller {
 
         return view('AlterarDatosLigaPro', ['copas' => $copas, 'ligas' => $ligas, 'ligaPro' => $ligaPro, 'Bandera' => $Bandera])->withErrors("Se han cambiado las estadísticas del equipo");
     }
-    
-    
-    public function ObtenerGoleadoresLigaPro(){
-        
-        $League=ProLeague::find(1);
-        
-       foreach($League->ProTeams->users as $Liga){
-           foreach($Liga->users as $UsuariosEquipo){
-               $UsuariosEquipoNombre=$UsuariosEquipo->user_name;
-               $UsuariosEquipoGoles=$UsuariosEquipo->goals;
-           }
-       }
-        
-    
+
+    public function ObtenerGoleadoresLigaPro() {
+
+        $League = ProLeague::find(1);
+
+        $usuariosLiga = $League::with('proTeams.users')->get();
+
+        $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
+                        $query->orderBy('goals', 'desc');
+                    }])->get();
+
+        foreach ($usuariosLiga2 as $usuariosLiga) {
+            $usuariosLiga3 = $usuariosLiga->proTeams;
+            foreach ($usuariosLiga3 as $clubes) {
+                $usuariosLiga4 = $clubes->users;
+                foreach ($usuariosLiga4 as $usuariosLig) {
+                    $usuariosLiga5[] = $usuariosLig->id;
+                }
+            }
+        }
+
+        $USERSLeague = User::find($usuariosLiga5);
+        $OrdenadoGoles = $USERSLeague->sortByDesc('goals')->take(10);
        
-        $clubes=Proteam::all();
-        $ligas= ProLeague::all();
-        $copas=ProCup::all();
-        $UsuarioVal=1;
+        $clubes = Proteam::all();
+        $ligas = ProLeague::all();
+        $copas = ProCup::all();
+        $UsuarioVal = 1;
+
+        return view('EstadisticasLigaPro', [
+            'usuariosLiga' => $usuariosLiga,
+            'ligas' => $ligas,
+            'clubes' => $clubes,
+            'UsuarioVal' => $UsuarioVal,
+            'copas' => $copas,
+            'OrdenadoGoles' =>$OrdenadoGoles]);
+    }
+    
+    
+        public function ObtenerAsistentesLigaPro() {
+
+        $League = ProLeague::find(1);
+
+        $usuariosLiga = $League::with('proTeams.users')->get();
+
+        $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
+                        $query->orderBy('assistance', 'desc');
+                    }])->get();
+
+        foreach ($usuariosLiga2 as $usuariosLiga) {
+            $usuariosLiga3 = $usuariosLiga->proTeams;
+            foreach ($usuariosLiga3 as $clubes) {
+                $usuariosLiga4 = $clubes->users;
+                foreach ($usuariosLiga4 as $usuariosLig) {
+                    $usuariosLiga5[] = $usuariosLig->id;
+                }
+            }
+        }
+
+        $USERSLeague = User::find($usuariosLiga5);
+        $OrdenadoAsistencias = $USERSLeague->sortByDesc('assistance')->take(10);
        
-        return view('EstadisticasLigaPro',[
-            'UsuariosEquipoGoles'=>$UsuariosEquipoGoles,
-             'UsuariosEquipoNombre'=>$UsuariosEquipoNombre,
-            'ligas'=>$ligas,
-            'clubes'=>$clubes,
-            'UsuarioVal'=>$UsuarioVal,
-            'copas'=>$copas]);
-  
+        $clubes = Proteam::all();
+        $ligas = ProLeague::all();
+        $copas = ProCup::all();
+        $UsuarioVal = 3;
+
+        return view('EstadisticasLigaPro', [
+            'usuariosLiga' => $usuariosLiga,
+            'ligas' => $ligas,
+            'clubes' => $clubes,
+            'UsuarioVal' => $UsuarioVal,
+            'copas' => $copas,
+            'OrdenadoAsistencias' =>$OrdenadoAsistencias]);
+    }
+    
+    
+    
+    public function ObtenerPorterosLigaPro() {
+
+        $League = ProLeague::find(1);
+
+        $usuariosLiga = $League::with('proTeams.users')->get();
+
+        $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
+                        $query->orderBy('gk_unbeaten', 'desc');
+                    }])->get();
+
+        foreach ($usuariosLiga2 as $usuariosLiga) {
+            $usuariosLiga3 = $usuariosLiga->proTeams;
+            foreach ($usuariosLiga3 as $clubes) {
+                $usuariosLiga4 = $clubes->users;
+                foreach ($usuariosLiga4 as $usuariosLig) {
+                    $usuariosLiga5[] = $usuariosLig->id;
+                }
+            }
+        }
+
+        $USERSLeague = User::find($usuariosLiga5);
+        $OrdenadoPorteros = $USERSLeague->sortByDesc('gk_unbeaten')->take(10);
+       
+        $clubes = Proteam::all();
+        $ligas = ProLeague::all();
+        $copas = ProCup::all();
+        $UsuarioVal = 4;
+
+        return view('EstadisticasLigaPro', [
+            'usuariosLiga' => $usuariosLiga,
+            'ligas' => $ligas,
+            'clubes' => $clubes,
+            'UsuarioVal' => $UsuarioVal,
+            'copas' => $copas,
+            'OrdenadoPorteros' =>$OrdenadoPorteros]);
+    }
+
+    
+    
+     public function ObtenerMejoresJugadoresLigaPro() {
+
+        $League = ProLeague::find(1);
+
+        $usuariosLiga = $League::with('proTeams.users')->get();
+
+        $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
+                        $query->orderBy('best_player', 'desc');
+                    }])->get();
+
+        foreach ($usuariosLiga2 as $usuariosLiga) {
+            $usuariosLiga3 = $usuariosLiga->proTeams;
+            foreach ($usuariosLiga3 as $clubes) {
+                $usuariosLiga4 = $clubes->users;
+                foreach ($usuariosLiga4 as $usuariosLig) {
+                    $usuariosLiga5[] = $usuariosLig->id;
+                }
+            }
+        }
+
+        $USERSLeague = User::find($usuariosLiga5);
+        $OrdenadoPorteros = $USERSLeague->sortByDesc('best_player')->take(10);
+       
+        $clubes = Proteam::all();
+        $ligas = ProLeague::all();
+        $copas = ProCup::all();
+        $UsuarioVal = 5;
+
+        return view('EstadisticasLigaPro', [
+            'usuariosLiga' => $usuariosLiga,
+            'ligas' => $ligas,
+            'clubes' => $clubes,
+            'UsuarioVal' => $UsuarioVal,
+            'copas' => $copas,
+            'OrdenadoPorteros' =>$OrdenadoPorteros]);
     }
 
 }

@@ -87,9 +87,9 @@
     <div>
         <ul id="MenuEstadisticas" style="width: 120px;">
             <li id="ListaPerfil"><a href="/GoleadoresLigaPro">Top Goleadores</a></li>
-            <li id="ListaPerfil"><a class="active" href="/ProCalendarioEnc/">Top Asistentes</a></li>
-            <li id="ListaPerfil"><a class="active" href="#">Top Porteros</a></li>
-            <li id="ListaPerfil"><a href="/SalaTrofeosCP">Top mejor jugador</a></li>
+            <li id="ListaPerfil"><a class="active" href="/AsistentesLigaPro">Top Asistentes</a></li>
+            <li id="ListaPerfil"><a class="active" href="/PorterosLigaPro">Top Porteros</a></li>
+            <li id="ListaPerfil"><a href="/MejoresJugadoresLigaPro">Top mejor jugador</a></li>
 
         </ul>
 
@@ -108,9 +108,59 @@
             </thead>
             <?php $i = 1;
             
-            for($j=0;$j<=count($UsuariosEquipoNombre);$j++){
+       
             ?>
-          
+          @foreach($OrdenadoGoles as $usuariosLiga)
+            <tr>
+                <td>
+                    <div id="PosicionTabla">
+                        {{$i}}</div>
+                </td>
+                
+                
+                <td>
+                    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{$usuariosLiga->gamertag}}/avatarpic-l.png); 
+                          background-size:90px 80px;"></div>
+                    <a href="/PerfilDetalles/">
+                        {{$usuariosLiga->user_name}}
+                    </a>
+                </td>
+             
+            
+                <td style="text-align: center;">
+                    
+                    <a>
+                    {{$usuariosLiga->goals}}
+                    </a>
+                </td>
+                
+            <?php $i++; ?>
+            </tr>
+           @endforeach
+        </table>
+    </div>
+
+    @endif
+
+
+</div>
+
+
+    @if($UsuarioVal==3)
+    <div id="TablaPrimeraClubesPro" style="position: absolute; top:28%; left:42%; max-height:400px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Jugador</th>
+                    <th>Asistencias</th>
+                </tr>
+            </thead>
+            <?php $i = 1;
+            
+       
+            ?>
+          @foreach($OrdenadoAsistencias as $usuariosAsistLiga)
             <tr>
                 <td>
                     <div id="PosicionTabla">
@@ -120,25 +170,115 @@
                 
                 <td>
                     <a href="/PerfilDetalles/">
-                        {{$UsuariosEquipoNombre[$j]}}
+                        {{$usuariosAsistLiga->user_name}}
                     </a>
                 </td>
              
             
-                <td style="text-align: left;">
+                <td style="text-align: center;">
                     
                     <a>
-                        {{$UsuariosEquipoGoles[$j]}}
+                    {{$usuariosAsistLiga->assistance}}
                     </a>
                 </td>
                 
-            <?php }$i++; ?>
+            <?php $i++; ?>
             </tr>
-           
+           @endforeach
         </table>
     </div>
 
     @endif
+    
+        @if($UsuarioVal==4)
+    <div id="TablaPrimeraClubesPro" style="position: absolute; top:28%; left:42%; max-height:400px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Jugador</th>
+                    <th>Partidos imbatidos</th>
+                </tr>
+            </thead>
+            <?php $i = 1;
+            
+       
+            ?>
+          @foreach($OrdenadoPorteros as $usuariosPorLiga)
+            <tr>
+                <td>
+                    <div id="PosicionTabla">
+                        {{$i}}</div>
+                </td>
+                
+                
+                <td>
+                    <a href="/PerfilDetalles/">
+                        {{$usuariosPorLiga->user_name}}
+                    </a>
+                </td>
+             
+            
+                <td style="text-align: center;">
+                    
+                    <a>
+                    {{$usuariosPorLiga->gk_unbeaten}}
+                    </a>
+                </td>
+                
+            <?php $i++; ?>
+            </tr>
+           @endforeach
+        </table>
+    </div>
+
+    @endif
+    
+           @if($UsuarioVal==5)
+    <div id="TablaPrimeraClubesPro" style="position: absolute; top:28%; left:42%; max-height:400px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Jugador</th>
+                    <th>Jugador del partido</th>
+                </tr>
+            </thead>
+            <?php $i = 1;
+            
+       
+            ?>
+          @foreach($OrdenadoPorteros as $usuariosPorLiga)
+            <tr>
+                <td>
+                    <div id="PosicionTabla">
+                        {{$i}}</div>
+                </td>
+                
+                
+                <td>
+                    <a href="/PerfilDetalles/">
+                        {{$usuariosPorLiga->user_name}}
+                    </a>
+                </td>
+             
+            
+                <td style="text-align: center;">
+                    
+                    <a>
+                    {{$usuariosPorLiga->best_player}}
+                    </a>
+                </td>
+                
+            <?php $i++; ?>
+            </tr>
+           @endforeach
+        </table>
+    </div>
+
+    @endif
+
+    
 
 
 </div>

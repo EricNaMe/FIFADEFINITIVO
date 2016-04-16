@@ -139,6 +139,9 @@ Route::group([
 });
 
 Route::get('GoleadoresLigaPro','ClubesProController@ObtenerGoleadoresLigaPro');
+Route::get('AsistentesLigaPro','ClubesProController@ObtenerAsistentesLigaPro');
+Route::get('PorterosLigaPro','ClubesProController@ObtenerPorterosLigaPro');
+Route::get('MejoresJugadoresLigaPro','ClubesProController@ObtenerMejoresJugadoresLigaPro');
 Route::post('EscogerLigaPro','ClubesProController@EscogerLigaPro');
 Route::post('BuscarDatosPro','ClubesProController@BuscarDatosClub');
 Route::post('ModificarDatosPro','ClubesProController@ModificarDatosLigaPro');
