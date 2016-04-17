@@ -103,15 +103,15 @@
         <div>
             <ul id="ListaDatosPerfil">
                 <li style="background-color: #080808;"><a style="font-weight: bold; color: white">Estadísticas generales</a></li>
-                <li><a style="font-weight: bold;">Juegos jugados:</a><a style="float:right;">0</a></li>
-                <li><a style="font-weight: bold;">Ganados:</a><a style="float:right;">0</a></li>
-                <li><a style="font-weight: bold;">Empates:</a><a style="float:right;">0</a></li>
-                <li><a style="font-weight: bold;">Perdidos:</a><a style="float:right;">0</a></li>
-                <li><a style="font-weight: bold;">Goles:</a><a style="float:right;">0</a></li>
-                <li><a style="font-weight: bold;">Asistencias:</a><a style="float:right;">0</a></li>
-                <li><a style="font-weight: bold;">Jugador del partido:</a><a style="float:right;">0</a></li>
-                <li><a style="font-weight: bold;">Tarjetas Amarillas:</a><a style="float:right;">0</a></li>
-                <li style="border-bottom: none;"><a style="font-weight: bold;">Tarjetas Rojas:</a><a style="float:right;">0</a></li>
+                <li><a style="font-weight: bold;">Juegos jugados:</a><a style="float:right;">{{$user->pro_JJ}}</a></li>
+                <li><a style="font-weight: bold;">Ganados:</a><a style="float:right;">{{$user->pro_JG}}</a></li>
+                <li><a style="font-weight: bold;">Empates:</a><a style="float:right;">{{$user->pro_JE}}</a></li>
+                <li><a style="font-weight: bold;">Perdidos:</a><a style="float:right;">{{$user->pro_JP}}</a></li>
+                <li><a style="font-weight: bold;">Goles:</a><a style="float:right;">{{$user->goals}}</a></li>
+                <li><a style="font-weight: bold;">Asistencias:</a><a style="float:right;">{{$user->assistance}}</a></li>
+                <li><a style="font-weight: bold;">Jugador del partido:</a><a style="float:right;">{{$user->best_player}}</a></li>
+                <li><a style="font-weight: bold;">Tarjetas Amarillas:</a><a style="float:right;">{{$user->yellow_card}}</a></li>
+                <li style="border-bottom: none;"><a style="font-weight: bold;">Tarjetas Rojas:</a><a style="float:right;">{{$user->red_card}}</a></li>
 
 
 

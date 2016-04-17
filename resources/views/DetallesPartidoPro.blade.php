@@ -73,6 +73,10 @@
             a {
                 text-decoration: none;
             }
+
+            img{
+                margin-left:7%;
+            }
         </style>
 
         <div style="margin-left: 350px;" class="row">
@@ -119,7 +123,7 @@
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>PO</a> <img
                                         src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->PO_local->gamertag}}/avatarpic-l.png"
-                                        style="width: 50px;"/>
+                                        style="width: 50px; margin-left:12%;"/>
                                 <a style="text-decoration:none;margin-left: 20px;">{{$partido->PO_local->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->PO_local_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
@@ -140,7 +144,7 @@
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>DFC</a> <img
                                         src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->DFC_local->gamertag}}/avatarpic-l.png"
-                                        style="width: 50px;"/>
+                                        style="width: 50px; margin-left:4%;"/>
                                 <a style="text-decoration:none;margin-left: 20px;">{{$partido->DFC_local->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->DFC_local_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
@@ -161,7 +165,7 @@
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>LTI</a> <img
                                         src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->LTI_local->gamertag}}/avatarpic-l.png"
-                                        style="width: 50px;"/>
+                                        style="width: 50px; margin-left:6%;"/>
                                 <a style="text-decoration:none;margin-left: 20px;">{{$partido->LTI_local->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->LTI_local_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
@@ -182,7 +186,7 @@
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>LTD</a> <img
                                         src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->LTD_local->gamertag}}/avatarpic-l.png"
-                                        style="width: 50px;"/>
+                                        style="width: 50px; margin-left:4%;"/>
                                 <a style="text-decoration:none;margin-left: 20px;">{{$partido->LTD_local->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->LTD_local_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
@@ -203,7 +207,7 @@
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>MCD</a> <img
                                         src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MCD_local->gamertag}}/avatarpic-l.png"
-                                        style="width: 50px;"/>
+                                        style="width: 50px; margin-left:4%;"/>
                                 <a style="text-decoration:none;margin-left: 20px;">{{$partido->MCD_local->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->MCD_local_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
@@ -224,7 +228,7 @@
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>MC</a> <img
                                         src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MC_local->gamertag}}/avatarpic-l.png"
-                                        style="width: 50px;"/>
+                                        style="width: 50px; margin-left:7%;"/>
                                 <a style="text-decoration:none;margin-left: 20px;">{{$partido->MC_local->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->MC_local_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
@@ -245,7 +249,7 @@
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>MI</a> <img
                                         src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->MI_local->gamertag}}/avatarpic-l.png"
-                                        style="width: 50px;"/>
+                                        style="width: 50px; margin-left:7%;"/>
                                 <a style="text-decoration:none;margin-left: 20px;">{{$partido->MI_local->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->MI_local_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
@@ -599,7 +603,7 @@
                             <li style="list-style:none;  padding: 20px 25px;font-size: 16px;
     font-family: sans-serif;"><a>PO</a> <img
                                         src="https://avatar-ssl.xboxlive.com/avatar/{{$partido->PO_visitor->gamertag}}/avatarpic-l.png"
-                                        style="width: 50px;"/>
+                                        style="width: 50px; margin-left:12%;"/>
                                 <a style="text-decoration:none;margin-left: 20px;">{{$partido->PO_visitor->user_name}}
                                     &nbsp;<?php for($i = 0;$i < $partido->PO_visitor_goal;$i++){   ?>
                                     <div id="LogoEquipo" style="background-image:url(/images/B1.png)"></div><?php }?>
