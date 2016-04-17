@@ -334,6 +334,7 @@ class ClubesProController extends Controller
         $idMejorJugador = Input::get('optradio');
 
         $GolesVisitante = Input::get('GolesSelectVisitante');
+        $AsistenciasVisitante = Input::get('AsistenciasSelectVisitante');
 
 
         if ($Goles == null) {
@@ -351,6 +352,26 @@ class ClubesProController extends Controller
             $GolesvisitaT = array_sum($GolesVisitante);
             if ($GolesvisitaT > $marcadorVisitante) {
                 return view('Reglamento')->withErrors("Son mayores los goles (visita) marcados por tus jugadores con el marcador");
+            }
+        }
+
+
+
+        if ($Asistencias == null) {
+
+        } else {
+            $sumaAsistencias = array_sum($Asistencias);
+            if ($sumaAsistencias > $marcadorLocal) {
+                return view('Reglamento')->withErrors("Son mayores las asistencias (local) marcados por tus jugadores con el marcador");
+            }
+        }
+
+        if ($AsistenciasVisitante == null) {
+
+        } else {
+            $sumaAsistenciasVisitante = array_sum($AsistenciasVisitante);
+            if ($sumaAsistenciasVisitante > $marcadorVisitante) {
+                return view('Reglamento')->withErrors("Son mayores las asistencias (visita) marcados por tus jugadores con el marcador");
             }
         }
         /*   if($GolesLocalT!=$marcadorLocal){
@@ -824,7 +845,7 @@ class ClubesProController extends Controller
 
         $AmarillasVisitante = Input::get('AmarillasSelectVisitante');
         $RojasVisitante = Input::get('RojasSelectVisitante');
-        $AsistenciasVisitante = Input::get('AsistenciasSelectVisitante');
+
 
 
         for ($i = 0; $i < sizeof($GolesVisitante); $i++) {
@@ -1159,6 +1180,7 @@ class ClubesProController extends Controller
         $Amarillas = Input::get('AmarillasSelect');
         $Rojas = Input::get('RojasSelect');
         $Asistencias = Input::get('AsistenciasSelect');
+        $AsistenciasVisitante = Input::get('AsistenciasSelectVisitante');
 
         $idMejorJugador = Input::get('optradio');
 
@@ -1181,6 +1203,25 @@ class ClubesProController extends Controller
 
             if ($GolesvisitaT > $Partido->visitor_score) {
                 return view('Reglamento')->withErrors("Son mayores  los goles (visita) marcados por tus jugadores con el marcador");
+            }
+        }
+
+        if ($Asistencias == null) {
+
+        } else {
+            $sumaAsistencias = array_sum($Asistencias);
+            if ($sumaAsistencias > $Partido->local_score) {
+                return view('Reglamento')->withErrors("Son mayores las asistencias (local) marcados por tus jugadores con el marcador");
+            }
+        }
+
+        if ($AsistenciasVisitante == null) {
+
+        } else {
+            $sumaAsistenciasVisitante = array_sum($AsistenciasVisitante);
+
+            if ($sumaAsistenciasVisitante > $Partido->visitor_score) {
+                return view('Reglamento')->withErrors("Son mayores las asistencias (visita) marcados por tus jugadores con el marcador");
             }
         }
 
@@ -1490,7 +1531,7 @@ class ClubesProController extends Controller
 
         $AmarillasVisitante = Input::get('AmarillasSelectVisitante');
         $RojasVisitante = Input::get('RojasSelectVisitante');
-        $AsistenciasVisitante = Input::get('AsistenciasSelectVisitante');
+
         $radio = Input::get('optradio');
 
 
