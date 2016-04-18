@@ -76,19 +76,29 @@
         <span style="color:gray;display:inline-block;  width: 400px; position: relative;top:-40px;left:110px;font-size: 20px;font-family: sans-serif;"><a>"{{$user->quote}}"</a></span>
     </div>
 
-
+    @if($BanderaUsuario==1)
+    @if(!$user->isInAnyTeam())
+          {{Form::open([
+                                        'url' => "/InvitarUsuario/$EquipoUsuarioAutenticado->id/$user->id" ,
+                                        'method' => 'put'
+                                    ])}}
+                                   <div style="margin-left: 40px;">
+                                    <button type="submit"
+                                            class="btn btn-danger">
+                                        Invitar a club
+                                    </button>
+                                   </div>
+          {{Form::close()}}
+    @endif
+    @endif
+    
+    
     <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->gamertag}}/avatar-body.png); background-size: contain; background-repeat: no-repeat;  display:inline-block; margin-top: 20px;margin-left: 90px; width: 300px; height: 400px;">
 
 
     </div>
 
 
-    @if($user->isInAnyTeam())
-        <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte"
-           class="btn btn-primary">
-            Solicitar entrada
-        </a>
-    @endif
 
     <div style="background-color: white;  position:relative; top:-330px; left:310px; width: 300px; height: auto;">
      <div>

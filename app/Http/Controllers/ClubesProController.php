@@ -137,6 +137,16 @@ class ClubesProController extends Controller
             ->to('clubes-pro/' . $proTeam->id)
             ->with('message', 'Éxito!');
     }
+    
+    
+      public function InvitarUsuario(ProTeam $proTeam, User $user)
+    {
+
+        $proTeam->sendInvitationtoUserNotification($user);
+        return redirect()
+            ->to('clubes-pro/' . $proTeam->id)
+            ->with('message', 'Éxito!');
+    }
 
     /**
      * Display the specified resource.
@@ -2111,9 +2121,10 @@ class ClubesProController extends Controller
 
             foreach ($usuariosLiga3 as $clubes) {
                 $usuariosLiga4 = $clubes->users;
-
+                
                 $FiltroLiga = $clubes->proLeague;
                 foreach ($FiltroLiga as $LigaFiltro) {
+                            
                     if ($LigaFiltro->id == $League->id)
                         foreach ($usuariosLiga4 as $usuariosLig) {
                             $usuariosLiga5[] = $usuariosLig->id;

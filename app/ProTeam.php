@@ -134,6 +134,14 @@ class ProTeam extends Model
         $notification->user()->associate($user);
         $this->notifications()->save($notification);
     }
+    
+     public function sendInvitationtoUserNotification(User $user)
+    {
+        $notification = new Notification();
+        $notification->type = "request_invitation";
+        $notification->user()->associate($user);
+        $this->notifications()->save($notification);
+    }
 
 
 

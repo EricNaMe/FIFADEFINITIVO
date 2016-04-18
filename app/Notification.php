@@ -28,6 +28,9 @@ class Notification extends Model
             case "request_rejected":
                 return "Han denegado tu ingreso al equipo ".$this->notifiable->name;
                 break;
+            case "request_invitation":
+                return "Te han invitado al siguiente equipo:".$this->notifiable->name." Favor de ir a la página del equipo para darte de alta.";
+                break;
         }
 
     }
