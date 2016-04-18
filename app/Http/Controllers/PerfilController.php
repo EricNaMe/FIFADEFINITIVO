@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\ProTeam;
 use Input;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
@@ -106,11 +107,30 @@ class PerfilController extends Controller
     
     
     
-    public function EncontrarJugador($id) {
-        
-          $user=User::find($id);
+    public function EncontrarJugador($id)
+    {
 
-         return view('PerfilDetalles', ['user' => $user]);
+
+        $user = User::find($id);
+
+
+        if (Auth::check()) {
+
+            if(!$user->isInAnyTeam())
+            $EquipoId = Auth::user()->proTeams[0]->id;
+            $EquipoUsuarioAutenticado = ProTeam::find($EquipoId);
+            $UsuarioDT = $EquipoUsuarioAutenticado->getDT();
+            return view('PerfilDetalles', ['user' => $user,
+                'EquipoUsuarioAutenticado'=>$EquipoUsuarioAutenticado,
+                'UsuarioDT'=>$UsuarioDT]);
+        }
+
+       else{
+           return view('PerfilDetalles',['user'=>$user]);
+       }
+
+
+
         
     }
     

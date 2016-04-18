@@ -82,6 +82,14 @@
 
     </div>
 
+
+    @if($user->isInAnyTeam())
+        <a style="position:relative;left:100px;" href="/clubes-pro/{{$proTeam->id}}/unirte"
+           class="btn btn-primary">
+            Solicitar entrada
+        </a>
+    @endif
+
     <div style="background-color: white;  position:relative; top:-330px; left:310px; width: 300px; height: auto;">
      <div>
         <ul id="ListaDatosPerfil">

@@ -102,6 +102,8 @@ Route::get('save','ComentarioController@save');
 Route::get('FuncionEcho','ModeloEcho@FuncionEcho');
 
 Route::get('PerfilDetalles/{id}','PerfilController@EncontrarJugador');
+
+
 Route::get('PerfilNoAutenticadoClubes/{id}','PerfilController@EncontrarJugadorClubes');
 Route::post('EditarPerfil','PerfilController@EditarPerfilUsuario');
 Route::post('CrearNoticia','ClubesProController@crearNoticia');
