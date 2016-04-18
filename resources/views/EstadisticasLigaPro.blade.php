@@ -212,7 +212,7 @@
                     @else
 
                       
-                          <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosLiga->gamertag}}/avatarpic-l.png">
+                          <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosAsistLiga->gamertag}}/avatarpic-l.png">
                         <div style="background:url();
                           background-size:90px 80px;"></div>
                     @endif
@@ -280,7 +280,7 @@
                     @else
 
                        
-                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosLiga->gamertag}}/avatarpic-l.png">
+                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosPorLiga->gamertag}}/avatarpic-l.png">
                         <div style="background:url();
                           background-size:90px 80px;"></div>
                     @endif
