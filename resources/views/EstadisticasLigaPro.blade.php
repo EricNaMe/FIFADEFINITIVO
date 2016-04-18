@@ -106,6 +106,7 @@
             <thead>
                 <tr>
                     <th>Posición</th>
+                    <th>Club</th>
                     <th>Jugador</th>
                     <th>Goles</th>
                 </tr>
@@ -121,7 +122,19 @@
                         {{$i}}</div>
                 </td>
                 
-                
+                <td>
+                    @foreach($usuariosLiga->proTeams as $clubesUsuarios)
+                   
+                    
+                     <img src="{{$clubesUsuarios->getImageUrl()}}">
+
+                    <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    <a>{{$clubesUsuarios->name}}</a>
+                    @endforeach
+       
+                </td>
+              
                 <td>
                     @if($usuariosLiga->gamertag==null)
 
@@ -163,6 +176,7 @@
             <thead>
                 <tr>
                     <th>Posición</th>
+                    <th>Club</th>
                     <th>Jugador</th>
                     <th>Asistencias</th>
                 </tr>
@@ -180,12 +194,25 @@
                 
                 
                 <td>
+               @foreach($usuariosAsistLiga->proTeams as $clubesUsuarios)
+                   
+                    
+                    
+                      <img src="{{$clubesUsuarios->getImageUrl()}}">
+                    <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    <a>{{$clubesUsuarios->name}}</a>
+                    @endforeach
+       
+                </td>
+                
+                <td>
                     @if($usuariosAsistLiga->gamertag==null)
 
                     @else
 
-                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosAsistLiga->gamertag}}/avatarpic-l.png">
-
+                      
+                          <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosLiga->gamertag}}/avatarpic-l.png">
                         <div style="background:url();
                           background-size:90px 80px;"></div>
                     @endif
@@ -216,6 +243,7 @@
             <thead>
                 <tr>
                     <th>Posición</th>
+                    <th>Club</th>
                     <th>Jugador</th>
                     <th>Partidos imbatidos</th>
                 </tr>
@@ -232,13 +260,27 @@
                 </td>
                 
                 
+               <td>
+               @foreach($usuariosPorLiga->proTeams as $clubesUsuarios)
+                   
+                     <img src="{{$clubesUsuarios->getImageUrl()}}">
+                     
+
+                    <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    <a>{{$clubesUsuarios->name}}</a>
+                    @endforeach
+       
+                </td>
+                
+                
                 <td>
                     @if($usuariosPorLiga->gamertag==null)
 
                     @else
 
-                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosPorLiga->gamertag}}/avatarpic-l.png">
-
+                       
+                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosLiga->gamertag}}/avatarpic-l.png">
                         <div style="background:url();
                           background-size:90px 80px;"></div>
                     @endif
@@ -269,6 +311,7 @@
             <thead>
                 <tr>
                     <th>Posición</th>
+                    <th>Club</th>
                     <th>Jugador</th>
                     <th>Jugador del partido</th>
                 </tr>
@@ -284,7 +327,18 @@
                         {{$i}}</div>
                 </td>
                 
-                
+                <td>
+               @foreach($usuariosPorLiga->proTeams as $clubesUsuarios)
+                   
+                    
+                     <img src="{{$clubesUsuarios->getImageUrl()}}">
+
+                    <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    <a>{{$clubesUsuarios->name}}</a>
+                    @endforeach
+       
+                </td>
                 <td>
                     @if($usuariosPorLiga->gamertag==null)
 

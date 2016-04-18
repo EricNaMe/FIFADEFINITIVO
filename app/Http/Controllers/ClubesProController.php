@@ -2127,7 +2127,7 @@ class ClubesProController extends Controller
                             
                     if ($LigaFiltro->id == $League->id)
                         foreach ($usuariosLiga4 as $usuariosLig) {
-                            $usuariosLiga5[] = $usuariosLig->id;
+                            $usuariosLiga5[] = $usuariosLig->id;                                                 
                         }
                 }
 

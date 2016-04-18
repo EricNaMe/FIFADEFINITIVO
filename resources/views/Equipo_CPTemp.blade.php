@@ -28,7 +28,6 @@
     </script>
 
 
-
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
         <ul id="ListaMenuLateral" style="margin-top: 60%">
