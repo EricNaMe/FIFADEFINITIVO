@@ -57,7 +57,7 @@ and open the template in the editor.
                             <div><img style="width:50px; margin-left: 10px;" src="/images/Admin.png"/><div id="textNews" style="position: relative; left: 60px; top: -30px;">{{$noticia->message}}</div></div></br>
                             <!--Este Dvi es para los comentarios en imagen-->
 
-                            <img  src="{{$noticia->getImageUrl()}}"style="max-height:400px; max-width:750px;" alt="" >
+                            <img  src="{{$noticia->getImageUrl()}}"style="max-height:400px; width:850px;" alt="" >
 
 
                         @endforeach
