@@ -61,8 +61,8 @@ class User extends Model implements AuthenticatableContract,
             ->withPivot('status', 'position')
             ->withTrashed();
     }
-
-    public function comments(){
+    
+     public function comments(){
         return $this->hasMany('App\Comment');
     }
 

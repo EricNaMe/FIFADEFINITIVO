@@ -210,3 +210,4 @@ Route::post('videoSave3','ComentarioController@videoYoutube3');
 Route::post('clipsCommen','ComentarioController@clipscommen');
   Route::post('TransferenciasBuscarJ','ClubesProController@buscarJugador');
  Route::post('TransferenciasBuscarE','ClubesProController@buscarEquipo');
+Route::get('ProJugadoresSinClub','FrontController@ProJugadoresSinClub');

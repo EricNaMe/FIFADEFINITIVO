@@ -543,5 +543,23 @@ $search = Input::get('search');
         $UsuarioVal=2;
         return view('EstadisticasLigaPro',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas,'UsuarioVal'=>$UsuarioVal]);
     }
+    
+    public function ProJugadoresSinClub(){
+        $usuarios=User::all();
+        $ligas=ProLeague::all();
+        $copas=ProCup::all();
+        foreach($usuarios as $UsuariosFor){
+            if(!$UsuariosFor->isInAnyTeam()){
+                $usuariosSinClubArray[]=$UsuariosFor->id;
+     
+            }           
+        }
+        
+        $UsuariosSinClub=User::find($usuariosSinClubArray);
+         return view('ProJugadoresSinClub',['UsuariosSinClub'=>$UsuariosSinClub,'ligas'=>$ligas,'copas'=>$copas]);
+        
+        
+        
+    }
 
 }
