@@ -27,9 +27,7 @@
               <li><a href="/ModificarDatosLigaPro">MODIFICAR TABLA DE LIGA</a></li>
           </ul>
       </li>
-            <script>
-                alert("funciona admin")
-            </script>
+         
         @endif
         @endif
         <li><a>LIGAS VIGENTES</a>
@@ -59,11 +57,33 @@
     </ul>
     </div>
 
-    <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover; margin-left: -80px;" >
+    <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover; margin-left: -80px;" >
 
-     
+        <style>
+            
+#contenedorVista {
+    display: table;    
+    width:70%;
+    max-height: 500px;
+    left:15%;
+    top:15%;
+    text-align: center;
+    margin: 0 auto;
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    background: #fff; 
+    overflow: hidden;
+    border: 8px solid #7F8C8D;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    border-radius: 17px;
+    position:relative;
+    
+    
+}
+            
+        </style>
 
-        <div class="myBox"style=" background-size: cover; position: absolute; width: 900px; height: 700px; margin-left: 200px; top: 100px;-webkit-border-radius: 20px 20px;-webkit-border-radius: 20px 20px;">
+       
          
             </br>
             </br>
@@ -78,10 +98,10 @@
             
             
             
-            <div id="contenedor" style="position:absolute;top:280px; left: 20px;">
+            <div id="contenedorVista" style="position:absolute;">
                 <div id="contenidos1">
 
-                    <div id="columna21" >GAMER TAG</div>
+                    <div id="columna21" >GAMERTAG</div>
                   
                     <div id="columna21" style="width: 150px;">ACCION</div>
                 </div>
@@ -91,9 +111,12 @@
                  
 
                  <div id="contenidos">
-                    <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/{{$proTeam->gamertag}}/avatarpic-l.png" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 200px; margin-left: 50px; ">{{$proTeam->user_name}}</div> </div>
-                 
-                    <div id="columna2" style="width: 150px;"><form action="/PerfilDetalles/{{$proTeam->id}}"><button type="submit" class="boton2 grey">Ver perfil</button></a></form></div>
+                     @if($proTeam->gamertag==null)
+                     <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/{{$proTeam->gamertag}}/avatarpic-l.png" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 600px; margin-left: 50px; ">{{$proTeam->user_name}}</div> </div>
+                     @else
+                    <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/{{$proTeam->gamertag}}/avatarpic-l.png" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 600px; margin-left: 50px; ">{{$proTeam->gamertag}}</div> </div>
+                     @endif
+                    <div id="columna2" style="width: 150px;"><form action="/PerfilDetalles/{{$proTeam->id}}"><button type="submit" class="boton2 grey">Ver perfil</button></form></div>
                 </div>        
                  
                  
@@ -109,5 +132,5 @@
 
 
 
-        </div>
+        
 @endsection

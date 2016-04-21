@@ -241,7 +241,35 @@ class ProTeam extends Model
     {
         $user_dt =$this->getDT();
         $this->users()->detach($user->id);
+       
+        if($user_dt->id == $user->id)
+        {
+            if($new_dt = $this->users()->wherePivot('status','accepted')->first())
+            {
+                $this->users()->updateExistingPivot(
+                    $new_dt->id ,
+                    ['position' => 'dt']
+                );
+            }
+            else
+            {
+                \Log::info("Deleted");
+                $this->delete();
+            }
+        }
 
+        Transfer::create([
+            'user_id' => $user->id,
+            'down_pro_team_id' => $this->id,
+        ]);
+    }
+    
+    
+       public function downUserPorDT(User $user)
+    {
+        $user_dt =$this->getDT();
+        $this->users()->detach($user->id);
+        $this->sendRejectedUserNotification($user);
         if($user_dt->id == $user->id)
         {
             if($new_dt = $this->users()->wherePivot('status','accepted')->first())

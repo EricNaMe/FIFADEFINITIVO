@@ -193,7 +193,7 @@ class ClubesProController extends Controller
 
     public function putDenegar(ProTeam $proTeam, User $user)
     {
-        $proTeam->rejectUserRequest($user);
+        $proTeam->downUserPorDT($user);
         return redirect()->back()
             ->with('message', "Éxito");
     }
@@ -1916,6 +1916,15 @@ class ClubesProController extends Controller
             'search' => Input::get('search'),
             'user_search' => User::search($search)->get(),
         ]);
+    }
+    
+      public function BajaJugadorClubPro(ProTeam $proTeam,User $user)
+    {
+        $proTeam->downUser($user);
+        if (ProTeam::whereId($user->id)->first()) {
+            return redirect()->to('clubes-pro');
+        }
+        return redirect()->to('clubes-pro');
     }
 
     public function deleteBaja(ProTeam $proTeam)

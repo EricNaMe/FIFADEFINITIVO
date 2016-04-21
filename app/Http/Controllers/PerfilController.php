@@ -121,6 +121,9 @@ class PerfilController extends Controller {
                         $BanderaUsuario = 2;
                         return view('PerfilDetalles', ['user' => $user, 'BanderaUsuario' => $BanderaUsuario]);
                     }
+                } else {
+                    $BanderaUsuario = 2;
+                    return view('PerfilDetalles', ['user' => $user, 'BanderaUsuario' => $BanderaUsuario]);
                 }
             } else {
                 $BanderaUsuario = 2;

@@ -48,7 +48,7 @@
     <ul>
         <li><a href="/clubes-pro/crear">CREAR CLUB</a></li>
         <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
-        <li><a href="/clubes-pro/jugadoressinclub">JUGADORES SIN CLUB</a></li>
+        <li><a href="/clubes-pro/jugadores-sin-club">JUGADORES SIN CLUB</a></li>
         </ul>
         </li>
          <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a>    

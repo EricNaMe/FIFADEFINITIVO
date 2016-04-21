@@ -111,6 +111,7 @@ Route::post('CrearNoticia','ClubesProController@crearNoticia');
 Route::group(['prefix' => 'clubes-pro'], function () {
     Route::get('','ClubesProController@index');
     Route::any('buscar','ClubesProController@buscar');
+    Route::any('jugadores-sin-club','FrontController@ProJugadoresSinClub');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('crear','ClubesProController@getCrear');
@@ -210,4 +211,3 @@ Route::post('videoSave3','ComentarioController@videoYoutube3');
 Route::post('clipsCommen','ComentarioController@clipscommen');
   Route::post('TransferenciasBuscarJ','ClubesProController@buscarJugador');
  Route::post('TransferenciasBuscarE','ClubesProController@buscarEquipo');
-Route::get('ProJugadoresSinClub','FrontController@ProJugadoresSinClub');
