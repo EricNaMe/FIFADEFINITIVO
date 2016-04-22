@@ -27,7 +27,8 @@
               <li><a href="/ModificarDatosLigaPro">MODIFICAR TABLA DE LIGA</a></li>
           </ul>
       </li>
-         
+
+
         @endif
         @endif
         <li><a>LIGAS VIGENTES</a>
