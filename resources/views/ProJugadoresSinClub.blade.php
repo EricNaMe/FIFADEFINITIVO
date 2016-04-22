@@ -109,7 +109,7 @@
                
                  @foreach($UsuariosSinClub as $proTeam)
                  
-                 
+                 @if($proTeam->user_name!="Administrador22")
 
                  <div id="contenidos">
                      @if($proTeam->gamertag==null)
@@ -120,7 +120,7 @@
                     <div id="columna2" style="width: 150px;"><form action="/PerfilDetalles/{{$proTeam->id}}"><button type="submit" class="boton2 grey">Ver perfil</button></form></div>
                 </div>        
                  
-                 
+                 @endif
                     
                     @endforeach
             

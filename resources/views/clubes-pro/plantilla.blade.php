@@ -196,6 +196,18 @@
                                         Denegar
                                     </button>
                                     {{Form::close()}}
+                                    @else
+                                    @if(Auth::check() && $proTeam->getDT()->id==Auth::user()->id)
+                                        {{Form::open([
+                                        'url' => "/clubes-pro/$proTeam->id/denegar/$user->id" ,
+                                        'method' => 'put'
+                                        ])}}
+                                        <button type="submit"
+                                                class="btn btn-success">
+                                            Dar de baja
+                                        </button>
+                                    {{Form::close()}}
+                                    @endif
                                 @endif
                             </td>
                         </tr>
@@ -236,6 +248,13 @@
         </div>
         @endif
     </div>
+    
+    
+    
+    
+    
+    
+    
 
 </div>
 
