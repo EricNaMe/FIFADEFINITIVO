@@ -110,12 +110,14 @@ class PerfilController extends Controller {
                     $EquipoId = Auth::user()->proTeams[0]->id;
                     $EquipoUsuarioAutenticado = ProTeam::find($EquipoId);
                     $UsuarioDT = $EquipoUsuarioAutenticado->getDT();
-                    if ($UsuarioDT->id == Auth::user()->id) {
+                    $UsuarioDT2=$EquipoUsuarioAutenticado->getDT2();
+                    if ($UsuarioDT->id == Auth::user()->id || $UsuarioDT2->id == Auth::user()->id ) {
                         $BanderaUsuario = 1;
                         return view('PerfilDetalles', [
                             'user' => $user,
                             'EquipoUsuarioAutenticado' => $EquipoUsuarioAutenticado,
                             'UsuarioDT' => $UsuarioDT,
+                            'UsuarioDT2'=> $UsuarioDT2,
                             'BanderaUsuario' => $BanderaUsuario]);
                     } else {
                         $BanderaUsuario = 2;

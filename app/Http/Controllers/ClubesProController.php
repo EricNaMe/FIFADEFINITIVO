@@ -197,6 +197,19 @@ class ClubesProController extends Controller
         return redirect()->back()
             ->with('message', "Éxito");
     }
+    
+    
+        public function AsignarDT()
+    {
+        $usuarioId = input::get("usuarioSelect");
+        $User=User::find($usuarioId);
+        $ProTeamId=$User->proTeams[0]->id;
+        
+         $User->proTeams()->updateExistingPivot($ProTeamId, ['position'=>'DT2']);
+        
+        $User->update();
+            
+    }
 
     public function ReportarResultadosPro()
     {

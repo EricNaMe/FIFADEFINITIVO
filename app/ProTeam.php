@@ -86,6 +86,13 @@ class ProTeam extends Model
             ->wherePivot('position','DT')
             ->first();
     }
+    
+       public function getDT2()
+    {
+        return $this->users()
+            ->wherePivot('position','DT2')
+            ->first();
+    }
 
     public function saveImage(UploadedFile $file)
     {

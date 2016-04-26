@@ -221,6 +221,7 @@
 
     <div style="background-color: white;  position:absolute;z-index: 10; top:150px; left:550px; width: 300px; height: auto;">
         @if($dt = $proTeam->getDT())
+       
         <div>
             <ul id="ListaDatosPerfil2">
                 <li style="background-color: #080808;">
@@ -244,11 +245,81 @@
                     @endif
                     <a style="float:right;"></a>
                 </li>
+                 @if($dt2 = $proTeam->getDT2())
+                  <li>
+                    <a style="font-weight: bold;">
+                        <div id="LogoEquipo" style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->playerGamertag()}}/avatarpic-l.png);
+                                    background-size:cover;"></div>
+
+                    </a>
+                    @if($dt2->playerGamertag()==null)
+                    <a style="" href="/PerfilDetalles/{{$dt2->id}}">
+                        {{$dt2->playerName()}}
+                    </a>
+                    @else
+                        <a style="" href="/PerfilDetalles/{{$dt2->id}}">
+                            {{$dt2->playerGamertag()}}
+                        </a>
+                    @endif
+                    <a style="float:right;"></a>
+                </li>
+                 
+                 @endif
             </ul>
         </div>
         @endif
+    
     </div>
     
+    
+    @if(Auth::check() && $proTeam->getDT()->id==Auth::user()->id && !$proTeam->getDT2())
+           <div style="width: 700px; height: 250px;border-radius: 10px; position:relative;top:100px;left:200px; background-color: whitesmoke;">
+
+            <div class="container">
+                   <form action="/AsignarDTProTeam" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                   
+
+                    
+
+                    <h4>Escoge al usuario que quieres hacer DT2</h4>
+                    <div style="position:relative; left:-40px;" class="form-group">
+                        <label class="col-sm-2 control-label">Ligas:</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" name="usuarioSelect"  type="text" value="">
+                                <option></option>
+                                @foreach($proTeam->users as $usuarios)
+                                    
+                                    @if($usuarios->gamertag!=null)
+                                    <option value="{{$usuarios->id}}">{{$usuarios->gamertag}}</option>
+                                    @else
+                                     <option value="{{$usuarios->id}}">{{$usuarios->user_name}}</option>
+                                    @endif
+                                    @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <br></br>
+
+                    <div style="position:relative; left:500px;" class="container">
+                        <button  type="button" class="btn btn-primary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+
+
+
+
+
+
+                </form>
+            </div>
+
+
+        </div>
+    @endif
     
     
     

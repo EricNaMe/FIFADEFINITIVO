@@ -141,6 +141,8 @@ Route::group([
     Route::get('delete/{notification}','NotificationController@deleteIndex');
 });
 
+
+Route::post('AsignarDTProTeam','ClubesProController@AsignarDT');
 Route::get('GoleadoresLigaPro/{id}','ClubesProController@ObtenerGoleadoresLigaPro');
 Route::get('AsistentesLigaPro/{id}','ClubesProController@ObtenerAsistentesLigaPro');
 Route::get('PorterosLigaPro/{id}','ClubesProController@ObtenerPorterosLigaPro');
