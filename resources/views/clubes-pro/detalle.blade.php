@@ -88,13 +88,23 @@
     @endif
 
     @if(Auth::check())
+   
         @if(Auth::user()->id == $proTeam->getDT()->id)
             <form action="/EditarClubPro/{{$proTeam->id}}" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button type="submit" class="btn btn-danger">
-                    Editar Imagen
+                    Editar Imagen  
                 </button>
             </form>
+        @else
+            @if($DT2=$proTeam->getDT2() && $proTeam->getDT2()->id==Auth::user()->id)
+             <form action="/EditarClubPro/{{$proTeam->id}}" name="FormaProCrearLiga" method="post" class="form-horizontal" role="form">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <button type="submit" class="btn btn-danger">
+                    Editar Imagen  
+                </button>
+            </form>
+            @endif
         @endif
     @endif
 

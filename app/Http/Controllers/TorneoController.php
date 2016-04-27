@@ -347,14 +347,20 @@ Log::info($ligapivote); */
                 $DTAuth = "UsuarioSinEquipo";
                 $DTAuth2="UsuarioSinEquipo";
 
-                return view('ProCalendario', ['proCalendar' => $proCalendar,'LigaObj'=>$LigaObj, 'ligas' => $ligas, 'copas' => $copas, 'DTAuth' => $DTAuth]);
+                return view('ProCalendario', ['proCalendar' => $proCalendar,
+                    'LigaObj'=> $LigaObj,
+                    'ligas' => $ligas,
+                    'copas' => $copas,
+                    'DTAuth' => $DTAuth,
+                    'DTAuth2'=> $DTAuth2]);
             } else {
 
                 $Equipoid = Auth::user()->proTeams[0]->id;
 
                 $EquipoAuth = ProTeam::find($Equipoid);
                 $DTAuth = $EquipoAuth->getDT();
-                $DTAuth2 = $EquipoAuth->getDT2();
+                if($DTAuth2=$EquipoAuth->getDT2()){
+                
 
                 return view('ProCalendario', ['proCalendar' => $proCalendar,
                     'LigaObj'=>$LigaObj,
@@ -362,6 +368,17 @@ Log::info($ligapivote); */
                     'copas' => $copas,
                     'DTAuth' => $DTAuth,
                     'DTAuth2'=> $DTAuth2]);
+                }
+                else{
+                    $DTAuth2="UsuarioSinEquipo";
+                    
+                     return view('ProCalendario', ['proCalendar' => $proCalendar,
+                    'LigaObj'=>$LigaObj,
+                    'ligas' => $ligas, 
+                    'copas' => $copas,
+                    'DTAuth' => $DTAuth,
+                    'DTAuth2'=> $DTAuth2]);   
+                }
             }
         } else {
             $DTAuth = "UsuarioSinEquipo";

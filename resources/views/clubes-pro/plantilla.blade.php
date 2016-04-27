@@ -177,7 +177,7 @@
                             </td>
                             <td>
                                 @if($user->pivot->status == 'pending'
-                                    && $proTeam->getDT()->id == Auth::user()->id)
+                                    && ($proTeam->getDT()->id == Auth::user()->id))
                                     {{Form::open([
                                         'url' => "/clubes-pro/$proTeam->id/autorizar/$user->id" ,
                                         'method' => 'put'
@@ -196,6 +196,7 @@
                                         Denegar
                                     </button>
                                     {{Form::close()}}
+                   
                                     @else
                                     @if(Auth::check() && $proTeam->getDT()->id==Auth::user()->id)
                                         {{Form::open([
@@ -208,6 +209,42 @@
                                         </button>
                                     {{Form::close()}}
                                     @endif
+                                @endif
+                                      @if($dt2=$proTeam->getDT2())  
+                                       @if($user->pivot->status == 'pending'
+                                    && ($proTeam->getDT2()->id == Auth::user()->id))
+                                    {{Form::open([
+                                        'url' => "/clubes-pro/$proTeam->id/autorizar/$user->id" ,
+                                        'method' => 'put'
+                                        ])}}
+                                        <button type="submit"
+                                                class="btn btn-success">
+                                            Autorizar
+                                        </button>
+                                    {{Form::close()}}
+                                    {{Form::open([
+                                        'url' => "/clubes-pro/$proTeam->id/denegar/$user->id" ,
+                                        'method' => 'put'
+                                    ])}}
+                                    <button type="submit"
+                                            class="btn btn-danger">
+                                        Denegar
+                                    </button>
+                                    {{Form::close()}}
+                   
+                                    @else
+                                    @if(Auth::check() && $proTeam->getDT2()->id==Auth::user()->id)
+                                        {{Form::open([
+                                        'url' => "/clubes-pro/$proTeam->id/denegar/$user->id" ,
+                                        'method' => 'put'
+                                        ])}}
+                                        <button type="submit"
+                                                class="btn btn-success">
+                                            Dar de baja
+                                        </button>
+                                    {{Form::close()}}
+                                    @endif
+                                @endif
                                 @endif
                             </td>
                         </tr>

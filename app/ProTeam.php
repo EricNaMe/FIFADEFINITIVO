@@ -123,6 +123,9 @@ class ProTeam extends Model
         $notification = new Notification();
         $notification->type = "request";
         $notification->user()->associate($this->getDT());
+        if($this->getDT2()){
+         $notification->user()->associate($this->getDT2());    
+        }
         $this->notifications()->save($notification);
     }
 
