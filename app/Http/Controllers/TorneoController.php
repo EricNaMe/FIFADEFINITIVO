@@ -345,7 +345,7 @@ Log::info($ligapivote); */
 
             if (Auth::user()->proTeams->isEmpty()) {
                 $DTAuth = "UsuarioSinEquipo";
-                $DTAuth2="UsuarioSinEquipo";
+                $DTAuth2="NoMuestres";
 
                 return view('ProCalendario', ['proCalendar' => $proCalendar,
                     'LigaObj'=> $LigaObj,
@@ -359,6 +359,7 @@ Log::info($ligapivote); */
 
                 $EquipoAuth = ProTeam::find($Equipoid);
                 $DTAuth = $EquipoAuth->getDT();
+
                 if($DTAuth2=$EquipoAuth->getDT2()){
                 
 
@@ -370,7 +371,7 @@ Log::info($ligapivote); */
                     'DTAuth2'=> $DTAuth2]);
                 }
                 else{
-                    $DTAuth2="UsuarioSinEquipo";
+                    $DTAuth2="NoMuestres";
                     
                      return view('ProCalendario', ['proCalendar' => $proCalendar,
                     'LigaObj'=>$LigaObj,
@@ -382,7 +383,7 @@ Log::info($ligapivote); */
             }
         } else {
             $DTAuth = "UsuarioSinEquipo";
-            $DTAuth2="UsuarioSinEquipo";
+            $DTAuth2="NoMuestres";
             return view('ProCalendario', ['proCalendar' => $proCalendar,
                 'LigaObj'=>$LigaObj, 
                 'ligas' => $ligas, 

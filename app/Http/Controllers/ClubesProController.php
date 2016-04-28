@@ -208,7 +208,9 @@ class ClubesProController extends Controller
          $User->proTeams()->updateExistingPivot($ProTeamId, ['position'=>'DT2']);
         
         $User->update();
-            
+
+        return redirect()->back()
+            ->with('message', "Éxito");
     }
 
     public function ReportarResultadosPro()
