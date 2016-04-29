@@ -123,31 +123,41 @@
                         <?php $jor++; ?>
 
                     @endif
-                        <?php $BanderaDT1=""; ?>
+                        <?php $BanderaDT1=""; 
+                        $DTLocalBandera="";
+                        $DTVisitanteBandera="";?>
                     @if($DTAuth2!="NoMuestres")
                         @if($DTAuth2->id==Auth::user()->id)
+                         <script>alert("Hay DT2")</script>
                             @if($DTLocal2=$Equipos->localProTeam->getDT2())
+                             <script>alert("AntesEsLocal")</script>
                                 @if($DTAuth2->id==$DTLocal2->id)
-
-                                    <?php $BanderaDT1="EsDT2"; ?>
+                                 <script>alert("EsLocal")</script>
+                                    <?php $BanderaDT1="EsDT2"; 
+                                          $DTLocalBandera="Si";
+                                    ?>
                                 @endif
                             @endif
                             @if($DTVisitante2=$Equipos->visitorProTeam->getDT2())
+                             <script>alert("AntesEsVisitante")</script>
                                 @if($DTAuth2->id==$DTVisitante2->id)
-
-                                    <?php $BanderaDT1="EsDT2"; ?>
+                                 <script>alert("EsVisitante")</script>
+                                    <?php $BanderaDT1="EsDT2"; 
+                                  $DTVisitanteBandera="Si";
+                                  ?>
                                 @endif
                             @endif
 
                         @endif
                     @endif
 
-
+                    <script>alert("Inicio")</script>
                     @if($Equipos->matchProTeam==null)
 
-
+                     <script>alert("Inicio2")</script>
 
                         @if($DTAuth!="UsuarioSinEquipo")
+                         <script>alert("Inicio3")</script>
                             <tr>
                                 <td style="">{{$Equipos->localProTeam->name}}
                                     <div id="LogoEquipo"
@@ -169,20 +179,42 @@
                                 </td>
                                 <td></td>
                                 @if($DTAuth->id==Auth::user()->id)
-                                    @if($DTAuth->id==$DTLocal->id || $DTAuth->id==$DTVisitante->id)
+                                 <script>alert("Inicio4")</script>
+                                  @if($DTAuth->id==$DTLocal->id || $DTAuth->id==$DTVisitante->id)
+                                         <script>alert("Inicio5")</script>
 
                                         <td>
                                             <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}">Reportar</a>
                                         </td>
-                                    @else
-                                        <td><a>-</a></td>
+                                    
+                                  @else
+                                    @if($DTAuth2!="NoMuestres" && $DTLocalBandera=="Si")  
+                                     <script>alert("Inicio6")</script>
+                                         <td>
+                                            <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}">Reportar</a>
+                                        </td>
+                                    @else    
+                                    <td><a>-</a></td>
 
                                     @endif
+                                    @if($DTAuth2!="NoMuestres" && $DTVisitanteBandera=="Si")  
+                                     <script>alert("Inicio7")</script>
+                                         <td>
+                                            <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}">Reportar</a>
+                                        </td>
+                                       @else
+                                        <script>alert("Inicio8")</script>
+                                       <td><a>-</a></td>
+
+                                    @endif 
+                                  @endif
                                 @else
+                                 <script>alert("Inicio9")</script>
                                     <td><a>-</a></td>
                         @endif
 
                     @else
+                     <script>alert("Inicio10")</script>
                         <tr>
                             <td style="">{{$Equipos->localProTeam->name}}
                                 <div id="LogoEquipo"
@@ -211,11 +243,13 @@
 
 
                             @if($DTAuth!="UsuarioSinEquipo")
+                             <script>alert("Inicio11")</script>
                                 @if($DTLocal=$Equipos->localProTeam->getDT()) @endif
                                 @if($DTVisitante=$Equipos->visitorProTeam->getDT()) @endif
                                 @if($DTAuth->id==Auth::user()->id)
+                                 <script>alert("Inicio12")</script>
                                     @if($DTAuth->id==$DTLocal->id || $DTAuth->id==$DTVisitante->id)
-
+                                     <script>alert("Inicio13")</script>
                                         <tr>
                                             <td style="">{{$Equipos->localProTeam->name}}
                                                 <div id="LogoEquipo"
@@ -242,7 +276,74 @@
 
                                         </tr>
                                     @else
-                                        <tr>
+                                     <script>alert("Inicio14")</script>
+                          
+                                    @endif
+                                @else
+                                
+                                          @if($DTAuth2!="NoMuestres" && $DTLocalBandera=="Si") 
+                                     <script>alert("Inicio15")</script>
+                                       <tr>
+                                            <td style="">{{$Equipos->localProTeam->name}}
+                                                <div id="LogoEquipo"
+                                                     style="float:right; background:url({{$Equipos->localProTeam->getImageUrl()}}); background-size:cover;"></div>
+                                            </td>
+                                            <td>
+                                                <div style="display:inline-block;left:-10px;"
+                                                     id="PosicionTabla">{{$Equipos->matchProTeam->local_score}}</div>
+                                                -
+                                                <div id="PosicionTabla"
+                                                     style="display:inline-block;left:10px;">{{$Equipos->matchProTeam->visitor_score}}</div>
+                                            </td>
+                                            <td style="">
+                                                <div id="LogoEquipo"
+                                                     style="float:left; background:url({{$Equipos->visitorProTeam->getImageUrl()}}); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}
+                                            </td>
+                                            <td>
+                                                <a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a>
+                                            </td>
+                                            <td>
+                                                <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}/{{$Equipos->matchProTeam->id}}">Editar</a>
+                                            </td>
+
+
+                                        </tr>
+                                    
+                                 
+                                      @endif
+                                      @if($DTAuth2!="NoMuestres" && $DTVisitanteBandera=="Si")  
+                                       <script>alert("Inicio17")</script>
+                                         <tr>
+                                            <td style="">{{$Equipos->localProTeam->name}}
+                                                <div id="LogoEquipo"
+                                                     style="float:right; background:url({{$Equipos->localProTeam->getImageUrl()}}); background-size:cover;"></div>
+                                            </td>
+                                            <td>
+                                                <div style="display:inline-block;left:-10px;"
+                                                     id="PosicionTabla">{{$Equipos->matchProTeam->local_score}}</div>
+                                                -
+                                                <div id="PosicionTabla"
+                                                     style="display:inline-block;left:10px;">{{$Equipos->matchProTeam->visitor_score}}</div>
+                                            </td>
+                                            <td style="">
+                                                <div id="LogoEquipo"
+                                                     style="float:left; background:url({{$Equipos->visitorProTeam->getImageUrl()}}); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}
+                                            </td>
+                                            <td>
+                                                <a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a>
+                                            </td>
+                                            <td>
+                                                <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}/{{$Equipos->matchProTeam->id}}">Editar</a>
+                                            </td>
+
+
+                                        </tr>
+                                      @else
+                             
+                                   
+                                    @endif
+                                           <script>alert("Inicio18")</script>
+                                            <tr>
                                             <td style="">{{$Equipos->localProTeam->name}}
                                                 <div id="LogoEquipo"
                                                      style="float:right; background:url({{$Equipos->localProTeam->getImageUrl()}}); background-size:cover;"></div>
@@ -265,10 +366,9 @@
 
 
                                         </tr>
-
-
-                                    @endif
-                                @else
+   
+                                
+                                 <script>alert("Inicio19")</script>
                                     <tr>
                                         <td style="">{{$Equipos->localProTeam->name}}
                                             <div id="LogoEquipo"
@@ -296,7 +396,7 @@
 
 
                             @else
-
+                             <script>alert("Inicio20")</script>
                                 <tr>
                                     <td style="">{{$Equipos->localProTeam->name}}
                                         <div id="LogoEquipo"
@@ -323,9 +423,9 @@
                                         @endif
                                     @endif
                                 </tr>
+                              
 
-
-
+                              
 
 
 
@@ -458,11 +558,11 @@
                                                             </tr>
 
 
-                                                        @endif
-                                                    @endif
-
-                                                    @if($DTVisitante=$Equipos->visitorProTeam->getDT2())
-                                                        @if($DTAuth2->id==$DTVisitante->id)
+                                                          @endif
+                                                          @endif  
+                                                            
+                                                            @if($DTVisitante=$Equipos->visitorProTeam->getDT2())
+                                                            @if($DTAuth2->id==$DTVisitante->id)
                                                             <tr>
                                                                 <td style="">{{$Equipos->localProTeam->name}}
                                                                     <div id="LogoEquipo"
@@ -509,14 +609,14 @@
                                                                     <a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a>
                                                                 </td>
                                                                 <td><a>-</a></td>
-
-
+                                                       
+                                    
                                                             </tr>
 
-
-                                                        @endif
-                                                    @endif
-
+                                                   
+                                                             @endif
+                                                             @endif
+                                                    
                                                 @else
                                                     <tr>
                                                         <td style="">{{$Equipos->localProTeam->name}}
@@ -585,7 +685,7 @@
                                             @endif
                                         @endif
                                     @endif
-
+                             
 
                                     @endforeach
 
