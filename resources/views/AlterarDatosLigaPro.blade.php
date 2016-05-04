@@ -163,7 +163,7 @@
                             <input type="hidden" name="InputIdLeague" value="{{$ligaPro->id}}"/>
                              <input type="hidden" name="InputIdClub" value="{{$ClubPro->id}}"/>
                                     <div  class="col-xs-1" style="margin-left:30px;">
-                                        <input type="number" min="0" value="0" name="InputJJ" class="col-md-2 form-control" id="usr">
+                                        <input type="number"  value="0" name="InputJJ" class="col-md-2 form-control" id="usr">
                                     </div>
                                     <div class="col-xs-1" style="">
                                         <input type="number"  value="0" name="InputJG" class="col-md-2 form-control" id="usr">
