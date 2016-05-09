@@ -147,6 +147,7 @@ Route::get('GoleadoresLigaPro/{id}','ClubesProController@ObtenerGoleadoresLigaPr
 Route::get('AsistentesLigaPro/{id}','ClubesProController@ObtenerAsistentesLigaPro');
 Route::get('PorterosLigaPro/{id}','ClubesProController@ObtenerPorterosLigaPro');
 Route::get('MejoresJugadoresLigaPro/{id}','ClubesProController@ObtenerMejoresJugadoresLigaPro');
+Route::get('DefensaImbatidaLigaPro/{id}','ClubesProController@ObtenerDefensaImbatidaLigaPro');
 Route::post('EscogerLigaPro','ClubesProController@EscogerLigaPro');
 Route::post('BuscarDatosPro','ClubesProController@BuscarDatosClub');
 Route::post('ModificarDatosPro','ClubesProController@ModificarDatosLigaPro');

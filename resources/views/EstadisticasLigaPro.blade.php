@@ -94,6 +94,7 @@
             <li id="ListaPerfil"><a class="active" href="/AsistentesLigaPro/{{$League->id}}">Top Asistentes</a></li>
             <li id="ListaPerfil"><a class="active" href="/PorterosLigaPro/{{$League->id}}">Top Porteros</a></li>
             <li id="ListaPerfil"><a href="/MejoresJugadoresLigaPro/{{$League->id}}">Top mejor jugador</a></li>
+            <li id="ListaPerfil"><a href="/DefensaImbatidaLigaPro/{{$League->id}}">Top defensa</a></li>
 
         </ul>
 
@@ -359,6 +360,72 @@
                     
                     <a>
                     {{$usuariosPorLiga->best_player}}
+                    </a>
+                </td>
+                
+            <?php $i++; ?>
+            </tr>
+           @endforeach
+        </table>
+    </div>
+
+    @endif
+    
+    
+       @if($UsuarioVal==6)
+    <div id="TablaPrimeraClubesPro" style="position: absolute; top:28%; left:42%; max-height:400px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Club</th>
+                    <th>Jugador</th>
+                    <th>Defensa imbatida</th>
+                </tr>
+            </thead>
+            <?php $i = 1;
+            
+       
+            ?>
+          @foreach($OrdenadoDefensaImbatida as $usuariosPorLiga)
+            <tr>
+                <td>
+                    <div id="PosicionTabla">
+                        {{$i}}</div>
+                </td>
+                
+                <td>
+               @foreach($usuariosPorLiga->proTeams as $clubesUsuarios)
+                   
+                    
+                     <img src="{{$clubesUsuarios->getImageUrl()}}">
+
+                    <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    <a>{{$clubesUsuarios->name}}</a>
+                    @endforeach
+       
+                </td>
+                <td>
+                    @if($usuariosPorLiga->gamertag==null)
+
+                    @else
+
+                        <img src="https://avatar-ssl.xboxlive.com/avatar/{{$usuariosPorLiga->gamertag}}/avatarpic-l.png">
+
+                        <div style="background:url();
+                          background-size:90px 80px;"></div>
+                    @endif
+                    <a href="/PerfilDetalles/{{$usuariosPorLiga->id}}">
+                        {{$usuariosPorLiga->user_name}}
+                    </a>
+                </td>
+             
+            
+                <td style="text-align: center;">
+                    
+                    <a>
+                    {{$usuariosPorLiga->defence_unbeaten}}
                     </a>
                 </td>
                 

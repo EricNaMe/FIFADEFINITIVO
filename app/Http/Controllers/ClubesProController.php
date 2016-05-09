@@ -2316,5 +2316,51 @@ class ClubesProController extends Controller
             'copas' => $copas,
             'OrdenadoMejoresJugadores' => $OrdenadoMejoresJugadores]);
     }
+    
+        public function ObtenerDefensaImbatidaLigaPro($id)
+    {
+
+        $League = ProLeague::find($id);
+
+        $usuariosLiga = $League::with('proTeams.users')->get();
+
+        $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
+            $query->orderBy('defence_unbeaten', 'desc');
+        }])->get();
+
+        foreach ($usuariosLiga2 as $usuariosLiga) {
+            $usuariosLiga3 = $usuariosLiga->proTeams;
+
+            foreach ($usuariosLiga3 as $clubes) {
+                $usuariosLiga4 = $clubes->users;
+
+                $FiltroLiga = $clubes->proLeague;
+                foreach ($FiltroLiga as $LigaFiltro) {
+                    if ($LigaFiltro->id == $League->id)
+                        foreach ($usuariosLiga4 as $usuariosLig) {
+                            $usuariosLiga5[] = $usuariosLig->id;
+                        }
+                }
+
+            }
+        }
+
+        $USERSLeague = User::find($usuariosLiga5);
+        $OrdenadoDefensaImbatida = $USERSLeague->sortByDesc('defence_unbeaten')->take(10);
+
+        $clubes = Proteam::all();
+        $ligas = ProLeague::all();
+        $copas = ProCup::all();
+        $UsuarioVal = 6;
+
+        return view('EstadisticasLigaPro', [
+            'usuariosLiga' => $usuariosLiga,
+            'ligas' => $ligas,
+            'League' => $League,
+            'clubes' => $clubes,
+            'UsuarioVal' => $UsuarioVal,
+            'copas' => $copas,
+            'OrdenadoDefensaImbatida' => $OrdenadoDefensaImbatida]);
+    }
 
 }
