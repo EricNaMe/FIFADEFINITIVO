@@ -302,8 +302,10 @@ class FrontController extends Controller
         $clubes=Proteam::all();
         $ligas= ProLeague::all();
         $copas=ProCup::all();
+        $proTeam=ProTeam::findOrFail(1);
 
         return view('Transferencias',[
+            'proTeam'=>$proTeam,
             'clubes' => $clubes,
             'ligas'=>$ligas,
             'copas'=>$copas,

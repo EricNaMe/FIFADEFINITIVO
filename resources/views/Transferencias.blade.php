@@ -26,7 +26,33 @@
     </div>
 
     <div id="menuCentral" style="background:url(images/middleMenu.jpeg); background-size: cover; margin-left: -80px;" >
+    
+    @if(Auth::check())
+    @if(Auth::user()->user_name=="Administrador22")
+    @if(!($proTeam->inscriptions_locked))
+    <form action="/bloquear-altas" name="FormaProCrearLiga" method="post"
+          class="form-horizontal" role="form">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="col-sm-2 col-sm-offset-2" style="margin-top: 35px;">
+            <button type="submit" class="btn btn-primary">Bloquear transferencias</button>
+        </div>
+    </form>
+    @endif
+    @endif
 
+    @if(Auth::user()->user_name=="Administrador22")
+    @if($proTeam->inscriptions_locked)
+    {{Form::open([
+                  'url' => "/desbloquear-altas" ,
+                  'method' => 'post'
+                  ])}}
+      <div class="col-sm-2 col-sm-offset-2" style="margin-top: 35px;">
+            <button type="submit" class="btn btn-primary">Desbloquear transferencias</button>
+        </div>
+    {{Form::close()}}
+    @endif
+    @endif
+    @endif
         <div>
             <ul id="MenuPerfil">
                 <li id="ListaPerfil"><a class="active" href="#">DATOS</a></li>
@@ -43,13 +69,15 @@
             </BR>
 
 
-
+ 
+   
+  
             <!--Tabla de datos de la base de datos-->
 
             <div id="contenedor">
                 <div id="contenidos1">
 
-                    <div id="columna11" style="width: 200px; font-size: 15px;">GAMERTAG</div>
+                    <div id="columna11" style="width: 200px; font-size: 15px;">GAMERTAG2</div>
                     <div id="columna11" style="width: 200px; font-size: 15px;" >ACCION</div>
                     <div id="columna11" style="width: 160px; font-size: 15px;" >CLUB ANTERIOR</div>
                     <div id="columna11" style="width: 10px; font-size: 15px;" >-</div>
