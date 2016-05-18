@@ -121,16 +121,11 @@
                 <td>
                     <div id="PosicionTabla">
                         {{$i}}</div>
-                </td>
-                
+                </td>                
                 <td>
-                    @foreach($usuariosLiga->proTeams as $clubesUsuarios)
-                   
-                    
-                     <img src="{{$clubesUsuarios->getImageUrl()}}">
-
-                    <div style="background:url();
-                          background-size:90px 80px;"></div>
+                    @foreach($usuariosLiga->proTeams as $clubesUsuarios)  
+                    <img src="{{$clubesUsuarios->getImageUrl()}}">
+                    <div style="background:url(); background-size:90px 80px;"></div>
                     <a>{{$clubesUsuarios->name}}</a>
                     @endforeach
        

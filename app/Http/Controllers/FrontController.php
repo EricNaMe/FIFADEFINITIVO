@@ -357,12 +357,6 @@ $search = Input::get('search');
     }
 
 
-
-
-
-
-
-
     public function LigaPro(){
 
         $clubes=Proteam::all();
@@ -496,11 +490,31 @@ $search = Input::get('search');
 
     public function RankingCP()
     {
+        $Usuarios=user::all();
         $clubes=Proteam::all();
+        
+        $MejoresClubes=$clubes->sortByDesc('points')->take(10);
+        $UsuariosGoleadores = $Usuarios->sortByDesc('goals')->take(10);
+        $UsuariosMayorPuntaje = $Usuarios->sortByDesc('pro_points')->take(10);
+        $UsuariosMejoresJugadores = $Usuarios->sortByDesc('best_player')->take(10);
+        $UsuariosMejoresPorteros=$Usuarios->sortByDesc('gk_unbeaten')->take(10);
+        $UsuariosMejoresDefensas=$Usuarios->sortByDesc('defence_unbeaten')->take(10);
+        
+        
         $ligas= ProLeague::all();
         $copas=ProCup::all();
 
-        return view('RankingCP',['clubes' => $clubes,'ligas'=>$ligas,'copas'=>$copas]);
+        return view('RankingCP',['clubes' => $clubes,
+            'ligas'=>$ligas,
+            'copas'=>$copas,
+            'MejoresClubes'=>$MejoresClubes,           
+            'UsuariosGoleadores'=>$UsuariosGoleadores,
+            'UsuariosMayorPuntaje'=>$UsuariosMayorPuntaje,
+            'UsuariosMejoresJugadores'=>$UsuariosMejoresJugadores,
+            'UsuariosMejoresPorteros'=>$UsuariosMejoresPorteros,
+            'UsuariosMejoresDefensas'=>$UsuariosMejoresDefensas
+          
+                ]);
     }
 
     public function edit($id)
