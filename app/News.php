@@ -23,7 +23,7 @@ class News extends Model
     {
 
         $image = \Image::make($file);
-        $image->full(950,600);
+        $image->fill(950,600);
 
         $image->save('images/news/'.$this->id.'_md');
         $image->fit(50,50);

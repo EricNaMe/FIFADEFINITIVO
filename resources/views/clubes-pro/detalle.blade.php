@@ -110,7 +110,7 @@
     <div class="row">
         <div class="col-lg-4 col-lg-offset-2" style=" ">
             <div style="background-color: white; height: 150px;    background-size:cover;">
-                <div class="col-lg-5 col-lg-offset-4"  style="background-color: green; height:150px;"></div>
+                <div class="col-lg-5 col-lg-offset-4"  style=" background:url({{$proTeam->getImageUrl('md')}}); background-size:cover; height:150px;"></div>
             </div>
         </div>
     </div>
