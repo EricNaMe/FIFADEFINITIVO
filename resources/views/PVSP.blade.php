@@ -96,7 +96,7 @@
                     <tr>
                         @if($team->status==="Activo")
                         <td><div id="PosicionTabla">{{$i}}</div></td>
-                        <td style="text-align:left;">{{$team->name}}</td>
+                        <td style="text-align:left;"><img style="height:35px; width:35px;" src="{{$team->getImageUrl()}}">{{$team->name}}</td>
                         @foreach($team->users as $user)
                         <td>{{$user->user_name}}</td>
                         @endforeach

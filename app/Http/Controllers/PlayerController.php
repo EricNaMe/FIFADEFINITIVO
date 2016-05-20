@@ -95,8 +95,8 @@ class PlayerController extends Controller
 
             $club = new Team;
 
-
             $club->name =  Input::get('nombreequipo');
+            $club->folder_league=Input::get('LigaFolder');
             $user=Input::get('userSelect');
             $club->status="Activo";
             $club->save();
@@ -104,7 +104,7 @@ class PlayerController extends Controller
 
 
             if($club->save()){
-                return redirect('PVSP');
+                return redirect()->back()->withErrors("Agregado con éxito");;
             } else {
                 return redirect()->back()->withErrors("Algo falló!!!");
             }
@@ -251,9 +251,9 @@ class PlayerController extends Controller
         
         
         $clubSelect = Input::get('InputIdClub');
-        
-        
-          $Team=Team::find($clubSelect);
+        $Team=Team::find($clubSelect);
+        $ligas=League::all();
+        $copas=Cup::all();
           
 
          foreach($Team->users as $userTeam){
@@ -261,17 +261,12 @@ class PlayerController extends Controller
              $userId=$userTeam->id;
 
          }
-
-
-
-          $Team->users()->detach($userId,[]);
-
-
-        $Team->status="Inactivo";
-          $Team->save();
+            $Team->users()->detach($userId,[]);
+            $Team->status="Inactivo";
+            $Team->save();
 
               $clubes=Team::All();
-                 return view('EliminarEquiposPvsP', ['clubes'=>$clubes]);
+                return redirect()->back()->withErrors("Equipo eliminado");
 
         
     }

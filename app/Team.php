@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Team extends Model
 {
@@ -13,6 +14,7 @@ class Team extends Model
     protected $fillable = [
         'name',
         'points',
+        'folder_league',
     ];
     
     public function user()
@@ -39,6 +41,23 @@ class Team extends Model
         return $this->belongsToMany('App\User','team_user')
             ->withPivot('status');
     }
-
+    
+     public function saveImage(UploadedFile $file)
+    {
+        $image = \Image::make($file);
+        $image->fit(200,200);
+        $image->save('images/pvsp/'.$this->id.'_md');
+        $image->fit(50,50);
+        $image->save('images/pvsp/'.$this->id.'_sm');
+    }
+    
+      public function getImageUrl()
+    {
+         
+         $StringName= str_replace(" ","_",$this->name);
+        return url($this->folder_league.'/'.$StringName.'-LOGO.png');
+    }
+    
+ 
 
 }

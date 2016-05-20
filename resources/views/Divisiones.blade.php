@@ -71,8 +71,8 @@
               <li><a>DIVISIONES LIGA</a>
                 <ul>
                 <li><a href="#">PRIMERA DIVISIÓN</a></li>
-                    @foreach($ligas as $liga)
-                        <li><a href="EncontrarLigaPlay/{{$liga->id}}">{{$liga->name}}</a></li>
+                    @foreach($ligas as $liga2)
+                        <li><a href="EncontrarLigaPlay/{{$liga2->id}}">{{$liga2->name}}</a></li>
 
                     @endforeach
 
@@ -279,6 +279,7 @@
 
 
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="LigaFolder" value="{{$nruta}}">
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Nombre del club:</label>

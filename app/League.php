@@ -9,7 +9,7 @@ class League extends Model
 
     public function teams(){
         return $this->belongsToMany('App\Team','team_leagues')
-            ->withPivot('status');
+            ->withPivot('status')->withTrashed();;
     }
 
 
