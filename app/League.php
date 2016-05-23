@@ -19,6 +19,7 @@ class League extends Model
         return $this->hasMany('App\CalendarLeague');
     }
 
+    
     public function generateCalendar()
     {
 
