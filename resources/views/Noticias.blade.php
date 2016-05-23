@@ -61,7 +61,7 @@ and open the template in the editor.
             <div class="row">
                 <div>
                     <div class="col-sm-7 col-sm-offset-2" style="background-color: white; height:400px;">
-                        <img  src="{{$noticia->getImageUrl()}}" alt="" >
+                        <img style="width:100%; height:100%;"  src="{{$noticia->getImageUrl()}}" alt="" >
                     </div>
                 </div>    
             </div>        
