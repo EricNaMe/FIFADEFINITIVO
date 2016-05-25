@@ -841,11 +841,11 @@ class ClubesProController extends Controller
             $UsuariosLocal[$i]->pro_JJ++;
             if ($marcadorLocal == $marcadorVisitante) {
                 $UsuariosLocal[$i]->pro_JE++;
-                $UsuariosLocal[$i]->pro_Points++;
+                $UsuariosLocal[$i]->pro_points++;
             }
             if ($marcadorLocal > $marcadorVisitante) {
                 $UsuariosLocal[$i]->pro_JG++;
-                $UsuariosLocal[$i]->pro_Points += 3;
+                $UsuariosLocal[$i]->pro_points += 3;
             }
 
             if ($marcadorLocal < $marcadorVisitante) {
@@ -853,29 +853,18 @@ class ClubesProController extends Controller
             }
 
             $LocalUser[] = $UsuariosLocal[$i]->id;
-
-
             $UsuariosLocal[$i]->update();
         }
 
 
         $VectorUsuariosVisitante = Input::get('VectorUsuarioVisitante');
-
         $UsuariosVisitante = User::find($VectorUsuariosVisitante);
-
         $GolesVisitante = Input::get('GolesSelectVisitante');
-
         $PosicionVisitante = Input::get('PosicionSelectVisitante');
-
-
         $AmarillasVisitante = Input::get('AmarillasSelectVisitante');
         $RojasVisitante = Input::get('RojasSelectVisitante');
 
-
-
         for ($i = 0; $i < sizeof($GolesVisitante); $i++) {
-
-
             if ($PosicionVisitante[$i] == "PO") {
                 $Partido->PO_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->PO_visitor_red = $RojasVisitante[$i];
@@ -888,9 +877,7 @@ class ClubesProController extends Controller
                 }
 
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
-
                     $Partido->PO_visitor_best_player = $idMejorJugador;
-
                     $UsuariosVisitante[$i]->best_player += 1;
                 }
             }
@@ -1049,7 +1036,6 @@ class ClubesProController extends Controller
                 $Partido->DC_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DC_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
-
                     $Partido->DC_visitor_best_player = $idMejorJugador;
                     $UsuariosVisitante[$i]->best_player += 1;
                 }
@@ -1064,7 +1050,6 @@ class ClubesProController extends Controller
                 $Partido->DFC2_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DFC2_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
-
                     $Partido->DFC2_visitor_best_player = $idMejorJugador;
                     $UsuariosVisitante[$i]->best_player += 1;
                 }
@@ -1076,7 +1061,6 @@ class ClubesProController extends Controller
                 $Partido->DFC3_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DFC3_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
-
                     $Partido->DFC3_visitor_best_player = $idMejorJugador;
                     $UsuariosVisitante[$i]->best_player += 1;
                 }
@@ -1088,7 +1072,6 @@ class ClubesProController extends Controller
                 $Partido->MCD2_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MCD2_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
-
                     $Partido->MCD2_visitor_best_player = $idMejorJugador;
                     $UsuariosVisitante[$i]->best_player += 1;
                 }
@@ -1100,7 +1083,6 @@ class ClubesProController extends Controller
                 $Partido->MC2_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MC2_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
-
                     $Partido->MC2_visitor_best_player = $idMejorJugador;
                     $UsuariosVisitante[$i]->best_player += 1;
                 }
@@ -1150,15 +1132,15 @@ class ClubesProController extends Controller
             $UsuariosVisitante[$i]->pro_JJ++;
             if ($marcadorLocal == $marcadorVisitante) {
                 $UsuariosVisitante[$i]->pro_JE++;
-                $UsuariosVisitante[$i]->pro_Points++;
+                $UsuariosVisitante[$i]->pro_points++;
             }
             if ($marcadorLocal < $marcadorVisitante) {
                 $UsuariosVisitante[$i]->pro_JG++;
-                $UsuariosVisitante[$i]->pro_Points += 3;
+                $UsuariosVisitante[$i]->pro_points += 3;
             }
 
             if ($marcadorLocal > $marcadorVisitante) {
-                $UsuariosVisitante[$i]->pro_JP++;
+                $UsuariosVisitante[$i]->pro_JP++;                
             }
 
 

@@ -100,19 +100,12 @@
 
                 ?>
                 @foreach($proTeams as $estadisticas)
-
                     <?php $clubname= $estadisticas ?>
-
-
-
                             <tr>
                                 <td>
                                     <div id="PosicionTabla">   {{$i}}</div>
                                 </td>
                                 <td style="text-align:left;">
-
-
-
                                         <div id="LogoEquipo"
                                              style=" background:url({{$estadisticas->getImageUrl()}});  background-size:cover;"></div>
                                         <a href="/clubes-pro/{{$estadisticas->id}}">{{$estadisticas->name}}</a></td>

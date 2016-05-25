@@ -153,7 +153,7 @@
                         <tr>
                             <td style="font-weight: bold;">
                                 <div id="LogoEquipo"
-                                     style=" background:url(https://avatar-ssl.xboxlive.com/avatar/{{$user->playerGamertag()}}/avatarpic-l.png); background-size:cover;"></div>
+                                     style=" background:url({{$user->getAvatar()}}); background-size:cover;"></div>
                             </td>
                             @if($user->playerGamertag()==null)
                             <td>

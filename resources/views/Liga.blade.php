@@ -103,7 +103,7 @@
 
                 <tr>
                     <td><div id="PosicionTabla">   {{$i}}</div></td>
-                    <td style="text-align:left;"><div id="LogoEquipo" style=" background:url(/images/Clausura/{{$proTeam->id}}.png); background-size:cover;"></div><a href="/clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
+                    <td style="text-align:left;"><img style="height:35px; width:35px;" src="{{$proTeam->getImageUrl()}}"><a href="/clubes-pro/{{$proTeam->id}}">{{$proTeam->name}}</a></td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>

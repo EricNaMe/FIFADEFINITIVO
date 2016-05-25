@@ -63,7 +63,7 @@ and open the template in the editor.
                                 <tbody>
                                     <?php $i = 1; ?>
                                     @foreach($UsuariosMayorPuntaje as $MejorJugador)
-                                    <tr class="alt"><td>{{$i}}</td><td style="text-align: center;"><img style="width:50px; height:50px;" src="https://avatar-ssl.xboxlive.com/avatar/{{$MejorJugador->gamertag}}/avatarpic-l.png;"/></td><td style="text-align: center;">{{$MejorJugador->user_name}}</td><td style="text-align: center;">{{$MejorJugador->pro_points}}</td></tr>
+                                    <tr class="alt"><td>{{$i}}</td><td style="text-align: center;"><img style="width:50px; height:50px;" src="{{$MejorJugador->getAvatar()}}"/></td><td style="text-align: center;">{{$MejorJugador->user_name}}</td><td style="text-align: center;">{{$MejorJugador->pro_points}}</td></tr>
                                     <?php $i++; ?>
                                     @endforeach
                                 </tbody>
@@ -93,7 +93,7 @@ and open the template in the editor.
                                 <tbody style="">
                                     <?php $j = 1; ?>
                                     @foreach($UsuariosGoleadores as $UsuarioGoleador)
-                                    <tr><td style="width: 10px;">{{$j}}</td><td><img style="width:50px; height:50px;" src="https://avatar-ssl.xboxlive.com/avatar/{{$UsuarioGoleador->gamertag}}/avatarpic-l.png;"/></td><td style="text-align: center;">{{$UsuarioGoleador->user_name}}</td><td>{{$UsuarioGoleador->goals}}</td></tr>
+                                    <tr><td style="width: 10px;">{{$j}}</td><td><img style="width:50px; height:50px;" src="{{$UsuarioGoleador->getAvatar()}}"/></td><td style="text-align: center;">{{$UsuarioGoleador->user_name}}</td><td>{{$UsuarioGoleador->goals}}</td></tr>
                                     <?php $j++; ?>
                                     @endforeach
                                 </tbody>
@@ -109,7 +109,7 @@ and open the template in the editor.
                                 <tbody>
                                     <?php $k = 1; ?>
                                     @foreach($UsuariosMejoresJugadores as $UsuarioMejorJugador)
-                                    <tr><td style="width: 10px;">{{$k}}</td><td><img style="width:50px; height:50px;" src="https://avatar-ssl.xboxlive.com/avatar/{{$UsuarioMejorJugador->gamertag}}/avatarpic-l.png;"/></td><td style="text-align: center;">{{$UsuarioMejorJugador->user_name}}</td><td>{{$UsuarioMejorJugador->best_player}}</td></tr>
+                                    <tr><td style="width: 10px;">{{$k}}</td><td><img style="width:50px; height:50px;" src="{{$UsuarioMejorJugador->getAvatar()}}"/></td><td style="text-align: center;">{{$UsuarioMejorJugador->user_name}}</td><td>{{$UsuarioMejorJugador->best_player}}</td></tr>
                                     <?php $k++; ?>
                                     @endforeach
                                 </tbody>
@@ -133,7 +133,7 @@ and open the template in the editor.
                     <tbody>
                         <?php $l = 1; ?>
                         @foreach($UsuariosMejoresPorteros as $UsuarioMejorPortero)
-                        <tr><td style="width: 10px;">{{$l}}</td><td><img style="width:50px; height:50px;" src="https://avatar-ssl.xboxlive.com/avatar/{{$UsuarioMejorPortero->gamertag}}/avatarpic-l.png;"/></td><td style="text-align: center;">{{$UsuarioMejorPortero->user_name}}</td><td>{{$UsuarioMejorPortero->gk_unbeaten}}</td></tr>
+                        <tr><td style="width: 10px;">{{$l}}</td><td><img style="width:50px; height:50px;" src="{{$UsuarioMejorPortero->getAvatar()}}"/></td><td style="text-align: center;">{{$UsuarioMejorPortero->user_name}}</td><td>{{$UsuarioMejorPortero->gk_unbeaten}}</td></tr>
                                 <?php $l++; ?>
                         @endforeach
                     </tbody>

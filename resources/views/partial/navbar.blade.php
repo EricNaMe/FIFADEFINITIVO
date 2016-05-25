@@ -10,7 +10,7 @@
             <li id="LoginMenu">
                 <a href="#" >
                     <div id="LogoEquipo" style="
-                            background:url(https://avatar-ssl.xboxlive.com/avatar/{{Auth::User()->gamertag}}/avatarpic-l.png);
+                            background:url({{Auth::User()->getAvatar()}});
                             background-size:cover;"></div>
                     {{Auth::User()->user_name}}
                 </a>

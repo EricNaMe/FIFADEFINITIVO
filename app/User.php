@@ -95,4 +95,14 @@ class User extends Model implements AuthenticatableContract,
         return $this->transfer()
             ->first() ? true : false;
     }
+    
+    public function getAvatar(){
+        return 'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($this->gamertag).'/avatarpic-l.png';
+    }
+    
+     public function getAvatarBody(){
+        return 'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($this->gamertag).'/avatar-body.png';
+        
+    }
+    
 }

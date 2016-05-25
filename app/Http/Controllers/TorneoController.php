@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\ProTeam;
 use App\Team;
 use App\Cup;
+use App\CalendarLeague;
 use App\User;
 use App\clubesproequipo;
 use Input;
@@ -192,8 +193,6 @@ class TorneoController extends Controller {
             }
         }
 
-
-
         $proTeam->proLeague()->attach($LeagueInput, ['status' => 'acepted']);
 
         if ($proTeam->save()) {
@@ -204,15 +203,14 @@ class TorneoController extends Controller {
     }
 
     public function ReportarPartidoPvsPMetodo($id, $id2, $id3, $id4) {
-        $Equipo1 = Team::find($id);
-        $Equipo2 = Team::find($id2);
+        $EquipoLocal = Team::find($id);
+        $EquipoVisitante = Team::find($id2);
         $league = League::find($id3);
-        $calendario = CalendarLeague::find($id4);
-
-
-
-
-        return view('ReportarPardido', ['Equipo1' => $Equipo1, 'Equipo2' => $Equipo2, 'league' => $league, 'calendario' => $calendario]);
+        $ligas=League::all();
+        $copas=Cup::all();
+        $calendario = CalendarLeague::find($id4);        
+      
+        return view('ReportarPardido', ['EquipoLocal' => $EquipoLocal,'copas'=>$copas,'ligas'=>$ligas, 'EquipoVisitante' => $EquipoVisitante, 'league' => $league, 'calendario' => $calendario]);
     }
 
     public function BorrarProClubLiga() {
@@ -395,9 +393,10 @@ Log::info($ligapivote); */
 
     public function buscarCalendario(League $League) {
 
-
         $calendario = $League->Calendar;
-        return view('PvsPCalendario', ['calendario' => $calendario]);
+        $ligaCalendario=$League;
+       
+        return view('PvsPCalendario', ['calendario' => $calendario,'ligaCalendario'=>$ligaCalendario]);
     }
 
     public function EncontrarCopa($id) {
@@ -421,7 +420,7 @@ Log::info($ligapivote); */
             return view('clubes-pro.clubes-pro', ['clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas])->withErrors("Ya se creó un torneo anteriormente");
         }
     }
-
+    
     public function crearCalendario() {
 
         $liga = Input::get('InputIdLeague');
@@ -435,7 +434,7 @@ Log::info($ligapivote); */
         if ($league->generateAndSaveCalendar()) {
             return view('PVSP', ['teams' => $teams, 'ligas' => $ligas, 'copas' => $copas]);
         } else {
-            return "Error al crear calendario";
+            return view('PVSP', ['teams' => $teams, 'ligas' => $ligas, 'copas' => $copas])->withErrors("Ya se creó un torneo anteriormente");
         }
     }
 

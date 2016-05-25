@@ -80,7 +80,7 @@
 
                         <div  style=" background-color: white; padding: 10px;margin: 10px;" id="boxUser">
 
-                            <article class="Articulo3"><img style="width:50px; height:50px;" src="https://avatar-ssl.xboxlive.com/avatar/{{$user->gamertag}}/avatarpic-l.png;"/> <a style="font-weight: bold; font-family: sans-serif;">{{$user->user_name}}</a> <a style="font-family: sans-serif;">Se ha unido a la comunidad<a/></article>
+                            <article class="Articulo3"><img style="width:50px; height:50px;" src="{{$user->getAvatar()}}"/> <a style="font-weight: bold; font-family: sans-serif;">{{$user->user_name}}</a> <a style="font-family: sans-serif;">Se ha unido a la comunidad<a/></article>
 
                         </div>
                     @endforeach
@@ -107,7 +107,7 @@
                         <div style=" font-weight: bold; font-family: sans-serif; color:gray; height:20px; width:350px;"><a style="font-size:10px;">{{$commen->created_at}}</a><a style="float:right;margin-right:-10px; ">{{$commen->user->user_name}}</a></div>
 
                         <div style="position:relative; top:15px; left:300px;display: inline-block;background-color: pink; width:60px; height: 60px;">
-                            <div  style="width:60px; height: 60px; background:url(https://avatar-ssl.xboxlive.com/avatar/{{$commen->user->gamertag}}/avatarpic-l.png); background-size:cover;"></div>
+                            <div  style="width:60px; height: 60px; background:url({{$commen->user->getAvatar()}}); background-size:cover;"></div>
                         </div>
                         <div style="word-break:break-all; position: relative; top: -50px; left: 10px;" class="message" >
                             <span><p style="word-break:break-all;width:250px; font-family: sans-serif;font-weight: bold;">{{$commen->message}}</p></span>

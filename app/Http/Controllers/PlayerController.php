@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ProTeam;
 use App\Team;
-
-
+use App\CalendarLeague;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Cup;
 use App\clubesproequipo;
 use Input;
 use App\League;
-
+use App\MatchLeague;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -164,12 +163,12 @@ class PlayerController extends Controller
 
             $ligas=League::all();
             $copas=Cup::all();
-            
+         
             $league->name =  Input::get('name');
 
 
             if($league->save()){
-                return view('/AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
+                return view('AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
             } else {
                 return redirect()->back()->withErrors("Algo falló!!!");
             }
@@ -203,10 +202,88 @@ class PlayerController extends Controller
             $ligas=League::all();
             $copas=Cup::all();
 
-            return view('/AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
+            return view('AgregarTeamLiga', ['league' => $league,'clubes'=>$clubes,'ligas'=>$ligas,'copas'=>$copas]);
 
 
         }
+    }
+    
+    public function reportarResultado(Request $request){
+        if(Auth::check()){
+            $marcadorLocal=$request->get('LocalInput');
+            $marcadorVisitante=$request->get('VisitorInput');
+            $calendario=CalendarLeague::findOrFail($request->get('calendarioInput'));             
+            $EquipoLocal=Team::findOrFail($request->get('EquipoLocalInput'));
+            $EquipoVisitante=Team::findOrFail($request->get('EquipoVisitanteInput')); 
+            $UsuarioLocal=$EquipoLocal->users;         
+            $UsuarioVisitante=$EquipoVisitante->users;
+           
+            
+            if($marcadorLocal==$marcadorVisitante){
+                $EquipoLocal->points+=1;
+                $EquipoVisitante->points+=1;
+                $UsuarioLocal[0]->points+=1;
+                $UsuarioVisitante[0]->points+=1;
+                $UsuarioLocal[0]->JJ+=1;
+                $UsuarioVisitante[0]->JJ+=1;  
+                $UsuarioLocal[0]->JE+=1;
+                $UsuarioVisitante[0]->JE+=1;  
+                $EquipoLocal->JE+=1;
+                $EquipoVisitante->JE+=1;
+                $EquipoLocal->JJ+=1;
+                $EquipoVisitante->JJ+=1;
+            }
+            if($marcadorLocal>$marcadorVisitante){
+                $EquipoLocal->points+=3;
+                
+                $UsuarioLocal[0]->points+=3;                               
+                $EquipoLocal->JG+=1;
+                $EquipoVisitante->JP+=1;
+                $EquipoLocal->JJ+=1;
+                $EquipoVisitante->JJ+=1;
+                $UsuarioLocal[0]->JJ+=1;
+                $UsuarioVisitante[0]->JJ+=1;  
+                $UsuarioLocal[0]->JG+=1;
+                $UsuarioVisitante[0]->JP+=1;  
+            }
+              if($marcadorVisitante>$marcadorLocal){
+                $EquipoVisitante->points+=3;
+                $UsuarioVisitante[0]->points +=3; 
+                $EquipoLocal->JP+=1;
+                $EquipoVisitante->JG+=1;
+                $EquipoLocal->JJ+=1;
+                $EquipoVisitante->JJ+=1;
+                $UsuarioLocal[0]->JJ+=1;
+                $UsuarioVisitante[0]->JJ+=1;  
+                $UsuarioLocal[0]->JP+=1;
+                $UsuarioVisitante[0]->JG+=1;  
+            }
+           $partido=new MatchLeague;
+           
+           $partido->local_score=$marcadorLocal;
+           $partido->visitor_score=$marcadorVisitante;
+           $partido->team_local_id=$EquipoLocal->id;
+           $partido->team_visitor_id=$EquipoVisitante->id;
+           $partido->league_id=$EquipoLocal->league[0]->id;           
+          
+           $partido->save();
+           $calendario->match_id = $partido->id;
+           $calendario->update();
+           $UsuarioLocal[0]->update();
+           $UsuarioVisitante[0]->update();
+           $EquipoLocal->update();
+           $EquipoVisitante->update();
+           
+           $ligas=League::All();
+           $copas=Cup::All();
+           $teams=Team::all();
+        return view('PVSP',['teams' => $teams,'ligas'=>$ligas,'copas'=>$copas]);
+            
+        }        
+    }
+    
+     public function EncontrarLiga($id) {
+       
     }
 
 
@@ -295,6 +372,8 @@ class PlayerController extends Controller
         $copas=Cup::All();
         $ligas=League::All();
         $league=League::find($id);
+        
+        
         return view('/Liga',['league'=>$league,'ligas'=>$ligas,'copas'=>$copas]);
 
     }

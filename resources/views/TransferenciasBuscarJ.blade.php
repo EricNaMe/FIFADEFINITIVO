@@ -71,7 +71,7 @@
                  
 
                  <div id="contenidos">
-                    <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/{{$proTeam->gamertag}}/avatarpic-l.png" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 200px; margin-left: 50px; ">{{$proTeam->user_name}}</div> </div>
+                    <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="{{$proTeam->getAvatar()}}" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 200px; margin-left: 50px; ">{{$proTeam->user_name}}</div> </div>
                     @foreach($proTeam->proTeams as $equipo)
                      <div id="columna1" > <div style="background:url({{$equipo->getImageUrl('md')}}); background-size:cover;width: 50px; height: 50px; position: absolute; margin-top: -10px;"></div> <div class="title" style=" line-height: normal; width: 210px; margin-left: 50px; "><a href="/clubes-pro/{{$equipo->id}}">{{$equipo->name}}</a></div> </div>
                    @endforeach

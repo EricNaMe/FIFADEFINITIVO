@@ -9,7 +9,7 @@ class League extends Model
 
     public function teams(){
         return $this->belongsToMany('App\Team','team_leagues')
-            ->withPivot('status')->withTrashed();;
+            ->withPivot('status');
     }
 
 
@@ -36,7 +36,7 @@ class League extends Model
         {
             for ($j=0; $j<count($home); $j++)
             {
-                $round[$i][$j]["home23"]=$home[$j];
+                $round[$i][$j]["home"]=$home[$j];
                 $round[$i][$j]["away"]=$away[$j];
             }
             if(count($home)+count($away)-1 > 2)

@@ -5,7 +5,7 @@
 
 
 
-            <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
+            <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
             
           <ul id="ListaMenuLateral">             
               <li><a href="Inicio">HOME</a></li>
@@ -68,13 +68,18 @@
     <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;">
 
 
-        
-         <div style="background-color: white;" class="col-lg-6">
+         <form action="/ReportarResultadosPvsP" name="FormaProCrearLiga" method="post" class="form-horizontal"
+                      role="form">
+             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+             <input type="hidden" name="EquipoLocalInput" value="{{$EquipoLocal->id}}"/>
+             <input type="hidden" name="EquipoVisitanteInput" value="{{$EquipoVisitante->id}}"/>
+             <input type="hidden" name="calendarioInput" value="{{$calendario->id}}"/>
+         <div style="background-color: whitesmoke; margin-top: 200px;"  class="col-lg-7 col-lg-offset-2">
 
 
             <div class="col-sm-12">
-                <div class="col-xs-2">
-                    <label class="" for="usr">{{$EquipoLocal->name}}</label>
+                <div class="col-xs-3">
+                    <label class="" for="usr">{{$EquipoLocal->name}}</label><img style="width:35px; height:35px;" src="{{$EquipoLocal->getImageUrl()}}">
                 </div>
                 <div class="col-xs-1" style="width:14%;">
                     <input type="number" min="0"  name="LocalInput" class="col-md-2 form-control" id="usr">
@@ -86,22 +91,21 @@
                     <input type="number" min="0" name="VisitorInput" class="col-md-2 form-control" id="usr">
                 </div>
 
-                <div class="col-xs-2">
-                    <label class=""  for="usr">{{$EquipoVisitante->name}}</label>
+                <div class="col-xs-4">
+                   <img style="width:35px; height:35px;" src="{{$EquipoVisitante->getImageUrl()}}"> <label class=""  for="usr">{{$EquipoVisitante->name}}</label>
                 </div>
-
-
             </div>
 
 
-            <div class="col-sm-9">
+            <div style="padding-bottom:20px; margin-top: 40px;" class="col-sm-9 col-sm-offset-8">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
         </div>
+            </form>
 
 
 
-        </div>
+    </div>
 
         <script>
 

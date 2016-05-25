@@ -113,9 +113,9 @@
 
                  <div id="contenidos">
                      @if($proTeam->gamertag==null)
-                     <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/{{$proTeam->gamertag}}/avatarpic-l.png" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 600px; margin-left: 50px; ">{{$proTeam->user_name}}</div> </div>
+                     <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="{{$proTeam->getAvatar()}}" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 600px; margin-left: 50px; ">{{$proTeam->user_name}}</div> </div>
                      @else
-                    <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="https://avatar-ssl.xboxlive.com/avatar/{{$proTeam->gamertag}}/avatarpic-l.png" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 600px; margin-left: 50px; ">{{$proTeam->gamertag}}</div> </div>
+                    <div id="columna1" > <div style="width: 50px; height: 50px; position: absolute; margin-top: -10px;"><img src="{{$proTeam->getAvatar()}}" style="width: 50px;"/></div> <div class="title" style="color: navy;  line-height: normal; width: 600px; margin-left: 50px; ">{{$proTeam->gamertag}}</div> </div>
                      @endif
                     <div id="columna2" style="width: 150px;"><form action="/PerfilDetalles/{{$proTeam->id}}"><button type="submit" class="boton2 grey">Ver perfil</button></form></div>
                 </div>        

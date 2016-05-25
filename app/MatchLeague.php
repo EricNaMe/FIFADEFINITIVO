@@ -8,6 +8,8 @@ class MatchLeague extends Model
 {
     protected $table = 'match_league';//
 
+    public $timestamps = false;
+    
     protected $fillable=[
         'team_local_id',
         'team_visitor_id',

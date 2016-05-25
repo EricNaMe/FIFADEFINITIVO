@@ -264,7 +264,7 @@
                             <div style=" font-weight: bold; font-family: sans-serif; color:gray; height:20px; width:200px;"><a style="font-size:10px;">{{$commen->created_at}}</a><a style="float:right;margin-right:-150px; ">{{$commen->user->user_name}}</a></div>
 
                             <div style="position:relative; top: 10px; left:290px;display: inline-block;background-color: pink; width:60px; height: 60px;">
-                                <div  style="width:60px; height: 60px; background:url(https://avatar-ssl.xboxlive.com/avatar/{{$commen->user->gamertag}}/avatarpic-l.png); background-size:cover;"></div>
+                                <div  style="width:60px; height: 60px; background:url({{$commen->user->getAvatar()}}); background-size:cover;"></div>
                             </div>
                             <div style="word-break:break-all;" class="message" >
                                 <span><p style="position:relative; top: -60px;word-break:break-all;width:280px; font-family: sans-serif;font-weight: bold;">{{$commen->message}}</p></span>

@@ -23,6 +23,8 @@ class UserProLeagueStatistics extends Migration {
             $table->unsignedInteger('JG');
             $table->unsignedInteger('JE');
             $table->unsignedInteger('JP');
+            $table->unsignedInteger('GF');
+            $table->unsignedInteger('GC');
     
             $table->unsignedInteger('points');
             $table->unsignedInteger('assistance');

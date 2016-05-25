@@ -195,6 +195,7 @@ Route::post('AgregarProClubCopa','TorneoController@AgregarProClubCopa');
 Route::post('DivisionesAgregar','PlayerController@CrearClubUsuario');
 Route::post('CrearCopaPlayer','PlayerController@CrearCopa');
 Route::post('CrearLigaPlayer','PlayerController@CrearLiga');
+Route::post('ReportarResultadosPvsP','PlayerController@reportarResultado');
 Route::post('AgregarTeamCopa','PlayerController@AgregarTeamCopa');
 Route::post('AgregarTeamLiga','PlayerController@AgregarTeamLiga');
 Route::post('EliminarTeamLiga','PlayerController@BorrarTeamLiga');
