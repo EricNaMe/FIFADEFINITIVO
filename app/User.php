@@ -105,4 +105,12 @@ class User extends Model implements AuthenticatableContract,
         
     }
     
+    public function isDT(){
+        
+       if($this->id==Auth::user()->proTeams[0]->id){
+           
+           
+       }
+    }
+    
 }

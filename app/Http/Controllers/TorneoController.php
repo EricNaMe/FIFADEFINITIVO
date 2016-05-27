@@ -395,7 +395,7 @@ Log::info($ligapivote); */
 
         $calendario = $League->Calendar;
         $ligaCalendario=$League;
-       
+               
         return view('PvsPCalendario', ['calendario' => $calendario,'ligaCalendario'=>$ligaCalendario]);
     }
 

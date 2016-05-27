@@ -371,8 +371,7 @@ class PlayerController extends Controller
 
         $copas=Cup::All();
         $ligas=League::All();
-        $league=League::find($id);
-        
+        $league=League::find($id);       
         
         return view('/Liga',['league'=>$league,'ligas'=>$ligas,'copas'=>$copas]);
 
@@ -383,9 +382,8 @@ class PlayerController extends Controller
         $copasTodas=Cup::All();
         $cup=Cup::find($id);
         return view('/Copa',['cup'=>$cup,'copasTodas'=>$copasTodas,'ligas'=>$ligas]);
-
     }
-
+        
     /**
      * Remove the specified resource from storage.
      *

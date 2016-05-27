@@ -24,7 +24,6 @@ class League extends Model
     
     public function generateCalendar()
     {
-
         $teams = $this->teams->toArray();
 
         if (count($teams)%2 != 0){
