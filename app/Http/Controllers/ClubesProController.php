@@ -307,7 +307,7 @@ class ClubesProController extends Controller
             'league' => $league,
             'partido' => $partido,
             'calendario' => $calendario]);
-    }
+    } 
 
     public function ReportarMarcadorProAdmin()
     {
@@ -2343,6 +2343,43 @@ class ClubesProController extends Controller
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
             'OrdenadoDefensaImbatida' => $OrdenadoDefensaImbatida]);
+    }
+    
+    public function ganaLocal(ProMatch $match){
+        
+        $match->local_score=2;
+        $match->visitor_score=0;        
+        $match->update();
+        $league=ProLeague::findOrFail($match->league_id);
+        $local=ProTeam::findOrFail($match->local_team->id);
+        $visitor=ProTeam::findOrFail($match->visitor_team->id);
+        
+        $local->JJ += 1;
+        $local->JG += 1;
+        $local->points += 3;
+        $visitor->JJ += 1;
+        $visitor->JP += 1;
+        
+        $estadisticas_local = $local->proLeagueEstatistics;
+        $estadisticas_visitor = $visitor->proLeagueEstatistics;
+        
+        $jj_local = $estadisticas_local[0]->pivot->JJ;
+        $jg_local=$estadisticas_local[0]->pivot->JG;
+        $gf_local=$estadisticas_local[0]->pivot->GF;
+        $points_local = $estadisticas_local[0]->pivot->points;
+        
+        $jj_visitor = $estadisticas_visitor[0]->pivot->JJ;
+        $jp_visitor=$estadisticas_visitor[0]->pivot->JP;
+        $gc_visitor=$estadisticas_visitor[0]->pivot->GC;
+            
+            $local->proLeagueEstatistics()->updateExistingPivot($League, ['JJ' => $jj_local, 
+                'JG' => $jg_local,
+                'GF' => $gf_local,
+                'points' => $points_local]);
+            
+             $visitor->proLeagueEstatistics()->updateExistingPivot($League, ['JJ' => $jj_visitor, 
+                'JP' => $jp_visitor,                
+                'GC' => $gc_visitor]);
     }
 
 }

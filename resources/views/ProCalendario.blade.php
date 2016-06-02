@@ -86,7 +86,7 @@
         </style>
 
 
-        <div id="TablaPrimera" style="max-height:800px; width:700px;position: absolute; top:18%; left:15%;">
+        <div id="TablaPrimera" style="max-height:800px; width:750px;position: absolute; top:18%; left:15%;">
 
 
             <table>
@@ -152,13 +152,15 @@
                     @endif
 
                    
-                    @if($Equipos->matchProTeam==null)
-
-                    
+                    @if($Equipos->matchProTeam==null)                   
 
                         @if($DTAuth!="UsuarioSinEquipo")
                         
                             <tr>
+                                 @if(Auth::check() && Auth::user()->user_name=="Administrador22" )                                        
+                                 <td><a href="/ProGanarLocalDefault/"
+                                           class="btn btn-primary">Gana local</a></td>
+                                 @endif           
                                 <td style="">{{$Equipos->localProTeam->name}}
                                     <div id="LogoEquipo"
                                          style="float:right; background:url({{$Equipos->localProTeam->getImageUrl()}}); background-size:cover;"></div>
@@ -177,12 +179,15 @@
                                     <div id="LogoEquipo"
                                          style="float:left; background:url({{$Equipos->visitorProTeam->getImageUrl()}}); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}
                                 </td>
-                                <td></td>
+                                @if(Auth::check() && Auth::user()->user_name=="Administrador22" )
+                                 <td><a href="/ProGanarLocalDefault/"
+                                           class="btn btn-primary">Gana visitante</a></td>                                   
+                                @endif 
+                                 <td>-</td>   
                                 @if($DTAuth->id==Auth::user()->id || ($DTAuth2!="NoMuestres" && $DTLocalBandera=="Si") || ($DTAuth2!="NoMuestres" && $DTVisitanteBandera=="Si"))
                             
-                                  @if($DTAuth->id==$DTLocal->id || $DTAuth->id==$DTVisitante->id)
+                                  @if($DTAuth->id==$DTLocal->id || $DTAuth->id==$DTVisitante->id)                                        
                                          
-                                  
                                         <td>
                                             <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}">Reportar</a>
                                         </td>
@@ -273,12 +278,9 @@
                                             <td>
                                                 <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}/{{$Equipos->matchProTeam->id}}">Editar</a>
                                             </td>
-
-
                                         </tr>
-                                    @else
-                                    
-                                            <tr>
+                                    @else                                    
+                                    <tr>
                                         <td style="">{{$Equipos->localProTeam->name}}
                                             <div id="LogoEquipo"
                                                  style="float:right; background:url({{$Equipos->localProTeam->getImageUrl()}}); background-size:cover;"></div>
@@ -297,16 +299,11 @@
                                         <td><a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a>
                                         </td>
                                         <td><a>-</a></td>
-
-
-                                    </tr>
-                                    
-                          
+                                    </tr>             
                                     @endif
                                 @else
                                 
-                                          @if($DTAuth2!="NoMuestres" && $DTLocalBandera=="Si") 
-                                  
+                                          @if($DTAuth2!="NoMuestres" && $DTLocalBandera=="Si")                                  
                                        <tr>
                                             <td style="">{{$Equipos->localProTeam->name}}
                                                 <div id="LogoEquipo"
@@ -329,8 +326,6 @@
                                             <td>
                                                 <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}/{{$Equipos->matchProTeam->id}}">Editar</a>
                                             </td>
-
-
                                         </tr>
                                         @else
                                     
@@ -360,8 +355,6 @@
                                             <td>
                                                 <a href="/ReportarPartidoProMetodo/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}/{{$Equipos->matchProTeam->id}}">Editar</a>
                                             </td>
-
-
                                         </tr>
                                       @else
                              
@@ -392,18 +385,12 @@
 
 
                                     </tr>
-                            
-                            
                                     @endif
-                           
-
-                               @endif
-                               
-                    
-
+                                 @endif
                             @else
                             
                                 <tr>
+                                    
                                     <td style="">{{$Equipos->localProTeam->name}}
                                         <div id="LogoEquipo"
                                              style="float:right; background:url({{$Equipos->localProTeam->getImageUrl()}}); background-size:cover;"></div>
@@ -419,6 +406,7 @@
                                         <div id="LogoEquipo"
                                              style="float:left; background:url({{$Equipos->visitorProTeam->getImageUrl()}}); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}
                                     </td>
+                                    
                                     <td><a href="/DetallesPartido/{{$Equipos->matchProTeam->id}}">Detalles</a></td>
                                     <td><a>-</a></td>
                                     @if(Auth::check())
@@ -429,15 +417,6 @@
                                         @endif
                                     @endif
                                 </tr>
-                              
-
-                              
-
-
-
-                    
-                                                        <!-- fin código para segundos dts -->
-
                                     @endif
                               @endif
 

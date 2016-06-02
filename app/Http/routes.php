@@ -179,6 +179,8 @@ Route::post('ProCrearCopa','TorneoController@CrearCopaPro');
 Route::post('roundRobin','TorneoController@RoundRobin');
 Route::post('AgregarProTeamLiga','TorneoController@AgregarProClubLiga');
 Route::get('DetallesPartido/{id}','ClubesProController@DetallesPartidoMetodo');
+Route::get('ProGanarLocalDefault/{match}','ClubesProController@ganaLocal');
+Route::get('ProGanarVisitanteDefault/{match}','ClubesProController@ganaVisitante');
 Route::post('ReportarResultadosProAdmin','ClubesProController@ReportarMarcadorProAdmin');
 
 Route::get('ReportarPartidoProMetodo/{id}/{id2}/{id3}/{id4}','ClubesProController@ReportarPartidoMetodo');
