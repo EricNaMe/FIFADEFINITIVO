@@ -40,10 +40,6 @@
             @if (Auth::check())
                 <?php $user=Auth::user();
                 ?>
-
-
-
-
                 @if($user->user_name==="Administrador22")
                     <li><a>ADMINISTRADOR</a>
                         <ul>

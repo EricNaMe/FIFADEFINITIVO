@@ -157,6 +157,7 @@ class ProTeam extends Model
 
     public function canAddUser(User $user)
     {
+        
         if(Auth::check()) {
             if ($this->users()
                 ->whereUserId($user->id)
@@ -172,6 +173,15 @@ class ProTeam extends Model
                     'Ya se encuentra en otro club'
                 );
             }
+            
+            if($this->users()->count()>18){
+                throw new PermissionException(
+                    'El número máximo de jugadores son 18'
+                );
+                
+            }
+                
+            
            /* var_dump($user->hasBeenInAnyTeam());
             dd($user->toArray());*/
 

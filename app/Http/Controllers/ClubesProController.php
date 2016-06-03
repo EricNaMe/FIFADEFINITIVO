@@ -2345,14 +2345,18 @@ class ClubesProController extends Controller
             'OrdenadoDefensaImbatida' => $OrdenadoDefensaImbatida]);
     }
     
-    public function ganaLocal(ProMatch $match){
+    public function ganaLocal(ProTeam $local, ProTeam $visitor,ProLeague $league, LeagueProCalendar $calendar){
         
-        $match->local_score=2;
-        $match->visitor_score=0;        
-        $match->update();
-        $league=ProLeague::findOrFail($match->league_id);
-        $local=ProTeam::findOrFail($match->local_team->id);
-        $visitor=ProTeam::findOrFail($match->visitor_team->id);
+        $match= new ProMatch;
+        $match->team_local_id = $local->id;
+        $match->team_visitor_id = $visitor->id;
+        $match->league_id = $league->id;
+        $match->local_score = 2;
+        $match->visitor_score = 0;
+              
+        $match->save();
+        $calendar->match_id = $match->id;
+        $calendar->update();     
         
         $local->JJ += 1;
         $local->JG += 1;
@@ -2368,18 +2372,84 @@ class ClubesProController extends Controller
         $gf_local=$estadisticas_local[0]->pivot->GF;
         $points_local = $estadisticas_local[0]->pivot->points;
         
+        $jj_local +=1;
+        $jg_local +=1;
+        $gf_local +=2;
+        $points_local +=3;                
+        
         $jj_visitor = $estadisticas_visitor[0]->pivot->JJ;
         $jp_visitor=$estadisticas_visitor[0]->pivot->JP;
         $gc_visitor=$estadisticas_visitor[0]->pivot->GC;
+        
+        $jj_visitor +=1;
+        $jp_visitor +=1;
+        $gc_visitor +=2;
             
-            $local->proLeagueEstatistics()->updateExistingPivot($League, ['JJ' => $jj_local, 
+            $local->proLeagueEstatistics()->updateExistingPivot($league->id, ['JJ' => $jj_local, 
                 'JG' => $jg_local,
                 'GF' => $gf_local,
                 'points' => $points_local]);
             
-             $visitor->proLeagueEstatistics()->updateExistingPivot($League, ['JJ' => $jj_visitor, 
+             $visitor->proLeagueEstatistics()->updateExistingPivot($league->id, ['JJ' => $jj_visitor, 
                 'JP' => $jp_visitor,                
                 'GC' => $gc_visitor]);
+     
+        $local->update();
+        $visitor->update();
+    }
+    
+     public function ganaVisitante(ProTeam $local, ProTeam $visitor,ProLeague $league, LeagueProCalendar $calendar){
+        
+        $match= new ProMatch;
+        $match->team_local_id = $local->id;
+        $match->team_visitor_id = $visitor->id;
+        $match->league_id = $league->id;
+        $match->local_score = 0;
+        $match->visitor_score = 2;
+              
+        $match->save();
+        $calendar->match_id = $match->id;
+        $calendar->update();     
+        
+        $visitor->JJ += 1;
+        $visitor->JG += 1;
+        $visitor->points += 3;
+        
+        $local->JJ += 1;
+        $local->JP += 1;
+        
+        $estadisticas_local = $local->proLeagueEstatistics;
+        $estadisticas_visitor = $visitor->proLeagueEstatistics;
+        
+        $jj_visitor = $estadisticas_visitor[0]->pivot->JJ;
+        $jg_visitor=$estadisticas_visitor[0]->pivot->JG;
+        $gf_visitor=$estadisticas_visitor[0]->pivot->GF;
+        $points_visitor = $estadisticas_visitor[0]->pivot->points;
+        
+        $jj_visitor +=1;
+        $jg_visitor +=1;
+        $gf_visitor +=2;
+        $points_visitor +=3;                
+        
+        $jj_local = $estadisticas_local[0]->pivot->JJ;
+        $jp_local=$estadisticas_local[0]->pivot->JP;
+        $gc_local=$estadisticas_local[0]->pivot->GC;
+        
+        $jj_local +=1;
+        $jp_local +=1;
+        $gc_local +=2;
+            
+            $visitor->proLeagueEstatistics()->updateExistingPivot($league->id, ['JJ' => $jj_visitor, 
+                'JG' => $jg_visitor,
+                'GF' => $gf_visitor,
+                'points' => $points_visitor]);
+            
+            $local->proLeagueEstatistics()->updateExistingPivot($league->id, ['JJ' => $jj_local, 
+                'JP' => $jp_local,                
+                'GC' => $gc_local]);
+     
+        $visitor->update();
+        $local->update();
     }
 
 }

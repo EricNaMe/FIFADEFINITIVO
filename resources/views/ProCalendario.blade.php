@@ -157,10 +157,7 @@
                         @if($DTAuth!="UsuarioSinEquipo")
                         
                             <tr>
-                                 @if(Auth::check() && Auth::user()->user_name=="Administrador22" )                                        
-                                 <td><a href="/ProGanarLocalDefault/"
-                                           class="btn btn-primary">Gana local</a></td>
-                                 @endif           
+                                           
                                 <td style="">{{$Equipos->localProTeam->name}}
                                     <div id="LogoEquipo"
                                          style="float:right; background:url({{$Equipos->localProTeam->getImageUrl()}}); background-size:cover;"></div>
@@ -179,10 +176,7 @@
                                     <div id="LogoEquipo"
                                          style="float:left; background:url({{$Equipos->visitorProTeam->getImageUrl()}}); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}
                                 </td>
-                                @if(Auth::check() && Auth::user()->user_name=="Administrador22" )
-                                 <td><a href="/ProGanarLocalDefault/"
-                                           class="btn btn-primary">Gana visitante</a></td>                                   
-                                @endif 
+                               
                                  <td>-</td>   
                                 @if($DTAuth->id==Auth::user()->id || ($DTAuth2!="NoMuestres" && $DTLocalBandera=="Si") || ($DTAuth2!="NoMuestres" && $DTVisitanteBandera=="Si"))
                             
@@ -222,6 +216,10 @@
                     @else
                      
                         <tr>
+                            @if(Auth::check() && Auth::user()->user_name=="Administrador22" )                                        
+                                 <td><a href="/ProGanarLocalDefault/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}"
+                                           class="btn btn-primary">Gana local</a></td>
+                                 @endif 
                             <td style="">{{$Equipos->localProTeam->name}}
                                 <div id="LogoEquipo"
                                      style="float:right; background:url({{$Equipos->localProTeam->getImageUrl()}}); background-size:cover;"></div>
@@ -235,6 +233,10 @@
                                 <div id="LogoEquipo"
                                      style="float:left; background:url({{$Equipos->visitorProTeam->getImageUrl()}}); background-size:cover;"></div>{{$Equipos->visitorProTeam->name}}
                             </td>
+                             @if(Auth::check() && Auth::user()->user_name=="Administrador22" )
+                                 <td><a href="/ProGanarVisitanteDefault/{{$Equipos->localProTeam->id}}/{{$Equipos->visitorProTeam->id}}/{{$Equipos->pro_league_id}}/{{$Equipos->id}}"
+                                           class="btn btn-primary">Gana visitante</a></td>                                   
+                                @endif 
                             <td></td>
                             <td><a>-</a></td>
 
