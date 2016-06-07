@@ -62,6 +62,14 @@ class User extends Model implements AuthenticatableContract,
             ->withTrashed();
     }
     
+    public function proLeagues(){
+        return $this->belongsToMany('App\ProLeague')
+            ->withPivot('status', 'JJ','JG','JE','JP','GF','GC','points',
+                    'yellow_card','red_card','goals',
+                    'best_player','gk_unbeaten','defence_unbeaten');
+           
+    }
+      
      public function comments(){
         return $this->hasMany('App\Comment');
     }

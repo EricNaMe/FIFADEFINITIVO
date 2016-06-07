@@ -20,7 +20,7 @@ class League extends Model
     }
 
     
-    
+   
     
     public function generateCalendar()
     {

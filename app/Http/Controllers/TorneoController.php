@@ -491,5 +491,5 @@ Log::info($ligapivote); */
     public function destroy($id) {
         //
     }
-
-}
+    
+    }
