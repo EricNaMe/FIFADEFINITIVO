@@ -198,8 +198,8 @@ class ProTeam extends Model
     public function canAuthorizeUserRequest(User $user)
     {
         $dt = $this->getDT();
-        if($dt2=$this->getDT2());
-        if((!$dt && $dt->id != $user->id) || (!$dt2 && $dt2->id != $user->id))
+
+        if((!$dt && $dt->id != $user->id) || (($dt2=$this->getDT2()) && !$dt2 && ($dt2->id != $user->id)))
         {
             throw new PermissionException(
                 'Sólo el DT del equipo puede autorizar la entrada al mismo'

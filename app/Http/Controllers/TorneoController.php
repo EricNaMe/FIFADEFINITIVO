@@ -208,8 +208,8 @@ class TorneoController extends Controller {
         $league = League::find($id3);
         $ligas=League::all();
         $copas=Cup::all();
-        $calendario = CalendarLeague::find($id4);        
-      
+        $calendario = CalendarLeague::find($id4);
+
         return view('ReportarPardido', ['EquipoLocal' => $EquipoLocal,'copas'=>$copas,'ligas'=>$ligas, 'EquipoVisitante' => $EquipoVisitante, 'league' => $league, 'calendario' => $calendario]);
     }
 
@@ -309,24 +309,24 @@ class TorneoController extends Controller {
 
 
 
- /*       $clubname= DB::table('pro_league_pro_team')->select('pro_team_id')->where('pro_league_id', $id)
-            ->orderBy('points', 'desc')->get();
-        $ligapivote = DB::table('pro_league_pro_team')
-            ->select([
-                '*',
-                DB::raw('cast(GF as int)-cast(GC as int) AS DG')
-            ])
-            ->where('pro_league_id', $id)
-            ->orderBy('points', 'desc')
-            ->orderBy('DG','desc')->get();
-Log::info($ligapivote); */
+        /*       $clubname= DB::table('pro_league_pro_team')->select('pro_team_id')->where('pro_league_id', $id)
+                   ->orderBy('points', 'desc')->get();
+               $ligapivote = DB::table('pro_league_pro_team')
+                   ->select([
+                       '*',
+                       DB::raw('cast(GF as int)-cast(GC as int) AS DG')
+                   ])
+                   ->where('pro_league_id', $id)
+                   ->orderBy('points', 'desc')
+                   ->orderBy('DG','desc')->get();
+       Log::info($ligapivote); */
 
         $copas = Procup::All();
         return view('/LigaPro', [
             'league' => $league,
             'ligas' => $ligas,
             'copas' => $copas,
-        
+
             'proTeams' => $proTeams,
         ]);
     }
@@ -359,34 +359,34 @@ Log::info($ligapivote); */
                 $DTAuth = $EquipoAuth->getDT();
 
                 if($DTAuth2=$EquipoAuth->getDT2()){
-                
 
-                return view('ProCalendario', ['proCalendar' => $proCalendar,
-                    'LigaObj'=>$LigaObj,
-                    'ligas' => $ligas, 
-                    'copas' => $copas,
-                    'DTAuth' => $DTAuth,
-                    'DTAuth2'=> $DTAuth2]);
+
+                    return view('ProCalendario', ['proCalendar' => $proCalendar,
+                        'LigaObj'=>$LigaObj,
+                        'ligas' => $ligas,
+                        'copas' => $copas,
+                        'DTAuth' => $DTAuth,
+                        'DTAuth2'=> $DTAuth2]);
                 }
                 else{
                     $DTAuth2="NoMuestres";
-                    
-                     return view('ProCalendario', ['proCalendar' => $proCalendar,
-                    'LigaObj'=>$LigaObj,
-                    'ligas' => $ligas, 
-                    'copas' => $copas,
-                    'DTAuth' => $DTAuth,
-                    'DTAuth2'=> $DTAuth2]);   
+
+                    return view('ProCalendario', ['proCalendar' => $proCalendar,
+                        'LigaObj'=>$LigaObj,
+                        'ligas' => $ligas,
+                        'copas' => $copas,
+                        'DTAuth' => $DTAuth,
+                        'DTAuth2'=> $DTAuth2]);
                 }
             }
         } else {
             $DTAuth = "UsuarioSinEquipo";
             $DTAuth2="NoMuestres";
             return view('ProCalendario', ['proCalendar' => $proCalendar,
-                'LigaObj'=>$LigaObj, 
-                'ligas' => $ligas, 
-                'copas' => $copas, 
-                'DTAuth' => $DTAuth, 
+                'LigaObj'=>$LigaObj,
+                'ligas' => $ligas,
+                'copas' => $copas,
+                'DTAuth' => $DTAuth,
                 'DTAuth2'=> $DTAuth2]);
         }
     }
@@ -395,7 +395,7 @@ Log::info($ligapivote); */
 
         $calendario = $League->Calendar;
         $ligaCalendario=$League;
-               
+
         return view('PvsPCalendario', ['calendario' => $calendario,'ligaCalendario'=>$ligaCalendario]);
     }
 
@@ -420,7 +420,7 @@ Log::info($ligapivote); */
             return view('clubes-pro.clubes-pro', ['clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas])->withErrors("Ya se creó un torneo anteriormente");
         }
     }
-    
+
     public function crearCalendario() {
 
         $liga = Input::get('InputIdLeague');
@@ -491,5 +491,64 @@ Log::info($ligapivote); */
     public function destroy($id) {
         //
     }
-    
+
+    public function  PasarDatosATablaUser_League()
+    {
+        $usuarios=User::all();
+
+
+
+        $League = ProLeague::find($id);
+
+        $usuariosLiga = $League::with('proTeams.users')->get();
+
+        $usuariosLiga2 = $League::with(['proTeams.users' => function ($query) {
+            $query->orderBy('best_player', 'desc');
+        }])->get();
+
+        foreach ($usuariosLiga2 as $usuariosLiga) {
+            $usuariosLiga3 = $usuariosLiga->proTeams;
+
+            foreach ($usuariosLiga3 as $clubes) {
+                $usuariosLiga4 = $clubes->users;
+
+                $FiltroLiga = $clubes->proLeague;
+                foreach ($FiltroLiga as $LigaFiltro) {
+                    if ($LigaFiltro->id == $League->id)
+                        foreach ($usuariosLiga4 as $usuariosLig) {
+                            $usuariosLiga5[] = $usuariosLig->id;
+                            $proTeam->proLeague()->attach($LeagueInput, ['status' => 'acepted',
+                                'JJ'=>$usuariosLig->JJ,
+                                'JG'=>$usuariosLig->JG,
+                                'JE'=>$usuariosLig->JE,
+                                'JP'=>$usuariosLig->JP,
+                                'GF'=>$usuariosLig->GF,
+                                'GC'=>$usuariosLig->GC
+                            ]);
+                        }
+                }
+
+            }
+        }
+
+        $USERSLeague = User::find($usuariosLiga5);
+        $OrdenadoMejoresJugadores = $USERSLeague->sortByDesc('best_player')->take(10);
+
+        $clubes = Proteam::all();
+        $ligas = ProLeague::all();
+        $copas = ProCup::all();
+        $UsuarioVal = 5;
+
+        return view('EstadisticasLigaPro', [
+            'usuariosLiga' => $usuariosLiga,
+            'ligas' => $ligas,
+            'League' => $League,
+            'clubes' => $clubes,
+            'UsuarioVal' => $UsuarioVal,
+            'copas' => $copas,
+            'OrdenadoMejoresJugadores' => $OrdenadoMejoresJugadores]);
     }
+
+
+
+}
