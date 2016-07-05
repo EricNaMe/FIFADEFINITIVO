@@ -29,7 +29,7 @@ class ProUserMatch extends Migration
             $table->boolean('best_player');
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('pro_match_id')->references('id')->on('pro_match');
+            $table->foreign('pro_match_id')->references('id')->on('pro_match_league');
             $table->foreign('position_id')->references('id')->on('match_positions');
 
         });
