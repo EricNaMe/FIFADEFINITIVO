@@ -7,6 +7,7 @@ use App\Clips;
 use App\URLVideos;
 use Illuminate\Http\Request;
 use Input;
+use App\EditarJornada;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -76,6 +77,26 @@ class ComentarioController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function  dateJornada()
+    {
+        $jornad= Input::get('dateTimeJ');
+        if(EditarJornada::find(1)){
+            $jornadaD=  EditarJornada::find(1);
+
+            $jornadaD->fecha_jornada =$jornad;
+            $jornadaD->update();
+            return redirect()->back();
+        }
+        else{
+            $nuevaJor=new EditarJornada;
+            $nuevaJor->url=$jornad;
+            $nuevaJor->save();
+            return redirect()->back();
+
+        }
+
     }
 
     public function videoYoutube1()

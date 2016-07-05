@@ -203,6 +203,28 @@ class ProMatch extends Model
             ->withTrashed();
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+
+    }
+
+    public function usersMatch()
+    {
+
+         return $this->belongsToMany('App\User','pro_user_match')
+                ->withPivot('local','position_id','goals','yellow_cards','red_cards');
+
+    }
+
+    public function matchPositions()
+    {
+
+        return $this->belongsToMany('App\match_positions','pro_user_match')
+            ->withPivot('local','position_id','goals','yellow_cards','red_cards');
+
+    }
+
     public function proLeague()
     {
         return $this->belongsTo('App\ProLeague','league_id');

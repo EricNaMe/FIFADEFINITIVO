@@ -56,6 +56,11 @@ class User extends Model implements AuthenticatableContract,
         ->withPivot('status');
     }
 
+    public function proMatch(){
+        return $this->belongsToMany('App\ProMatch','pro_user_match')
+            ->withPivot('local','position_id','goals','yellow_cards','red_cards');
+    }
+
     public function proTeams(){
         return $this->belongsToMany('App\ProTeam')
             ->withPivot('status', 'position')

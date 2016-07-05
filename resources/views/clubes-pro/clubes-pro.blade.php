@@ -78,6 +78,7 @@
                         <th>DT</th>
                     </tr>
                 </thead>
+                <tbody>
                 <?php $i=1; ?>
                 @foreach($clubes as $club)
                     <tr>
@@ -103,6 +104,7 @@
                         <?php $i++; ?>
                     </tr>
                 @endforeach
+                </tbody>
             </table>
         </div>
     </div>

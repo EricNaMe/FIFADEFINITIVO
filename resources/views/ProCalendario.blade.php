@@ -2,6 +2,38 @@
 
 @section('content')
 
+    <script>
+
+    function fechaJornada()
+    {
+    var date=document.getElementById('jornadas').value+","+document.getElementById('hora').value+","+document.getElementById('fecha').value;
+
+    if(document.getElementById('fecha').value=="" || document.getElementById('hora').value=="" || document.getElementById('jornadas').value=="")
+    {
+    alert('Ingresa los valores necesarios');
+    return false;
+    }
+    else{
+
+    document.getElementById('dateTimeJ').value=date;
+    return true;
+
+    }
+    }
+    function cargarFecha()
+    {
+    var fechaJor= "{{$jornada->fecha_jornada}}";
+    var temp = new Array();
+    temp = fechaJor.split(',');
+    document.getElementById('numJor').textContent=temp[0];
+    document.getElementById('fecha2').value=temp[2];
+    document.getElementById('hora2').value=temp[1];
+    }
+
+    </script>
+
+    <body onload="cargarFecha();">
+
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
 
 
@@ -86,7 +118,26 @@
         </style>
 
 
-        <div id="TablaPrimera" style="max-height:800px; width:750px;position: absolute; top:18%; left:15%;">
+        @if (Auth::check())
+            <?php $user=Auth::user();
+            ?>
+            @if($user->user_name==="Administrador22")
+                <form action="/dateJornada" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" id="dateTimeJ" name="dateTimeJ" value="">
+                    <div style="position: absolute; right: 400px;"><input type="number" name="jornadas" id="jornadas" min="1" style=" width: 40px;" > <input type="date" name="fecha" id="fecha"> <input type="time" name="hora" id="hora"></div>
+                    <div style="position: absolute; right: 320px;"><button type="boton" onclick="if(fechaJornada()){}else{return false};" >Guardar</button></div>
+                </form>
+
+            @endif
+        @endif
+        <div style="background-color: #333; width: 420px; height: 37px;font-family: sans-serif;
+    font-weight: bold; margin-left:330px;font-size: 22px; color: white;
+     word-break:break-all ;">&nbsp;&nbsp;&nbsp; JORNADA &nbsp&nbsp &nbsp&nbsp {{$jornada->fecha_jornada}}&nbsp&nbsp &nbsp&nbsp
+            <input type="date" name="fecha2" id="fecha2" style="background-color: transparent; border: 0px;" readonly="readonly">
+              </div>
+
+        <div id="TablaPrimera" style="max-height:800px; width:750px;position: absolute; top:28%; left:15%;">
 
 
             <table>

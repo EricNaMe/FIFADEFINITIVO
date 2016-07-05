@@ -53,6 +53,10 @@ and open the template in the editor.
                                 <input name="submitmsg" type="submit"  id="submitmsg" class="boton" value="Envía"/>
                                 <input type="text" name="mensajeInput" id="mensajeInput" value="" style="width: 770px; margin-left: 10px; ">
                             </form>
+                            <form method="post" name="message" action="borrarNoticias">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input name="submitmsg" type="submit"  id="submitmsg" class="boton" value="BorrarNoticias"/>
+                            </form>
                         @endif
                     @endif
                     

@@ -312,6 +312,7 @@ class ClubesProController extends Controller
     public function ReportarMarcadorProAdmin()
     {
 
+
         $InputIdPartido = Input::get('InputPartido');
         $marcadorLocal = Input::get('InputMarcadorLocal');
         $marcadorVisitante = Input::get('InputMarcadorVisitante');
@@ -336,14 +337,15 @@ class ClubesProController extends Controller
     public function ReportarResultadosMetodo()
     {
 
+
         $VectorUsuariosLocal = Input::get('VectorUsuarioLocal');
-
-
-        $Partido = new ProMatch;
         $UsuariosLocal = User::find($VectorUsuariosLocal);
 
+
         $League = Input::get('leagueInput');
+
         $equipoVisitante = Input::get('EquipoVisitanteInput');
+
         $equipoLocal = Input::get('EquipoLocalInput');
         $marcadorLocal = Input::get('LocalInput');
         $marcadorVisitante = Input::get('VisitorInput');
@@ -360,7 +362,6 @@ class ClubesProController extends Controller
 
         $GolesVisitante = Input::get('GolesSelectVisitante');
         $AsistenciasVisitante = Input::get('AsistenciasSelectVisitante');
-
 
         if ($Goles == null) {
 
@@ -402,9 +403,19 @@ class ClubesProController extends Controller
         /*   if($GolesLocalT!=$marcadorLocal){
           return view('Reglamento')->withErrors("No coincide los goles marcados por tus jugadores con el marcador");
           }
-         * 
-         * 
+         *
+         *
          */
+
+        $Partido = new ProMatch;
+        $Partido->team_local_id = $equipoLocal;
+        $Partido->team_visitor_id = $equipoVisitante;
+        $Partido->league_id = $League;
+        $Partido->local_score = $marcadorLocal;
+        $Partido->visitor_score = $marcadorVisitante;
+        $Partido->save();
+
+
 
 
         $calendario = LeagueProCalendar::find($CalendarioInput);
@@ -566,13 +577,20 @@ class ClubesProController extends Controller
             $equipoVis->update();
         }
 
-
         for ($i = 0; $i < sizeof($Goles); $i++) {
 
-            $UsuariosLocal[$i]->goals += $Goles[$i];
 
-            /* Borrar _id */
-            if ($Posicion[$i] == "PO") {
+            $UsuariosLocal[$i]->proMatch()->attach($Partido->id, [
+                'local' => true,
+                'position_id' => $Posicion[$i],
+                'goals'=>$Goles[$i],
+                'yellow_cards'=>$Amarillas[$i],
+                'red_cards'=>$Rojas[$i],
+                'assists'=>$Asistencias[$i]
+            ]);
+
+
+            if ($Posicion[$i] == 1) {
                 $Partido->PO_local_id = $UsuariosLocal[$i]->id;
                 $Partido->PO_local_red = $Rojas[$i];
                 $Partido->PO_local_yellow = $Amarillas[$i];
@@ -580,41 +598,46 @@ class ClubesProController extends Controller
                 $Partido->PO_local_goal = $Goles[$i];
                 if ($marcadorVisitante == 0) {
                     $Partido->PO_local_unbeaten = 1;
-                    $UsuariosLocal[$i]->gk_unbeaten += 1;
+
                 }
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->PO_local_best_player = $idMejorJugador;
 
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DFC") {
+            if ($Posicion[$i] == 2) {
                 $Partido->DFC_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DFC_local_red = $Rojas[$i];
                 $Partido->DFC_local_yellow = $Amarillas[$i];
                 $Partido->DFC_local_assistance = $Asistencias[$i];
                 $Partido->DFC_local_goal = $Goles[$i];
+                if ($marcadorVisitante == 0) {
+
+                    $UsuariosLocal[$i]->defence_unbeaten += 1;
+                }
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
 
-            if ($Posicion[$i] == "LTI") {
+            if ($Posicion[$i] == 5) {
                 $Partido->LTI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->LTI_local_red = $Rojas[$i];
                 $Partido->LTI_local_yellow = $Amarillas[$i];
                 $Partido->LTI_local_assistance = $Asistencias[$i];
                 $Partido->LTI_local_goal = $Goles[$i];
+
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->LTI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "LTD") {
+            if ($Posicion[$i] == 6) {
                 $Partido->LTD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->LTD_local_red = $Rojas[$i];
                 $Partido->LTD_local_yellow = $Amarillas[$i];
@@ -623,10 +646,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->LTD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MCD") {
+            if ($Posicion[$i] == 7) {
                 $Partido->MCD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MCD_local_red = $Rojas[$i];
                 $Partido->MCD_local_yellow = $Amarillas[$i];
@@ -635,10 +658,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MC") {
+            if ($Posicion[$i] == 9) {
                 $Partido->MC_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MC_local_red = $Rojas[$i];
                 $Partido->MC_local_yellow = $Amarillas[$i];
@@ -647,10 +670,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MI") {
+            if ($Posicion[$i] == 11) {
                 $Partido->MI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MI_local_red = $Rojas[$i];
                 $Partido->MI_local_yellow = $Amarillas[$i];
@@ -659,10 +682,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MD") {
+            if ($Posicion[$i] == 12) {
                 $Partido->MD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MD_local_red = $Rojas[$i];
                 $Partido->MD_local_yellow = $Amarillas[$i];
@@ -671,10 +694,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MCO") {
+            if ($Posicion[$i] == 15) {
                 $Partido->MCO_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MCO_local_red = $Rojas[$i];
                 $Partido->MCO_local_yellow = $Amarillas[$i];
@@ -683,10 +706,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCO_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "EI") {
+            if ($Posicion[$i] == 17) {
                 $Partido->EI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->EI_local_red = $Rojas[$i];
                 $Partido->EI_local_yellow = $Amarillas[$i];
@@ -695,10 +718,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->EI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "ED") {
+            if ($Posicion[$i] == 18) {
                 $Partido->ED_local_id = $UsuariosLocal[$i]->id;
                 $Partido->ED_local_red = $Rojas[$i];
                 $Partido->ED_local_yellow = $Amarillas[$i];
@@ -707,10 +730,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->ED_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DI") {
+            if ($Posicion[$i] == 19) {
                 $Partido->DI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DI_local_red = $Rojas[$i];
                 $Partido->DI_local_yellow = $Amarillas[$i];
@@ -719,10 +742,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DD") {
+            if ($Posicion[$i] == 20) {
                 $Partido->DD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DD_local_red = $Rojas[$i];
                 $Partido->DD_local_yellow = $Amarillas[$i];
@@ -731,10 +754,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DC") {
+            if ($Posicion[$i] == 21) {
                 $Partido->DC_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DC_local_red = $Rojas[$i];
                 $Partido->DC_local_yellow = $Amarillas[$i];
@@ -743,12 +766,12 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
 
             /* Nuevas posiciones */
-            if ($Posicion[$i] == "DFC2") {
+            if ($Posicion[$i] == 3) {
                 $Partido->DFC2_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DFC2_local_red = $Rojas[$i];
                 $Partido->DFC2_local_yellow = $Amarillas[$i];
@@ -757,10 +780,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DFC3") {
+            if ($Posicion[$i] == 4) {
                 $Partido->DFC3_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DFC3_local_red = $Rojas[$i];
                 $Partido->DFC3_local_yellow = $Amarillas[$i];
@@ -769,10 +792,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC3_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MCD2") {
+            if ($Posicion[$i] == 8) {
                 $Partido->MCD2_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MCD2_local_red = $Rojas[$i];
                 $Partido->MCD2_local_yellow = $Amarillas[$i];
@@ -781,10 +804,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCD2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MC2") {
+            if ($Posicion[$i] == 10) {
                 $Partido->MC2_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MC2_local_red = $Rojas[$i];
                 $Partido->MC2_local_yellow = $Amarillas[$i];
@@ -793,10 +816,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MC2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MVI") {
+            if ($Posicion[$i] == 13) {
                 $Partido->MVI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MVI_local_red = $Rojas[$i];
                 $Partido->MVI_local_yellow = $Amarillas[$i];
@@ -805,11 +828,11 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MVI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
 
-            if ($Posicion[$i] == "MVD") {
+            if ($Posicion[$i] == 14) {
                 $Partido->MVD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MVD_local_red = $Rojas[$i];
                 $Partido->MVD_local_yellow = $Amarillas[$i];
@@ -818,10 +841,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MVD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MCO2") {
+            if ($Posicion[$i] == 16) {
                 $Partido->MCO2_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MCO2_local_red = $Rojas[$i];
                 $Partido->MCO2_local_yellow = $Amarillas[$i];
@@ -830,15 +853,43 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCO2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
 
+
+
+            $UsuariosLocal[$i]->goals += $Goles[$i];
 
             $UsuariosLocal[$i]->yellow_card += $Amarillas[$i];
             $UsuariosLocal[$i]->red_card += $Rojas[$i];
             $UsuariosLocal[$i]->assistance += $Asistencias[$i];
             $UsuariosLocal[$i]->pro_JJ++;
+
+            if ($Posicion[$i] == 1) {
+                if ($marcadorVisitante == 0) {
+                    $UsuariosLocal[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                        'goalkeeper_unbeaten' => true]);
+                    $UsuariosLocal[$i]->gk_unbeaten += 1;
+                }
+            }
+
+            if ($idMejorJugador == $UsuariosLocal[$i]->id) {
+                $UsuariosLocal[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                    'best_player' => true]);
+
+                $UsuariosLocal[$i]->best_player += 1;
+            }
+
+            if($Posicion[$i]==2 || $Posicion[$i]==3 ||
+                $Posicion[$i]==4 || $Posicion[$i]==5 || $Posicion[$i]==6 )
+            {
+                $UsuariosLocal[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                    'defence_unbeaten' => true]);
+
+                $UsuariosLocal[$i]->defence_unbeaten += 1;
+            }
+
             if ($marcadorLocal == $marcadorVisitante) {
                 $UsuariosLocal[$i]->pro_JE++;
                 $UsuariosLocal[$i]->pro_points++;
@@ -857,6 +908,8 @@ class ClubesProController extends Controller
         }
 
 
+
+//VISITANTE
         $VectorUsuariosVisitante = Input::get('VectorUsuarioVisitante');
         $UsuariosVisitante = User::find($VectorUsuariosVisitante);
         $GolesVisitante = Input::get('GolesSelectVisitante');
@@ -864,8 +917,19 @@ class ClubesProController extends Controller
         $AmarillasVisitante = Input::get('AmarillasSelectVisitante');
         $RojasVisitante = Input::get('RojasSelectVisitante');
 
+
+
         for ($i = 0; $i < sizeof($GolesVisitante); $i++) {
-            if ($PosicionVisitante[$i] == "PO") {
+            $UsuariosVisitante[$i]->proMatch()->attach($Partido->id, [
+                'local' => true,
+                'position_id' => $PosicionVisitante[$i],
+                'goals'=>$GolesVisitante[$i],
+                'yellow_cards'=>$AmarillasVisitante[$i],
+                'red_cards'=>$RojasVisitante[$i],
+                'assists'=>$AsistenciasVisitante[$i]
+            ]);
+
+            if ($PosicionVisitante[$i] == 1) {
                 $Partido->PO_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->PO_visitor_red = $RojasVisitante[$i];
                 $Partido->PO_visitor_yellow = $AmarillasVisitante[$i];
@@ -873,16 +937,16 @@ class ClubesProController extends Controller
                 $Partido->PO_visitor_goal = $GolesVisitante[$i];
                 if ($marcadorLocal == 0) {
                     $Partido->PO_visitor_unbeaten = 1;
-                    $UsuariosVisitante[$i]->gk_unbeaten += 1;
+
                 }
 
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->PO_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
 
-            if ($PosicionVisitante[$i] == "DFC") {
+            if ($PosicionVisitante[$i] == 2) {
                 $Partido->DFC_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DFC_visitor_red = $RojasVisitante[$i];
                 $Partido->DFC_visitor_yellow = $AmarillasVisitante[$i];
@@ -891,11 +955,11 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DFC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
 
-            if ($PosicionVisitante[$i] == "LTI") {
+            if ($PosicionVisitante[$i] == 5) {
                 $Partido->LTI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->LTI_visitor_red = $RojasVisitante[$i];
                 $Partido->LTI_visitor_yellow = $AmarillasVisitante[$i];
@@ -904,10 +968,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->LTI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "LTD") {
+            if ($PosicionVisitante[$i] == 6) {
                 $Partido->LTD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->LTD_visitor_red = $RojasVisitante[$i];
                 $Partido->LTD_visitor_yellow = $AmarillasVisitante[$i];
@@ -916,10 +980,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->LTD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MCD") {
+            if ($PosicionVisitante[$i] == 7) {
 
                 $Partido->MCD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MCD_visitor_red = $RojasVisitante[$i];
@@ -929,10 +993,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MC") {
+            if ($PosicionVisitante[$i] == 9) {
                 $Partido->MC_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MC_visitor_red = $RojasVisitante[$i];
                 $Partido->MC_visitor_yellow = $AmarillasVisitante[$i];
@@ -941,10 +1005,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MI") {
+            if ($PosicionVisitante[$i] == 11) {
                 $Partido->MI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MI_visitor_red = $RojasVisitante[$i];
                 $Partido->MI_visitor_yellow = $AmarillasVisitante[$i];
@@ -953,10 +1017,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MD") {
+            if ($PosicionVisitante[$i] == 12) {
                 $Partido->MD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MD_visitor_red = $RojasVisitante[$i];
                 $Partido->MD_visitor_yellow = $AmarillasVisitante[$i];
@@ -965,10 +1029,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MCO") {
+            if ($PosicionVisitante[$i] == 15) {
                 $Partido->MCO_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MCO_visitor_red = $RojasVisitante[$i];
                 $Partido->MCO_visitor_yellow = $AmarillasVisitante[$i];
@@ -977,10 +1041,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCO_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "EI") {
+            if ($PosicionVisitante[$i] == 17) {
                 $Partido->EI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->EI_visitor_red = $RojasVisitante[$i];
                 $Partido->EI_visitor_yellow = $AmarillasVisitante[$i];
@@ -989,10 +1053,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->EI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "ED") {
+            if ($PosicionVisitante[$i] == 18) {
 
                 $Partido->ED_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->ED_visitor_red = $RojasVisitante[$i];
@@ -1002,10 +1066,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->ED_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DI") {
+            if ($PosicionVisitante[$i] == 19) {
                 $Partido->DI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DI_visitor_red = $RojasVisitante[$i];
                 $Partido->DI_visitor_yellow = $AmarillasVisitante[$i];
@@ -1014,10 +1078,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DD") {
+            if ($PosicionVisitante[$i] == 20) {
                 $Partido->DD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DD_visitor_red = $RojasVisitante[$i];
                 $Partido->DD_visitor_yellow = $AmarillasVisitante[$i];
@@ -1026,10 +1090,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DC") {
+            if ($PosicionVisitante[$i] == 21) {
                 $Partido->DC_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DC_visitor_red = $RojasVisitante[$i];
                 $Partido->DC_visitor_yellow = $AmarillasVisitante[$i];
@@ -1037,13 +1101,13 @@ class ClubesProController extends Controller
                 $Partido->DC_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->DC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
 
             /* Nuevas posiciones visitante */
 
-            if ($PosicionVisitante[$i] == "DFC2") {
+            if ($PosicionVisitante[$i] == 3) {
                 $Partido->DFC2_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DFC2_visitor_red = $RojasVisitante[$i];
                 $Partido->DFC2_visitor_yellow = $AmarillasVisitante[$i];
@@ -1051,10 +1115,10 @@ class ClubesProController extends Controller
                 $Partido->DFC2_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->DFC2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DFC3") {
+            if ($PosicionVisitante[$i] == 4) {
                 $Partido->DFC3_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DFC3_visitor_red = $RojasVisitante[$i];
                 $Partido->DFC3_visitor_yellow = $AmarillasVisitante[$i];
@@ -1062,10 +1126,10 @@ class ClubesProController extends Controller
                 $Partido->DFC3_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->DFC3_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MCD2") {
+            if ($PosicionVisitante[$i] == 8) {
                 $Partido->MCD2_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MCD2_visitor_red = $RojasVisitante[$i];
                 $Partido->MCD2_visitor_yellow = $AmarillasVisitante[$i];
@@ -1073,10 +1137,10 @@ class ClubesProController extends Controller
                 $Partido->MCD2_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->MCD2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MC2") {
+            if ($PosicionVisitante[$i] == 10) {
                 $Partido->MC2_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MC2_visitor_red = $RojasVisitante[$i];
                 $Partido->MC2_visitor_yellow = $AmarillasVisitante[$i];
@@ -1084,10 +1148,10 @@ class ClubesProController extends Controller
                 $Partido->MC2_visitor_goal = $GolesVisitante[$i];
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->MC2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MVI") {
+            if ($PosicionVisitante[$i] == 13) {
                 $Partido->MVI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MVI_visitor_red = $RojasVisitante[$i];
                 $Partido->MVI_visitor_yellow = $AmarillasVisitante[$i];
@@ -1096,10 +1160,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MVI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MVD") {
+            if ($PosicionVisitante[$i] == 14) {
                 $Partido->MVD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MVD_visitor_red = $RojasVisitante[$i];
                 $Partido->MVD_visitor_yellow = $AmarillasVisitante[$i];
@@ -1108,10 +1172,10 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MVD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MCO2") {
+            if ($PosicionVisitante[$i] == 16) {
                 $Partido->MCO2_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MCO2_visitor_red = $RojasVisitante[$i];
                 $Partido->MCO2_visitor_yellow = $AmarillasVisitante[$i];
@@ -1120,16 +1184,40 @@ class ClubesProController extends Controller
                 if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCO2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-
 
             $UsuariosVisitante[$i]->goals += $GolesVisitante[$i];
             $UsuariosVisitante[$i]->yellow_card += $AmarillasVisitante[$i];
             $UsuariosVisitante[$i]->red_card += $RojasVisitante[$i];
             $UsuariosVisitante[$i]->assistance += $AsistenciasVisitante[$i];
             $UsuariosVisitante[$i]->pro_JJ++;
+
+            if ($PosicionVisitante[$i] == 1) {
+                if ($marcadorLocal == 0) {
+                    $UsuariosVisitante[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                        'goalkeeper_unbeaten' => true]);
+                    $UsuariosVisitante[$i]->gk_unbeaten += 1;
+                }
+            }
+
+            if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                $UsuariosVisitante[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                    'best_player' => true]);
+
+                $UsuariosVisitante[$i]->best_player += 1;
+            }
+
+            if($PosicionVisitante[$i]==2 || $PosicionVisitante[$i]==3 ||
+                $PosicionVisitante[$i]==4 || $PosicionVisitante[$i]==5 || $PosicionVisitante[$i]==6 )
+            {
+                $UsuariosVisitante[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                    'defence_unbeaten' => true]);
+
+                $UsuariosVisitante[$i]->defence_unbeaten += 1;
+            }
+
             if ($marcadorLocal == $marcadorVisitante) {
                 $UsuariosVisitante[$i]->pro_JE++;
                 $UsuariosVisitante[$i]->pro_points++;
@@ -1140,33 +1228,29 @@ class ClubesProController extends Controller
             }
 
             if ($marcadorLocal > $marcadorVisitante) {
-                $UsuariosVisitante[$i]->pro_JP++;                
+                $UsuariosVisitante[$i]->pro_JP++;
             }
 
 
             $UsuariosVisitante[$i]->update();
         }
 
-
-        $Partido->team_local_id = $equipoLocal;
-        $Partido->team_visitor_id = $equipoVisitante;
-        $Partido->league_id = $League;
-        $Partido->local_score = $marcadorLocal;
-        $Partido->visitor_score = $marcadorVisitante;
-
-        $Partido->save();
         $calendario->match_id = $Partido->id;
         $calendario->update();
+        $Partido->update();
+
 
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
 
         return view('clubes-pro.clubes-pro', ['clubes' => $clubes, 'ligas' => $ligas, 'copas' => $copas]);
-    }
+
+}
 
     public function ReportarResultadosMetodo2()
     {
+
 
         $VectorUsuariosLocal = Input::get('VectorUsuarioLocal');
 
@@ -1241,8 +1325,16 @@ class ClubesProController extends Controller
 
             $UsuariosLocal[$i]->goals += $Goles[$i];
 
-            /* Borrar _id */
-            if ($Posicion[$i] == "PO") {
+            $UsuariosLocal[$i]->proMatch()->attach($Partido->id, [
+                'local' => true,
+                'position_id' => $Posicion[$i],
+                'goals'=>$Goles[$i],
+                'yellow_cards'=>$Amarillas[$i],
+                'red_cards'=>$Rojas[$i],
+                'assists'=>$Asistencias[$i]
+            ]);
+
+            if ($Posicion[$i] == 1) {
                 $Partido->PO_local_id = $UsuariosLocal[$i]->id;
                 $Partido->PO_local_red = $Rojas[$i];
                 $Partido->PO_local_yellow = $Amarillas[$i];
@@ -1250,40 +1342,46 @@ class ClubesProController extends Controller
                 $Partido->PO_local_goal = $Goles[$i];
                 if ($marcadorVisitante == 0) {
                     $Partido->PO_local_unbeaten = 1;
-                    $UsuariosLocal[$i]->gk_unbeaten += 1;
+
                 }
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->PO_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
+
                 }
             }
-            if ($Posicion[$i] == "DFC") {
+            if ($Posicion[$i] == 2) {
                 $Partido->DFC_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DFC_local_red = $Rojas[$i];
                 $Partido->DFC_local_yellow = $Amarillas[$i];
                 $Partido->DFC_local_assistance = $Asistencias[$i];
                 $Partido->DFC_local_goal = $Goles[$i];
+                if ($marcadorVisitante == 0) {
+
+                    $UsuariosLocal[$i]->defence_unbeaten += 1;
+                }
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
 
-            if ($Posicion[$i] == "LTI") {
+            if ($Posicion[$i] == 5) {
                 $Partido->LTI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->LTI_local_red = $Rojas[$i];
                 $Partido->LTI_local_yellow = $Amarillas[$i];
                 $Partido->LTI_local_assistance = $Asistencias[$i];
                 $Partido->LTI_local_goal = $Goles[$i];
+
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->LTI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "LTD") {
+            if ($Posicion[$i] == 6) {
                 $Partido->LTD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->LTD_local_red = $Rojas[$i];
                 $Partido->LTD_local_yellow = $Amarillas[$i];
@@ -1292,10 +1390,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->LTD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MCD") {
+            if ($Posicion[$i] == 7) {
                 $Partido->MCD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MCD_local_red = $Rojas[$i];
                 $Partido->MCD_local_yellow = $Amarillas[$i];
@@ -1304,10 +1402,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MC") {
+            if ($Posicion[$i] == 9) {
                 $Partido->MC_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MC_local_red = $Rojas[$i];
                 $Partido->MC_local_yellow = $Amarillas[$i];
@@ -1316,10 +1414,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MI") {
+            if ($Posicion[$i] == 11) {
                 $Partido->MI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MI_local_red = $Rojas[$i];
                 $Partido->MI_local_yellow = $Amarillas[$i];
@@ -1328,10 +1426,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MD") {
+            if ($Posicion[$i] == 12) {
                 $Partido->MD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MD_local_red = $Rojas[$i];
                 $Partido->MD_local_yellow = $Amarillas[$i];
@@ -1340,10 +1438,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MCO") {
+            if ($Posicion[$i] == 15) {
                 $Partido->MCO_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MCO_local_red = $Rojas[$i];
                 $Partido->MCO_local_yellow = $Amarillas[$i];
@@ -1352,10 +1450,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCO_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "EI") {
+            if ($Posicion[$i] == 17) {
                 $Partido->EI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->EI_local_red = $Rojas[$i];
                 $Partido->EI_local_yellow = $Amarillas[$i];
@@ -1364,10 +1462,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->EI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "ED") {
+            if ($Posicion[$i] == 18) {
                 $Partido->ED_local_id = $UsuariosLocal[$i]->id;
                 $Partido->ED_local_red = $Rojas[$i];
                 $Partido->ED_local_yellow = $Amarillas[$i];
@@ -1376,10 +1474,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->ED_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DI") {
+            if ($Posicion[$i] == 19) {
                 $Partido->DI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DI_local_red = $Rojas[$i];
                 $Partido->DI_local_yellow = $Amarillas[$i];
@@ -1388,10 +1486,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DD") {
+            if ($Posicion[$i] == 20) {
                 $Partido->DD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DD_local_red = $Rojas[$i];
                 $Partido->DD_local_yellow = $Amarillas[$i];
@@ -1400,10 +1498,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DC") {
+            if ($Posicion[$i] == 21) {
                 $Partido->DC_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DC_local_red = $Rojas[$i];
                 $Partido->DC_local_yellow = $Amarillas[$i];
@@ -1412,14 +1510,12 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DC_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
 
-
-            /* Nuevas posiciones visitante */
-
-            if ($Posicion[$i] == "DFC2") {
+            /* Nuevas posiciones */
+            if ($Posicion[$i] == 3) {
                 $Partido->DFC2_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DFC2_local_red = $Rojas[$i];
                 $Partido->DFC2_local_yellow = $Amarillas[$i];
@@ -1428,10 +1524,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "DFC3") {
+            if ($Posicion[$i] == 4) {
                 $Partido->DFC3_local_id = $UsuariosLocal[$i]->id;
                 $Partido->DFC3_local_red = $Rojas[$i];
                 $Partido->DFC3_local_yellow = $Amarillas[$i];
@@ -1440,10 +1536,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->DFC3_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MCD2") {
+            if ($Posicion[$i] == 8) {
                 $Partido->MCD2_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MCD2_local_red = $Rojas[$i];
                 $Partido->MCD2_local_yellow = $Amarillas[$i];
@@ -1452,10 +1548,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCD2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MC2") {
+            if ($Posicion[$i] == 10) {
                 $Partido->MC2_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MC2_local_red = $Rojas[$i];
                 $Partido->MC2_local_yellow = $Amarillas[$i];
@@ -1464,10 +1560,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MC2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MVI") {
+            if ($Posicion[$i] == 13) {
                 $Partido->MVI_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MVI_local_red = $Rojas[$i];
                 $Partido->MVI_local_yellow = $Amarillas[$i];
@@ -1476,10 +1572,11 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MVI_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MVD") {
+
+            if ($Posicion[$i] == 14) {
                 $Partido->MVD_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MVD_local_red = $Rojas[$i];
                 $Partido->MVD_local_yellow = $Amarillas[$i];
@@ -1488,10 +1585,10 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MVD_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
-            if ($Posicion[$i] == "MCO2") {
+            if ($Posicion[$i] == 16) {
                 $Partido->MCO2_local_id = $UsuariosLocal[$i]->id;
                 $Partido->MCO2_local_red = $Rojas[$i];
                 $Partido->MCO2_local_yellow = $Amarillas[$i];
@@ -1500,10 +1597,34 @@ class ClubesProController extends Controller
                 if ($idMejorJugador == $UsuariosLocal[$i]->id) {
 
                     $Partido->MCO2_local_best_player = $idMejorJugador;
-                    $UsuariosLocal[$i]->best_player += 1;
+
                 }
             }
 
+
+            if ($Posicion[$i] == 1) {
+                if ($marcadorVisitante == 0) {
+                    $UsuariosLocal[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                        'goalkeeper_unbeaten' => true]);
+                    $UsuariosLocal[$i]->gk_unbeaten += 1;
+                }
+            }
+
+            if ($idMejorJugador == $UsuariosLocal[$i]->id) {
+                $UsuariosLocal[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                    'best_player' => true]);
+
+                $UsuariosLocal[$i]->best_player += 1;
+            }
+
+            if($Posicion[$i]==2 || $Posicion[$i]==3 ||
+                $Posicion[$i]==4 || $Posicion[$i]==5 || $Posicion[$i]==6 )
+            {
+                $UsuariosLocal[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                    'defence_unbeaten' => true]);
+
+                $UsuariosLocal[$i]->defence_unbeaten += 1;
+            }
 
             $UsuariosLocal[$i]->yellow_card += $Amarillas[$i];
             $UsuariosLocal[$i]->red_card += $Rojas[$i];
@@ -1544,8 +1665,16 @@ class ClubesProController extends Controller
 
         for ($i = 0; $i < sizeof($GolesVisitante); $i++) {
 
+            $UsuariosVisitante[$i]->proMatch()->attach($Partido->id, [
+                'local' => true,
+                'position_id' => $PosicionVisitante[$i],
+                'goals'=>$GolesVisitante[$i],
+                'yellow_cards'=>$AmarillasVisitante[$i],
+                'red_cards'=>$RojasVisitante[$i],
+                'assists'=>$AsistenciasVisitante[$i]
+            ]);
 
-            if ($PosicionVisitante[$i] == "PO") {
+            if ($PosicionVisitante[$i] == 1) {
                 $Partido->PO_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->PO_visitor_red = $RojasVisitante[$i];
                 $Partido->PO_visitor_yellow = $AmarillasVisitante[$i];
@@ -1553,262 +1682,281 @@ class ClubesProController extends Controller
                 $Partido->PO_visitor_goal = $GolesVisitante[$i];
                 if ($marcadorLocal == 0) {
                     $Partido->PO_visitor_unbeaten = 1;
-                    $UsuariosVisitante[$i]->gk_unbeaten += 1;
-                }
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
 
+                }
+
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->PO_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DFC") {
+
+            if ($PosicionVisitante[$i] == 2) {
                 $Partido->DFC_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DFC_visitor_red = $RojasVisitante[$i];
                 $Partido->DFC_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->DFC_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DFC_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DFC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
 
-            if ($PosicionVisitante[$i] == "LTI") {
+            if ($PosicionVisitante[$i] == 5) {
                 $Partido->LTI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->LTI_visitor_red = $RojasVisitante[$i];
                 $Partido->LTI_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->LTI_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->LTI_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->LTI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "LTD") {
+            if ($PosicionVisitante[$i] == 6) {
                 $Partido->LTD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->LTD_visitor_red = $RojasVisitante[$i];
                 $Partido->LTD_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->LTD_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->LTD_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->LTD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MCD") {
+            if ($PosicionVisitante[$i] == 7) {
 
                 $Partido->MCD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MCD_visitor_red = $RojasVisitante[$i];
                 $Partido->MCD_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MCD_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MCD_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MC") {
+            if ($PosicionVisitante[$i] == 9) {
                 $Partido->MC_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MC_visitor_red = $RojasVisitante[$i];
                 $Partido->MC_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MC_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MC_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MI") {
+            if ($PosicionVisitante[$i] == 11) {
                 $Partido->MI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MI_visitor_red = $RojasVisitante[$i];
                 $Partido->MI_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MI_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MI_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MD") {
+            if ($PosicionVisitante[$i] == 12) {
                 $Partido->MD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MD_visitor_red = $RojasVisitante[$i];
                 $Partido->MD_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MD_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MD_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MCO") {
+            if ($PosicionVisitante[$i] == 15) {
                 $Partido->MCO_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MCO_visitor_red = $RojasVisitante[$i];
                 $Partido->MCO_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MCO_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MCO_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCO_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "EI") {
+            if ($PosicionVisitante[$i] == 17) {
                 $Partido->EI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->EI_visitor_red = $RojasVisitante[$i];
                 $Partido->EI_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->EI_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->EI_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->EI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "ED") {
+            if ($PosicionVisitante[$i] == 18) {
 
                 $Partido->ED_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->ED_visitor_red = $RojasVisitante[$i];
                 $Partido->ED_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->ED_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->ED_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->ED_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DI") {
+            if ($PosicionVisitante[$i] == 19) {
                 $Partido->DI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DI_visitor_red = $RojasVisitante[$i];
                 $Partido->DI_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->DI_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DI_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DD") {
+            if ($PosicionVisitante[$i] == 20) {
                 $Partido->DD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DD_visitor_red = $RojasVisitante[$i];
                 $Partido->DD_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->DD_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DD_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->DD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DC") {
+            if ($PosicionVisitante[$i] == 21) {
                 $Partido->DC_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DC_visitor_red = $RojasVisitante[$i];
                 $Partido->DC_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->DC_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DC_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
-
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->DC_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
 
-
             /* Nuevas posiciones visitante */
 
-            if ($PosicionVisitante[$i] == "DFC2") {
+            if ($PosicionVisitante[$i] == 3) {
                 $Partido->DFC2_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DFC2_visitor_red = $RojasVisitante[$i];
                 $Partido->DFC2_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->DFC2_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DFC2_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
-
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->DFC2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "DFC3") {
+            if ($PosicionVisitante[$i] == 4) {
                 $Partido->DFC3_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->DFC3_visitor_red = $RojasVisitante[$i];
                 $Partido->DFC3_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->DFC3_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->DFC3_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
-
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->DFC3_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MCD2") {
+            if ($PosicionVisitante[$i] == 8) {
                 $Partido->MCD2_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MCD2_visitor_red = $RojasVisitante[$i];
                 $Partido->MCD2_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MCD2_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MCD2_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
-
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->MCD2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MC2") {
+            if ($PosicionVisitante[$i] == 10) {
                 $Partido->MC2_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MC2_visitor_red = $RojasVisitante[$i];
                 $Partido->MC2_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MC2_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MC2_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
-
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
                     $Partido->MC2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MVI") {
+            if ($PosicionVisitante[$i] == 13) {
                 $Partido->MVI_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MVI_visitor_red = $RojasVisitante[$i];
                 $Partido->MVI_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MVI_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MVI_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MVI_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MVD") {
+            if ($PosicionVisitante[$i] == 14) {
                 $Partido->MVD_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MVD_visitor_red = $RojasVisitante[$i];
                 $Partido->MVD_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MVD_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MVD_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MVD_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
-            if ($PosicionVisitante[$i] == "MCO2") {
+            if ($PosicionVisitante[$i] == 16) {
                 $Partido->MCO2_visitor_id = $UsuariosVisitante[$i]->id;
                 $Partido->MCO2_visitor_red = $RojasVisitante[$i];
                 $Partido->MCO2_visitor_yellow = $AmarillasVisitante[$i];
                 $Partido->MCO2_visitor_assistance = $AsistenciasVisitante[$i];
                 $Partido->MCO2_visitor_goal = $GolesVisitante[$i];
-                if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                if ($UsuariosVisitante[$i]->id == $idMejorJugador) {
 
                     $Partido->MCO2_visitor_best_player = $idMejorJugador;
-                    $UsuariosVisitante[$i]->best_player += 1;
+
                 }
             }
 
+
+            if ($PosicionVisitante[$i] == 1) {
+                if ($marcadorLocal == 0) {
+                    $UsuariosVisitante[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                        'goalkeeper_unbeaten' => true]);
+                    $UsuariosVisitante[$i]->gk_unbeaten += 1;
+                }
+            }
+
+            if ($idMejorJugador == $UsuariosVisitante[$i]->id) {
+                $UsuariosVisitante[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                    'best_player' => true]);
+
+                $UsuariosVisitante[$i]->best_player += 1;
+            }
+
+            if($PosicionVisitante[$i]==2 || $PosicionVisitante[$i]==3 ||
+                $PosicionVisitante[$i]==4 || $PosicionVisitante[$i]==5 || $PosicionVisitante[$i]==6 )
+            {
+                $UsuariosVisitante[$i]->proMatch()->updateExistingPivot($Partido->id, [
+                    'defence_unbeaten' => true]);
+
+                $UsuariosVisitante[$i]->defence_unbeaten += 1;
+            }
 
             $UsuariosVisitante[$i]->goals += $GolesVisitante[$i];
             $UsuariosVisitante[$i]->yellow_card += $AmarillasVisitante[$i];
@@ -2450,6 +2598,16 @@ class ClubesProController extends Controller
      
         $visitor->update();
         $local->update();
+    }
+
+    public function borrarNoticias()
+    {
+        $noticias=News::all();
+        foreach($noticias as $noticia){
+            $noticia->delete();
+        }
+
+        return view('Reglamento')->withErrors("Noticias borradas correctamente");
     }
 
 }

@@ -177,7 +177,8 @@
                             </td>
                             <td>
                                 @if($user->pivot->status == 'pending'
-                                    && ($proTeam->getDT()->id == Auth::user()->id))
+                                    && ($proTeam->getDT()->id == Auth::user()->id)
+                                    || $user->pivot->status == 'pending' && Auth::user()->user_name=="Administrador22")
                                     {{Form::open([
                                         'url' => "/clubes-pro/$proTeam->id/autorizar/$user->id" ,
                                         'method' => 'put'
@@ -198,7 +199,7 @@
                                     {{Form::close()}}
                    
                                     @else
-                                    @if(Auth::check() && $proTeam->getDT()->id==Auth::user()->id)
+                                    @if(Auth::check() && $proTeam->getDT()->id==Auth::user()->id || Auth::check()&&(Auth::user()->user_name=="Administrador22"))
                                         {{Form::open([
                                         'url' => "/clubes-pro/$proTeam->id/denegar/$user->id" ,
                                         'method' => 'put'
@@ -309,7 +310,7 @@
     </div>
     
     
-    @if(Auth::check() && $proTeam->getDT()->id==Auth::user()->id && !$proTeam->getDT2())
+    @if(Auth::check() && $proTeam->getDT()->id==Auth::user()->id && !$proTeam->getDT2() || Auth::check() && Auth::user()->user_name=="Administrador22" && !$proTeam->getDT2())
            <div style="width: 700px; height: 250px;border-radius: 10px; position:relative;top:100px;left:200px; background-color: whitesmoke;">
 
             <div class="container">

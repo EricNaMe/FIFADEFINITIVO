@@ -107,6 +107,7 @@ Route::put('InvitarUsuario/{proTeam}/{user}','ClubesProController@InvitarUsuario
 Route::get('PerfilNoAutenticadoClubes/{id}','PerfilController@EncontrarJugadorClubes');
 Route::post('EditarPerfil','PerfilController@EditarPerfilUsuario');
 Route::post('CrearNoticia','ClubesProController@crearNoticia');
+Route::post('borrarNoticias','ClubesProController@borrarNoticias');
 
 Route::group(['prefix' => 'clubes-pro'], function () {
     Route::get('','ClubesProController@index');
@@ -159,7 +160,7 @@ Route::post('/ReportarResultadosPro2','ClubesProController@ReportarResultadosPro
 Route::post('/ReportarResultados','ClubesProController@ReportarResultadosMetodo');
 Route::post('/ReportarResultados2','ClubesProController@ReportarResultadosMetodo2');
 
-
+Route::post('dateJornada','ComentarioController@dateJornada');
 
 Route::post('bloquear-altas','ClubesProController@putBloquearAltas');
 Route::post('desbloquear-altas','ClubesProController@putDesbloquearAltas');

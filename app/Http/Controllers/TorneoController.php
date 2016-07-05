@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\EditarJornada;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -334,7 +335,7 @@ class TorneoController extends Controller {
     public function EncontrarCalendario(ProLeague $proLeague) {
         $ligas = ProLeague::all();
         $copas = ProCup::all();
-
+        $jornada=EditarJornada::find(1);
         $LigaObj=ProLeague::find($proLeague->id);
         $proCalendar = $proLeague->proCalendar;
 
@@ -350,6 +351,7 @@ class TorneoController extends Controller {
                     'ligas' => $ligas,
                     'copas' => $copas,
                     'DTAuth' => $DTAuth,
+                    'jornada'=>$jornada,
                     'DTAuth2'=> $DTAuth2]);
             } else {
 
@@ -366,6 +368,7 @@ class TorneoController extends Controller {
                         'ligas' => $ligas,
                         'copas' => $copas,
                         'DTAuth' => $DTAuth,
+                        'jornada'=>$jornada,
                         'DTAuth2'=> $DTAuth2]);
                 }
                 else{
@@ -376,6 +379,7 @@ class TorneoController extends Controller {
                         'ligas' => $ligas,
                         'copas' => $copas,
                         'DTAuth' => $DTAuth,
+                        'jornada'=>$jornada,
                         'DTAuth2'=> $DTAuth2]);
                 }
             }
@@ -387,6 +391,7 @@ class TorneoController extends Controller {
                 'ligas' => $ligas,
                 'copas' => $copas,
                 'DTAuth' => $DTAuth,
+                'jornada'=>$jornada,
                 'DTAuth2'=> $DTAuth2]);
         }
     }
@@ -517,7 +522,7 @@ class TorneoController extends Controller {
                     if ($LigaFiltro->id == $League->id)
                         foreach ($usuariosLiga4 as $usuariosLig) {
                             $usuariosLiga5[] = $usuariosLig->id;
-                            $proTeam->proLeague()->attach($LeagueInput, ['status' => 'acepted',
+                            $usuariosLig->proLeagues()->attach($LeagueInput, ['status' => 'acepted',
                                 'JJ'=>$usuariosLig->JJ,
                                 'JG'=>$usuariosLig->JG,
                                 'JE'=>$usuariosLig->JE,
@@ -531,22 +536,7 @@ class TorneoController extends Controller {
             }
         }
 
-        $USERSLeague = User::find($usuariosLiga5);
-        $OrdenadoMejoresJugadores = $USERSLeague->sortByDesc('best_player')->take(10);
-
-        $clubes = Proteam::all();
-        $ligas = ProLeague::all();
-        $copas = ProCup::all();
-        $UsuarioVal = 5;
-
-        return view('EstadisticasLigaPro', [
-            'usuariosLiga' => $usuariosLiga,
-            'ligas' => $ligas,
-            'League' => $League,
-            'clubes' => $clubes,
-            'UsuarioVal' => $UsuarioVal,
-            'copas' => $copas,
-            'OrdenadoMejoresJugadores' => $OrdenadoMejoresJugadores]);
+       return "Hecho";
     }
 
 
