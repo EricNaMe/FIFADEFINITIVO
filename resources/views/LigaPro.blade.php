@@ -68,7 +68,7 @@
             <ul id="MenuPerfil" style="width: 580px;">
                 <li id="ListaPerfil"><a href="#">Tabla general</a></li>
                 <li id="ListaPerfil"><a class="active" href="/ProCalendarioEnc/{{$league->id}}">Calendario</a></li>
-                <li id="ListaPerfil"><a class="active" href="/GoleadoresLigaPro/{{$league->id}}">Estadísticas</a></li>
+                <li id="ListaPerfil"><a class="active" href="/AsistentesLigaPro/{{$league->id}}">Estadísticas</a></li>
                 <li id="ListaPerfil"><a href="/SalaTrofeosCP">Campeones</a></li>
 
             </ul>

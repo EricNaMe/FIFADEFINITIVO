@@ -90,7 +90,7 @@
 
     <div>
         <ul id="MenuEstadisticas" style="width: 120px;">
-            <li id="ListaPerfil"><a href="/GoleadoresLigaPro/{{$League->id}}">Top Goleadores</a></li>
+            <li id="ListaPerfil"><a href="">Top Goleadores</a></li>
             <li id="ListaPerfil"><a class="active" href="/AsistentesLigaPro/{{$League->id}}">Top Asistentes</a></li>
             <li id="ListaPerfil"><a class="active" href="/PorterosLigaPro/{{$League->id}}">Top Porteros</a></li>
             <li id="ListaPerfil"><a href="/MejoresJugadoresLigaPro/{{$League->id}}">Top mejor jugador</a></li>
