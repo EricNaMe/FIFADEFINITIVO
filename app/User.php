@@ -32,6 +32,11 @@ class User extends Model implements AuthenticatableContract,
             'user_name' => 1,
         ],
     ];
+   
+   public static $proLeaguePivotData = [
+        'JJ','JG','JE','JP','GF','GC','points','assistance',
+       'yellow_card','red_card','goals','best_player','gk_unbeaten','defence_unbeaten'
+    ];
     /**
      * The attributes that are mass assignable.
      *
@@ -116,6 +121,12 @@ class User extends Model implements AuthenticatableContract,
      public function getAvatarBody(){
         return 'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($this->gamertag).'/avatar-body.png';
         
+    }
+    
+      public function proLeagueEstatistics()
+    {
+        return $this->belongsToMany('App\ProLeague')
+            ->withPivot(self::$proLeaguePivotData);
     }
     
     public function isDT(){
