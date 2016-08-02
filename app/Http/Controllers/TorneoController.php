@@ -522,7 +522,7 @@ class TorneoController extends Controller {
 
 
 
-        $League = ProLeague::find(35);
+        $League = ProLeague::find(32);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
