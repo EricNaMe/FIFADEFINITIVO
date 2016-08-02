@@ -186,15 +186,34 @@ class TorneoController extends Controller {
 
         foreach ($ligas as $liga) {
 
-            foreach ($liga->proTeams as $Ligaa) {
+            foreach ($liga->proTeams as $equipos) {
 
-                if ($proTeam->id == $Ligaa->id) {
+                if ($proTeam->id == $equipos->id) {
                     return view('ModificarLigaPro', ['ligas' => $ligas, 'clubes' => $clubes, 'copas' => $copas])->withErrors("El equipo ya está en otra liga");
                 }
             }
         }
 
+            foreach($proTeam->users as $usuarios) {
+
+
+
+                $usuarios->proLeagues()->attach($league->id, ['status' => 'acepted',
+                        'JJ' => 0,
+                        'JG' => 0,
+                        'JE' => 0,
+                        'JP' => 0,
+                        'GF' => 0,
+                        'GC' => 0
+                    ]);
+                }
+
+
+
         $proTeam->proLeague()->attach($LeagueInput, ['status' => 'acepted']);
+
+
+
 
         if ($proTeam->save()) {
             return view('AgregarClubProLiga', ['proTeam' => $proTeam, 'copas' => $copas, 'ligas' => $ligas, 'league' => $league, 'clubes' => $clubes]);
@@ -497,13 +516,13 @@ class TorneoController extends Controller {
         //
     }
 
-    public function  PasarDatosATablaUser_League()
+    public function  PasarDatosATablaUserLeague()
     {
-        $usuarios=User::all();
 
 
 
-        $League = ProLeague::find($id);
+
+        $League = ProLeague::find(36);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
@@ -522,13 +541,13 @@ class TorneoController extends Controller {
                     if ($LigaFiltro->id == $League->id)
                         foreach ($usuariosLiga4 as $usuariosLig) {
                             $usuariosLiga5[] = $usuariosLig->id;
-                            $usuariosLig->proLeagues()->attach($LeagueInput, ['status' => 'acepted',
-                                'JJ'=>$usuariosLig->JJ,
-                                'JG'=>$usuariosLig->JG,
-                                'JE'=>$usuariosLig->JE,
-                                'JP'=>$usuariosLig->JP,
-                                'GF'=>$usuariosLig->GF,
-                                'GC'=>$usuariosLig->GC
+                            $usuariosLig->proLeagues()->attach($League->id, ['status' => 'accepted',
+                                'JJ'=>0,
+                                'JG'=>0,
+                                'JE'=>0,
+                                'JP'=>0,
+                                'GF'=>0,
+                                'GC'=>0
                             ]);
                         }
                 }

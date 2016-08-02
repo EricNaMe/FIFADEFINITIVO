@@ -210,6 +210,7 @@ Route::post('EliminarClubLiga','PlayerController@BorrarClubLiga');
 Route::post('EliminarClubCopa','PlayerController@BorrarClubCopa');
 
 Route::post('CrearCalendario','TorneoController@crearCalendario');
+Route::get('PasarUsuariosLiga','TorneoController@PasarDatosATablaUserLeague');
 Route::get('EncCalendario/{League}','TorneoController@buscarCalendario');
 
 Route::post('videoSave1','ComentarioController@videoYoutube1');
