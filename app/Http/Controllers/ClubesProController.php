@@ -593,11 +593,13 @@ class ClubesProController extends Controller
             
             
             $EstadisticasUsuarioLoc = $UsuariosLocal[$i]->proLeagueEstatistics;
-          
+            
             $UsuarioAssistanceLocal = $EstadisticasUsuarioLoc[0]->pivot->assistance;
+             
             $UsuarioYellowCardLocal = $EstadisticasUsuarioLoc[0]->pivot->yellow_card;
             $UsuarioRedCardLocal = $EstadisticasUsuarioLoc[0]->pivot->red_card;
             $UsuarioGoalsLocal = $EstadisticasUsuarioLoc[0]->pivot->goals;
+           
             $UsuarioBestPlayerLocal = $EstadisticasUsuarioLoc[0]->pivot->best_player;
             $UsuarioGKUnbeatenLocal = $EstadisticasUsuarioLoc[0]->pivot->gk_unbeaten;
             $UsuarioDefenceUnbeatenLocal = $EstadisticasUsuarioLoc[0]->pivot->defence_unbeaten;
@@ -606,8 +608,8 @@ class ClubesProController extends Controller
             $UsuarioAssistanceLocal=$UsuarioAssistanceLocal + $Asistencias[$i];
             $UsuarioYellowCardLocal=$UsuarioYellowCardLocal + $Amarillas[$i];
             $UsuarioRedCardLocal=$UsuarioRedCardLocal + $Rojas[$i];
-            $UsuarioGoalsLocal = $UsuariosGoalsLocal + $Goles[$i];
-
+            $UsuarioGoalsLocal = $UsuarioGoalsLocal + $Goles[$i];
+           
 
             if ($Posicion[$i] == 1) {
                 $Partido->PO_local_id = $UsuariosLocal[$i]->id;
@@ -902,6 +904,7 @@ class ClubesProController extends Controller
                 $UsuarioBestPlayerLocal = $UsuarioBestPlayerLocal + 1;
             }
 
+            if ($marcadorVisitante == 0) {
             if($Posicion[$i]==2 || $Posicion[$i]==3 ||
                 $Posicion[$i]==4 || $Posicion[$i]==5 || $Posicion[$i]==6 )
             {
@@ -911,6 +914,7 @@ class ClubesProController extends Controller
                 $UsuariosLocal[$i]->defence_unbeaten += 1;
                 $UsuarioDefenceUnbeatenLocal = $UsuarioDefenceUnbeatenLocal + 1;
             }
+                                           }
 
             if ($marcadorLocal == $marcadorVisitante) {
                 $UsuariosLocal[$i]->pro_JE++;
@@ -956,7 +960,7 @@ class ClubesProController extends Controller
 
         for ($i = 0; $i < sizeof($GolesVisitante); $i++) {
             $UsuariosVisitante[$i]->proMatch()->attach($Partido->id, [
-                'local' => true,
+                'local' => false,
                 'position_id' => $PosicionVisitante[$i],
                 'goals'=>$GolesVisitante[$i],
                 'yellow_cards'=>$AmarillasVisitante[$i],
@@ -977,7 +981,7 @@ class ClubesProController extends Controller
             $UsuarioAssistanceVisitante=$UsuarioAssistanceVisitante + $AsistenciasVisitante[$i];
             $UsuarioYellowCardVisitante=$UsuarioYellowCardVisitante + $AmarillasVisitante[$i];
             $UsuarioRedCardVisitante=$UsuarioRedCardVisitante + $RojasVisitante[$i];
-            $UsuarioGoalsVisitante = $UsuariosGoalsVisitante + $GolesVisitante[$i];
+            $UsuarioGoalsVisitante = $UsuarioGoalsVisitante + $GolesVisitante[$i];
             
             
                
@@ -1265,6 +1269,7 @@ class ClubesProController extends Controller
                 $UsuarioBestPlayerVisitante=$UsuarioBestPlayerVisitante + 1; 
             }
 
+            if($marcadorLocal == 0){
             if($PosicionVisitante[$i]==2 || $PosicionVisitante[$i]==3 ||
                 $PosicionVisitante[$i]==4 || $PosicionVisitante[$i]==5 || $PosicionVisitante[$i]==6 )
             {
@@ -1273,6 +1278,8 @@ class ClubesProController extends Controller
 
                 $UsuariosVisitante[$i]->defence_unbeaten += 1;
                 $UsuarioDefenceUnbeatenVisitante= $UsuarioDefenceUnbeatenVisitante + 1;
+            }
+            
             }
 
             if ($marcadorLocal == $marcadorVisitante) {
@@ -1288,7 +1295,16 @@ class ClubesProController extends Controller
                 $UsuariosVisitante[$i]->pro_JP++;
             }
 
-
+              $UsuariosVisitante[$i]->proLeagues()->updateExistingPivot($League, 
+                        [
+                                'assistance'=>$UsuarioAssistanceVisitante,
+                                'yellow_card'=>$UsuarioYellowCardVisitante,
+                                'red_card'=>$UsuarioRedCardVisitante,
+                                'goals'=>$UsuarioGoalsVisitante,
+                                'best_player'=>$UsuarioBestPlayerVisitante,
+                                'gk_unbeaten'=>$UsuarioGKUnbeatenVisitante,
+                                'defence_unbeaten'=>$UsuarioDefenceUnbeatenVisitante
+                            ]);
             $UsuariosVisitante[$i]->update();
         }
 
@@ -1407,7 +1423,7 @@ class ClubesProController extends Controller
             $UsuarioAssistanceLocal=$UsuarioAssistanceLocal + $Asistencias[$i];
             $UsuarioYellowCardLocal=$UsuarioYellowCardLocal + $Amarillas[$i];
             $UsuarioRedCardLocal=$UsuarioRedCardLocal + $Rojas[$i];
-            $UsuarioGoalsLocal = $UsuariosGoalsLocal + $Goles[$i];
+            $UsuarioGoalsLocal = $UsuarioGoalsLocal + $Goles[$i];
 
             if ($Posicion[$i] == 1) {
                 $Partido->PO_local_id = $UsuariosLocal[$i]->id;
@@ -1677,8 +1693,9 @@ class ClubesProController extends Controller
             }
 
 
+            if ($Partido->visitor_score == 0) {
             if ($Posicion[$i] == 1) {
-                if ($marcadorVisitante == 0) {
+                
                     $UsuariosLocal[$i]->proMatch()->updateExistingPivot($Partido->id, [
                         'goalkeeper_unbeaten' => true]);
                     $UsuariosLocal[$i]->gk_unbeaten += 1;
@@ -1694,6 +1711,7 @@ class ClubesProController extends Controller
                 $UsuarioBestPlayerLocal = $UsuarioBestPlayerLocal + 1;
             }
 
+            if ($Partido->visitor_score == 0) {
             if($Posicion[$i]==2 || $Posicion[$i]==3 ||
                 $Posicion[$i]==4 || $Posicion[$i]==5 || $Posicion[$i]==6 )
             {
@@ -1703,6 +1721,7 @@ class ClubesProController extends Controller
                 $UsuariosLocal[$i]->defence_unbeaten += 1;
                 $UsuarioDefenceUnbeatenLocal = $UsuarioDefenceUnbeatenLocal + 1;
             }
+                                        }
 
             $UsuariosLocal[$i]->yellow_card += $Amarillas[$i];
             $UsuariosLocal[$i]->red_card += $Rojas[$i];
@@ -1725,11 +1744,7 @@ class ClubesProController extends Controller
 
               $UsuariosLocal[$i]->proLeagues()->updateExistingPivot($League, 
                         [
-                                'JJ'=>$UsuarioJJLocal,
-                                'JG'=>$UsuarioJGLocal,
-                                'JE'=>$UsuarioJELocal,
-                                'JP'=>$UsuarioJPLocal,                                
-                                'points'=>$UsuarioPointsLocal,
+                                
                                 'assistance'=>$UsuarioAssistanceLocal,
                                 'yellow_card'=>$UsuarioYellowCardLocal,
                                 'red_card'=>$UsuarioRedCardLocal,
@@ -1759,7 +1774,7 @@ class ClubesProController extends Controller
         for ($i = 0; $i < sizeof($GolesVisitante); $i++) {
 
             $UsuariosVisitante[$i]->proMatch()->attach($Partido->id, [
-                'local' => true,
+                'local' => false,
                 'position_id' => $PosicionVisitante[$i],
                 'goals'=>$GolesVisitante[$i],
                 'yellow_cards'=>$AmarillasVisitante[$i],
@@ -1782,7 +1797,7 @@ class ClubesProController extends Controller
             $UsuarioAssistanceVisitante=$UsuarioAssistanceVisitante + $AsistenciasVisitante[$i];
             $UsuarioYellowCardVisitante=$UsuarioYellowCardVisitante + $AmarillasVisitante[$i];
             $UsuarioRedCardVisitante=$UsuarioRedCardVisitante + $RojasVisitante[$i];
-            $UsuarioGoalsVisitante = $UsuariosGoalsVisitante + $GolesVisitante[$i];
+            $UsuarioGoalsVisitante = $UsuarioGoalsVisitante + $GolesVisitante[$i];
             
             
        
@@ -2047,8 +2062,9 @@ class ClubesProController extends Controller
             }
 
 
+             if ($Partido->local_score == 0) {
             if ($PosicionVisitante[$i] == 1) {
-                if ($marcadorLocal == 0) {
+               
                     $UsuariosVisitante[$i]->proMatch()->updateExistingPivot($Partido->id, [
                         'goalkeeper_unbeaten' => true]);
                     $UsuariosVisitante[$i]->gk_unbeaten += 1;
@@ -2064,6 +2080,7 @@ class ClubesProController extends Controller
                  $UsuarioBestPlayerVisitante= $UsuarioBestPlayerVisitante + 1;
             }
 
+            if ($Partido->local_score == 0) {
             if($PosicionVisitante[$i]==2 || $PosicionVisitante[$i]==3 ||
                 $PosicionVisitante[$i]==4 || $PosicionVisitante[$i]==5 || $PosicionVisitante[$i]==6 )
             {
@@ -2072,6 +2089,7 @@ class ClubesProController extends Controller
 
                 $UsuariosVisitante[$i]->defence_unbeaten += 1;
                 $UsuarioDefenceUnbeatenVisitante=$UsuarioDefenceUnbeatenVisitante + 1;
+            }
             }
 
             $UsuariosVisitante[$i]->goals += $GolesVisitante[$i];

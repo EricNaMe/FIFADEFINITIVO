@@ -328,25 +328,11 @@ class TorneoController extends Controller {
             ->orderBy('DG','desc')->get();
 
 
-
-        /*       $clubname= DB::table('pro_league_pro_team')->select('pro_team_id')->where('pro_league_id', $id)
-                   ->orderBy('points', 'desc')->get();
-               $ligapivote = DB::table('pro_league_pro_team')
-                   ->select([
-                       '*',
-                       DB::raw('cast(GF as int)-cast(GC as int) AS DG')
-                   ])
-                   ->where('pro_league_id', $id)
-                   ->orderBy('points', 'desc')
-                   ->orderBy('DG','desc')->get();
-       Log::info($ligapivote); */
-
         $copas = Procup::All();
         return view('/LigaPro', [
             'league' => $league,
             'ligas' => $ligas,
             'copas' => $copas,
-
             'proTeams' => $proTeams,
         ]);
     }
@@ -519,10 +505,7 @@ class TorneoController extends Controller {
     public function  PasarDatosATablaUserLeague()
     {
 
-
-
-
-        $League = ProLeague::find(29);
+        $League = ProLeague::find(1);
 
         $usuariosLiga = $League::with('proTeams.users')->get();
 
@@ -556,6 +539,30 @@ class TorneoController extends Controller {
         }
 
        return "Hecho";
+    }
+    
+    public function GoleadoresLiga ($id){
+        
+        
+        $league = ProLeague::find($id);
+        $proTeams = $league->usersStatistics()
+            ->select([
+                '*',
+                DB::raw('cast(pro_league_pro_team.GF as int)-cast(pro_league_pro_team.GC as int)
+                AS DG')
+            ])
+            ->withPivot(ProTeam::$proLeaguePivotData)
+            ->orderBy('pro_league_pro_team.points', 'desc')
+            ->orderBy('DG','desc')->get();
+
+
+        $copas = Procup::All();
+        return view('/LigaPro', [
+            'league' => $league,
+            'ligas' => $ligas,
+            'copas' => $copas,
+            'proTeams' => $proTeams,
+        ]);
     }
 
 
