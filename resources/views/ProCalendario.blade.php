@@ -99,7 +99,7 @@
             <ul id="MenuPerfil" style="width: 580px;">
                 <li id="ListaPerfil"><a href="/EncontrarLiga/{{$LigaObj->id}}">Tabla general</a></li>
                 <li id="ListaPerfil"><a class="active" href="#">Calendario</a></li>
-                <li id="ListaPerfil"><a class="active" href="/AsistentesLigaPro/{{$LigaObj->id}}">Estadísticas</a></li>
+                <li id="ListaPerfil"><a class="active" href="/GoleadoresProLiga/{{$LigaObj->id}}">Estadísticas</a></li>
                 <li id="ListaPerfil"><a href="/SalaTrofeosCP">Campeones</a></li>
 
             </ul>

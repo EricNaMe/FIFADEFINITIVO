@@ -165,7 +165,9 @@ Route::post('dateJornada','ComentarioController@dateJornada');
 Route::post('bloquear-altas','ClubesProController@putBloquearAltas');
 Route::post('desbloquear-altas','ClubesProController@putDesbloquearAltas');
 
-
+Route::get('GoleadoresProLiga/{id}','TorneoController@GoleadoresLiga');
+Route::get('AsistenciasProLiga/{id}','TorneoController@AsistenciasLiga');
+Route::get('PorterosImbatidosProLiga/{id}','TorneoController@PorteroImbatidoLiga');
 Route::get('EncontrarLiga/{id}','TorneoController@EncontrarLiga');
 Route::get('EncontrarCopa/{id}','TorneoController@EncontrarCopa');
 Route::get('ProCalendarioEnc/{proLeague}','TorneoController@EncontrarCalendario');

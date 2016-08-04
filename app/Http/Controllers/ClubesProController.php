@@ -2622,6 +2622,7 @@ class ClubesProController extends Controller
         $USERSLeague = User::find($usuariosLiga5);
         $OrdenadoDefensaImbatida = $USERSLeague->sortByDesc('defence_unbeaten')->take(10);
 
+       
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();

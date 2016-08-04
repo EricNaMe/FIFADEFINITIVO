@@ -61,6 +61,13 @@ class ProLeague extends Model
         return $this->hasMany('App\LeagueProCalendar');
     }
     
+    public function usersStatistics(){
+        return $this->belongsToMany('App\User')
+                ->withPivot('yellow_card','red_card','goals',
+                    'best_player','gk_unbeaten','defence_unbeaten');
+    }
+    
+    
       public function proUsers(){
         return $this->belongsToMany('App\ProLeague')
             ->withPivot('status', 'JJ','JG','JE','JP','GF','GC','points',
