@@ -599,28 +599,33 @@ class TorneoController extends Controller {
     public function MejorJugadorLiga ($id){
         
         
-        $league = ProLeague::find($id);
-        $EstadisticasUsuarios = $league->usersStatistics()
+        $League = ProLeague::find($id);
+        $MejorJugadorOrdenado = $League->usersStatistics()
             ->select([
                 '*'               
             ])
             ->withPivot('best_player')
             ->orderBy('pro_league_user.best_player', 'desc')->get(10);
             
-        return $EstadisticasUsuarios;
-
+               
+        $UsuarioVal = 5;
+        $clubes = Proteam::all();
+        $ligas = ProLeague::all();
         $copas = Procup::All();
-        return view('/LigaPro', [
-            'league' => $league,
+          return view('EstadisticasLigaPro', [
             'ligas' => $ligas,
+            'League' => $League,
+            'clubes' => $clubes,
+            'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
-            'EstadisticasUsuarios' => $EstadisticasUsuarios,
+            'MejorJugadorOrdenado' => $MejorJugadorOrdenado,
         ]);
     }
     
       public function PorteroImbatidoLiga ($id){
         
         
+         
         $League = ProLeague::find($id);
         $PorterosImbatidos = $League->usersStatistics()
             ->select([
@@ -628,7 +633,7 @@ class TorneoController extends Controller {
             ])
             ->withPivot('gk_unbeaten')
             ->orderBy('pro_league_user.gk_unbeaten', 'desc')->get(10);
-            
+          
        
         $UsuarioVal = 4;
         $clubes = Proteam::all();
@@ -647,8 +652,8 @@ class TorneoController extends Controller {
     public function DefensaImbatidaLiga ($id){
         
         
-        $league = ProLeague::find($id);
-        $EstadisticasUsuarios = $league->usersStatistics()
+        $League = ProLeague::find($id);
+        $DefensaImbatidaOrdenado = $League->usersStatistics()
             ->select([
                 '*'               
             ])
@@ -657,17 +662,18 @@ class TorneoController extends Controller {
             
         
 
-        $UsuarioVal = 4;
+        $UsuarioVal = 6;
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = Procup::All();
-       return view('EstadisticasLigaPro', [
+        
+         return view('EstadisticasLigaPro', [
             'ligas' => $ligas,
             'League' => $League,
             'clubes' => $clubes,
             'UsuarioVal' => $UsuarioVal,
             'copas' => $copas,
-            'PorterosImbatidos' => $PorterosImbatidos,
+            'DefensaImbatidaOrdenado' => $DefensaImbatidaOrdenado,
         ]);
     }
 
