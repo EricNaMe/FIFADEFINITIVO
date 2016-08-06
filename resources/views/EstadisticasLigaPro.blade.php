@@ -136,7 +136,7 @@
 
                     @else
 
-                    <img src="{{$UsuariosLiga->getAvatar()}}">
+                    <img src="{{$usuariosLiga->getAvatar()}}">
 
                     <div style="background:url();
                           background-size:90px 80px;"></div>
