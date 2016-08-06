@@ -92,9 +92,9 @@
         <ul id="MenuEstadisticas" style="width: 120px;">
             <li id="ListaPerfil"><a href="/GoleadoresProLiga/{{$League->id}}">Top Goleadores</a></li>
             <li id="ListaPerfil"><a class="active" href="/AsistenciasProLiga/{{$League->id}}">Top Asistentes</a></li>
-            <li id="ListaPerfil"><a class="active" href="/PorterosLigaPro/{{$League->id}}">Top Porteros</a></li>
-            <li id="ListaPerfil"><a href="/MejoresJugadoresLigaPro/{{$League->id}}">Top mejor jugador</a></li>
-            <li id="ListaPerfil"><a href="/DefensaImbatidaLigaPro/{{$League->id}}">Top defensa</a></li>
+            <li id="ListaPerfil"><a class="active" href="/PorterosImbatidosProLiga/{{$League->id}}">Top Porteros</a></li>
+            <li id="ListaPerfil"><a href="/MejoresJugadoresProLiga/{{$League->id}}">Top mejor jugador</a></li>
+            <li id="ListaPerfil"><a href="/DefensasImbatidasProLiga/{{$League->id}}">Top defensa</a></li>
 
         </ul>
 
@@ -316,7 +316,7 @@
             
        
             ?>
-          @foreach($OrdenadoMejoresJugadores as $usuariosPorLiga)
+          @foreach($MejorJugadorOrdenado as $usuariosPorLiga)
             <tr>
                 <td>
                     <div id="PosicionTabla">
@@ -382,7 +382,7 @@
             
        
             ?>
-          @foreach($OrdenadoDefensaImbatida as $usuariosPorLiga)
+          @foreach($DefensaImbatidaOrdenado as $usuariosPorLiga)
             <tr>
                 <td>
                     <div id="PosicionTabla">
