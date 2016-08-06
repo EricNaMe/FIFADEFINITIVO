@@ -82,12 +82,14 @@
                         </div>
                     </div>
 
+                    <!--
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Número de equipos:</label>
                         <div class="col-sm-5">
                             <input class="form-control" name="JornadasInput" id="focusedInput" type="number" min="1" max="100" value="">
                         </div>
                     </div>
+                    -->
 
                     <br></br>
 

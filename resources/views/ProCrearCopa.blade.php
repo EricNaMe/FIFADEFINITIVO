@@ -74,18 +74,20 @@
                         </div>
                     </div>
 
+                    <!--
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Número de equipos:</label>
                         <div class="col-sm-5">
                             <input class="form-control" name="JornadasInput" id="focusedInput" type="number" min="1" max="100" value="">
                         </div>
                     </div>
+                    -->
 
                     <br></br>
 
                     <div style="position:relative; left:500px;" class="container">
                         <button  type="button" class="btn btn-primary">Reset</button>
-                        <button onclick="if(document.getElementById('name').value=='' || document.getElementById('focusedInput').value==''){alert('Ingresa la Información requerida');return false;}else{};"  type="submit"  class="btn btn-primary">Enviar</button>
+                        <button onclick="if(document.getElementById('name').value==''){alert('Ingresa la Información requerida');return false;}else{};"  type="submit"  class="btn btn-primary">Enviar</button>
                     </div>
 
 
