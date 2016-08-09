@@ -588,7 +588,20 @@ class ClubesProController extends Controller
                 'red_cards'=>$Rojas[$i],
                 'assists'=>$Asistencias[$i]
             ]);
-            
+
+            if($UsuariosLocal[$i]->existingInPivotUserLeague($League,$UsuariosLocal[$i]->id)){
+
+                $UsuariosLocal[$i]->proLeagues()->attach($League, ['status' => 'accepted',
+                    'JJ' => 0,
+                    'JG' => 0,
+                    'JE' => 0,
+                    'JP' => 0,
+                    'GF' => 0,
+                    'GC' => 0
+                ]);
+
+                $UsuariosLocal[$i]->update();
+            }
             
             
             
@@ -967,6 +980,21 @@ class ClubesProController extends Controller
                 'red_cards'=>$RojasVisitante[$i],
                 'assists'=>$AsistenciasVisitante[$i]
             ]);
+
+            if($UsuariosVisitante[$i]->existingInPivotUserLeague($League,$UsuariosVisitante[$i]->id)){
+
+
+                $UsuariosVisitante[$i]->proLeagues()->attach($League, ['status' => 'accepted',
+                    'JJ' => 0,
+                    'JG' => 0,
+                    'JE' => 0,
+                    'JP' => 0,
+                    'GF' => 0,
+                    'GC' => 0
+                ]);
+
+                $UsuariosVisitante[$i]->update();
+            }
             
             $EstadisticasUsuarioVis = $UsuariosVisitante[$i]->proLeagueEstatistics;
             
@@ -1406,6 +1434,19 @@ class ClubesProController extends Controller
                 'red_cards'=>$Rojas[$i],
                 'assists'=>$Asistencias[$i]
             ]);
+
+            if($UsuariosLocal[$i]->existingInPivotUserLeague($League,$UsuariosLocal[$i]->id)){
+
+                $UsuariosLocal[$i]->proLeagues()->attach($League, ['status' => 'accepted',
+                    'JJ' => 0,
+                    'JG' => 0,
+                    'JE' => 0,
+                    'JP' => 0,
+                    'GF' => 0,
+                    'GC' => 0
+                ]);
+                $UsuariosLocal[$i]->update();
+            }
             
             $EstadisticasUsuarioLoc = $UsuariosLocal[$i]->proLeagueEstatistics;
            
@@ -1781,6 +1822,20 @@ class ClubesProController extends Controller
                 'red_cards'=>$RojasVisitante[$i],
                 'assists'=>$AsistenciasVisitante[$i]
             ]);
+
+            if($UsuariosVisitante[$i]->existingInPivotUserLeague($League,$UsuariosVisitante[$i]->id)){
+
+                $UsuariosVisitante[$i]->proLeagues()->attach($League, ['status' => 'accepted',
+                    'JJ' => 0,
+                    'JG' => 0,
+                    'JE' => 0,
+                    'JP' => 0,
+                    'GF' => 0,
+                    'GC' => 0
+                ]);
+
+                $UsuariosVisitante[$i]->update();
+            }
             
             
             

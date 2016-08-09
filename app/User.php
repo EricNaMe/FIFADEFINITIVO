@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Http\Request;
+use DB;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -135,6 +136,15 @@ class User extends Model implements AuthenticatableContract,
            
            
        }
+    }
+
+    public function existingInPivotUserLeague($id_liga, $id_usuario){
+
+        return is_null(
+            DB::table('pro_league_user')
+                ->where('user_id', $id_usuario)
+                ->where('pro_league_id', $id_liga)
+                ->first());
     }
     
 }

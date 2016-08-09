@@ -17,6 +17,7 @@ use App\ProLeague;
 use App\ProCup;
 use App\League;
 use DB;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Log;
 
@@ -198,7 +199,7 @@ class TorneoController extends Controller {
 
 
 
-                $usuarios->proLeagues()->attach($league->id, ['status' => 'acepted',
+                $usuarios->proLeagues()->attach($league->id, ['status' => 'accepted',
                         'JJ' => 0,
                         'JG' => 0,
                         'JE' => 0,
@@ -675,6 +676,21 @@ class TorneoController extends Controller {
             'copas' => $copas,
             'DefensaImbatidaOrdenado' => $DefensaImbatidaOrdenado,
         ]);
+    }
+
+    public function MejorMediaSemana(){
+        $user = User::find(15);
+        $Resultado = $user->proMatch()
+            ->select([
+                '*',
+            ])
+            ->withPivot('goals')
+
+            ->orderBy('pro_user_match.goals', 'desc')
+            ->get();
+
+        return $Resultado;
+
     }
 
 
