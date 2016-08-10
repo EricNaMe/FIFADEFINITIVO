@@ -679,11 +679,10 @@ class TorneoController extends Controller {
     }
 
     public function MejorMediaSemana(){
+       // User::with(['proMatch'])
         $user = User::find(15);
         $Resultado = $user->proMatch()
-            ->select([
-                '*',
-            ])
+
             ->withPivot('goals')
 
             ->orderBy('pro_user_match.goals', 'desc')
@@ -691,7 +690,16 @@ class TorneoController extends Controller {
 
         return $Resultado;
 
-    }
+   /*     select users.*, sum(pro_user_match.goals) total_goals from users join pro_user_match on users.id = pro_user_match.user_id
+  join pro_match_league on pro_user_match.pro_match_id=pro_match_league.id
+WHERE pro_match_league.created_at > '2015-23-23' and
+
+        GROUP BY users.id
+
+ORDER BY total_goals;
+
+    }*/
 
 
+}
 }
