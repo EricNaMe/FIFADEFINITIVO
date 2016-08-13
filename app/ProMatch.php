@@ -10,7 +10,6 @@ class ProMatch extends Model
 
     protected $table = 'pro_match_league';
 
-    public $timestamps = false;
 
     protected $fillable = [
         'team_local_id',
