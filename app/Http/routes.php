@@ -165,6 +165,12 @@ Route::post('dateJornada','ComentarioController@dateJornada');
 Route::post('bloquear-altas','ClubesProController@putBloquearAltas');
 Route::post('desbloquear-altas','ClubesProController@putDesbloquearAltas');
 
+Route::get('EquipoSemana/{league}','FrontController@EquipoSemana');
+Route::get('crearEquipoSemana/{league}','TorneoController@crearEquipoSemana');
+Route::get('ObtenerPorteroSemanal/{league}','TorneoController@MejorPorteroSemana');
+Route::get('ObtenerMediaSemanal/{league}','TorneoController@MejorMediaSemana');
+Route::get('ObtenerDefensaSemanal/{league}','TorneoController@MejorDefensaSemana');
+Route::get('ObtenerDelanteraSemanal/{league}','TorneoController@MejorDelanteraSemana');
 Route::get('GoleadoresProLiga/{id}','TorneoController@GoleadoresLiga');
 Route::get('AsistenciasProLiga/{id}','TorneoController@AsistenciasLiga');
 Route::get('PorterosImbatidosProLiga/{id}','TorneoController@PorteroImbatidoLiga');

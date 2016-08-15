@@ -21,6 +21,7 @@
                             <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>
                             <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
                             <li><a href="/ModificarDatosLigaPro">MODIFICAR TABLA DE LIGA</a></li>
+                            <li><a href="/crearEquipoSemana/{{$league->id}}">CREAR EQUIPO DE LA SEMANA</a></li>
                         </ul>
                     </li>
 
@@ -48,8 +49,8 @@
                     <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
                 </ul>
             </li>
-            <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a>
-
+            <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a></li>
+            <li><a href="/EquipoSemana/{{$league->id}}">EQUIPO DE LA SEMANA</a>
         </ul>
 
 

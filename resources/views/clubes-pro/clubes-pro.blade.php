@@ -21,6 +21,8 @@
               <li><a href="/ModificarLigaPro">MODIFICAR LIGA</a></li>            
               <li><a href="/ModificarCopaPro">MODIFICAR COPA</a></li>
               <li><a href="/ModificarDatosLigaPro">MODIFICAR TABLA DE LIGA</a></li>
+
+
           </ul>
       </li>
             <script>
@@ -51,7 +53,8 @@
         <li><a href="/clubes-pro/jugadores-sin-club">JUGADORES SIN CLUB</a></li>
         </ul>
         </li>
-         <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a>    
+         <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a> </li>
+
     </ul>
     </div>
 

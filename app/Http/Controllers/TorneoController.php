@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\ProTeam;
 use App\Team;
+use App\Comment;
 use App\Cup;
 use App\CalendarLeague;
 use App\User;
@@ -16,6 +17,7 @@ use Input;
 use App\ProLeague;
 use App\ProCup;
 use App\League;
+use App\WeekUser;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -195,19 +197,19 @@ class TorneoController extends Controller {
             }
         }
 
-            foreach($proTeam->users as $usuarios) {
+        foreach($proTeam->users as $usuarios) {
 
 
 
-                $usuarios->proLeagues()->attach($league->id, ['status' => 'accepted',
-                        'JJ' => 0,
-                        'JG' => 0,
-                        'JE' => 0,
-                        'JP' => 0,
-                        'GF' => 0,
-                        'GC' => 0
-                    ]);
-                }
+            $usuarios->proLeagues()->attach($league->id, ['status' => 'accepted',
+                'JJ' => 0,
+                'JG' => 0,
+                'JE' => 0,
+                'JP' => 0,
+                'GF' => 0,
+                'GC' => 0
+            ]);
+        }
 
 
 
@@ -539,27 +541,27 @@ class TorneoController extends Controller {
             }
         }
 
-       return "Hecho";
+        return "Hecho";
     }
-    
+
     public function GoleadoresLiga ($id){
-        
-       
+
+
         $League = ProLeague::find($id);
         $GoleadoresLiga = $League->usersStatistics()
             ->select([
-                '*'               
+                '*'
             ])
             ->withPivot('points')
             ->orderBy('pro_league_user.goals', 'desc')->get(10);
-            
-    //    return $EstadisticasUsuarios[0]->pivot->points;
-     
+
+        //    return $EstadisticasUsuarios[0]->pivot->points;
+
         $UsuarioVal = 1;
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = ProCup::all();
-       
+
         return view('EstadisticasLigaPro', [
             'ligas' => $ligas,
             'League' => $League,
@@ -569,25 +571,25 @@ class TorneoController extends Controller {
             'GoleadoresLiga' => $GoleadoresLiga,
         ]);
     }
-    
-      public function AsistenciasLiga ($id){
-        
-        
+
+    public function AsistenciasLiga ($id){
+
+
         $League = ProLeague::find($id);
         $AsistenciasLiga = $League->usersStatistics()
             ->select([
-                '*'               
+                '*'
             ])
             ->withPivot('assistance')
             ->orderBy('pro_league_user.assistance', 'desc')->get(10);
-            
-        
+
+
 
         $UsuarioVal = 3;
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = Procup::All();
-       return view('EstadisticasLigaPro', [
+        return view('EstadisticasLigaPro', [
             'ligas' => $ligas,
             'League' => $League,
             'clubes' => $clubes,
@@ -596,24 +598,24 @@ class TorneoController extends Controller {
             'AsistenciasLiga' => $AsistenciasLiga,
         ]);
     }
-    
+
     public function MejorJugadorLiga ($id){
-        
-        
+
+
         $League = ProLeague::find($id);
         $MejorJugadorOrdenado = $League->usersStatistics()
             ->select([
-                '*'               
+                '*'
             ])
             ->withPivot('best_player')
             ->orderBy('pro_league_user.best_player', 'desc')->get(10);
-            
-               
+
+
         $UsuarioVal = 5;
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = Procup::All();
-          return view('EstadisticasLigaPro', [
+        return view('EstadisticasLigaPro', [
             'ligas' => $ligas,
             'League' => $League,
             'clubes' => $clubes,
@@ -622,25 +624,25 @@ class TorneoController extends Controller {
             'MejorJugadorOrdenado' => $MejorJugadorOrdenado,
         ]);
     }
-    
-      public function PorteroImbatidoLiga ($id){
-        
-        
-         
+
+    public function PorteroImbatidoLiga ($id){
+
+
+
         $League = ProLeague::find($id);
         $PorterosImbatidos = $League->usersStatistics()
             ->select([
-                '*'               
+                '*'
             ])
             ->withPivot('gk_unbeaten')
             ->orderBy('pro_league_user.gk_unbeaten', 'desc')->get(10);
-          
-       
+
+
         $UsuarioVal = 4;
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = Procup::All();
-       return view('EstadisticasLigaPro', [
+        return view('EstadisticasLigaPro', [
             'ligas' => $ligas,
             'League' => $League,
             'clubes' => $clubes,
@@ -651,24 +653,24 @@ class TorneoController extends Controller {
     }
 
     public function DefensaImbatidaLiga ($id){
-        
-        
+
+
         $League = ProLeague::find($id);
         $DefensaImbatidaOrdenado = $League->usersStatistics()
             ->select([
-                '*'               
+                '*'
             ])
             ->withPivot('defence_unbeaten')
             ->orderBy('pro_league_user.defence_unbeaten', 'desc')->get(10);
-            
-        
+
+
 
         $UsuarioVal = 6;
         $clubes = Proteam::all();
         $ligas = ProLeague::all();
         $copas = Procup::All();
-        
-         return view('EstadisticasLigaPro', [
+
+        return view('EstadisticasLigaPro', [
             'ligas' => $ligas,
             'League' => $League,
             'clubes' => $clubes,
@@ -678,28 +680,532 @@ class TorneoController extends Controller {
         ]);
     }
 
-    public function MejorMediaSemana(){
-       // User::with(['proMatch'])
-        $user = User::find(15);
-        $Resultado = $user->proMatch()
+    public function MejorMediaSemana(ProLeague $league){
+        // User::with(['proMatch'])
 
-            ->withPivot('goals')
 
-            ->orderBy('pro_user_match.goals', 'desc')
+        $Fecha=Carbon::now();
+        $Fecha=Carbon::parse()->addWeeks(-1);
+
+        $users = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->where('pro_match_league.created_at','<=',Carbon::now())
+            ->where('pro_match_league.created_at','>=',$Fecha)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',7)
+            ->where('pro_user_match.position_id','<=',16)
+            ->select('users.*',DB::raw('sum(pro_user_match.goals) as total_goals'))
+            ->groupBy('users.id')
+            ->orderBy('total_goals','desc')
+            ->take(4)
             ->get();
 
-        return $Resultado;
+        $WeekVerifica=new WeekUser;
+        if($WeekVerifica->first()!=null) {
+            $ultimoRegistro = DB::table('pro_user_week')->Orderby('week_id', 'desc')->first();
 
-   /*     select users.*, sum(pro_user_match.goals) total_goals from users join pro_user_match on users.id = pro_user_match.user_id
-  join pro_match_league on pro_user_match.pro_match_id=pro_match_league.id
-WHERE pro_match_league.created_at > '2015-23-23' and
+       //   $Todas=WeekUser::all()->where('week_id',$ultimoRegistro->week_id);
 
-        GROUP BY users.id
-
-ORDER BY total_goals;
-
-    }*/
+         //   return $Todas;
 
 
-}
+        }
+
+        if($WeekVerifica->first()!=null){
+            $ContadorUsuarios=0;
+            foreach($users as $user){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$user->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="MEDIA";
+                $WeekMedia->position_id=6;
+                $WeekMedia->goals=$user->total_goals;
+
+                $WeekMedia->week_id =$ultimoRegistro->week_id + 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+        }
+
+
+        if($WeekVerifica->first()==null){
+
+            $ContadorUsuarios=0;
+            foreach($users as $user){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$user->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="MEDIA";
+                $WeekMedia->position_id=6;
+                $WeekMedia->goals=$user->total_goals;
+                $WeekMedia->week_id= 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+
+
+            }
+        }
+
+
+
+        return $users;
+
+        /*     select users.*, sum(pro_user_match.goals) total_goals from users join pro_user_match on users.id = pro_user_match.user_id
+       join pro_match_league on pro_user_match.pro_match_id=pro_match_league.id
+     WHERE pro_match_league.created_at > '2015-23-23' and
+
+             GROUP BY users.id
+
+     ORDER BY total_goals;
+
+        }*/
+    }
+
+
+    public function MejorDelanteraSemana(ProLeague $league){
+
+        $Fecha=Carbon::now();
+        $Fecha=Carbon::parse()->addWeeks(-1);
+
+        $users = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->where('pro_match_league.created_at','<=',Carbon::now())
+            ->where('pro_match_league.created_at','>=',$Fecha)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',17)
+            ->where('pro_user_match.position_id','<=',21)
+            ->select('users.*',DB::raw('sum(pro_user_match.goals) as total_goals'))
+            ->groupBy('users.id')
+            ->orderBy('total_goals','desc')
+            ->take(2)
+            ->get();
+
+        $WeekVerifica=new WeekUser;
+        if($WeekVerifica->first()!=null) {
+            $ultimoRegistro = DB::table('pro_user_week')->Orderby('week_id', 'desc')->first();
+
+        }
+
+        if($WeekVerifica->first()!=null){
+            $ContadorUsuarios=0;
+            foreach($users as $user){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$user->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="DELANTERA";
+                $WeekMedia->position_id=17;
+                $WeekMedia->goals=$user->total_goals;
+
+                $WeekMedia->week_id =$ultimoRegistro->week_id + 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+        }
+
+
+        if($WeekVerifica->first()==null){
+
+            $ContadorUsuarios=0;
+            foreach($users as $user){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$user->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="DELANTERA";
+                $WeekMedia->position_id=6;
+                $WeekMedia->goals=$user->total_goals;
+                $WeekMedia->week_id= 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+
+
+            }
+        }
+
+        return $users;
+    }
+
+    public function MejorDefensaSemana(ProLeague $league){
+
+        $Fecha=Carbon::now();
+        $Fecha=Carbon::parse()->addWeeks(-1);
+
+        $users = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->where('pro_match_league.created_at','<=',Carbon::now())
+            ->where('pro_match_league.created_at','>=',$Fecha)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',2)
+            ->where('pro_user_match.position_id','<=',6)
+            ->select('users.*',DB::raw('sum(pro_user_match.defence_unbeaten) as total_defence'))
+            ->groupBy('users.id')
+            ->orderBy('total_defence','desc')
+            ->take(4)
+            ->get();
+
+        $WeekVerifica=new WeekUser;
+        if($WeekVerifica->first()!=null) {
+            $ultimoRegistro = DB::table('pro_user_week')->Orderby('week_id', 'desc')->first();
+
+        }
+
+        if($WeekVerifica->first()!=null){
+            $ContadorUsuarios=0;
+            foreach($users as $user){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$user->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="DEFENSA";
+                $WeekMedia->position_id=17;
+                $WeekMedia->goals=$user->total_defence;
+
+                $WeekMedia->week_id =$ultimoRegistro->week_id + 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+        }
+
+
+        if($WeekVerifica->first()==null){
+
+            $ContadorUsuarios=0;
+            foreach($users as $user){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$user->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="DEFENSA";
+                $WeekMedia->position_id=2;
+                $WeekMedia->goals=$user->total_defence;
+                $WeekMedia->week_id= 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+
+
+            }
+        }
+
+        return $users;
+    }
+
+    public function MejorPorteroSemana(ProLeague $league){
+
+        $Fecha=Carbon::now();
+        $Fecha=Carbon::parse()->addWeeks(-1);
+
+        $users = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->where('pro_match_league.created_at','<=',Carbon::now())
+            ->where('pro_match_league.created_at','>=',$Fecha)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','=',1)
+            ->select('users.*',DB::raw('sum(pro_user_match.goalkeeper_unbeaten) as total_goalkeeper'))
+            ->groupBy('users.id')
+            ->orderBy('total_goalkeeper','desc')
+            ->take(1)
+            ->get();
+
+        $WeekVerifica=new WeekUser;
+        if($WeekVerifica->first()!=null) {
+            $ultimoRegistro = DB::table('pro_user_week')->Orderby('week_id', 'desc')->first();
+
+        }
+
+        if($WeekVerifica->first()!=null){
+            $ContadorUsuarios=0;
+            foreach($users as $user){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$user->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="PORTERO";
+                $WeekMedia->position_id=1;
+                $WeekMedia->goals=$user->total_goalkeeper;
+
+                $WeekMedia->week_id =$ultimoRegistro->week_id + 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+        }
+
+
+        if($WeekVerifica->first()==null){
+
+            $ContadorUsuarios=0;
+            foreach($users as $user){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$user->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="PORTERO";
+                $WeekMedia->position_id=1;
+                $WeekMedia->goals=$user->total_goalkeeper;
+                $WeekMedia->week_id= 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+
+
+            }
+        }
+
+        return $users;
+    }
+
+    public function crearEquipoSemana(ProLeague $league)
+    {
+
+        $Fecha=Carbon::now();
+        $Fecha=Carbon::parse()->addWeeks(-1);
+
+        $porteros = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->where('pro_match_league.created_at','<=',Carbon::now())
+            ->where('pro_match_league.created_at','>=',$Fecha)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','=',1)
+            ->select('users.*',DB::raw('sum(pro_user_match.goalkeeper_unbeaten) as total_goalkeeper'))
+            ->groupBy('users.id')
+            ->orderBy('total_goalkeeper','desc')
+            ->take(1)
+            ->get();
+
+        $defensas = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->where('pro_match_league.created_at','<=',Carbon::now())
+            ->where('pro_match_league.created_at','>=',$Fecha)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',2)
+            ->where('pro_user_match.position_id','<=',6)
+            ->select('users.*',DB::raw('sum(pro_user_match.defence_unbeaten) as total_defence'))
+            ->groupBy('users.id')
+            ->orderBy('total_defence','desc')
+            ->take(4)
+            ->get();
+
+        $delanteros = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->where('pro_match_league.created_at','<=',Carbon::now())
+            ->where('pro_match_league.created_at','>=',$Fecha)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',17)
+            ->where('pro_user_match.position_id','<=',21)
+            ->select('users.*',DB::raw('sum(pro_user_match.goals) as total_goals'))
+            ->groupBy('users.id')
+            ->orderBy('total_goals','desc')
+            ->take(2)
+            ->get();
+
+        $medios = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->where('pro_match_league.created_at','<=',Carbon::now())
+            ->where('pro_match_league.created_at','>=',$Fecha)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',7)
+            ->where('pro_user_match.position_id','<=',16)
+            ->select('users.*',DB::raw('sum(pro_user_match.goals) as total_goals'))
+            ->groupBy('users.id')
+            ->orderBy('total_goals','desc')
+            ->take(4)
+            ->get();
+
+
+        $WeekVerifica=new WeekUser;
+        if($WeekVerifica->first()!=null) {
+            $ultimoRegistro = DB::table('pro_user_week')->Orderby('week_id', 'desc')->first();
+
+        }
+
+        if($WeekVerifica->first()!=null){
+            $ContadorUsuarios=0;
+            foreach($porteros as $portero){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$portero->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="PORTERO";
+                $WeekMedia->position_id=1;
+                $WeekMedia->gk_unbeaten=$portero->total_goalkeeper;
+
+                $WeekMedia->week_id =$ultimoRegistro->week_id + 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+
+            foreach($defensas as $defensa){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$defensa->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="DEFENSA";
+                $WeekMedia->position_id=2;
+                $WeekMedia->defence_unbeaten=$defensa->total_defence;
+
+                $WeekMedia->week_id =$ultimoRegistro->week_id + 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+
+            foreach($medios as $medio){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$medio->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="MEDIO";
+                $WeekMedia->position_id=7;
+                $WeekMedia->goals=$medio->total_goals;
+
+                $WeekMedia->week_id =$ultimoRegistro->week_id + 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+
+            foreach($delanteros as $delantero){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$delantero->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="DELANTERO";
+                $WeekMedia->position_id=20;
+                $WeekMedia->goals=$delantero->total_goals;
+
+                $WeekMedia->week_id =$ultimoRegistro->week_id + 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+
+
+
+
+        }
+
+
+        if($WeekVerifica->first()==null){
+
+            $ContadorUsuarios=0;
+            foreach($porteros as $portero){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$portero->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="PORTERO";
+                $WeekMedia->position_id=1;
+                $WeekMedia->gk_unbeaten=$portero->total_goalkeeper;
+
+                $WeekMedia->week_id = 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+
+            foreach($defensas as $defensa){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$defensa->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="DEFENSA";
+                $WeekMedia->position_id=2;
+                $WeekMedia->defence_unbeaten=$defensa->total_defence;
+
+                $WeekMedia->week_id = 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+
+            foreach($medios as $medio){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$medio->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="MEDIO";
+                $WeekMedia->position_id=7;
+                $WeekMedia->goals=$medio->total_goals;
+
+                $WeekMedia->week_id = 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+
+            foreach($delanteros as $delantero){
+
+                $WeekMedia=new WeekUser;
+
+
+                $WeekMedia->user_id=$delantero->id;
+                $WeekMedia->league_id=$league->id;
+                $WeekMedia->position="DELANTERO";
+                $WeekMedia->position_id=20;
+                $WeekMedia->goals=$delantero->total_goals;
+
+                $WeekMedia->week_id = 1;
+
+                $ContadorUsuarios++;
+                $WeekMedia->save();
+            }
+
+
+        }
+
+        $comment=Comment::all();
+        $users=User::all();
+        return view('/index',['comment' => $comment,'users'=>$users])->withErrors('Se ha creado el equipo de la semana');
+    }
+
+
+
 }

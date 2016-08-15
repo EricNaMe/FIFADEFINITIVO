@@ -15,7 +15,8 @@ use Input;
 use App\Http\Requests;
 use App\Team;
 use App\ProLeague;
-
+use DB;
+use App\WeekUser;
 use App\ProCup;
 use App\User;
 use App\ProTeam;
@@ -153,6 +154,30 @@ class FrontController extends Controller
 
 
 
+    public function EquipoSemana(ProLeague $league) {
+
+
+        $WeekVerifica=new WeekUser;
+        if($WeekVerifica->first()!=null) {
+            $ultimoRegistro = DB::table('pro_user_week')->Orderby('week_id', 'desc')->first();
+
+               $EquipoSemana=WeekUser::all()->where('week_id',$ultimoRegistro->week_id)
+                                            ->where('league_id',$league->id);
+
+        }else{
+            return "error no has generado un equipo de la semana";
+        }
+
+
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+        return view ('Equipo_CP',['clubes' => $clubes,
+            'ligas'=>$ligas,
+            'copas'=>$copas,
+            'EquipoSemana'=>$EquipoSemana]);
+
+    }
 
     public function AgregarClubProLiga() {
         $clubes=Proteam::all();
