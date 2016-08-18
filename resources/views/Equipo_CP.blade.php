@@ -115,9 +115,12 @@
             <div style="background:url(/images/cancha3D.png); background-size: 100%; width: 600px; height: 950px; position: absolute; background-repeat: no-repeat;margin-top: -57%; margin-left: 35%;">
                 <!---DC----->
 
+                <?php $ContadorMedio=1;?>
+                <?php $ContadorDefensa=1; ?>
+                 <?php $ContadorDelantero=1;?>
                 @foreach($EquipoSemana as $Equipo)
                     @if ($Equipo->position=="PORTERO")
-                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px;  background-size: 100%; display:inline-block; ">
+                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:600px; left:270px;  position:relative; background-size: 100%; display:inline-block;">
 
                             <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                             <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -133,10 +136,11 @@
 
                     @if ($Equipo->position=="DEFENSA")
                             <!---LI----->
-                        <?php $ContadorDefensa=1; ?>
+                        
                                 <!---LI----->
                         @if($ContadorDefensa==1)
-                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; background-size: 100%; display:inline-block; ">
+                            
+                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:20px;  position:relative; background-size: 100%; display:inline-block; ">
 
                                 <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                 <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -151,7 +155,7 @@
                             @endif
                                     <!---LD----->
                             @if($ContadorDefensa==2)
-                                <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; background-size: 100%; display:inline-block; ">
+                                <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:300px; position:relative; background-size: 100%; display:inline-block; ">
 
                                     <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -166,7 +170,7 @@
                                 @endif
                                         <!---DFC----->
                                 @if($ContadorDefensa==3)
-                                    <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px;  background-size: 100%; display:inline-block;">
+                                    <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px;   position:relative;  background-size: 100%; display:inline-block;">
 
                                         <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                         <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -181,7 +185,7 @@
                                     @endif
                                             <!---DFC----->
                                     @if($ContadorDefensa==4)
-                                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; background-size: 100%; display:inline-block; ">
+                                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:45px; position:relative; background-size: 100%; display:inline-block; ">
 
                                             <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                             <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -201,10 +205,10 @@
 
                                     @if ($Equipo->position=="MEDIO")
 
-                                    <?php $ContadorMedio=1;?>
+                                    
                                             <!---MCO----->
                                         @if($ContadorMedio==1)
-                                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px;  background-size: 100%; display:inline-block;  ">
+                                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; right:145px;  position:relative;  background-size: 100%; display:inline-block;  ">
 
                                                 <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                                 <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -219,7 +223,7 @@
                                             @endif
                                             @if($ContadorMedio==2)
                                                     <!---MI----->
-                                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px;  background-size: 100%; display:inline-block;  ">
+                                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; position:relative; right:330px;  background-size: 100%; display:inline-block;  ">
 
                                                 <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                                 <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -234,7 +238,7 @@
                                             @endif
                                                     <!---MD----->
                                             @if($ContadorMedio==3)
-                                                <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; background-size: 100%; display:inline-block; ">
+                                                <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; right:60px; position:relative; background-size: 100%; display:inline-block; ">
 
                                                     <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -249,7 +253,7 @@
                                                 @endif
                                                         <!---MCD----->
                                                 @if($ContadorMedio==4)
-                                                    <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; background-size: 100%; display:inline-block;  ">
+                                                    <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:190px; left:330px; position:relative; background-size: 100%; display:inline-block;  ">
 
                                                         <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                                         <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -267,9 +271,9 @@
 
 
                     @if ($Equipo->position=="DELANTERO")
-                        <?php $ContadorDelantero=1;?>
+                       
                     @if($ContadorDelantero==1)
-                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; background-size: 100%; display:inline-block;">
+                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; bottom:2px; left:136px; position:relative; background-size: 100%; display:inline-block;">
 
                             <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                             <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
@@ -285,7 +289,7 @@
 
 
                     @if($ContadorDelantero==2)
-                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()"  style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:120px; left:650px; position: relative; background-size: 100%; display:inline-block; margin-top: -45px;margin-left:-310px; ">
+                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()"  style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:0px; left:500px; position: relative; background-size: 100%; display:inline-block; margin-top: -45px;margin-left:-310px; ">
 
                             <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                             <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>

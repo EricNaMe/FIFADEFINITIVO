@@ -49,8 +49,9 @@
                     <li><a href="/clubes-pro/buscar">BUSCAR CLUB</a></li>
                 </ul>
             </li>
+            <li><a href="/EquipoSemana/{{$league->id}}">EQUIPO DE LA SEMANA</a></li>
             <li><a href="/Transferencias">DATOS Y ESTADISTICAS</a></li>
-            <li><a href="/EquipoSemana/{{$league->id}}">EQUIPO DE LA SEMANA</a>
+           
         </ul>
 
 
