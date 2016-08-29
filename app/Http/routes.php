@@ -23,6 +23,9 @@ Route::get('/', function () {
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('auth/ResetAccount','FrontController@ResetPassword');
+Route::post('auth/ResetAction2','Auth\PasswordController@postReset3');
+Route::post('InicioReset','PerfilController@InicioReset');
 
 // Registration routes...
 Route::get('storage2', 'FrontController@storage');
@@ -229,3 +232,7 @@ Route::post('videoSave3','ComentarioController@videoYoutube3');
 Route::post('clipsCommen','ComentarioController@clipscommen');
   Route::post('TransferenciasBuscarJ','ClubesProController@buscarJugador');
  Route::post('TransferenciasBuscarE','ClubesProController@buscarEquipo');
+
+Route::auth();
+
+

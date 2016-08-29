@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use App\User;
 use App\ProTeam;
 use Input;
+use DB;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests;
+
+use Illuminate\Foundation\Auth\ResetsPasswords;
 use App\Http\Controllers\Controller;
 
 class PerfilController extends Controller {
 
+    use ResetsPasswords;
     /**
      * Display a listing of the resource.
      *
@@ -164,5 +168,63 @@ class PerfilController extends Controller {
     public function destroy($id) {
         //
     }
+
+    public function InicioReset(Request $request)
+    {
+
+
+
+
+        return $this->resetSobreCarga($request);
+    }
+
+
+
+    public function resetSobreCarga(Request $request)
+    {
+
+
+
+        $this->validate($request, $this->getResetValidationRulesSobreCarga());
+
+        $credentials = $request->only(
+            'email', 'password', 'password_confirmation'
+        );
+        $password=$request->input('password');
+        $email=$request->input('email');
+
+
+        try{
+            $user_id = DB::table('users')->where('email', $email)->first()->id;
+        }catch(\Exception $e){
+            return redirect()->back()->withErrors('Email incorrecto!!!');
+        }
+        if(is_null($user_id)){
+            return "Vacío";
+        }
+
+        $user=User::find($user_id);
+
+
+
+        $this->resetPassword($user, $password);
+
+        $comment=Comment::all();
+        $users=User::all();
+
+        return view('index',['comment' => $comment,'users'=>$users])->withErrors('Se Cambió la contraseña correctamente');
+
+    }
+
+    protected function getResetValidationRulesSobreCarga()
+    {
+        return [
+
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+        ];
+    }
+
+
 
 }

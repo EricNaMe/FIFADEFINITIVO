@@ -34,16 +34,33 @@
 
     <body onload="rotar_imagen();">
 
-
-    <div id="menuLateral" style="background: url(images/leftMenu.jpeg); background-size: cover;">
-
+    <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
         <ul id="ListaMenuLateral">
-            <li><a>HOME</a></li>
+
+            <li><a href="/Inicio">HOME</a></li>
+
+            @if (Auth::check())
+                <?php $user=Auth::user();
+                ?>
+
+
+
+
+                @if($user->user_name==="Administrador22")
+                    <li><a>ADMINISTRADOR</a>
+                        <ul>
+
+                            <li><a href="auth/ResetAccount">CAMBIAR CONTRASEÑA USUARIO</a></li>
+
+                        </ul>
+                    </li>
+
+                @endif
+            @endif
 
         </ul>
+        </div>
 
-
-    </div>
     <style>
 
         .dialogbox .body {

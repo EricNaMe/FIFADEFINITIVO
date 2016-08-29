@@ -3,105 +3,91 @@
 @section('content')
 
     <div id="menuLateral" style="background: url(/images/leftMenu.jpeg); background-size: cover;">
-    <ul id="ListaMenuLateral">
-        <li><a>HOME</a>
+        <ul id="ListaMenuLateral">
+            <li><a>HOME</a>
 
-    </ul>
-</div>
-<div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
-
-    <div style=" font-size:16px;background-color: whitesmoke; border-radius:10px;position: relative; top:200px; width: 700px; height: 400px; left: 200px; ">
-        <!--==============================header=================================-->
-         <div class="container">
-        <!--==============================content================================-->
-        <h3 style="font-family: sans-serif;"><strong> Registro</strong></h3>
-        <form id="contact-form"  action="/auth/register" enctype="multipart/form-data" method="post" >
-            {!! csrf_field() !!}
-            <fieldset>
-          
-              
-                
-                
-             <div class="form-group">
-                <label class="col-sm-2 control-label">Usuario:</label>
-                <div class="col-sm-5">
-                    <input class="form-control" name="name" type="text" value="">
-                </div>
-            </div>
-                   <br></br>
-                  <div class="form-group">
-                <label class="col-sm-2 control-label">Correo electrónico:</label>
-                <div class="col-sm-5">
-                    <input class="form-control" name="email" type="text" value="">
-                </div>
-            </div>
-                   <br></br>
-                      <div class="form-group">
-                <label class="col-sm-2 control-label">Contraseña:</label>
-                <div class="col-sm-5">
-                    <input class="form-control" name="password" type="password" value="">
-                </div>
-            </div>
-                   <br></br>
-                      <div class="form-group">
-                <label class="col-sm-2 control-label">Confirma contraseña:</label>
-                <div class="col-sm-5">
-                    <input type="password" class="form-control" name="password_confirmation" value="">
-                </div>
-            </div>
-
-              <!--  
-                
-                <label>
-                    <span style="font-size:16px; font-weight: bold;  font-family: sans-serif;margin-left: 148px;" class="name-input">Nombre:</span>
-                    <input name="name" value="" onBlur="if(this.value=='') this.value=''" onFocus="if(this.value =='' ) this.value=''" />
-                </label>
-                <br></br>
-                <label>
-                    <span style=" font-size:16px; font-weight: bold;  font-family: sans-serif; margin-left: 165px;" class="name-input">Email:</span>
-                    <input name="email" value="" onBlur="if(this.value=='') this.value=''" onFocus="if(this.value =='' ) this.value=''" />
-                </label>
-                <br></br>
-                <label>
-                    <span style=" font-size:16px; font-weight: bold; font-family: sans-serif;margin-left: 120px;" class="name-input">Contraseña:</span>
-                    <input type="password" name="password" value="" onBlur="if(this.value=='') this.value=''" onFocus="if(this.value =='' ) this.value=''" />
-                </label>
-                <br></br>
-                <label>
-                    <span style="margin-left: 48px; font-family: sans-serif; font-weight: bold;"class="name-input">Confirma contraseña:</span>
-                    <input type="password" name="password_confirmation" value="" onBlur="if(this.value=='') this.value=''" onFocus="if(this.value =='' ) this.value=''" />
-                </label>
--->
-            </fieldset>
-             <div style="left:450px; position: relative;" class="container">
-                <button  type="button" class="btn btn-primary">Reset</button>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-          
-        </form>
+        </ul>
     </div>
+    <div id="menuCentral" style="background:url(/images/middleMenu.jpeg); background-size: cover;" >
 
-        </div> 
+<div style="margin-top: 100px;" class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Register</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                        {!! csrf_field() !!}
 
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password">
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Confirm Password</label>
+
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password_confirmation">
+
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i>Register
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
-
+    </div>
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-<!--==============================content================================-->
-
-
-
-
-

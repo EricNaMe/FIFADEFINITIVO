@@ -10,6 +10,7 @@ use App\Transfer;
 use App\URLVideos;
 use App\Clips;
 use App\News;
+use Auth;
 use Illuminate\Http\Request;
 use Input;
 use App\Http\Requests;
@@ -26,6 +27,7 @@ class FrontController extends Controller
 {
 
     public function Inicio(){
+
         $comment=Comment::all();
         $users=User::all();
         return view('index',['comment' => $comment,'users'=>$users]);
@@ -601,6 +603,18 @@ $search = Input::get('search');
         
         
         
+    }
+
+    public function ResetPassword()
+    {
+
+        if (Auth::check()){
+            if (Auth::user()->user_name == "Administrador22") {
+                return view('auth.passwords.reset');
+            }
+    }
+        return redirect()->back()->withErrors("No eres admin!!!");
+
     }
 
 }
