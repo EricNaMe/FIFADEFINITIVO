@@ -83,6 +83,8 @@
     </div>
 
     <div id="menuCentral" style="background:url(/images/EquipoCP.jpg); background-size: cover; background-repeat: no-repeat;" >
+       
+        
         <div><h1 class="title">EQUIPO DE LA SEMANA</h1></div>
 
 
@@ -114,7 +116,7 @@
             </div>
             <div style="background:url(/images/cancha3D.png); background-size: 100%; width: 600px; height: 950px; position: absolute; background-repeat: no-repeat;margin-top: -57%; margin-left: 35%;">
                 <!---DC----->
-
+                @if($BanderaEquipoSemana==1)
                 <?php $ContadorMedio=1;?>
                 <?php $ContadorDefensa=1; ?>
                  <?php $ContadorDelantero=1;?>
@@ -315,8 +317,224 @@
 
 
                 @endforeach
+               
+                <!---IF para poner mejor equipo ultima jornada----->
+                @endif
 
 
+                @if($BanderaEquipoSemana==2)
+                <?php $ContadorMedio=1;?>
+                <?php $ContadorDefensa=1; ?>
+                <?php $ContadorDelantero=1;?>
+               
+                   
+                        <div onmouseover="visible({{$portero->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:600px; left:270px;  position:relative; background-size: 100%; display:inline-block;">
+
+                            <div style="background:url({{$portero->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                            <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                            <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                <span id="{{$portero->id}}" class="Info6">{{$portero->user->user_name}}</span>
+                            </div>
+                            <div style="width: 60px; margin-top: -4px; margin-left: 16px;">
+                                <span class="Info5">PO</span>
+                            </div>
+
+                        </div>
+                    
+
+                  
+                    
+                    @foreach($defensas as $Equipo)
+                            <!---LI----->
+                        
+                                <!---LI----->
+                        @if($ContadorDefensa==1)
+                            
+                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:20px;  position:relative; background-size: 100%; display:inline-block; ">
+
+                                <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                                <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                </div>
+                                <div style="width: 60px; margin-top: -4px; margin-left: 21px;">
+                                    <span class="Info5">LI</span>
+                                </div>
+
+                            </div>
+                            @endif
+                                    <!---LD----->
+                            @if($ContadorDefensa==2)
+                                <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:300px; position:relative; background-size: 100%; display:inline-block; ">
+
+                                    <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                    <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                                    <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                        <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                    </div>
+                                    <div style="width: 60px; margin-top: -4px; margin-left: 17px;">
+                                        <span class="Info5">LD</span>
+                                    </div>
+
+                                </div>
+                                @endif
+                                        <!---DFC----->
+                                @if($ContadorDefensa==3)
+                                    <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px;   position:relative;  background-size: 100%; display:inline-block;">
+
+                                        <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                        <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                                        <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                            <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                        </div>
+                                        <div style="width: 60px; margin-top: -4px; margin-left: 7px;">
+                                            <span class="Info5">DFC</span>
+                                        </div>
+
+                                    </div>
+                                    @endif
+                                            <!---DFC----->
+                                    @if($ContadorDefensa==4)
+                                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:45px; position:relative; background-size: 100%; display:inline-block; ">
+
+                                            <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                            <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                                            <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                            </div>
+                                            <div style="width: 60px; margin-top: -4px; margin-left: 7px;">
+                                                <span class="Info5">DFC</span>
+                                            </div>
+
+                                        </div>
+                                        @endif
+                                        <?php $ContadorDefensa++; ?>
+                                                <!---POR----->
+                                        @endforeach
+                                        
+                                    
+
+
+                                  
+
+                                    @foreach($medios as $Equipo)
+                                            <!---MCO----->
+                                        @if($ContadorMedio==1)
+                                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; right:145px;  position:relative;  background-size: 100%; display:inline-block;  ">
+
+                                                <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                                <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                                                <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                </div>
+                                                <div style="width: 60px; margin-top: -4px; margin-left: 5px;">
+                                                    <span class="Info5">MCO</span>
+                                                </div>
+
+                                            </div>
+                                            @endif
+                                            @if($ContadorMedio==2)
+                                                    <!---MI----->
+                                            <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; position:relative; right:330px;  background-size: 100%; display:inline-block;  ">
+
+                                                <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                                <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                                                <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                </div>
+                                                <div style="width: 60px; margin-top: -4px; margin-left: 19px;">
+                                                    <span class="Info5">MI</span>
+                                                </div>
+
+                                            </div>
+                                            @endif
+                                                    <!---MD----->
+                                            @if($ContadorMedio==3)
+                                                <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; right:60px; position:relative; background-size: 100%; display:inline-block; ">
+
+                                                    <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                                    <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                                                    <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                                        <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                    </div>
+                                                    <div style="width: 60px; margin-top: -4px; margin-left: 15px;">
+                                                        <span class="Info5">MD</span>
+                                                    </div>
+
+                                                </div>
+                                                @endif
+                                                        <!---MCD----->
+                                                @if($ContadorMedio==4)
+                                                    <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:190px; left:330px; position:relative; background-size: 100%; display:inline-block;  ">
+
+                                                        <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                                        <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                                                        <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                                            <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                        </div>
+                                                        <div style="width: 60px; margin-top: -4px; margin-left: 5px;">
+                                                            <span class="Info5">MCD</span>
+                                                        </div>
+
+                                                    </div>
+                                                @endif
+                                                <?php $ContadorMedio++; ?>
+                                                @endforeach
+                                          
+
+
+                  
+                       
+                    @foreach($delanteros as $Equipo)
+                    @if($ContadorDelantero==1)
+                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; bottom:2px; left:136px; position:relative; background-size: 100%; display:inline-block;">
+
+                            <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                            <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                            <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                            </div>
+                            <div style="width: 60px; margin-top: -4px; margin-left: 16px;">
+                                <span class="Info5">DC</span>
+                            </div>
+
+                        </div>
+                    @endif
+
+
+                    @if($ContadorDelantero==2)
+                        <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()"  style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:0px; left:500px; position: relative; background-size: 100%; display:inline-block; margin-top: -45px;margin-left:-310px; ">
+
+                            <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                            <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
+                            <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
+                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                            </div>
+                            <div style="width: 60px; margin-top: -4px; margin-left: 16px;">
+                                <span class="Info5">DC</span>
+                            </div>
+
+                        </div>
+
+
+                        <!---DC----->
+
+                    @endif
+                            <?php $ContadorDelantero++; ?>
+                            @endforeach
+                    
+
+
+
+
+
+
+                
+               
+                <!---IF para poner mejor equipo ultima jornada----->
+                @endif
+
+            
             </div>
 
 
@@ -324,59 +542,70 @@
 
 
             <div style="background:url(/images/BancaCP.png); background-size: 89%; width: 550px; height:350px; position:absolute; top: 500px; margin-left: -15px;">
-                <span class="titleA"><div  style="margin-top: 5%; margin-left: -15%;">BANCA</div></span>
+                <span class="titleA"><div  style="margin-top: 5%; margin-left: -15%;">Jornada</div></span>
                 <!---DC----->
-                <div onmouseover="visible('dcB')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top: 88px; left:315px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-240px; ">
-
-                    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/SaltyBunny99620/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
-                    <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
-                    <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                        <span id="dcB" class="Info6">SaltyBunny99620</span>
-                    </div>
-                    <div style="width: 60px; margin-top: -4px; margin-left: 16px;">
-                        <span class="Info5">DC</span>
-                    </div>
-
-                </div>
+                
                 <!---MCO----->
-                <div  onmouseover="visible('mcoB')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:87px; left:555px; position:relative; background-size: 100%; display:inline-block; margin-top: -80px;margin-left:-225px; ">
-
-                    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/ealtamirano91/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
-                    <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
-                    <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                        <span id="mcoB"class="Info6">ealtamirano91</span>
+                
+                 <div style="margin-top:50px; margin-left: 150px;" class="col-md-4">
+                     <form method="post"  role="form" action="/EquipoSemana/{{$league->id}}">  
+                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                         
+                   
+                    <div class="col-md-8">
+                         <select name="JornadaInput1"  class="col-md-12">
+                             <option value="1"></option>    
+                             <option value="1">1</option>
+                             <option value="2">2</option> 
+                             <option value="3">3</option>
+                             <option value="4">4</option> 
+                             <option value="5">5</option>
+                             <option value="6">6</option> 
+                             <option value="7">7</option>
+                             <option value="8">8</option> 
+                             <option value="9">9</option>
+                             <option value="10">10</option> 
+                             <option value="11">11</option>
+                             <option value="12">12</option> 
+                             <option value="13">13</option>
+                             <option value="14">14</option> 
+                             <option value="15">15</option>
+                             <option value="16">16</option> 
+                             <option value="17">17</option>
+                             <option value="18">18</option> 
+                        </select>
+                    </div> 
+                         
+                           <div class="col-md-8">
+                         <select name="JornadaInput2" class="col-md-12">
+                             <option value="1"></option>    
+                             <option value="1">1</option>
+                             <option value="2">2</option> 
+                             <option value="3">3</option>
+                             <option value="4">4</option> 
+                             <option value="5">5</option>
+                             <option value="6">6</option> 
+                             <option value="7">7</option>
+                             <option value="8">8</option> 
+                             <option value="9">9</option>
+                             <option value="10">10</option> 
+                             <option value="11">11</option>
+                             <option value="12">12</option> 
+                             <option value="13">13</option>
+                             <option value="14">14</option> 
+                             <option value="15">15</option>
+                             <option value="16">16</option> 
+                             <option value="17">17</option>
+                             <option value="18">18</option> 
+                        </select>
                     </div>
-                    <div style="width: 60px; margin-top: -4px; margin-left: 5px;">
-                        <span class="Info5">MCO</span>
-                    </div>
-
+                         <div class="col-md-3"><button type="submit" class="btn btn-primary">Enviar</button></div>
+                     </form> 
                 </div>
                 <!---LD----->
-                <div onmouseover="visible('ldB')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:87px; left:795px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-225px; ">
-
-                    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/kelly%20uchiha/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
-                    <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
-                    <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                        <span id="ldB"class="Info6">kelly%20uchiha</span>
-                    </div>
-                    <div style="width: 60px; margin-top: -4px; margin-left: 17px;">
-                        <span class="Info5">LD</span>
-                    </div>
-
-                </div>
+              
                 <!---POR----->
-                <div onmouseover="visible('porB')"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:87px; left:1020px; position:relative; background-size: 100%; display:inline-block; margin-top: -85px;margin-left:-210px; ">
-
-                    <div style="background:url(https://avatar-ssl.xboxlive.com/avatar/FERACE/avatar-body.png); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
-                    <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
-                    <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                        <span id="porB" class="Info6">FERACE</span>
-                    </div>
-                    <div style="width: 60px; margin-top: -4px; margin-left: 6px;">
-                        <span class="Info5">POR</span>
-                    </div>
-
-                </div>
+                
 
             </div>
 

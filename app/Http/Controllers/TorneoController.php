@@ -1206,6 +1206,109 @@ class TorneoController extends Controller {
         return view('/index',['comment' => $comment,'users'=>$users])->withErrors('Se ha creado el equipo de la semana');
     }
     
+    public function equipoRangoJornadas(ProLeague $league){
+        
+        $primer_jornada=(int)Input::get('JornadaInput1');
+        $segunda_jornada=(int)Input::get('JornadaInput2');
+        
+         
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+        
+        $portero=DB::table('users')
+                ->join('pro_user_match','users.id','=','pro_user_match.user_id')
+                ->join('pro_match_league','pro_user_match.pro_match_id','=','pro_match_league.id')
+                ->join('league_pro_calendars','pro_match_league.id','=','league_pro_calendars.match_id')
+                ->where('league_pro_calendars.pro_league_id','=',$league->id)
+                ->where('league_pro_calendars.jornada','>=',$primer_jornada)
+                ->where('league_pro_calendars.jornada','<=',$segunda_jornada)
+                ->where('pro_match_league.league_id','=',$league->id)
+                ->where('pro_user_match.position_id','=',1)
+                ->select('users.*',DB::raw('sum(pro_user_match.goalkeeper_unbeaten) as total_goalkeeper'))
+                ->groupBy('users.id')
+                ->orderBy('total_goalkeeper','desc')
+                ->take(1)
+                ->get();
+        
+        return $portero[0]->total_goalkeeper;
+       
+        if(is_null($portero)){
+            return "Vacío portero";
+        }
+        
+        
+        
+           $defensas = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->join('league_pro_calendars', 'pro_match_league.id', '=', 'league_pro_calendars.match_id')
+            ->where('league_pro_calendars.pro_league_id','=',$league->id)
+            ->where('league_pro_calendars.jornada','>=',$primer_jornada)
+            ->where('league_pro_calendars.jornada','<=',$segunda_jornada)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',2)
+            ->where('pro_user_match.position_id','<=',6)
+            ->select('users.*',DB::raw('sum(pro_user_match.defence_unbeaten) as total_defence'))
+            ->groupBy('users.id')
+            ->orderBy('total_defence','desc')
+            ->take(4)
+            ->get();
+           
+          
+           
+             $medios = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->join('league_pro_calendars', 'pro_match_league.id', '=', 'league_pro_calendars.match_id')
+            ->where('league_pro_calendars.pro_league_id','=',$league->id)
+            ->where('league_pro_calendars.jornada','>=',$primer_jornada)
+            ->where('league_pro_calendars.jornada','<=',$segunda_jornada)
+            ->where('league_pro_calendars.pro_league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',7)
+            ->where('pro_user_match.position_id','<=',16)
+            ->select('users.*',DB::raw('sum(pro_user_match.goals) as total_goals'))
+            ->groupBy('users.id')
+            ->orderBy('total_goals','desc')
+            ->take(4)
+            ->get();
+             
+             
+             
+           
+        
+        $delanteros = DB::table('users')
+            ->join('pro_user_match', 'users.id', '=', 'pro_user_match.user_id')
+            ->join('pro_match_league', 'pro_user_match.pro_match_id', '=', 'pro_match_league.id')
+            ->join('league_pro_calendars', 'pro_match_league.id', '=', 'league_pro_calendars.match_id')
+            ->where('league_pro_calendars.pro_league_id','=',$league->id)
+            ->where('league_pro_calendars.jornada','>=',$primer_jornada)
+            ->where('league_pro_calendars.jornada','<=',$segunda_jornada)
+            ->where('pro_match_league.league_id','=',$league->id)
+            ->where('pro_user_match.position_id','>=',17)
+            ->where('pro_user_match.position_id','<=',21)
+            ->select('users.*',DB::raw('sum(pro_user_match.goals) as total_goals'))
+            ->groupBy('users.id')
+            ->orderBy('total_goals','desc')
+            ->take(2)
+            ->get();
+        
+        
+        
+        $BanderaEquipoSemana=2;
+        
+        return view ('Equipo_CP',['clubes' => $clubes,
+            'delanteros'=>$delanteros,
+            'medios'=>$medios,
+            'defensas'=>$defensas,
+            'BanderaEquipoSemana'=>$BanderaEquipoSemana,
+            'portero'=>$portero,
+            'ligas'=>$ligas,
+            'copas'=>$copas,
+            'league'=>$league]);              
+        
+    }
+    
     
     public function crearEquipoSemanaJornada(ProLeague $ProLeague)
     {

@@ -158,7 +158,7 @@ class FrontController extends Controller
 
     public function EquipoSemana(ProLeague $league) {
 
-
+       
         $WeekVerifica=new WeekUser;
         if($WeekVerifica->first()!=null) {
             $ultimoRegistro = DB::table('pro_user_week')->Orderby('week_id', 'desc')->first();
@@ -170,13 +170,68 @@ class FrontController extends Controller
             return "error no has generado un equipo de la semana";
         }
 
-
+$BanderaEquipoSemana=1;
         $clubes=Proteam::all();
         $ligas= ProLeague::all();
         $copas=ProCup::all();
         return view ('Equipo_CP',['clubes' => $clubes,
+            'BanderaEquipoSemana'=>$BanderaEquipoSemana,
             'ligas'=>$ligas,
             'copas'=>$copas,
+            'league'=>$league,
+            'EquipoSemana'=>$EquipoSemana]);
+
+    }
+    
+     public function EquipoSemanaJornada(ProLeague $league) {
+
+        $jornada = Input::get('Jornada');
+        $clubes=Proteam::all();
+        $ligas= ProLeague::all();
+        $copas=ProCup::all();
+               
+        $BanderaEquipoSemana=1;
+        $int_jornada = (int)$jornada;
+        $WeekVerifica=new WeekUser;
+        if($WeekVerifica->first()!=null) {
+            
+                
+            
+               $EquipoSemana=WeekUser::all()
+                ->where('week_id',$int_jornada)
+                ->where('league_id',$league->id);
+                           
+              
+                              
+               if($EquipoSemana->isEmpty()){                   
+                $ultimoRegistro = DB::table('pro_user_week')->Orderby('week_id', 'desc')
+                        ->where('league_id',$league->id)
+                        ->first();
+                
+                $EquipoSemana=WeekUser::all()
+                ->where('week_id',$ultimoRegistro)
+                ->where('league_id',$league->id);
+                  
+                 $BanderaEquipoSemana=1;
+            return view ('Equipo_CP',['clubes' => $clubes,
+            'BanderaEquipoSemana'=>$BanderaEquipoSemana,
+            'ligas'=>$ligas,
+            'copas'=>$copas,
+            'league'=>$league,
+            'EquipoSemana'=>$EquipoSemana])->withErrors('No hay equipo de la semana para esa jornada');
+                   
+               }
+
+        }else{
+            return "error no has generado un equipo de la semana";
+        }      
+        
+        $BanderaEquipoSemana=1;
+            return view ('Equipo_CP',['clubes' => $clubes,
+            'BanderaEquipoSemana'=>$BanderaEquipoSemana,    
+            'ligas'=>$ligas,
+            'copas'=>$copas,
+            'league'=>$league,
             'EquipoSemana'=>$EquipoSemana]);
 
     }
