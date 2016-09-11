@@ -328,12 +328,12 @@
                 <?php $ContadorDelantero=1;?>
                
                    
-                        <div onmouseover="visible({{$portero->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:600px; left:270px;  position:relative; background-size: 100%; display:inline-block;">
+                        <div onmouseover="visible({{$portero[0]->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:600px; left:270px;  position:relative; background-size: 100%; display:inline-block;">
 
-                            <div style="background:url({{$portero->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                            <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($portero[0]->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                             <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                             <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                <span id="{{$portero->id}}" class="Info6">{{$portero->user->user_name}}</span>
+                                <span id="{{$portero[0]->id}}" class="Info6">{{$portero[0]->user_name}}</span>
                             </div>
                             <div style="width: 60px; margin-top: -4px; margin-left: 16px;">
                                 <span class="Info5">PO</span>
@@ -352,10 +352,10 @@
                             
                             <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:20px;  position:relative; background-size: 100%; display:inline-block; ">
 
-                                <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                 <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                                 <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                                 </div>
                                 <div style="width: 60px; margin-top: -4px; margin-left: 21px;">
                                     <span class="Info5">LI</span>
@@ -367,10 +367,10 @@
                             @if($ContadorDefensa==2)
                                 <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:300px; position:relative; background-size: 100%; display:inline-block; ">
 
-                                    <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                    <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                                     <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                        <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                        <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                                     </div>
                                     <div style="width: 60px; margin-top: -4px; margin-left: 17px;">
                                         <span class="Info5">LD</span>
@@ -382,10 +382,10 @@
                                 @if($ContadorDefensa==3)
                                     <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px;   position:relative;  background-size: 100%; display:inline-block;">
 
-                                        <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                        <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                         <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                                         <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                            <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                            <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                                         </div>
                                         <div style="width: 60px; margin-top: -4px; margin-left: 7px;">
                                             <span class="Info5">DFC</span>
@@ -397,10 +397,10 @@
                                     @if($ContadorDefensa==4)
                                         <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:450px; left:45px; position:relative; background-size: 100%; display:inline-block; ">
 
-                                            <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                            <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                             <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                                             <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                                             </div>
                                             <div style="width: 60px; margin-top: -4px; margin-left: 7px;">
                                                 <span class="Info5">DFC</span>
@@ -422,10 +422,10 @@
                                         @if($ContadorMedio==1)
                                             <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; right:145px;  position:relative;  background-size: 100%; display:inline-block;  ">
 
-                                                <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                                <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                                 <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                                                 <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                                                 </div>
                                                 <div style="width: 60px; margin-top: -4px; margin-left: 5px;">
                                                     <span class="Info5">MCO</span>
@@ -437,10 +437,10 @@
                                                     <!---MI----->
                                             <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; position:relative; right:330px;  background-size: 100%; display:inline-block;  ">
 
-                                                <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                                <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                                 <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                                                 <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                    <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                                                 </div>
                                                 <div style="width: 60px; margin-top: -4px; margin-left: 19px;">
                                                     <span class="Info5">MI</span>
@@ -452,10 +452,10 @@
                                             @if($ContadorMedio==3)
                                                 <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:300px; right:60px; position:relative; background-size: 100%; display:inline-block; ">
 
-                                                    <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                                    <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                                     <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                                                     <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                                        <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                        <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                                                     </div>
                                                     <div style="width: 60px; margin-top: -4px; margin-left: 15px;">
                                                         <span class="Info5">MD</span>
@@ -467,10 +467,10 @@
                                                 @if($ContadorMedio==4)
                                                     <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:190px; left:330px; position:relative; background-size: 100%; display:inline-block;  ">
 
-                                                        <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                                                        <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                                                         <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                                                         <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                                            <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                                            <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                                                         </div>
                                                         <div style="width: 60px; margin-top: -4px; margin-left: 5px;">
                                                             <span class="Info5">MCD</span>
@@ -489,10 +489,10 @@
                     @if($ContadorDelantero==1)
                         <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()" style=" background:url(/images/CPSemana.png); width: 67px; height:105px; bottom:2px; left:136px; position:relative; background-size: 100%; display:inline-block;">
 
-                            <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                            <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                             <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                             <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                             </div>
                             <div style="width: 60px; margin-top: -4px; margin-left: 16px;">
                                 <span class="Info5">DC</span>
@@ -505,10 +505,10 @@
                     @if($ContadorDelantero==2)
                         <div onmouseover="visible({{$Equipo->id}})"  onmouseout="ocultar()"  style=" background:url(/images/CPSemana.png); width: 67px; height:105px; top:0px; left:500px; position: relative; background-size: 100%; display:inline-block; margin-top: -45px;margin-left:-310px; ">
 
-                            <div style="background:url({{$Equipo->user->getAvatarBody()}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
+                            <div style="background:url({{'https://avatar-ssl.xboxlive.com/avatar/'.rawurlencode($Equipo->gamertag).'/avatar-body.png'}}); background-size:45px 85px;background-repeat: no-repeat;  display:inline-block; margin-top: 7px;margin-left: 27px; width: 50px; height: 46px;">  </div>
                             <div style="background:url(/Imagenes/INTERNACIONAL/MEXICO-FOOTBALL-LOGO.png); background-size: cover; width: 30px; height:30px; position:relative; top:-39px; margin-left: 4px;"></div>
                             <div style="width: 182px; margin-top: -40px; margin-left: -57px; text-align:center;">
-                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user->user_name}}</span>
+                                <span id="{{$Equipo->id}}" class="Info6">{{$Equipo->user_name}}</span>
                             </div>
                             <div style="width: 60px; margin-top: -4px; margin-left: 16px;">
                                 <span class="Info5">DC</span>
@@ -542,7 +542,7 @@
 
 
             <div style="background:url(/images/BancaCP.png); background-size: 89%; width: 550px; height:350px; position:absolute; top: 500px; margin-left: -15px;">
-                <span class="titleA"><div  style="margin-top: 5%; margin-left: -15%;">Jornada</div></span>
+                <span class="titleA"><div  style="margin-top: 5%; margin-left: -15%;">Escoge rango de jornadas</div></span>
                 <!---DC----->
                 
                 <!---MCO----->
@@ -572,8 +572,20 @@
                              <option value="15">15</option>
                              <option value="16">16</option> 
                              <option value="17">17</option>
-                             <option value="18">18</option> 
-                        </select>
+                             <option value="18">18</option>
+                             <option value="19">19</option>
+                             <option value="20">20</option>
+                             <option value="21">21</option>
+                             <option value="22">22</option>
+                             <option value="23">23</option>
+                             <option value="24">24</option>
+                             <option value="25">25</option>
+                             <option value="26">26</option>
+                             <option value="27">27</option>
+                             <option value="28">28</option>
+                             <option value="29">29</option>
+                             <option value="30">30</option>
+                         </select>
                     </div> 
                          
                            <div class="col-md-8">
@@ -596,7 +608,19 @@
                              <option value="15">15</option>
                              <option value="16">16</option> 
                              <option value="17">17</option>
-                             <option value="18">18</option> 
+                             <option value="18">18</option>
+                             <option value="19">19</option>
+                             <option value="20">20</option>
+                             <option value="21">21</option>
+                             <option value="22">22</option>
+                             <option value="23">23</option>
+                             <option value="24">24</option>
+                             <option value="25">25</option>
+                             <option value="26">26</option>
+                             <option value="27">27</option>
+                             <option value="28">28</option>
+                             <option value="29">29</option>
+                             <option value="30">30</option>
                         </select>
                     </div>
                          <div class="col-md-3"><button type="submit" class="btn btn-primary">Enviar</button></div>

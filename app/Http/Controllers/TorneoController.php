@@ -1230,12 +1230,7 @@ class TorneoController extends Controller {
                 ->orderBy('total_goalkeeper','desc')
                 ->take(1)
                 ->get();
-        
-        return $portero[0]->total_goalkeeper;
-       
-        if(is_null($portero)){
-            return "Vacío portero";
-        }
+
         
         
         
@@ -1254,6 +1249,8 @@ class TorneoController extends Controller {
             ->orderBy('total_defence','desc')
             ->take(4)
             ->get();
+
+
            
           
            
